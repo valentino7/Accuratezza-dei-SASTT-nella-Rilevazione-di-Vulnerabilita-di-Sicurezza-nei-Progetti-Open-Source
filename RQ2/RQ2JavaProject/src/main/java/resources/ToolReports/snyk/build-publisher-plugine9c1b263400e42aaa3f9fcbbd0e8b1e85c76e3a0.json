@@ -1,0 +1,1143 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/HttpResponseSplitting",
+              "name": "HttpResponseSplitting",
+              "shortDescription": {
+                "text": "Improper Neutralization of CRLF Sequences in HTTP Headers"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCRLF is an abbreviation for the terms \"carriage return\" and \"line feed.\" These two special characters are a legacy of old-fashioned printing terminals used in the early days of computing. However, today both are still often used as delimiters between data. When this weakness exists, CR and LF characters (represented respectively in code as `\\r` and `\\n`) are permitted to be present in HTTP headers, usually due to poor planning for data handling during development.\n\nCRLF sequences in HTTP headers are known as \"response splitting\" because these characters effectively split the response from the browser, causing the single line to be accepted as multiple lines by the server (for example, the single line First Line\\r\\nSecond Line would be accepted by the server as two lines of input).\n\nWhile response splitting in itself is not an attack, and can be completely harmless unless exploited, its presence could lead to an injection attack (known as CRLF injection) and a variety of unpredictable and potentially dangerous behavior. This weakness can be exploited in a number of ways, such as page hijacking or cross-user defacement, in which an attacker displays false site content and/or captures confidential information such as credentials. It can even lead to cross-site scripting attacks, in which attackers can cause malicious code to execute in the user's browser.\n\nFor example, the following code is vulnerable:\n\n```\nprotected void doGet(HttpServletRequest request, HttpServletResponse response) {\n  Cookie cookie = new Cookie(\"name\", request.getParameter(\"name\"));\n  response.addCookie(cookie);\n}\n```\n\nbecause the user may provide a name parameter with a value like `XYZ\\r\\nHTTP/1.1 200 OK\\nATTACKER CONTROLLED`. In this case, they will produce a second HTTP response:\n\n```\nHTTP/1.1 200 OK\nATTACKER CONTROLLED\n```\n\nA possible fix is to remove all non-alphanumerical characters:\n\n```\nprotected void doGet(HttpServletRequest request, HttpServletResponse response) {\n  String name = request.getParameter(\"name\")\n      .replaceAll(\"[^a-zA-Z ]\", \"\");\n  Cookie cookie = new Cookie(\"name\", name);\n  response.addCookie(cookie);\n}\n```\n\nIn this case, the attacker would be unable to produce a second HTTP response.\n\n\n### Best practices for prevention\n* Assume all input is potentially malicious. Define acceptable responses wherever possible, and if not possible, encode CR and LF characters to prevent header splitting.\n* Replace both `\\r` (carriage return) and `\\n` (line feed) with \"\" (empty string)-many platforms handle these characters interchangeably so the weakness may still exist if one of the two is permitted.\nFollow best practices and strip all other special characters (\", /, \\, ;, etc., as well as spaces) wherever possible.\nBe sure to sanitize special characters in both directions-from the browser to the server and also in data sent back to the browser.\nIdeally, adopt current development resources, such as languages and libraries, that block CR and LF injection in headers.\nBe vigilant with all input types that could potentially be tampered with or modified at the user end (intentionally or unintentionally), which could lead to injection attacks. These include GET, POST, cookies, and other HTTP headers.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/gzsll/TLint/commit/26407f9d7fc2fcc917cca4228addd34d7b7a0339?diff=split#diff-ee1b33b10d96e72dd93d67632f828d50L34",
+                    "lines": [
+                      {
+                        "line": "Request original = chain.request();",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (!TextUtils.isEmpty(mUserStorage.getCookie())) {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Request request = original.newBuilder().addHeader(\"Cookie\", \"u=\" + mUserStorage.getCookie() + \";\").build();",
+                        "lineNumber": 33,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Request request = original.newBuilder().addHeader(\"Cookie\", \"u=\" + URLEncoder.encode(mUserStorage.getCookie()) + \";\").build();",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return chain.proceed(request);",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/http-builder-ng/http-builder-ng/commit/d533d480a249d279d5d281c07304150e300ce4ce?diff=split#diff-6becea663e2a2b1de3ad29a739f25bb5L260",
+                    "lines": [
+                      {
+                        "line": "//technically cookies are headers, so add them here",
+                        "lineNumber": 258,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "List<Cookie> cookies = e.cookies(new ArrayList());",
+                        "lineNumber": 259,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "List<Cookie> cookies = cr.actualCookies(new ArrayList());",
+                        "lineNumber": 259,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "for(Cookie cookie : cookies) {",
+                        "lineNumber": 260,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookieStore.addCookie(cookie);",
+                        "lineNumber": 261,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 262,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/commons-vfs/commit/e07f9edd339973fb532ecfa88928884c75794957?diff=split#diff-c81d6f105c7fe7ff1f4734a6c1a3cbf6L344",
+                    "lines": [
+                      {
+                        "line": "    final FileSystemOptions fileSystemOptions) {",
+                        "lineNumber": 341,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final CookieStore cookieStore = new BasicCookieStore();",
+                        "lineNumber": 342,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cookie[] cookies = builder.getCookies(fileSystemOptions);",
+                        "lineNumber": 343,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (cookies != null) {",
+                        "lineNumber": 345,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    for (Cookie cookie : cookies) {",
+                        "lineNumber": 346,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    for (final Cookie cookie : cookies) {",
+                        "lineNumber": 346,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        cookieStore.addCookie(cookie);",
+                        "lineNumber": 347,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 348,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 349,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support HTTP Range requests for resuming interrupted file downloads.",
+                  "* integration test server post response and logging",
+                  "Added usage of java Cookies and other changes"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 232,
+                "cwe": [
+                  "CWE-113"
+                ]
+              }
+            },
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/HttpResponseSplitting",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into setHeader and reaches an HTTP header returned to the user. This may allow a malicious input that contain CR/LF to split the http response into two responses and the second response to be controlled by the attacker. This may be used to mount a range of attacks such as cross-site scripting or cache poisoning.",
+            "markdown": "Unsanitized input from {0} {1} into {2} and reaches an HTTP header returned to the user. This may allow a malicious input that contain CR/LF to split the http response into two responses and the second response to be controlled by the attacker. This may be used to mount a range of attacks such as cross-site scripting or cache poisoning.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[setHeader](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 79,
+                  "endLine": 79,
+                  "startColumn": 21,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "29f40ff688057b92fd4d1c9fde6d0c6e057e0592aac6abb381fe40f9c9caff10",
+            "1": "2d06e3d6.a9bfcb5f.a134f350.6483b32f.b514f8e2.7fda7c5e.047dea52.54d46e25.bd5b851f.7f413d6f.a134f350.e22980a8.d31a8364.7fda7c5e.e81503b1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "endLine": 70,
+                            "startColumn": 32,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "endLine": 70,
+                            "startColumn": 32,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "endLine": 70,
+                            "startColumn": 16,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 65,
+                            "endColumn": 87
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 30,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 17,
+                            "endColumn": 103
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 77,
+                            "endLine": 77,
+                            "startColumn": 21,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "endLine": 79,
+                            "startColumn": 62,
+                            "endColumn": 68
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "endLine": 79,
+                            "startColumn": 62,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 79,
+                            "endLine": 79,
+                            "startColumn": 21,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 559,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into mkdirs, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[mkdirs](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 111,
+                  "endLine": 111,
+                  "startColumn": 9,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2488522871410cfb934d4ca3e59887acf845367de054bd7cf45a3ba4c1d58be8",
+            "1": "19689298.712c5e06.8828b72d.e22980a8.f1d9f854.41d8b89f.be04624c.54d46e25.4b83f165.1fa5d9ec.a03dbb52.e22980a8.f0e1baa5.0d476878.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 16,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 110,
+                            "endLine": 110,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 110,
+                            "endLine": 110,
+                            "startColumn": 14,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "endLine": 111,
+                            "startColumn": 9,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "endLine": 111,
+                            "startColumn": 9,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 817,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into java.io.FileOutputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9)",
+              "[java.io.FileOutputStream](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 115,
+                  "endLine": 115,
+                  "startColumn": 40,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6b87693d1d307b3a577bc847b24db8826610fbfa82278ad3e3ce6f604185042e",
+            "1": "19689298.38d7904e.c3e71937.6c52ae28.e0c1f32c.2f4e1548.df7e59ba.54d46e25.4b83f165.38d7904e.a03dbb52.e22980a8.f0e1baa5.0d476878.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 23,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 108,
+                            "endLine": 108,
+                            "startColumn": 16,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 110,
+                            "endLine": 110,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 110,
+                            "endLine": 110,
+                            "startColumn": 14,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "endLine": 111,
+                            "startColumn": 9,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "endLine": 112,
+                            "startColumn": 31,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "endLine": 112,
+                            "startColumn": 14,
+                            "endColumn": 60
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 57,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/plugins/build_publisher/ExternalProjectProperty.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 40,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 817,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 16,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

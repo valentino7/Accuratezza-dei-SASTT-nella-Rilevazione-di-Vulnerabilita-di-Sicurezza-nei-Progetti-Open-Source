@@ -1,0 +1,1767 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/HardcodedSecret/test",
+              "name": "HardcodedSecret/test",
+              "shortDescription": {
+                "text": "Hardcoded Secret"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n- Never hard code security-related constants; use symbolic names or configuration lookup files.\n- As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n- Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/aberic/fabric-net-server/commit/963bb9fe026b454672fb83fd739f3d754b6844e1?diff=split#diff-759baf3d057123b5320b6a399e775967L67",
+                    "lines": [
+                      {
+                        "line": "app.setKey(MathUtil.getRandom8());",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "app.setPublicKey(\"pub1\");",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.setPrivateKey(\"pri1\");",
+                        "lineNumber": 66,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPublicKey(key.getPublicKey());",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPrivateKey(key.getPrivateKey());",
+                        "lineNumber": 83,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return appMapper.updateKey(app);",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/karutaproject/karuta-backend/commit/a05377ace2292896e3768e70aa2fde992ddaae62?diff=split#diff-a46279e5e2a97eaacfba9b55e2e3b9b0L104",
+                    "lines": [
+                      {
+                        "line": "{",
+                        "lineNumber": 108,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  rc4 = Cipher.getInstance(\"RC4\");",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(\"testkey\".getBytes(), \"RC4\");",
+                        "lineNumber": 103,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String secretkey = ConfigUtils.get(\"directkey\");",
+                        "lineNumber": 110,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(secretkey.getBytes(), \"RC4\");",
+                        "lineNumber": 111,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  rc4.init(Cipher.DECRYPT_MODE, key);",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/0653d6d7f6283752984ea181ef27559bed4b05af?diff=split#diff-af0be1b2a17efe3a3d4ae1941c2e946fL309",
+                    "lines": [
+                      {
+                        "line": "long ts = (new Date()).getTime();",
+                        "lineNumber": 306,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "long ts = normalizedHashTime.getTime();",
+                        "lineNumber": 310,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "ts = ts/60000;\t\t// round up to 1 minute",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String secretKey = \"cloud.com\";",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String secretKey = _ms.getHashKey();",
+                        "lineNumber": 312,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), \"HmacSHA1\");",
+                        "lineNumber": 314,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.init(keySpec);",
+                        "lineNumber": 315,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.update(params.getBytes());",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Api keys from json file",
+                  "Made security file and session key configurable"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 62,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureDefaultAesCipher",
+              "name": "InsecureDefaultAesCipher",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/jenkinsci/jenkins/commit/1ac357c2ea2cac85acc222aa5feb9a25c6b4346e?diff=split#diff-3f1937871076df5e4440785f2ac5ddd6L120",
+                    "lines": [
+                      {
+                        "line": "String base64 = req.getHeader(\"X-ConsoleAnnotator\");",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (base64!=null) {",
+                        "lineNumber": 118,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cipher sym = Cipher.getInstance(\"AES\");",
+                        "lineNumber": 119,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Cipher sym = Secret.getCipher(\"AES\");",
+                        "lineNumber": 117,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    sym.init(Cipher.DECRYPT_MODE, Hudson.getInstance().getSecretKeyAsAES128());",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/tasos-py/AES-Encryption-Classes/commit/b11039b5febf20bbe854fc6bb1d401191a4ee29f?diff=split#diff-bfedf423ceee7772f0ec16aa9392fa8dL310",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 307,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 309,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 310,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 311,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "   */ ",
+                        "lineNumber": 293,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 294,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 295,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 296,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      try {",
+                        "lineNumber": 297,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Made changes to support CBC mode encryption",
+                  "added all sha and AES tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 53,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureCipherNoIntegrity",
+              "name": "InsecureCipherNoIntegrity",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/terracotta-bank/terracotta-bank/commit/a27453b52859d32ef25694869c1662a9493c621c?diff=split#diff-49444057459eecb4ff09662c3beab114L95",
+                    "lines": [
+                      {
+                        "line": "String ivHeader = request.getHeader(\"X-Encryption-Iv\");",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] iv = Base64.getDecoder().decode(ivHeader);",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 94,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new IvParameterSpec(iv));",
+                        "lineNumber": 95,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 95,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new GCMParameterSpec(128, iv));",
+                        "lineNumber": 96,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.updateAAD(version.getBytes(UTF_8));",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "InputStream plain = new CipherInputStream(new Base64InputStream(request.getInputStream()), cipher);",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\treturn new DecryptedWrapper(request, plain);",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/oracle/helidon/commit/bd7b527d900fc3c7c5204459f9bf6dabb5de9f3f?diff=split#diff-5ab21f1b0b5ca2653372fd39b4aa40b0L64",
+                    "lines": [
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 128);",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 256);",
+                        "lineNumber": 61,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new IvParameterSpec(salt));",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new GCMParameterSpec(128, nonce));",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " return cipher;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "added versioning and included salt in encrypted byte stream.",
+                  "Switch from CBC to GCM"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/TooSmallRsaKeySizeUsed/test",
+              "name": "TooSmallRsaKeySizeUsed/test",
+              "shortDescription": {
+                "text": "Cryptographic Issues"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe category of cryptographic issues refers not to a single specific vulnerability but rather to a wide range of problems surrounding the implementation of cryptography and related security algorithms in programs and web apps. For example, weaknesses in generating the pseudorandom numbers used to create session keys can make keys excessively easy for hackers to guess via brute-force attack algorithms. Another example is when developers use weak hashes to encode passwords and other confidential data, which can lead to collisions that ultimately bypass authentication techniques.\n\nEach individual weakness will obviously require a different strategy, but there are a few common best practices that can help avoid or mitigate attacks.\n\n### Best practices for prevention\n* Implement multi-factor authentication, which relies on two or more factors such as password and SMS confirmation, prior to permitting secure access.\n* Always use a strong hashing algorithm for tighter encryption. Consider an adaptive hash function with built-in salting, although these can have a negative impact on performance.\n* Check all certificate details to verify its validity-not only the issuing entity but expiry, domain, and all other factors.\n* Developers should familiarize themselves with deprecated security algorithms and implement schemes that require greater computational effort to resolve, therefore making them more resistant to current attacks.\n* Implement all software architecture and design around the principle of least privilege, releasing secure information only after authentication as needed for business purposes.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/matthewmccullough/encryption-jvm-bootcamp/commit/ea472a1abc126e9f048e350dbf3258a6c3bb888c?diff=split#diff-8cb247227b9b9984facca2bbba486fd3L25",
+                    "lines": [
+                      {
+                        "line": "public void Initialize() throws Exception",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  KeyPairGenerator keygen = KeyPairGenerator.getInstance(\"RSA\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  keygen.initialize(512);",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  keygen.initialize(3072);",
+                        "lineNumber": 25,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  keyPair = keygen.generateKeyPair();",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/codeabovelab/haven-platform/commit/1cd80b7f5d0d5f29bc814ab7fb73a1f203f529cb?diff=split#diff-b59758382a60d055818e61235e9adf75L142",
+                    "lines": [
+                      {
+                        "line": "static KeyPair createKeypair() throws Exception {",
+                        "lineNumber": 140,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    KeyPairGenerator kpg = KeyPairGenerator.getInstance(\"RSA\", \"BC\");",
+                        "lineNumber": 141,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    kpg.initialize(1024);",
+                        "lineNumber": 142,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    kpg.initialize(2048);",
+                        "lineNumber": 142,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return kpg.generateKeyPair();",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Nordstrom/xrpc/commit/1d04125ef5fd1004b8b86976ef8f00031af2c515?diff=split#diff-a21119d465ff87f08ea795261ecac45fL44",
+                    "lines": [
+                      {
+                        "line": "//Generate an RSA key pair.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final KeyPair keypair;",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "KeyPairGenerator keyGen = KeyPairGenerator.getInstance(\"RSA\");",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "keyGen.initialize(1024, null);",
+                        "lineNumber": 44,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "keyGen.initialize(2048, null);",
+                        "lineNumber": 44,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "keypair = keyGen.generateKeyPair();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "generates 2048 RSA key",
+                  "So this patch changes the generated key size to 2048"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 57,
+                "cwe": [
+                  "CWE-310"
+                ]
+              }
+            },
+            {
+              "id": "java/NonCryptoHardcodedSecret/test",
+              "name": "NonCryptoHardcodedSecret/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded, Security-relevant Constants"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n* Never hard code security-related constants; use symbolic names or configuration lookup files.\n* As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n* Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/RocketChat/Rocket.Chat.Java.SDK/commit/6f17474770cd120650daa9945ed65273aaa5ec5c?diff=split#diff-fc51f9a049d8a8cd9df2a4226b87c214L19",
+                    "lines": [
+                      {
+                        "line": "String username = \"sachin.shinde\";",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String password = \"sachin9924\";",
+                        "lineNumber": 18,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = \"sachin123\";",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private static String serverurl = \"wss://demo.rocket.chat\";",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wso2-attic/ballerina-message-broker/commit/8d606a4838b057411b7226e4651f7ca59d9746ce?diff=split#diff-2d8482e5c13da266ce6e6196d45bdf1eL66",
+                    "lines": [
+                      {
+                        "line": "private String user = \"wso2carbon\";",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String user = \"ballerina\";",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private String password = \"wso2carbon\";",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"ballerina\";",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public String getUrl() {",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/games647/FlexibleLogin/commit/9ea9726f145063f4436ca47ef864735e247c34c1?diff=split#diff-02a91e75dcc99d9c759ee4d9e0c88734L26",
+                    "lines": [
+                      {
+                        "line": "@Setting(comment = \"Password in order to login\")",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String password = \"password123456789\";",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"\";",
+                        "lineNumber": 25,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public SQLType getType() {",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Removed test keys",
+                  "Remove API keys",
+                  "Remove DropBox sync API libraries and dependencies"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 158,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/HardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Hardcoded value string is used as a cipher key. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "markdown": "Hardcoded value {0} is used as a {1}. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "arguments": [
+              "[string](0)",
+              "[cipher key](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 175,
+                  "endLine": 175,
+                  "startColumn": 21,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0c34d3586ca97be41f333dbcff2e3ed0152a560e832082af9c13d9a90f8b4fca",
+            "1": "ac4e7c8b.e721ba62.221e8f2f.47c6e2f0.e27b77c0.e593281d.16143640.203bd690.19689298.e3699e8a.7671f332.47c6e2f0.e27b77c0.88d36f03.4d4d5ba4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 173,
+                            "endLine": 173,
+                            "startColumn": 17,
+                            "endColumn": 83
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 175,
+                            "endLine": 175,
+                            "startColumn": 21,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Hardcoded value string is used as a cipher key. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "markdown": "Hardcoded value {0} is used as a {1}. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "arguments": [
+              "[string](0)",
+              "[cipher key](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/MacTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "endLine": 46,
+                  "startColumn": 30,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e74c111d514e77c91eb49f3daae253712a57eadcc48f8aea71c14a0f440ebc25",
+            "1": "19689298.b659c2cb.45bc1030.44ab356c.a69fb8f9.0f7b8c8f.018a0f65.667380ee.19689298.b659c2cb.45bc1030.44ab356c.408180c7.0f7b8c8f.018a0f65.667380ee"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/MacTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 31,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/MacTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 46,
+                            "endLine": 46,
+                            "startColumn": 30,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureDefaultAesCipher",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Default AES/ECB algorithm (AES) used in java.security.AlgorithmParameters.getInstance may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "markdown": "Default AES/ECB algorithm ({0}) used in {1} may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "arguments": [
+              "[AES](0)",
+              "[java.security.AlgorithmParameters.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 231,
+                  "endLine": 231,
+                  "startColumn": 46,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8538ec566b66cebe960b7273896f0551196771cd17713451c44f63c5f0c008e2",
+            "1": "38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.11e5f4bf.54d46e25.38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.2dc7516b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 633,
+                            "endLine": 633,
+                            "startColumn": 20,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 231,
+                            "endLine": 231,
+                            "startColumn": 46,
+                            "endColumn": 77
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[SHA1](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/conscrypt/NativeCrypto.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 380,
+                  "endLine": 380,
+                  "startColumn": 29,
+                  "endColumn": 54
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5cd175f4346275090dd1df2af82ae80333e4cebae4d2d9b7ca62f9582a023506",
+            "1": "8df8fa68.8d55b20a.09fc77c2.5e6ab657.3d2bca12.c80ba7fb.6dbe2d3b.c4e81b6c.8df8fa68.38559511.09fc77c2.92018556.3d2bca12.c80ba7fb.6dbe2d3b.c4e81b6c"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/NativeCrypto.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 373,
+                            "endLine": 373,
+                            "startColumn": 42,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/NativeCrypto.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 380,
+                            "endLine": 380,
+                            "startColumn": 29,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 502,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The ECB mode used in java.security.AlgorithmParameters.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[ECB](0)",
+              "[java.security.AlgorithmParameters.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 231,
+                  "endLine": 231,
+                  "startColumn": 46,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "fcbd60c49e01c7405ebd8396684c731782774538f0f16ca29ff12851c22d3cb3",
+            "1": "38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.11e5f4bf.54d46e25.38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.2dc7516b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 633,
+                            "endLine": 633,
+                            "startColumn": 20,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/conscrypt/OpenSSLCipher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 231,
+                            "endLine": 231,
+                            "startColumn": 46,
+                            "endColumn": 77
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooSmallRsaKeySizeUsed/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Key size of 512 bits used in initialize is considered insecure for RSA. Use a key with at least 2048 bits.",
+            "markdown": "Key size of {0} bits used in {1} is considered insecure for RSA. Use a key with at least 2048 bits.",
+            "arguments": [
+              "[512](0)",
+              "[initialize](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 215,
+                  "endLine": 215,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "73b312ebfa0b71b5fe935b2818280debfdbbf177823117717221c4b6298a861d",
+            "1": "19689298.83dbfe52.55cff77a.e22980a8.d31a8364.80cb6bad.bae646e8.54d46e25.19689298.1cbd3ff4.55cff77a.8f744b73.d31a8364.80cb6bad.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 215,
+                            "endLine": 215,
+                            "startColumn": 24,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 215,
+                            "endLine": 215,
+                            "startColumn": 9,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 2584,
+                  "endLine": 2584,
+                  "startColumn": 23,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4b63d7163b04d8065e093d2b23c893b3fa9b4ef90f367310ab960b9ef4b4be63",
+            "1": "00bdfe72.9339ef95.aa4517d0.ad0b1b7e.2da2bef6.bd99fa6f.80ab1b8e.f41bb1f1.00bdfe72.9339ef95.aa4517d0.ad0b1b7e.2da2bef6.bd99fa6f.80ab1b8e.f41bb1f1"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/NativeCryptoTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2584,
+                            "endLine": 2584,
+                            "startColumn": 23,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/MacTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "endLine": 31,
+                  "startColumn": 31,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "828c31c5a47913695261a4267eab07ce8263820f6eeb1d9a76ff32652eca5d6e",
+            "1": "19689298.7797192f.af3bbb01.347ca73a.408180c7.9f68f761.2328ec78.54d46e25.19689298.7797192f.f1dee1b3.e22980a8.408180c7.9f68f761.018a0f65.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/MacTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 31,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/conscrypt/SignatureTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 36,
+                  "endLine": 36,
+                  "startColumn": 36,
+                  "endColumn": 71
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0f71964f6be7165407b1863532149d93e9a2d78d33570941333b3db19a87036b",
+            "1": "e6fcc0e0.1b9494a8.d1e6a766.4ec99151.a2aaa46e.100f9389.187f9b0f.3c45f0be.e6fcc0e0.1b9494a8.d1e6a766.4ec99151.a2aaa46e.100f9389.187f9b0f.3c45f0be"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/conscrypt/SignatureTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 36,
+                            "endLine": 36,
+                            "startColumn": 36,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 354,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 4,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 101,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

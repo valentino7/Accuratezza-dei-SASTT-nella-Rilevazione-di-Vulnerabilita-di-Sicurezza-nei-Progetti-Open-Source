@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T19:29:21.033">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-284/bad$4e952b2d75de6ca4caf4b6743462714f3b60d07f$8$GroovyScriptEngineService.java">
+<violation beginline="46" endline="46" begincolumn="1" endcolumn="34" rule="UnnecessaryImport" ruleset="Code Style" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.elasticsearch.script.*'
+</violation>
+<violation beginline="67" endline="67" begincolumn="22" endcolumn="46" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="68" endline="68" begincolumn="22" endcolumn="52" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="149" endline="154" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService" method="compile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="278" endline="283" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService$GroovyScript" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="346" endline="346" begincolumn="21" endcolumn="60" rule="SimplifyConditional" ruleset="Design" package="org.elasticsearch.script.groovy" class="GroovyScriptEngineService$BigDecimalExpressionTransformer" method="transform" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifyconditional" priority="3">
+No need to check for null before an instanceof
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:09:47.813">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-613/bad$9730cd6a3bbb481ee4e400b51952b537589c469d$5$JdbcScimUserProvisioning.java">
+<violation beginline="62" endline="62" begincolumn="19" endcolumn="61" rule="ProperLogger" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="106" endline="106" begincolumn="13" endcolumn="21" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="retrieve" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'u'
+</violation>
+<violation beginline="108" endline="108" begincolumn="13" endcolumn="86" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="retrieve" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="139" endline="139" begincolumn="9" endcolumn="64" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="create" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="183" endline="183" begincolumn="13" endcolumn="128" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="create" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="215" endline="215" begincolumn="9" endcolumn="59" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="update" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="287" endline="287" begincolumn="13" endcolumn="86" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="checkPasswordMatches" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="300" endline="300" begincolumn="9" endcolumn="58" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="deactivateUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="324" endline="324" begincolumn="9" endcolumn="45" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="verifyUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="346" endline="346" begincolumn="9" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.scim.jdbc" class="JdbcScimUserProvisioning" method="deleteUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

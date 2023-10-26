@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T19:42:59.996">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-287/bad$46de5d01ae2741ffe04c36270fc62c6d490f65c9$21$LdapRealm.java">
+<violation beginline="163" endline="164" begincolumn="21" endcolumn="44" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="queryForAuthenticationInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="240" endline="241" begincolumn="13" endcolumn="59" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="getLdapContextUsingStartTls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="242" endline="242" begincolumn="13" endcolumn="63" rule="PreserveStackTrace" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="getLdapContextUsingStartTls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="244" endline="250" begincolumn="9" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="getLdapContextUsingStartTls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="247" endline="248" begincolumn="13" endcolumn="59" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="getLdapContextUsingStartTls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="365" endline="365" begincolumn="25" endcolumn="66" rule="UselessParentheses" ruleset="Code Style" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="supportsSchemeAndRealm" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="381" endline="382" begincolumn="13" endcolumn="56" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="doGetAuthorizationInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="387" endline="388" begincolumn="13" endcolumn="65" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="doGetAuthorizationInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="415" endline="415" begincolumn="21" endcolumn="89" rule="UnusedPrivateMethod" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="isAuthorizationExceptionAnLdapReadTimeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedprivatemethod" priority="3">
+Avoid unused private methods such as 'isAuthorizationExceptionAnLdapReadTimeout(AuthorizationException)'.
+</violation>
+<violation beginline="513" endline="513" begincolumn="30" endcolumn="48" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="parseGroupToRoleMapping" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="543" endline="543" begincolumn="21" endcolumn="84" rule="GuardLogStatement" ruleset="Best Practices" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="queryForAuthenticationInfoSAM" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="571" endline="571" begincolumn="44" endcolumn="92" rule="OptimizableToArrayCall" ruleset="Performance" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="findRoleNamesForUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="651" endline="651" begincolumn="72" endcolumn="90" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="getRoleNamesForGroups" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="678" endline="679" begincolumn="5" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="683" endline="684" begincolumn="5" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="stop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="688" endline="689" begincolumn="5" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.neo4j.server.security.enterprise.auth" class="LdapRealm" method="shutdown" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T21:59:22.383">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-611/good$39909bf21fd694f4fb792d1de8adc72562ead25e$148$XmiCasDeserializer.java">
+<violation beginline="68" endline="68" begincolumn="1" endcolumn="44" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.xml.sax.helpers.XMLReaderFactory'
+</violation>
+<violation beginline="133" endline="133" begincolumn="13" endcolumn="24" rule="AvoidStringBufferField" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+<violation beginline="311" endline="313" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="resetBuffer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'resetBuffer': private methods cannot be overridden
+</violation>
+<violation beginline="568" endline="568" begincolumn="33" endcolumn="75" rule="SimplifiedTernary" ruleset="Design" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="processView" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="576" endline="605" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="processView" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="598" endline="598" begincolumn="15" endcolumn="91" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="processView" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="626" endline="626" begincolumn="9" endcolumn="92" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="getIndexRepo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="671" endline="694" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="processView" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="688" endline="688" begincolumn="17" endcolumn="93" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="processView" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="731" endline="731" begincolumn="7" endcolumn="32" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="readFS" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="745" endline="745" begincolumn="53" endcolumn="89" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="readFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="785" endline="785" begincolumn="15" endcolumn="80" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="readFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="789" endline="789" begincolumn="19" endcolumn="58" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="readFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="832" endline="834" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="emptyVal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'emptyVal': private methods cannot be overridden
+</violation>
+<violation beginline="833" endline="833" begincolumn="15" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="emptyVal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="833" endline="833" begincolumn="16" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="emptyVal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="833" endline="833" begincolumn="33" endcolumn="49" rule="UselessParentheses" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="emptyVal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="871" endline="871" begincolumn="12" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="925" endline="925" begincolumn="13" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="941" endline="941" begincolumn="13" endcolumn="80" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="966" endline="966" begincolumn="13" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="991" endline="991" begincolumn="15" endcolumn="84" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1024" endline="1024" begincolumn="15" endcolumn="84" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="handleFeature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1336" endline="1336" begincolumn="9" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="hexCharToByte" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1338" endline="1338" begincolumn="9" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="hexCharToByte" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1340" endline="1340" begincolumn="9" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="hexCharToByte" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1342" endline="1342" begincolumn="9" endcolumn="66" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="hexCharToByte" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1379" endline="1466" begincolumn="7" endcolumn="7" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="1447" endline="1451" begincolumn="15" endcolumn="15" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1540" endline="1566" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="finalizeFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1553" endline="1553" begincolumn="17" endcolumn="98" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="finalizeFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1577" endline="1577" begincolumn="9" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="remapFSListHeads" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1580" endline="1580" begincolumn="9" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="remapFSListHeads" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1589" endline="1589" begincolumn="13" endcolumn="94" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="remapFSListHeads" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1622" endline="1622" begincolumn="15" endcolumn="97" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="finalizeArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1730" endline="1745" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="classifyType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'classifyType': private methods cannot be overridden
+</violation>
+<violation beginline="1776" endline="1776" begincolumn="21" endcolumn="52" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="getFsAddrForXmiId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'java.util.NoSuchElementException' due to existing import 'java.util.NoSuchElementException'
+</violation>
+<violation beginline="1800" endline="1800" begincolumn="7" endcolumn="32" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="addToOutOfTypeSystemData" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1830" endline="1830" begincolumn="15" endcolumn="34" rule="UselessParentheses" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer$XmiCasDeserializerHandler" method="isNewFS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1853" endline="1853" begincolumn="56" endcolumn="66" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.apache.uima.cas.impl" class="XmiCasDeserializer" method="XmiCasDeserializer" variable="uimaContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused constructor parameters such as 'uimaContext'.
+</violation>
+<violation beginline="2164" endline="2164" begincolumn="9" endcolumn="20" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.uima.cas.impl" class="XmiCasDeserializer" method="xmiElementName2uimaTypeName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'java.net.URI' due to existing import 'java.net.URI'
+</violation>
+</file>
+</pmd>

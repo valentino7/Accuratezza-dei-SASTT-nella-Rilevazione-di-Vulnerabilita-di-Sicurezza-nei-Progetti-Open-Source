@@ -1,0 +1,2675 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/TLS",
+              "name": "TLS",
+              "shortDescription": {
+                "text": "Inadequate Encryption Strength"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/91f7012b015249d9d74dace8874ee8f38b54bfc2?diff=split#diff-5604a4e589dc38cc8d80f2f4020c2a23L53",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/MissionCriticalCloud/cosmic/commit/3a4004a34b42e30a49a1c48f1ff57e5f3ca26913?diff=split#diff-49bfef0c8d16a2c34d787d4fca65e2e7L35",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/hypercube1024/firefly/commit/e2e4d7810c9bb202bbef3d5022e3b13447f102dd?diff=split#diff-fb5cd0d3953731ed2bdb241178f1ce05L32",
+                    "lines": [
+                      {
+                        "line": "  tmf.init(ks);",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLS\");",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "return sslContext;",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Configuring TSL/SSL now supports property placeholders.",
+                  "support for TLS config tweaks",
+                  "Temporarily peg SSL version to TLSv1.2."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 78,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword",
+              "name": "HardcodedPassword",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "javascript/DOMXSS/test",
+              "name": "DOMXSS/test",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "javascript"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/jbt/markdown-editor/commit/4c02744b8a51de4a23002a7064e3d5a9a712f78c?diff=split#diff-0eb547304658805aad788d320f10bf1f292797b5e6d745a3bf617584da017051L187",
+                    "lines": [
+                      {
+                        "line": "  document.getElementById('out').innerHTML = marked(val);",
+                        "lineNumber": 186,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 187,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "var editor = CodeMirror.fromTextArea(document.getElementById('code'), {",
+                        "lineNumber": 189,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  mode: 'gfm',",
+                        "lineNumber": 190,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  lineNumbers: true,",
+                        "lineNumber": 191,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  matchBrackets: true,",
+                        "lineNumber": 192,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  lineWrapping: true,",
+                        "lineNumber": 193,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  theme: 'default',",
+                        "lineNumber": 194,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  onChange: update",
+                        "lineNumber": 195,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "});",
+                        "lineNumber": 196,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "document.addEventListener('drop', function(e){",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  e.preventDefault();",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  e.stopPropagation();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var theFile = e.dataTransfer.files[0];",
+                        "lineNumber": 202,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var theReader = new FileReader();",
+                        "lineNumber": 203,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  theReader.onload = function(e){",
+                        "lineNumber": 204,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    editor.setValue(e.target.result);",
+                        "lineNumber": 205,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  };",
+                        "lineNumber": 206,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  theReader.readAsText(theFile);",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}, false);",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "function save(){",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var code = editor.getValue();",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var blob = new Blob([code], { type: 'text/plain' });",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  saveBlob(blob);",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "function saveBlob(blob){",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var name = \"untitled.md\";",
+                        "lineNumber": 218,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if(window.saveAs){",
+                        "lineNumber": 219,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    window.saveAs(blob, name);",
+                        "lineNumber": 220,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }else if(navigator.saveBlob){",
+                        "lineNumber": 221,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    navigator.saveBlob(blob, name);",
+                        "lineNumber": 222,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }else{",
+                        "lineNumber": 223,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    url = URL.createObjectURL(blob);",
+                        "lineNumber": 224,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    var link = document.createElement(\"a\");",
+                        "lineNumber": 225,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    link.setAttribute(\"href\",url);",
+                        "lineNumber": 226,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    link.setAttribute(\"download\",name);",
+                        "lineNumber": 227,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    var event = document.createEvent('MouseEvents');",
+                        "lineNumber": 228,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);",
+                        "lineNumber": 229,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    link.dispatchEvent(event);",
+                        "lineNumber": 230,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 231,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 232,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "document.addEventListener('keydown', function(e){",
+                        "lineNumber": 234,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if(e.keyCode == 83 && (e.ctrlKey || e.metaKey)){",
+                        "lineNumber": 235,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    e.preventDefault();",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    save();",
+                        "lineNumber": 237,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return false;",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 239,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "})",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "var hashto;",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "function updateHash(){",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  window.location.hash = btoa(RawDeflate.deflate(editor.getValue()));",
+                        "lineNumber": 245,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  window.location.hash = btoa(RawDeflate.deflate(unescape(encodeURIComponent(editor.getValue()))))",
+                        "lineNumber": 245,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 246,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(window.location.hash){",
+                        "lineNumber": 248,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  var h = window.location.hash.replace(/^#/, '');",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if(h.slice(0,5) == 'view:'){",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    setOutput(RawDeflate.inflate(atob(h.slice(5))));",
+                        "lineNumber": 251,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    setOutput(decodeURIComponent(escape(RawDeflate.inflate(atob(h.slice(5))))));",
+                        "lineNumber": 251,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/RasPlex/OpenPHT/commit/ea03c88ab96c2607d7fc7bdb04bed16a2c14afa5?diff=split#diff-cbc600141d5846348060616895d0adbb51a9720d9504a4d7d33cd5eb65e44d4bL57",
+                    "lines": [
+                      {
+                        "line": "document.write('<img src=\"' + thumbnail + '\" class=\"cover\"></img>');",
+                        "lineNumber": 56,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "var imgSrc = item[\"thumbnail\"] ? ('vfs/' + escape(item[\"thumbnail\"])) : \"images/DefaultVideo.png\";",
+                        "lineNumber": 53,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "document.write('<img src=\"' + imgSrc + '\" class=\"cover\"></img>');",
+                        "lineNumber": 54,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/RasPlex/OpenPHT/commit/ea03c88ab96c2607d7fc7bdb04bed16a2c14afa5?diff=split#diff-07d3f208648c3e9987149a3900a8c9f269a0edd8ad11f1f0be50ad475bb36320L60",
+                    "lines": [
+                      {
+                        "line": "if (array[activeItem][\"thumbnail\"])",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  document.write('<img src=\"thumb/' + array[activeItem][\"thumbnail\"] + '.jpg\"></img>\"');",
+                        "lineNumber": 60,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": " else",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "   document.write('<img src=\"images/DefaultAlbumCover.png\"></img>');",
+                        "lineNumber": 62,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": " var imgSrc = array[activeItem][\"thumbnail\"] ? ('vfs/' + escape(array[activeItem][\"thumbnail\"])) : \"images/DefaultAlbumCover.png\";",
+                        "lineNumber": 59,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " document.write('<img src=\"' + imgSrc + '\"></img>');",
+                        "lineNumber": 60,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Add unit test.",
+                  "e3db0cd CHANGES.md\n84d1acf Add tests.",
+                  "Update and clean up the tests by using the iframe's load event."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 1490,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-broker/src/main/scala/org/apache/activemq/apollo/broker/transport/SslTransportFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 66,
+                  "endLine": 66,
+                  "startColumn": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5607d6e67a960e6d7687ff6d7dda7342661e4a08728dec715e084695868ea107",
+            "1": "1e710978.1cbd3ff4.811e89dc.28487ac7.4a9c8cbc.afca3b91.01fae08d.54d46e25.19689298.c8c8034f.284e9c8f.e22980a8.96ef8110.afca3b91.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-broker/src/main/scala/org/apache/activemq/apollo/broker/transport/SslTransportFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 66,
+                            "endLine": 66,
+                            "startColumn": 30,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-util/src/main/scala/org/apache/activemq/apollo/util/SslContext.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 122,
+                  "endLine": 122,
+                  "startColumn": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8c0583ddfbea55ef29eccb74536619a14943945d553968926164b7ba4e5ae22e",
+            "1": "1e710978.1cbd3ff4.33fa5dbe.e22980a8.96ef8110.7fda7c5e.3d39ca0c.54d46e25.1e710978.dd05ec30.33fa5dbe.de031890.96ef8110.7fda7c5e.3d39ca0c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-util/src/main/scala/org/apache/activemq/apollo/util/SslContext.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 122,
+                            "endLine": 122,
+                            "startColumn": 30,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-util/src/main/scala/org/apache/activemq/apollo/util/SslContext.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 124,
+                  "endLine": 124,
+                  "startColumn": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0ba6ffcf656b85a34fac205d10d3c1e934622e6f19df59aba7a8dd8b9350e8df",
+            "1": "1e710978.1cbd3ff4.33fa5dbe.e22980a8.96ef8110.7fda7c5e.3d39ca0c.54d46e25.1e710978.dd05ec30.33fa5dbe.de031890.96ef8110.7fda7c5e.3d39ca0c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-util/src/main/scala/org/apache/activemq/apollo/util/SslContext.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 124,
+                            "endLine": 124,
+                            "startColumn": 30,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-message-browser/src/main/java/example/browser/Browser.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ae7ea66e4e4855c1398f18618b50acbbe2499bddfeacf670dea7858185171cb1",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-message-browser/src/main/java/example/browser/Browser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-temp-destinations/src/main/java/example/tempdest/ProducerRequestReply.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ba6dd2d5f1fb8b37b9d99cb2557e49b996ff40ce19096f15243cee96d7d8c9c1",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-temp-destinations/src/main/java/example/tempdest/ProducerRequestReply.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-durable-sub/src/main/java/example/topic/durable/Publisher.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "bc6acff4f2879e082bf3da4b9d2f8cb395cb577c6121faf18c25286624214561",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-durable-sub/src/main/java/example/topic/durable/Publisher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/mqtt/java/src/main/java/example/Listener.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 40,
+                  "endLine": 40,
+                  "startColumn": 9,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "72e2ef75dcee64d6e4374264b126a922307e4ac8ce9892de78775d41b4884893",
+            "1": "5387ee68.c62608d0.26535c1b.12d890c9.a82f8bd3.0a2ea5fc.055df7b2.fde7589e.5387ee68.c62608d0.26535c1b.12d890c9.a82f8bd3.0a2ea5fc.055df7b2.fde7589e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/mqtt/java/src/main/java/example/Listener.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 50,
+                            "endColumn": 60
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-transaction/src/main/java/example/transaction/Client.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 40,
+                  "endLine": 40,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a2ee98c82c9eadf6015252414b17f132189058de6203a158ac4a7cb2c105f02f",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-transaction/src/main/java/example/transaction/Client.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 40,
+                            "endLine": 40,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-composite-destinations/src/main/java/example/composite/dest/Consumer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "926fae30909c2f691524a16a7f3f6692371d816871c4665a378c67dcd68f7edd",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-composite-destinations/src/main/java/example/composite/dest/Consumer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-durable-sub/src/main/java/example/topic/durable/Subscriber.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "endLine": 44,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e3bc8b8c894d3c97dfcb954b30a168a5c8cad0f450d4cb5d5847be0688d6e823",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-durable-sub/src/main/java/example/topic/durable/Subscriber.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 44,
+                            "endLine": 44,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue/src/main/java/example/queue/Consumer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f428a94b7390f85bca32de00378a6f09a4e0c9ff5275ca5fcde36cf2be17d641",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue/src/main/java/example/queue/Consumer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-wildcard-consumer/src/main/java/example/wildcard/Client.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "endLine": 37,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "93b6e12a68c76b55f6deed67c4330413973afcfa41c01e7de178710260822817",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-wildcard-consumer/src/main/java/example/wildcard/Client.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-message-browser/src/main/java/example/browser/Producer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e9aaf1c05ed755ce08e0dba38a39dd086bb9a49b2e417af2670f6eb8ecb998e4",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-message-browser/src/main/java/example/browser/Producer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue-selector/src/main/java/example/queue/selector/Producer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "cc13f65bc519de39845ac28c07039587e97450cfbfbb1d37e1a042402b43901a",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue-selector/src/main/java/example/queue/selector/Producer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue/src/main/java/example/queue/Producer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8f1362929732ffda6ebdd20449fb4230f95fbc07a952561820d3a865571fadaa",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue/src/main/java/example/queue/Producer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-topic/src/main/java/example/topic/Publisher.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "endLine": 37,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c861988231a76287b511c096f7e9ebdb23cb7a21179e3dc16e5dc2a34392e152",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-topic/src/main/java/example/topic/Publisher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/mqtt/java/src/main/java/example/Publisher.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startColumn": 9,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e8f538a9a395d56a1ebd2c65131332204c349c94285c1a1f048c26356ef56bfd",
+            "1": "5387ee68.c62608d0.26535c1b.12d890c9.a82f8bd3.0a2ea5fc.055df7b2.fde7589e.5387ee68.c62608d0.26535c1b.12d890c9.a82f8bd3.0a2ea5fc.055df7b2.fde7589e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/mqtt/java/src/main/java/example/Publisher.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 50,
+                            "endColumn": 60
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 556,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-exclusive-consumer/src/main/java/example/queue/exclusive/Producer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "endLine": 37,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7919908024dd043e51d6443b0b49f01f6d7022d7d56cb5460751ffcd135e357c",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-exclusive-consumer/src/main/java/example/queue/exclusive/Producer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue-selector/src/main/java/example/queue/selector/Consumer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "bccd30c341ae27a422c1700e25ef2fdbc08d35997fce27adac70f8518438d718",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-queue-selector/src/main/java/example/queue/selector/Consumer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-topic/src/main/java/example/topic/Subscriber.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "endLine": 44,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6f1006cb4ecbe15b95c951b6ecd35571cf9228124bc85b37a431c12c51bcd278",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-topic/src/main/java/example/topic/Subscriber.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 44,
+                            "endLine": 44,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-temp-destinations/src/main/java/example/tempdest/Consumer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "endLine": 37,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "297f17ab87882d6a93b4a8b08da01b407631c23d6e7dcad52fc5628fdc2c846a",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-temp-destinations/src/main/java/example/tempdest/Consumer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-composite-destinations/src/main/java/example/composite/dest/Producer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9eac161490bacc25ed4a2a9f439a90e4a71ce3d9fef65a7916471e7796a52c0b",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-composite-destinations/src/main/java/example/composite/dest/Producer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-exclusive-consumer/src/main/java/example/queue/exclusive/Consumer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 59,
+                  "endColumn": 84
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a3352db7ac45d1ff2403aa20d8fc34d1e0b75bf4c9155a6216db1d8f87d424c1",
+            "1": "19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7.19689298.83dbfe52.d0a148f7.6c52ae28.3a01a03a.d47b230a.569992a2.ac8386d7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-distro/src/main/release/examples/openwire/advanced-scenarios/jms-example-exclusive-consumer/src/main/java/example/queue/exclusive/Consumer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 94,
+                            "endColumn": 104
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 506,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "javascript/DOMXSS/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the document location flows into html, where it is used to dynamically construct the HTML page on client side. This may result in a DOM Based Cross-Site Scripting attack (DOMXSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to dynamically construct the HTML page on client side. This may result in a DOM Based Cross-Site Scripting attack (DOMXSS).",
+            "arguments": [
+              "[the document location](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[html](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 45,
+                  "endLine": 45,
+                  "startColumn": 28,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "06d144b9ed7d049bf270ccd877129310754cda5437eb88eebd4d424dfa3d0e18",
+            "1": "c38e84d1.4773f344.607187b5.e74e02d0.ef9f7d82.76fabf72.83265159.a3288eb9.e396c265.85acc8b7.5d7f0106.08906714.3f452f8c.6c05d9cc.83265159.126272f8"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 33,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 33,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 17,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 38,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 31,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 24,
+                            "endColumn": 30
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 44,
+                            "endLine": 44,
+                            "startColumn": 50,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 45,
+                            "endLine": 45,
+                            "startColumn": 33,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 45,
+                            "endLine": 45,
+                            "startColumn": 33,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "apollo-stomp/src/test/resources/org/apache/activemq/apollo/stomp/test/websocket.html",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 45,
+                            "endLine": 45,
+                            "startColumn": 28,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 451,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              },
+              {
+                "label": true,
+                "type": "commonlyFixed"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 92,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 358,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 15,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 8,
+            "isSupported": true,
+            "lang": "Python"
+          },
+          {
+            "files": 27,
+            "isSupported": true,
+            "lang": "JavaScript"
+          },
+          {
+            "files": 6,
+            "isSupported": true,
+            "lang": "C# (beta)"
+          },
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "PHP"
+          },
+          {
+            "files": 4,
+            "isSupported": true,
+            "lang": "Ruby"
+          }
+        ]
+      }
+    }
+  ]
+}

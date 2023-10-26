@@ -1,0 +1,388 @@
+create_no_cvelist.py= crea in output una lista dei cwe non mappabili sui cve
+create_mapping=crea mapping [cwe,cve]
+filter_vulas_db.py= elimina quei progetti che non hanno il mapping
+
+
+IL NIST CLASSIFICA I CVE IN 2 MODI QUANDO NON TROVA IL CWE ASSOCIATO:
+1)
+SITO: https://nvd.nist.gov/vuln/detail/CVE-2018-15761
+NVD-CWE-noinfo	Insufficient Information	cwe source acceptance level NIST  
+
+2)
+SITO: https://nvd.nist.gov/vuln/detail/CVE-2011-1088
+NVD-CWE-Other	Other	cwe source acceptance level NIST  
+
+1° FILTRO VULAS
+__________________________________________________________________
+QUINDI DEI 70 CWE VANNO TOLTI I 3:
+"NVD-CWE-Other"
+"NVD-CWE-noinfo"
+"None" : cve sbagliato
+
+CHE CONTENGONO 45+11+17 righe vulas
+
+
+# ELEMENTI VULAS CHE RIENTRANO NEI 70 CWE: 1218
+# Numero CVE: 624
+# ELEMENTI VULAS CHE RIENTRANO NEI 67 CWE: 1045
+# ELEMENTI VULAS RAGGRUPPANDO I CVE ASSOCIATI ALLO STESSO PROGETTO-COMMIT : 989
+# Numero CVE trovati in vulas togliendo i CVE associati ai 3 CWE incogniti: 517
+# CWE associati 67
+
+
+_________________________________________________________________________________
+
+
+2° FILTRO VULAS (VIENE MODIFICATO IL FILE "vulas_db_without_invalid_cve" ELIMINANDO 1 PROGETTO NON TROVATO E SOSTITUENDO UN ALTR PROGETTO NON TROVATO
+A LIVELLO DI NUMERO DI CVE E CWE NON CAMBIA NULLA, SI RIDUCONO SOLO LE RIGHE DEL DB.
+__________________________________________________________________________________
+
+SOSTITUITE
+le righe riguardo il progetto non trovato di -> https://github.com/apache/tomcat85
+con https://github.com/apache/tomcat
+25 righe dal vulas originale - 19 righe da vulas senza i cve nothing
+
+RIMOSSE
+tolte le righe riguardo il progetto non trovato di -> https://github.com/apache/wss4j
+1 righe - trovate 0 righe nel nuovo vulas
+
+
+AXIS 1 SOSTITUITO:
+- axis1-java -> 1 riga -> no commit trovate -> https://github.com/cspeckmim/axis1-java/
+
+QUESTO AXI2 è STATO SOSTITUITO. INVECE DI ESSERE ELIMINATO
+le righe riguardo il progetto non trovato di -> https://github.com/apache/axis2-java-> https://github.com/fluetm/axis2-java
+4 righe - 2 righe nel nuovo vulas
+
+SVN PROJECT RIMOSSE:
+- 6 righe - https://github.com/apache/poi -> https://github.com/apache/poi/commit/d72bd78c19dfb7b57395a66ae8d9269d59a87bd2
+    perdo CVE-2012-0213 e CVE-2017-12626 e CVE-2017-5644 e perdo l'associato univoco CWE-776
+- 3 righe - https://github.com/apache/batik -> https://github.com/apache/xmlgraphics-batik/commit/1e12686194370b22420da705d71af66161affa33
+    perdo CVE-2018-8013 e CVE-2017-5662
+- 1 righe di 2 tolte - https://github.com/nahsra/antisamy;mvn compile
+CVE-2017-14735;https://github.com/nahsra/antisamy;82da009e733a989a57190cd6aa1b6824724f6d36;pos
+perdo CVE-2017-14735 e mantengo CVE-2016-10006
+- JACKRABBIT eliminato
+ perdo CVE-2015-1833 CVE-2016-6801
+- https://github.com/apache/ofbiz
+    perdo CVE-2015-3268 CVE-2010-0432 CVE-2013-0177 CVE-2013-2250 CVE-2012-1621
+- https://github.com/apache/santuario-java
+    perdo CVE-2013-2172 CVE-2013-4517 CVE-2014-8152
+- https://github.com/cspeckmim/axis1-java;e7ce8a92bc02be54da102efb64c99aeee21a2106
+PERDO CVE-2018-8032
+-https://github.com/kshtzsharma48/wss4j;5ec5295c9773c9ae43fdc6c3321d0e2af1041e62
+    PERDO CVE-2015-0227
+
+
+PROGETTO NON GITHUB
+-https://android.googlesource.com/platform/frameworks/base
+    perdo CVE-2016-2426 CVE-2016-0812
+
+PROGETTO NOT FOUND
+-https://github.com/blynkkk/blynk-server;806bc7847a687203a904d24feb1a0278de889e62
+    PERDO CVE-2018-17785
+
+
+
+SOSTITUZIONE TOMCAT70 CON TOMCAT, è SOLO UNA QUESTIONE DI BRANCH.
+
+
+
+# RIGHE VULAS : 989
+# CVE: 496
+# ELEMENTI VULAS RAGGRUPPANDO I CVE ASSOCIATI ALLO STESSO "PROGETTO-COMMIT" : 933
+# PROGETTI TOTALI: 173
+# CWE: 66 ho perso cwe-776
+ANALISI EFFETTUATA IN TESI MAIN
+# CWE: CON CLASSI JAVA 66
+# RIGHE VULAS CON CLASSI JAVA: 1872
+_____________________________________________________________________________________
+
+CWE DI SNYK CHE HO IO: 20 (PRESI DAL SITO: https://docs.snyk.io/products/snyk-code/security-rules-used-by-snyk-code/java)
+CHE PERCENTUALE DEL DATASET VULAS COPRO?
+DI 1045 NE COPRO 436 OSSIA IL 41.7%
+
+
+FUNZIONE TROVA POSIZIONE DEL METODO (usa la funzione git diff tra commit nuova e vecchia):
+Se il metodo del nuovo file modifica righe 10 e 11
+allora il metodo del vecchio file avra AD ESEMPIO righe 7 e 8 non modificate
+- Caso particolare è quando vengono uniti insieme due metodi. La nuova commit avra 1 solo metodo e la vecchia commit 2 metodi
+- in questo caso si scorrono tutte le righe modificate e si vede se esiste un secondo metodo nella commit vecchia che matcha
+
+DOMANDA:
+-Devo includere anche le modifiche nella segnatura del metodo?
+Perche sennò devo cambiare il codice partendo da start metod -1
+-
+
+
+- SNYK PRODUCE 460 errori(dato da modificare perche non ho incluso tutti i progetti)
+
+
+
+1- CREARE SRC SU TUTTI I PROGETTI E DARLI IN PASTO AI TOOL IN LOCALE
+
+VCG E PMD:
+1- runnarli su tutto il dataset
+2- leggere i report e prendere tutti i nomi
+di questi nomi quanti ne compaiono nel dataset di valentina?
+
+PER RISPONDERE A TALI DOMANDE CREARE IL SEGUENTE CSV:
+CWE DICHIARATO, nome proggetto, path, linea metodo, tool id, Rule Name (nome affibiato dal tool), CWE trovato (usando i mapping di valentina)
+
+
+______________________________________________________________________________________________________
+Il file cweListClassiJava include i cwe dei progetti che hanno nelle commit almeno una classe java.
+
+NUMERO CWE INCROCIATI CON CLASSI JAVA = 35
+NUMERO CWE INCROCIATI CON CLASSI JAVA E CON SNYK = 10
+
+______________________________________________________________________________________________________
+
+
+IN LOCALE HO RUNNATO PMD E VCG DA INTERFACCIA GRAFICA.
+pmd produce un file di report per ogni classe.
+vcg produce un solo file per tutto. Va capito come leggerlo ( andrebbe estratta la classe e il nome del problema)
+
+
+- incrociare i nomi dei problemi col mapping di valentina e produrre il file di sopra.
+
+
+
+
+
+
+
+
+
+
+
+
+ALGORITMO:
+0) per ogni progetto
+    prendere commit vecchia e nuova
+    prendere solo i file .java
+    con git diff prendo le modifiche in termini di linee e nome file
+
+    con il parser JAVAPARSER ottengo la lista di posizioni/metodi
+    vedere quale metodo corrisponde a quella posizione
+
+    Per capire il nome del metodo e il range devo fare git reset per tornare a quella commit
+    Cosi facendo è possibile anche compilare il progetto ottenendo le classi .CLASS
+    costruire file di output
+
+
+1) Compilare ogni progetto alla sua fix commit e quella precedente.
+    Spostare .class a:
+    - /result/classes/CWEID/nomeFile_good.class/
+    - /result/classes/CWEID/nomeFile_bad.class/
+
+    Spostare .java a:
+    - /result/src/CWEID/nomeFile_good.java/
+    - /result/src/CWEID/nomeFile_bad.java/
+
+2) Run dei Tool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RICERCA INCROCIATA:
+Ho creato una classe entity.FileTrack che contiene l'elenco dei metodi e la loro posizione
+
+
+La posizione del metodo nella commit corrente è fatta
+quindi prendo le coordinate delle modifiche e vedo in che range entrano
+Per fare la stessa cosa nei vecchi file ci serve sapere quali righe prima sono adesso
+
+
+_________________________________________________________________
+TENERE A MENTE CHE NEL FILE OUTPUT VIENE SALVATA SOLO LA FIX COMMIT, COSI DA AVERE UN COLLEGAMENTO TRA VECCHI E NUOVI FILE TRAMITE LA BADNESS
+IL RANGE DEVO SCRIVERLO PER IL METODO O PER IL COMMIT?
+QUANDO VADO ALLA COMMIT VECCHIA DEVO PRENDERE L'OLD FILENAME E LE OLD DIMENSION
+_________________________________________________________________
+
+
+
+TODO:
+    - ANALIZZARE QUANTE VOLTE UN FILE CAMBIA NOME
+    - GENERALIZZARE PER TUTTI I PROGETTI E TUTTE LE LORO COMMIT
+
+    - AVVIAMENTO CON JAVA DEI PLUGIN SOLO SU QUELLE CLASSI SPECIFICHE
+    - COMPILAZIONE CON JAVA
+    - plugin usati:
+        JLINT: ./jlint +verbose +history /mnt/c/Users/Valentino/Documenti/Universita/Test -source /mnt/c/Users/Valentino/Documenti/Test/src /mnt/c/Users/Valentino/Documenti/Test/classi
+
+
+        PMD:  ./run.sh pmd -d /mnt/c/Users/Valentino/Documenti/Test/src/CWE23_Relative_Path_Traversal__connect_tcp_01.java -f xml --report-file /mnt/c/Users/Valentino/Documenti/Universita/PMDtest.xml -R rulesets/java/quickstart.xml
+        FINDSEC: ./spotbugs-4.7.3/bin/spotbugs -textui -bugCategories SECURITY -pluginList findsecbugs-plugin-1.12.0.jar -low -xml=/mnt/c/Users/Valentino/Documenti/Universita/test.xml -auxclasspath /mnt/c/Users/Valentino/Documenti/Test/classi -sourcepath /mnt/c/Users/Valentino/Documenti/Test/src /mnt/c/Users/Valentino/Documenti/Test/classi
+        SPOTBUGS: ./spotbugs-4.7.3/bin/spotbugs -textui -bugCategories SECURITY -low -xml=/mnt/c/Users/Valentino/Documenti/Universita/test.xml -auxclasspath /mnt/c/Users/Valentino/Documenti/Test/classi -sourcepath /mnt/c/Users/Valentino/Documenti/Test/src /mnt/c/Users/Valentino/Documenti/Test/classi
+
+
+
+
+
+
+
+
+PLUGIN:
+
+    sonarqube
+    vcg- incorretto sul dare gli errori. Da delle righe in cui non è presente l'errore
+
+    INFER-  vm ware macchina virtuale sul server. Tesi
+    snyk- interfaccia grafica. Devo farlo a mano.
+
+
+
+CWEID/nomeFile_good.class/
+CWEID/nomeFile_bad.class/
+
+
+TODO:
+    - COMPILARE COL CLEAN
+    - Obiettivo Weekend:    - avere tutti i file .class
+                            - aver avviato i plugin a fine compilazione sulle intere cartelle.
+                                Quindi oltre ai CWE-ID devo avere anche il path del file
+
+
+
+TODO
+    - PRENDERE OGNI PROGETTO SINGOLARMENTE
+    - VEDERE PER OGNUNO DI QUESTI LE COMMIT SE SONO PRESENTI E LA COMPILAZIONE DOVE SI INTERROMPE
+    - INSERIRE UN ALTERNATORE PER PRENDERE LA SOURCE ROOT DI ANT-GRADLE-MAVEN
+    - SIMULO LA FASE DI COMPILAZIONE(LA PIU DIFFICILE), COSTRUISCO QUINDI LA STRUTTURA DELLE DIRECTORY CON INFO SE ANT O SE MAVEN E LANCIO DEL PLUGIN
+
+TODO:
+    2) variare la compilazione per compilatore
+    3) lanciare i progetti funzionanti
+    4) COMPILARE I RIMANENTI
+
+PROBLEMI:
+    - non posso runnare wsl
+
+
+
+
+
+
+Script da lanciare singolarmente
+
+
+FASE 1:
+    Avviamento in CreateDirCommitProjectMain: vengono create le cartelle dei progetti per commit,
+    Ossia vengono scaricati i progetti da git dai repository e inseriti nella cartella: progetti_da_buildare2
+
+FASE 2:
+    TesiMain con input parameter diverso da 1: Vengono compilati i progetti
+
+FASE 3:
+    output:  "F:\\Valentino\\IdeaProjects\\tesiJava\\src\\main\\result\\intermediate_result.csv"
+    TesiMain con input parameter uguale da 1: Viene creato il file di output con il nome dei metodi toccati dalla commit
+
+    Inoltre TesiMain effettua la costruzione delle cartelle CWE_ID contenenti i file java da analizzare dai tool.
+    Questa creazione viene effettuata dal metodo createResultDirectoryWithoutClass nel file java RunnerCreateDatasetCWEClass.java
+    Destinazione cartelle CWE_ID: "F:\\Valentino\\IdeaProjects\\tesiJava\\src\\main\\result\\src"
+
+FASE 4:
+    Nel path: C:\Users\Valentino\Documents\Universita\Tesi\2Bugginess\Dataset\src
+    troviamo una cartella per ogni CWE_ID contenente i file java
+    I file java sono rinominati secondo lo schema:   bad/good_fixcommit_filename.java
+
+    La rinominazione dei file è eseguita dallo script al punto 3 TesiMain.java
+    Il lancio dei tool è eseguito in locale da RunnerTool.java
+    Solo Snyk viene runnato sul server visto che è gia installato, parte da "/controller/RunSnykCommand.java"
+
+    i report sono salvati in: C:\Users\Valentino\Documents\Universita\Tesi\2Bugginess\Dataset\result\
+    sono nominati con: CWEID_BAD/GOOD_FIXCOMMIT_FILENAME.xml
+
+FASE 5:
+    --CreateMappings.java--
+    A questo punto va creato il mapping per associare i nomi dei bug rilevati da SNYK tool ai CWE.
+    Solo snyk include all'interno del report i cwe e quindi viene lanciato controller/CreateMappings per beccare tutte
+    le coppie nome-cwe rilevate da snyk
+
+    Nota Bene: i file PMD di mapping presenti nella cartella F:\Valentino\IdeaProjects\tesiJava\src\main\mapping\
+                mappano i cve_names sui CWE e sono stati prodotti a mano
+
+FASE 6 - parsing :
+    si torna sul server con il mapping pronto.
+    Vengono copiati i risultati dei tool ottenuti in locale nella directory result/plugins_reports.
+    ParsingTool.java prende in input quei risultati e produce in output nella cartella result/ParsingToolResult
+    un file .csv per ogni tool. Quindi vengono parsati e raggruppati i risultati in un unico file.
+    Il run parte da "controller/ParsingTool.java"
+
+    Parsing tool legge i file dalla cartella plugins_reports:
+    siccome pmd contiene righe duplicate, in fase di lettura viene fatto uno unique
+    vengono mappati sulla classe RULE (// rule= codice cwe o nome, file= primo valore contenente il nome file e commit, bug= terzo valore col nome metodo
+    file pmd = CWE-20_bad_d2e8f2ede7dea39f75f68384f331f38f094e4ed3_Http11NioProcessor;OptimizableToArrayCall;getContentType
+    file vcg =
+    file vcg = se trovo il cwe viene inserito il numero altrimenti il nome del mapping.
+            CWE-1021_bad_dbf259508c2b8e176d8cb837177aaadbf44f0670_JettyServer.java;Operation on Primitive Data Type;690
+            CWE-1021_good_dbf259508c2b8e176d8cb837177aaadbf44f0670_JettyServer.java;22;84
+
+FASE 7:
+    Si conclude la creazione del file result.csv inserendo il risultato di ogni tool letto. Input ParsingToolResult.
+    Praticamente si prende il file Intermediate_result.csv come input per sapere quali sono tutti i metodi delle commit
+    e si riempie con i risultati ottenuti dai tool.
+    Da notare che in intermediate_result possono esserci righe con piu cwe esempio:->"CWE-94_CWE-264"
+    il programma splitta questi cwe su piu righe ripetendo il nome del metodo.
+    Si passa a cercare il cwe se presente nei vari tool e possono presentarsi i seguenti casi anche rappresentati nel diagramma:
+    - il tool è capace di individuare il cwe ma non risponde
+          si riempiono le metriche secondo il diagramma ed il cwe predetto con spazio vuoto
+    - il tool non è capace di individuare il cwe (domanda: il tool non è capace di individuare il cwe ma risponde uguale?)
+          si riempiono le metriche con "??" e anche il cwe predetto
+    - il tool è capace di individuare il cwe e risponde in maniera sbagliata o corretta
+    Avviamento tramite "/controller/CreateFinalDataset"
+
+
+
+ entro nel progetto, runno snyk,
+ parso il risultato, lo salvo in una directory comune.
+ Prendo tutti i risultati e li unisco in un unico file. (leggo result, prendo nome metodo e size)
+
+
+
+
+ Visto che :
+     - numero di progetti sono 68
+     - numero in output sono molti di meno perche non ci sono i metodi java
+
+
+
+
+NOTE SUGLI ERRORI DI PROGETTO:
+
+- Ci siamo accorti che i nostri tool ritornavano come risultato sempre l'assenza di bug. Allora ci siamo chiesti quali
+fossero i cwe che i tool riuscissero a beccare.
+Degli 8 cwe ricavati Snyk becca solo -> CWE 295 e CWE 502. Allora ci chiediamo, perche snyk ritorna comunque false?
+La risposta è che il mapping di valentina non include i miei CWE. Perche la lista dei CWE di juliet non contiene i miei.
+
+- NELLA lista dei cwe di snyk non rileva il 502.
+- La 295 la mette nella "CWE-326"
+
+
+
+Di snyk sappiamo tutto: https://docs.snyk.io/products/snyk-code/security-rules-used-by-snyk-code/java
+va capito quali di questi sono presenti nella mia lista di CWE e quali in juliet.
+
+Runno PMD e VCG su tutti i progetti. Vedo i nomi UNIQUE delle rule e poi li incrocio col mapping di valentina per capire cosa rimane.
+
+
+
+
+- CONTARE CWE DEI PROGETTI CHE HO : 67 togliendo i 3 cwe nel file result/cweStats/cweDaNonIncludere
+- QUANTI DATI HO RISPETTO A PRIMA SE TOLGO I 3 CWE ?
+- VEDERE DEI CWE DI SNYK QUANTI CE NE SONO NELLA MIA LISTA
+
+- ANALISI CON PMD E VCG

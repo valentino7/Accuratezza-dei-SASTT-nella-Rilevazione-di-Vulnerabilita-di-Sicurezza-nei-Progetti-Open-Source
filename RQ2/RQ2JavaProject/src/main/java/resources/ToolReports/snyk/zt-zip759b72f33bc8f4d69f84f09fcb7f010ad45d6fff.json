@@ -1,0 +1,2377 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/PT/test",
+              "name": "PT/test",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into exists, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the conditional expression.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the {3}.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[exists](8)",
+              "[conditional expression](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 685,
+                  "endLine": 685,
+                  "startColumn": 9,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "fdc826dbd42698ae87061a6cefa4a29e9d4c3e1df309c08e57328924542629e4",
+            "1": "19689298.1cbd3ff4.855e64f6.f9bdd8eb.75248ddf.f940a352.a204df5d.54d46e25.69e5fcf2.7f413d6f.e6aaf2ba.33056f84.06c18530.7fda7c5e.203e5a20.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 14,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 23,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 12,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 685,
+                            "endLine": 685,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 880,
+                            "endLine": 880,
+                            "startColumn": 33,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 9,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 9,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 5,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into exists, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the conditional expression.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the {3}.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[exists](9)",
+              "[conditional expression](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 689,
+                  "endLine": 689,
+                  "startColumn": 9,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3eca98a5ef308bc8f7107d996be6abc6287290390cbd89f7c262961d8c16bb1e",
+            "1": "19689298.1cbd3ff4.855e64f6.f9bdd8eb.75248ddf.f940a352.df7e59ba.54d46e25.69e5fcf2.7f413d6f.e6aaf2ba.33056f84.06c18530.7fda7c5e.203e5a20.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 14,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 23,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 12,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 30,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 880,
+                            "endLine": 880,
+                            "startColumn": 33,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 9,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 9,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtilsV2_2.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 881,
+                            "endLine": 881,
+                            "startColumn": 5,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into createNewFile, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[createNewFile](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 690,
+                  "endLine": 690,
+                  "startColumn": 9,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "79d3c45c0146aae31760bd66fc8ea9885f1c99cd0fd9d8e09a5afd4e2b25ecee",
+            "1": "19689298.83dbfe52.921248bb.c48320d7.75248ddf.cf93da7f.a204df5d.54d46e25.69e5fcf2.7f413d6f.e6aaf2ba.33056f84.06c18530.cf93da7f.203e5a20.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 14,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 23,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 12,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 690,
+                            "endLine": 690,
+                            "startColumn": 9,
+                            "endColumn": 13
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 690,
+                            "endLine": 690,
+                            "startColumn": 9,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into java.io.FileOutputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9)",
+              "[java.io.FileOutputStream](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 695,
+                  "endLine": 695,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2efb7666d1d5db0b1768a104bfe53b11120c58959ecd4a4475d9616663102ada",
+            "1": "2d06e3d6.1cbd3ff4.e6aaf2ba.c48320d7.75248ddf.f940a352.a204df5d.54d46e25.69e5fcf2.7f413d6f.e6aaf2ba.33056f84.06c18530.cf93da7f.203e5a20.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 14,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 23,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 12,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 690,
+                            "endLine": 690,
+                            "startColumn": 9,
+                            "endColumn": 13
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 695,
+                            "endLine": 695,
+                            "startColumn": 28,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "endLine": 53,
+                            "startColumn": 43,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 70,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 53,
+                            "endColumn": 69
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into java.io.FileOutputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)",
+              "[java.io.FileOutputStream](12)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 723,
+                  "endLine": 723,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f14191822c113221aae354c19b3f79c249a51f7e732ab1187e8ce0a1e0c4dde8",
+            "1": "2d06e3d6.1cbd3ff4.e3a02d87.f9bdd8eb.5ab9506d.0d476878.4312a2e6.54d46e25.69e5fcf2.7f413d6f.e3a02d87.33056f84.06c18530.cf93da7f.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 26,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 676,
+                            "endLine": 676,
+                            "startColumn": 14,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 23,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 683,
+                            "endLine": 683,
+                            "startColumn": 12,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 690,
+                            "endLine": 690,
+                            "startColumn": 9,
+                            "endColumn": 13
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 698,
+                            "endLine": 698,
+                            "startColumn": 54,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 702,
+                            "endLine": 702,
+                            "startColumn": 127,
+                            "endColumn": 149
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/Zips.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 723,
+                            "endLine": 723,
+                            "startColumn": 31,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "endLine": 53,
+                            "startColumn": 43,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 70,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/commons/FileUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 53,
+                            "endColumn": 69
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into java.util.zip.ZipFile, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19),(20)",
+              "[java.util.zip.ZipFile](21)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 2692,
+                  "endLine": 2692,
+                  "startColumn": 11,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "651928548741914271c03215ec218ff16982192b3b49807854082cd7d331dd06",
+            "1": "f9545bfc.28b4013f.d33e0c13.e1c7b7e6.025462d2.0d476878.c68f5a51.54d46e25.e1d7cd7c.7ef9ab6e.1f78ea81.33056f84.408180c7.eacd09e2.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2676,
+                            "endLine": 2676,
+                            "startColumn": 74,
+                            "endColumn": 90
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2676,
+                            "endLine": 2676,
+                            "startColumn": 74,
+                            "endColumn": 90
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2676,
+                            "endLine": 2676,
+                            "startColumn": 55,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2691,
+                            "endLine": 2691,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2691,
+                            "endLine": 2691,
+                            "startColumn": 46,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2691,
+                            "endLine": 2691,
+                            "startColumn": 29,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2692,
+                            "endLine": 2692,
+                            "startColumn": 20,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2141,
+                            "endLine": 2141,
+                            "startColumn": 31,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2144,
+                            "endLine": 2144,
+                            "startColumn": 18,
+                            "endColumn": 21
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2129,
+                            "endLine": 2129,
+                            "startColumn": 31,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2130,
+                            "endLine": 2130,
+                            "startColumn": 16,
+                            "endColumn": 19
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2160,
+                            "endLine": 2160,
+                            "startColumn": 33,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2168,
+                            "endLine": 2168,
+                            "startColumn": 18,
+                            "endColumn": 21
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2188,
+                            "endLine": 2188,
+                            "startColumn": 33,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 14,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2196,
+                            "endLine": 2196,
+                            "startColumn": 19,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 15,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2343,
+                            "endLine": 2343,
+                            "startColumn": 35,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 16,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2346,
+                            "endLine": 2346,
+                            "startColumn": 13,
+                            "endColumn": 16
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 17,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 471,
+                            "endLine": 471,
+                            "startColumn": 30,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 18,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 472,
+                            "endLine": 472,
+                            "startColumn": 13,
+                            "endColumn": 16
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 19,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 492,
+                            "endLine": 492,
+                            "startColumn": 30,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 20,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 496,
+                            "endLine": 496,
+                            "startColumn": 26,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 21,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/zeroturnaround/zip/ZipUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 496,
+                            "endLine": 496,
+                            "startColumn": 18,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 812,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into java.io.FileOutputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3)",
+              "[java.io.FileOutputStream](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/example/UnpackExample.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "endLine": 29,
+                  "startColumn": 21,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "af0b26695364d04ec647e7ebbc633a4aea16932b99633a09b662d6d6f13be2dc",
+            "1": "f9545bfc.6402a70a.33fa5dbe.6c52ae28.90cd8d97.7fda7c5e.36de4586.203bd690.f9545bfc.6402a70a.bb993ef0.c48320d7.855504c3.7fda7c5e.36de4586.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/example/UnpackExample.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 55,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/example/UnpackExample.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 55,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/example/UnpackExample.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 42,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/example/UnpackExample.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 38,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/example/UnpackExample.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 21,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 68,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

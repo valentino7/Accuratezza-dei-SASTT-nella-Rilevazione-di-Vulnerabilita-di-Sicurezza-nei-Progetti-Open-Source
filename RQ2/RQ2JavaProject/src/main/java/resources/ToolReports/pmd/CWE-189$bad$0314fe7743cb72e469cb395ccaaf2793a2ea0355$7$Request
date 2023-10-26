@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:16:56.951">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-189/bad$0314fe7743cb72e469cb395ccaaf2793a2ea0355$7$Request.java">
+<violation beginline="76" endline="76" begincolumn="1" endcolumn="44" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.apache.catalina.util.RequestUtil'
+</violation>
+<violation beginline="94" endline="94" begincolumn="26" endcolumn="68" rule="ProperLogger" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="139" endline="139" begincolumn="17" endcolumn="34" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getCoyoteRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="190" endline="190" begincolumn="15" endcolumn="21" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="196" endline="196" begincolumn="13" endcolumn="19" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="202" endline="202" begincolumn="15" endcolumn="23" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="209" endline="209" begincolumn="23" endcolumn="29" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="419" endline="422" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="recycle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="421" endline="421" begincolumn="17" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="recycle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="464" endline="464" begincolumn="17" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getConnector" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="486" endline="486" begincolumn="17" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="512" endline="512" begincolumn="17" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getFilterChain" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="530" endline="530" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getHost" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="560" endline="560" begincolumn="17" endcolumn="20" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="573" endline="573" begincolumn="17" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getMappingData" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="590" endline="590" begincolumn="17" endcolumn="22" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="597" endline="597" begincolumn="15" endcolumn="52" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.catalina.connector.Response' due to existing same package import 'org.apache.catalina.connector.*'
+</violation>
+<violation beginline="602" endline="602" begincolumn="12" endcolumn="49" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.catalina.connector.Response' due to existing same package import 'org.apache.catalina.connector.*'
+</violation>
+<violation beginline="603" endline="603" begincolumn="17" endcolumn="29" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="611" endline="611" begincolumn="29" endcolumn="66" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.catalina.connector.Response' due to existing same package import 'org.apache.catalina.connector.*'
+</violation>
+<violation beginline="652" endline="652" begincolumn="49" endcolumn="60" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setURIConverter" variable="URIConverter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The method parameter name 'URIConverter' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="666" endline="666" begincolumn="17" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getWrapper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="717" endline="717" begincolumn="17" endcolumn="31" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getNote" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="726" endline="726" begincolumn="17" endcolumn="41" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getNoteNames" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="872" endline="872" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="872" endline="872" begincolumn="20" endcolumn="23" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="876" endline="876" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="928" endline="928" begincolumn="15" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getCharacterEncoding" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="936" endline="936" begincolumn="17" endcolumn="48" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getContentLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="944" endline="944" begincolumn="17" endcolumn="46" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getContentType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="960" endline="961" begincolumn="13" endcolumn="67" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getInputStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="981" endline="981" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocale" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="983" endline="983" begincolumn="13" endcolumn="24" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="getLocale" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="984" endline="984" begincolumn="21" endcolumn="43" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocale" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="986" endline="986" begincolumn="21" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocale" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1001" endline="1001" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocales" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1003" endline="1003" begincolumn="13" endcolumn="24" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="getLocales" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="1004" endline="1004" begincolumn="13" endcolumn="45" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocales" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1004" endline="1004" begincolumn="21" endcolumn="43" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocales" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1007" endline="1007" begincolumn="17" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getLocales" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1022" endline="1022" begincolumn="13" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getParameter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1042" endline="1042" begincolumn="13" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getParameterMap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1064" endline="1064" begincolumn="13" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getParameterNames" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1080" endline="1080" begincolumn="13" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getParameterValues" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1107" endline="1108" begincolumn="13" endcolumn="62" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getReader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1131" endline="1131" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1131" endline="1131" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1134" endline="1134" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1134" endline="1134" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1137" endline="1137" begincolumn="25" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1139" endline="1139" begincolumn="25" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRealPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1237" endline="1237" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1237" endline="1237" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1241" endline="1241" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1241" endline="1241" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1243" endline="1243" begincolumn="13" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1243" endline="1243" begincolumn="21" endcolumn="74" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1248" endline="1248" begincolumn="13" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1268" endline="1268" begincolumn="17" endcolumn="74" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestDispatcher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1277" endline="1277" begincolumn="17" endcolumn="49" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getScheme" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1285" endline="1285" begincolumn="17" endcolumn="53" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getServerName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1293" endline="1293" begincolumn="17" endcolumn="45" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getServerPort" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1301" endline="1301" begincolumn="17" endcolumn="22" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isSecure" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1330" endline="1330" begincolumn="14" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1330" endline="1330" begincolumn="37" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1331" endline="1331" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1335" endline="1347" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1337" endline="1337" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1342" endline="1346" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="removeAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1361" endline="1362" begincolumn="13" endcolumn="70" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1421" endline="1421" begincolumn="14" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1421" endline="1421" begincolumn="37" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1422" endline="1422" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1425" endline="1427" begincolumn="13" endcolumn="79" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1429" endline="1431" begincolumn="13" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1433" endline="1449" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1435" endline="1435" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1444" endline="1448" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="setAttribute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1471" endline="1471" begincolumn="16" endcolumn="20" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="setCharacterEncoding" variable="dummy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'dummy'.
+</violation>
+<violation beginline="1490" endline="1490" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="addCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1707" endline="1707" begincolumn="17" endcolumn="53" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getDecodedRequestURI" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1717" endline="1717" begincolumn="17" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getDecodedRequestURIMB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1730" endline="1730" begincolumn="13" endcolumn="52" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setServletPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1745" endline="1745" begincolumn="19" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setUserPrincipal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1746" endline="1746" begincolumn="19" endcolumn="62" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="setUserPrincipal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1769" endline="1769" begincolumn="17" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getAuthType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1778" endline="1778" begincolumn="17" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getContextPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1788" endline="1788" begincolumn="17" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getContextPathMB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1798" endline="1798" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getCookies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1828" endline="1828" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getDateHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1828" endline="1828" begincolumn="21" endcolumn="23" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getDateHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1832" endline="1832" begincolumn="24" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getDateHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1883" endline="1883" begincolumn="21" endcolumn="22" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getIntHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1885" endline="1885" begincolumn="21" endcolumn="43" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getIntHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1903" endline="1903" begincolumn="17" endcolumn="47" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1913" endline="1913" begincolumn="17" endcolumn="36" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathInfoMB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1924" endline="1924" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathTranslated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1924" endline="1924" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathTranslated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1927" endline="1927" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathTranslated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1929" endline="1929" begincolumn="21" endcolumn="74" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPathTranslated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1955" endline="1955" begincolumn="21" endcolumn="43" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRemoteUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1957" endline="1957" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRemoteUser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1969" endline="1969" begincolumn="17" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestPathMB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1977" endline="1977" begincolumn="17" endcolumn="34" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestedSessionId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2011" endline="2011" begincolumn="13" endcolumn="22" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2016" endline="2016" begincolumn="14" endcolumn="34" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2016" endline="2016" begincolumn="14" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2016" endline="2016" begincolumn="40" endcolumn="49" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2017" endline="2017" begincolumn="17" endcolumn="38" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2017" endline="2017" begincolumn="17" endcolumn="55" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2017" endline="2017" begincolumn="44" endcolumn="54" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2023" endline="2023" begincolumn="17" endcolumn="19" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getRequestURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2033" endline="2033" begincolumn="17" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getServletPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2043" endline="2043" begincolumn="17" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getServletPathMB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2084" endline="2084" begincolumn="13" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2084" endline="2084" begincolumn="21" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2086" endline="2086" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2086" endline="2086" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2098" endline="2098" begincolumn="13" endcolumn="41" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2098" endline="2098" begincolumn="21" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2100" endline="2100" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2100" endline="2100" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromURL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2113" endline="2113" begincolumn="17" endcolumn="45" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdFromUrl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2124" endline="2124" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2124" endline="2124" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2126" endline="2126" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2126" endline="2126" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2129" endline="2129" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2129" endline="2129" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2136" endline="2139" begincolumn="9" endcolumn="27" rule="SimplifyBooleanReturns" ruleset="Design" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="2136" endline="2136" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2137" endline="2137" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2137" endline="2137" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2139" endline="2139" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2139" endline="2139" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isRequestedSessionIdValid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2154" endline="2154" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2154" endline="2154" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2158" endline="2158" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2158" endline="2158" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2161" endline="2161" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2161" endline="2161" begincolumn="21" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2166" endline="2166" begincolumn="18" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2168" endline="2168" begincolumn="17" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2168" endline="2168" begincolumn="25" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2172" endline="2172" begincolumn="17" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isUserInRole" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2181" endline="2181" begincolumn="17" endcolumn="29" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getPrincipal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2192" endline="2192" begincolumn="21" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="getUserPrincipal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2222" endline="2222" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="changeSessionId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2230" endline="2230" begincolumn="25" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="changeSessionId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2233" endline="2233" begincolumn="18" endcolumn="36" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="changeSessionId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2233" endline="2233" begincolumn="43" endcolumn="66" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="changeSessionId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2268" endline="2268" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2268" endline="2268" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2271" endline="2271" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2272" endline="2272" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2274" endline="2274" begincolumn="13" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2274" endline="2274" begincolumn="21" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2279" endline="2279" begincolumn="13" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2281" endline="2281" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2281" endline="2281" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2288" endline="2288" begincolumn="18" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2289" endline="2289" begincolumn="17" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2292" endline="2292" begincolumn="25" endcolumn="31" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2298" endline="2298" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2298" endline="2298" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2299" endline="2299" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2299" endline="2299" begincolumn="35" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2317" endline="2317" begincolumn="14" endcolumn="28" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2317" endline="2317" begincolumn="35" endcolumn="54" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2327" endline="2327" begincolumn="21" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2329" endline="2329" begincolumn="21" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="doGetSession" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2342" endline="2342" begincolumn="50" endcolumn="69" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="configureSessionCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2345" endline="2345" begincolumn="14" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="configureSessionCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2345" endline="2345" begincolumn="39" endcolumn="62" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="configureSessionCookie" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2356" endline="2356" begincolumn="22" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="unescape" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2357" endline="2357" begincolumn="36" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="unescape" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2361" endline="2361" begincolumn="26" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="unescape" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2363" endline="2363" begincolumn="21" endcolumn="37" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="unescape" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2363" endline="2363" begincolumn="40" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="unescape" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2381" endline="2381" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseCookies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2398" endline="2398" begincolumn="35" endcolumn="69" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseCookies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2402" endline="2404" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="parseCookies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="2445" endline="2445" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2447" endline="2447" begincolumn="14" endcolumn="49" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2448" endline="2448" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2452" endline="2452" begincolumn="13" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2460" endline="2460" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2466" endline="2466" begincolumn="18" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2466" endline="2466" begincolumn="39" endcolumn="55" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2475" endline="2475" begincolumn="25" endcolumn="61" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2484" endline="2487" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="parseParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2550" endline="2550" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.catalina.connector" class="Request" method="readChunkedPostBody" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="2594" endline="2594" begincolumn="13" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2600" endline="2600" begincolumn="22" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2600" endline="2600" begincolumn="37" endcolumn="46" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2601" endline="2601" begincolumn="21" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2614" endline="2614" begincolumn="17" endcolumn="22" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2638" endline="2638" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2640" endline="2640" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2669" endline="2669" begincolumn="26" endcolumn="45" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="org.apache.catalina.connector" class="Request" method="parseLocalesHeader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Double(...)`, prefer `Double.valueOf(...)`
+</violation>
+<violation beginline="2697" endline="2697" begincolumn="20" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isAlpha" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2697" endline="2697" begincolumn="46" endcolumn="65" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.connector" class="Request" method="isAlpha" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>

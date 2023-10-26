@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:27:45.199">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-19/bad$44e6a3036e5a11d90b60c142cf51ed74b792de31$15$DefaultAhcBinding.java">
+<violation beginline="128" endline="128" begincolumn="104" endcolumn="114" rule="UnusedNullCheckInEquals" ruleset="Error Prone" package="org.apache.camel.component.ahc" class="DefaultAhcBinding" method="populateBody" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#unusednullcheckinequals" priority="3">
+Invoke equals() on the object you've already ensured is not null
+</violation>
+<violation beginline="157" endline="157" begincolumn="37" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.ahc" class="DefaultAhcBinding" method="populateBody" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="230" endline="230" begincolumn="16" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.ahc" class="DefaultAhcBinding" method="onComplete" variable="body" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="251" endline="251" begincolumn="77" endcolumn="89" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.apache.camel.component.ahc" class="DefaultAhcBinding" method="populateHttpOperationFailedException" variable="contentLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'contentLength'.
+</violation>
+<violation beginline="296" endline="296" begincolumn="90" endcolumn="101" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.apache.camel.component.ahc" class="DefaultAhcBinding" method="populateResponse" variable="responseCode" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'responseCode'.
+</violation>
+</file>
+</pmd>

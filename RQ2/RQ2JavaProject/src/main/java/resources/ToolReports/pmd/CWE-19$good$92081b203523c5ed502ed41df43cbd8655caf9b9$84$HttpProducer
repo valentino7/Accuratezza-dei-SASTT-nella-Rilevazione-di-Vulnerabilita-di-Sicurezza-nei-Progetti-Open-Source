@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:36:39.279">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-19/good$92081b203523c5ed502ed41df43cbd8655caf9b9$84$HttpProducer.java">
+<violation beginline="149" endline="149" begincolumn="21" endcolumn="31" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.camel.component.http4" class="HttpProducer" method="process" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="185" endline="187" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="process" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="214" endline="214" begincolumn="17" endcolumn="57" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.camel.component.http4" class="HttpProducer" method="populateResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="214" endline="214" begincolumn="17" endcolumn="57" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="populateResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="253" endline="253" begincolumn="40" endcolumn="80" rule="UselessParentheses" ruleset="Code Style" package="org.apache.camel.component.http4" class="HttpProducer" method="populateHttpOperationFailedException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="289" endline="289" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="extractResponseHeaders" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="313" endline="313" begincolumn="21" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="extractResponseBody" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="364" endline="366" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="doExtractResponseBodyAsStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="452" endline="452" begincolumn="111" endcolumn="127" rule="UnusedNullCheckInEquals" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="createRequestEntity" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#unusednullcheckinequals" priority="3">
+Invoke equals() on the object you've already ensured is not null
+</violation>
+<violation beginline="498" endline="498" begincolumn="37" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.http4" class="HttpProducer" method="createRequestEntity" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+</file>
+</pmd>

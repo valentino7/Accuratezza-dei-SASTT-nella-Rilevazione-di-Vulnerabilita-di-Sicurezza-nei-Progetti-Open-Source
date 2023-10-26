@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:15:07.408">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-74/bad$ab6cbdc3daa451b4fef89c0bd0f4e6568f3aa9ef$5$Cas20ServiceTicketValidator.java">
+<violation beginline="146" endline="146" begincolumn="13" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.jasig.cas.client.validation" class="Cas20ServiceTicketValidator" method="extractCustomAttributes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="195" endline="195" begincolumn="17" endcolumn="29" rule="AvoidStringBufferField" ruleset="Best Practices" package="org.jasig.cas.client.validation" class="Cas20ServiceTicketValidator$CustomAttributeHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T16:59:39.674">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/good$6b710a42e00acca405e085724c89cda016cf7442$199$LocalContainerLauncher.java">
+<violation beginline="80" endline="80" begincolumn="17" endcolumn="29" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashSet'; use the interface instead
+</violation>
+<violation beginline="110" endline="111" begincolumn="7" endcolumn="60" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="LocalContainerLauncher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="121" endline="123" begincolumn="5" endcolumn="5" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="LocalContainerLauncher" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="149" endline="150" begincolumn="7" endcolumn="76" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="serviceStart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="154" endline="155" begincolumn="7" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="serviceStart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="217" endline="218" begincolumn="5" endcolumn="5" rule="UncommentedEmptyConstructor" ruleset="Documentation" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="EventHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptyconstructor" priority="3">
+Document empty constructor
+</violation>
+<violation beginline="236" endline="236" begincolumn="11" endcolumn="52" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="240" endline="240" begincolumn="9" endcolumn="60" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="263" endline="263" begincolumn="13" endcolumn="58" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="274" endline="274" begincolumn="11" endcolumn="62" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="276" endline="276" begincolumn="11" endcolumn="67" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="292" endline="292" begincolumn="7" endcolumn="49" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runTask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.v2.app.job.Task' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="295" endline="295" begincolumn="7" endcolumn="35" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runTask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapred.Task' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="323" endline="323" begincolumn="21" endcolumn="38" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runTask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="352" endline="353" begincolumn="11" endcolumn="51" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runTask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="358" endline="358" begincolumn="29" endcolumn="57" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapred.Task' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="365" endline="365" begincolumn="7" endcolumn="44" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapred.TaskAttemptID' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="372" endline="372" begincolumn="49" endcolumn="72" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="381" endline="382" begincolumn="9" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="400" endline="401" begincolumn="13" endcolumn="74" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="417" endline="417" begincolumn="15" endcolumn="46" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="428" endline="429" begincolumn="13" endcolumn="72" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="452" endline="452" begincolumn="9" endcolumn="37" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="455" endline="456" begincolumn="9" endcolumn="56" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="463" endline="464" begincolumn="11" endcolumn="50" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="469" endline="469" begincolumn="9" endcolumn="37" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="471" endline="482" begincolumn="9" endcolumn="7" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="481" endline="481" begincolumn="9" endcolumn="37" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="runSubtask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="496" endline="513" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="relocalize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="509" endline="510" begincolumn="13" endcolumn="77" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="LocalContainerLauncher$EventHandler" method="relocalize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="550" endline="550" begincolumn="7" endcolumn="57" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="renameMapOutputForReduce" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="552" endline="552" begincolumn="7" endcolumn="62" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.mapred" class="LocalContainerLauncher" method="renameMapOutputForReduce" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+</file>
+</pmd>

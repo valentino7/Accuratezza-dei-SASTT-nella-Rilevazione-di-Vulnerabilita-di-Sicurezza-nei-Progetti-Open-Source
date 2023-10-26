@@ -1,0 +1,389 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "ruby/HardcodedCredential",
+              "name": "HardcodedCredential",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "ruby"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/railsgirls-cn/railsgirlschina/commit/990f8a5bb4bbdcd14d67283fd49ed0660adfd0fc?diff=split#diff-6dc906be0643182e5bae6aa1506221e6L34",
+                    "lines": [
+                      {
+                        "line": "on roles(:all) do |host|",
+                        "lineNumber": 37,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "execute('apt-get install -y postgresql libpq-dev')",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "as user: 'postgres' do",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  execute(*%W(createuser -d -R -S deploy))",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  execute(*%w(createdb campo_production -O deploy))",
+                        "lineNumber": 35,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  test(*%W(createuser -d -R -S deploy))",
+                        "lineNumber": 40,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  test(*%w(createdb campo_production -O deploy))",
+                        "lineNumber": 41,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/badboy/jabbot/commit/fa5e4fec52033ff781b33ef94b5720777ef7c623?diff=split#diff-c34fbdcf685ba239addbee92bd998aa4L35",
+                    "lines": [
+                      {
+                        "line": "should \"provide configuration settings as methods\" do",
+                        "lineNumber": 33,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "test \"provide configuration settings as methods\" do",
+                        "lineNumber": 33,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  bot = Jabbot::Bot.new Jabbot::Config.new(:login => \"jabbot\")",
+                        "lineNumber": 34,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  assert_equal \"jabbot\", bot.login",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "end",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/yegor256/codexia/commit/afd8b6df20826f0ce973d9aa0a28b116d5fc79fd?diff=split#diff-9e61fa8d93fd9a69ee4b4f9c96787349L32",
+                    "lines": [
+                      {
+                        "line": "  def test_updates_author",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    authors = Xia::Authors.new(t_pgsql)",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    login = 'test'",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    login = '-test-'",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    author = authors.named(login)",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    assert(!author.id.nil?)",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    assert_equal(author.id, authors.named(login).id)",
+                        "lineNumber": 34,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  end",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "end",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "add User specs",
+                  "Refactor user test using users helper"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 344,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/TrojanSourceConfusingUnicode",
+              "name": "TrojanSourceConfusingUnicode",
+              "shortDescription": {
+                "text": "TrojanSourceConfusingUnicode"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ruby/HardcodedCredential",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode credentials in code. Found hardcoded credential used in Net.SFTP.start.",
+            "markdown": "Do not hardcode credentials in code. Found {0} credential used in {1}.",
+            "arguments": [
+              "[hardcoded](0)",
+              "[Net.SFTP.start](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "distribution/src/scripts/jboss_docs_uploader.rb",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 28,
+                  "endLine": 28,
+                  "startColumn": 12,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5fdb69900386b4d781667b933a24a473e293ff6e66e8a3594baa4b09d2fc4d48",
+            "1": "542f9beb.1e12efc7.55079f15.dea86bdf.237f253a.611fbc43.70f31d50.2fca1db6.02bf3fb6.1e12efc7.b2c77b59.6c4e5b02.237f253a.611fbc43.70f31d50.f4bf58fd"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "distribution/src/scripts/jboss_docs_uploader.rb",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 12,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "distribution/src/scripts/jboss_docs_uploader.rb",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 5,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 502,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TrojanSourceConfusingUnicode",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "(BETA Suggestion) The identifier name contains potentially confusable UTF-8 characters and may be represented visually in a way that does not convey the actual semantics of the code to a human reviewer.",
+            "markdown": "(BETA Suggestion) The identifier name contains potentially confusable UTF-8 characters and may be represented visually in a way that does not convey the actual semantics of the code to a human reviewer.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "engine/src/test/java/org/hibernate/validator/test/internal/engine/ValidatorTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 285,
+                  "endLine": 285,
+                  "startColumn": 9,
+                  "endColumn": 15
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e3bb2928da27e84ffa09ab510e5b99d9a829bb06406f283db4f8e8eb175d92dc"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "engine/src/test/java/org/hibernate/validator/test/internal/engine/ValidatorTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 285,
+                            "endLine": 285,
+                            "startColumn": 9,
+                            "endColumn": 15
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 302,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 2307,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 2120,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 77,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 4,
+            "isSupported": true,
+            "lang": "Ruby"
+          },
+          {
+            "files": 4,
+            "isSupported": false,
+            "lang": "Unknown"
+          },
+          {
+            "files": 2,
+            "isSupported": false,
+            "lang": "Roff Manpage"
+          }
+        ]
+      }
+    }
+  ]
+}

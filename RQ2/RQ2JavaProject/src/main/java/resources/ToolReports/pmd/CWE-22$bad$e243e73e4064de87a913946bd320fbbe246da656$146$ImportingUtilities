@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:44:07.274">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$e243e73e4064de87a913946bd320fbbe246da656$146$ImportingUtilities.java">
+<violation beginline="93" endline="1050" begincolumn="33" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="com.google.refine.importing" class="ImportingUtilities" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="96" endline="99" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities$Progress" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Progress': member interfaces are implicitly static
+</violation>
+<violation beginline="97" endline="97" begincolumn="16" endcolumn="61" rule="UnnecessaryModifier" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities$Progress" method="setProgress" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'setProgress': the method is declared in an interface type
+</violation>
+<violation beginline="98" endline="98" begincolumn="16" endcolumn="36" rule="UnnecessaryModifier" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities$Progress" method="isCanceled" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'isCanceled': the method is declared in an interface type
+</violation>
+<violation beginline="212" endline="212" begincolumn="51" endcolumn="75" rule="UselessParentheses" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities" method="update" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="229" endline="229" begincolumn="25" endcolumn="30" rule="CloseResource" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" variable="stream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="231" endline="231" begincolumn="27" endcolumn="63" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="233" endline="233" begincolumn="21" endcolumn="44" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="257" endline="257" begincolumn="28" endcolumn="50" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="310" endline="310" begincolumn="41" endcolumn="47" rule="CloseResource" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" variable="stream2" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="336" endline="336" begincolumn="37" endcolumn="43" rule="CloseResource" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="retrieveContentFromPostRequest" variable="stream2" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="423" endline="423" begincolumn="42" endcolumn="62" rule="UselessParentheses" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities" method="saveStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="434" endline="434" begincolumn="17" endcolumn="51" rule="UselessParentheses" ruleset="Code Style" package="com.google.refine.importing" class="ImportingUtilities" method="getRelativePath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="476" endline="478" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="getReaderFromStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="543" endline="545" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="postProcessRetrievedFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="562" endline="564" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="postProcessRetrievedFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="605" endline="606" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.google.refine.importing" class="ImportingUtilities" method="tryOpenAsArchive" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="704" endline="704" begincolumn="13" endcolumn="102" rule="GuardLogStatement" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="tryOpenAsCompressedFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="786" endline="786" begincolumn="29" endcolumn="40" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="autoSelectFiles" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="843" endline="843" begincolumn="16" endcolumn="27" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="getCommonFormatForSelectedFiles" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="892" endline="893" begincolumn="28" endcolumn="68" rule="SimplifiedTernary" ruleset="Design" package="com.google.refine.importing" class="ImportingUtilities" method="rankFormats" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="1022" endline="1022" begincolumn="17" endcolumn="31" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="com.google.refine.importing" class="ImportingUtilities" method="createProjectSynchronously" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+</file>
+</pmd>

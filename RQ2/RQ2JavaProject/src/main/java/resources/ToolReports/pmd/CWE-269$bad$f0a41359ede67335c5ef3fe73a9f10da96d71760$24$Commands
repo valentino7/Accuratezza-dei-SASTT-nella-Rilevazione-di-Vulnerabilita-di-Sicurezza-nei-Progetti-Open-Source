@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T19:22:46.462">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-269/bad$f0a41359ede67335c5ef3fe73a9f10da96d71760$24$Commands.java">
+<violation beginline="31" endline="31" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.sql.Statement'
+</violation>
+<violation beginline="34" endline="34" begincolumn="1" endcolumn="32" rule="UnnecessaryImport" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.util.jar.Attributes'
+</violation>
+<violation beginline="314" endline="1237" begincolumn="1" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="org.postgresql.pljava.management" class="Commands" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="332" endline="332" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="333" endline="333" begincolumn="21" endcolumn="35" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="descIdFetchStmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="334" endline="334" begincolumn="21" endcolumn="35" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="descIdStoreStmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="335" endline="335" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="348" endline="348" begincolumn="19" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="jis" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedInputStream object are closed after use
+</violation>
+<violation beginline="351" endline="351" begincolumn="23" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" variable="us" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="360" endline="361" begincolumn="7" endcolumn="53" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="373" endline="373" begincolumn="6" endcolumn="11" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="376" endline="376" begincolumn="6" endcolumn="14" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="382" endline="383" begincolumn="5" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="390" endline="391" begincolumn="6" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="400" endline="403" begincolumn="6" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="408" endline="409" begincolumn="6" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="414" endline="418" begincolumn="6" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="423" endline="425" begincolumn="6" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addClassImages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="480" endline="480" begincolumn="22" endcolumn="54" rule="AssignmentInOperand" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="rawManifest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="486" endline="486" begincolumn="42" endcolumn="48" rule="UseStandardCharsets" ruleset="Best Practices" package="org.postgresql.pljava.management" class="Commands" method="rawManifest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usestandardcharsets" priority="3">
+Please use StandardCharsets constants
+</violation>
+<violation beginline="487" endline="487" begincolumn="23" endcolumn="25" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="rawManifest" variable="isr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ZipInputStream object are closed after use
+</violation>
+<violation beginline="489" endline="489" begincolumn="20" endcolumn="44" rule="AssignmentInOperand" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="rawManifest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="489" endline="490" begincolumn="5" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="rawManifest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="516" endline="516" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="addTypeMapping" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="522" endline="523" begincolumn="5" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="addTypeMapping" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="558" endline="558" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="dropTypeMapping" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="587" endline="587" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="588" endline="588" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="592" endline="592" begincolumn="5" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="594" endline="594" begincolumn="5" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="594" endline="594" begincolumn="18" endcolumn="41" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="609" endline="609" begincolumn="6" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="611" endline="611" begincolumn="6" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="694" endline="696" begincolumn="4" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="removeJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="700" endline="701" begincolumn="4" endcolumn="58" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="removeJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="704" endline="704" begincolumn="4" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="removeJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="706" endline="706" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="removeJar" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="713" endline="714" begincolumn="5" endcolumn="51" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="removeJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="780" endline="780" begincolumn="4" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="782" endline="782" begincolumn="16" endcolumn="39" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="786" endline="788" begincolumn="5" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="794" endline="795" begincolumn="5" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="797" endline="799" begincolumn="5" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="802" endline="802" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="824" endline="824" begincolumn="7" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="828" endline="829" begincolumn="7" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="831" endline="831" begincolumn="18" endcolumn="35" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="833" endline="833" begincolumn="7" endcolumn="12" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="setClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="900" endline="905" begincolumn="3" endcolumn="4" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="assertInPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="908" endline="908" begincolumn="4" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="assertInPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="929" endline="931" begincolumn="5" endcolumn="12" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="assertJarName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="931" endline="931" begincolumn="7" endcolumn="12" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="assertJarName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="934" endline="934" begincolumn="6" endcolumn="12" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="assertJarName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="948" endline="949" begincolumn="3" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="deployInstall" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="951" endline="951" begincolumn="4" endcolumn="68" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="deployInstall" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="961" endline="961" begincolumn="34" endcolumn="40" rule="AssignmentInOperand" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="deployRemove" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="961" endline="962" begincolumn="3" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="deployRemove" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="966" endline="966" begincolumn="5" endcolumn="68" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="deployRemove" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="971" endline="971" begincolumn="5" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="deployRemove" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="978" endline="978" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getDeploymentDescriptors" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="979" endline="979" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getDeploymentDescriptors" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1001" endline="1001" begincolumn="11" endcolumn="65" rule="OptimizableToArrayCall" ruleset="Performance" package="org.postgresql.pljava.management" class="Commands" method="getDeploymentDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="1007" endline="1007" begincolumn="4" endcolumn="57" rule="PreserveStackTrace" ruleset="Best Practices" package="org.postgresql.pljava.management" class="Commands" method="getDeploymentDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1011" endline="1011" begincolumn="4" endcolumn="72" rule="PreserveStackTrace" ruleset="Best Practices" package="org.postgresql.pljava.management" class="Commands" method="getDeploymentDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1024" endline="1024" begincolumn="3" endcolumn="49" rule="GuardLogStatement" ruleset="Best Practices" package="org.postgresql.pljava.management" class="Commands" method="getFullSqlName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1026" endline="1026" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getFullSqlName" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="1027" endline="1027" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getFullSqlName" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1037" endline="1038" begincolumn="5" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getFullSqlName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1053" endline="1053" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getJarId" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="1057" endline="1057" begincolumn="5" endcolumn="14" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getJarId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1084" endline="1084" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getJarId" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1109" endline="1109" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getSchemaId" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="1110" endline="1110" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="getSchemaId" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1117" endline="1117" begincolumn="5" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="getSchemaId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1131" endline="1133" begincolumn="4" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1138" endline="1140" begincolumn="4" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1142" endline="1142" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="installJar" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1152" endline="1153" begincolumn="5" endcolumn="51" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1163" endline="1163" begincolumn="4" endcolumn="70" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1166" endline="1166" begincolumn="4" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1174" endline="1174" begincolumn="4" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="installJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1183" endline="1185" begincolumn="4" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1189" endline="1190" begincolumn="4" endcolumn="59" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1193" endline="1193" begincolumn="4" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1195" endline="1195" begincolumn="21" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" variable="stmt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PreparedStatement object are closed after use
+</violation>
+<violation beginline="1207" endline="1208" begincolumn="5" endcolumn="51" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1227" endline="1227" begincolumn="4" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1235" endline="1235" begincolumn="4" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.management" class="Commands" method="replaceJar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+</file>
+</pmd>

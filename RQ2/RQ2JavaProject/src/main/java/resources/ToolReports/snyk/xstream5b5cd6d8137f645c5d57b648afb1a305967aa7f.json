@@ -1,0 +1,711 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/TrojanSourceConfusingUnicode",
+              "name": "TrojanSourceConfusingUnicode",
+              "shortDescription": {
+                "text": "TrojanSourceConfusingUnicode"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0
+              }
+            },
+            {
+              "id": "java/XXE",
+              "name": "XXE",
+              "shortDescription": {
+                "text": "XML External Entity (XXE) Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nFor convenience, XML documents can use system identifiers to enable access to stored content, whether local or remote. The XML processor then uses the system identifier to access the resource rather than using the URI. When this weakness exists, the application permits user-supplied data, which could include the address of an XML external identity, to be passed directly to the XML parser. The application will then attempt to retrieve documents from outside of secure, controlled areas.\n\nAttackers can exploit this weakness to expose sensitive data, execute port scanning on the server side, or launch a denial-of-service attack (DoS) such as Billion Laughs.\n\n### Best practices for prevention\n\n* When possible, disable loading of data from external entities. The method of doing this will vary based on the language and XML parser being used.\n* Use a local, static document type definitions (DTDs) and ensure that external DTDs are disallowed entirely.\n* If user input cannot be avoided, perform validation against an allowlist of possible data sources. However, as long as external DTDs are allowed, XML code remains inherently vulnerable to attacks exploiting this weakness.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Unidata/netcdf-java/commit/475707c10fd20b92a48187aad1ac6379fe126e32?diff=split#diff-2ab50dd3fd1834707ceae5e424963a52L98",
+                    "lines": [
+                      {
+                        "line": "static private org.jdom.Document getCapabilities(String endpoint) throws IOException {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  org.jdom.Document doc;",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  HttpMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  HTTPMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    method = CdmRemote.sendQuery(endpoint, \"req=capabilities\");",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    InputStream in = method.getResponseBodyAsStream();",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SAXBuilder builder = new SAXBuilder(false);",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    doc = builder.build(in);",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } catch (Throwable t) {",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wirecardBrasil/mockkid/commit/002008cf918a84f962f2fe27cbdb4ba2685c6ae0?diff=split#diff-b441fb2c8c0aa00121642142978b8a0bL18",
+                    "lines": [
+                      {
+                        "line": "private static final Logger logger = LoggerFactory.getLogger(XMLBodyVariableResolver.class);",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static String extractValueFromXml(String name, HttpServletRequest request) {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 19,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilderFactory builderFactory =",
+                        "lineNumber": 20,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                DocumentBuilderFactory.newInstance();",
+                        "lineNumber": 21,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilder builder = builderFactory.newDocumentBuilder();",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(request.getInputStream());",
+                        "lineNumber": 22,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(((MockkidRequest) request).getSafeInputStream());",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        XPath xPath =  XPathFactory.newInstance().newXPath();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/IanDarwin/javasrc/commit/8251ef48893e6333dee02e29925c16ba933d7d14?diff=split#diff-f4d7011ca260d567d50d5aa022009b3dL17",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class SAXLister {",
+                        "lineNumber": 17,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public static void main(String[] args) throws Exception {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    new SAXLister(args);",
+                        "lineNumber": 19,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 21,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  public SAXLister(String[] args) throws SAXException, IOException {",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    XMLReader parser = XMLReaderFactory",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .createXMLReader(\"org.apache.xerces.parsers.SAXParser\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // should load properties rather than hardcoding class name",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.setContentHandler(new PeopleHandler());",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.parse(args.length == 1 ? args[0] : \"parents.xml\");",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Move loadind XML documents from streams to XML utils class.",
+                  "Added support for File comparator",
+                  "Adding unit tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 110,
+                "cwe": [
+                  "CWE-611"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/TrojanSourceConfusingUnicode",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "(BETA Suggestion) The identifier name contains potentially confusable UTF-8 characters and may be represented visually in a way that does not convey the actual semantics of the code to a human reviewer.",
+            "markdown": "(BETA Suggestion) The identifier name contains potentially confusable UTF-8 characters and may be represented visually in a way that does not convey the actual semantics of the code to a human reviewer.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xstream/src/test/com/thoughtworks/acceptance/XmlFriendlyTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 127,
+                  "endLine": 127,
+                  "startColumn": 16,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "bd7971e336d69c65df85e065304a83ff7018cea51b8bd57c1c6d40be49b27c9e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/test/com/thoughtworks/acceptance/XmlFriendlyTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 127,
+                            "endLine": 127,
+                            "startColumn": 16,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 301,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XXE",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a local file flows into build, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0)",
+              "[build](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDom2Driver.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 87,
+                  "endLine": 87,
+                  "startColumn": 39,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "cd08b05aa857a8b71fb8db3248d9521ee4d5baf3e4f273b1aba4b605c6254379",
+            "1": "e98aaca0.cc3c5c1c.e6aaf2ba.4d1392c1.915b1335.0d476878.94a33612.43fa68b5.19689298.be36b276.0c7fd3f2.c48320d7.408180c7.ec096324.94a33612.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDom2Driver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 87,
+                            "endLine": 87,
+                            "startColumn": 53,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDom2Driver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 87,
+                            "endLine": 87,
+                            "startColumn": 39,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XXE",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a local file flows into build, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0)",
+              "[build](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDomDriver.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 95,
+                  "endLine": 95,
+                  "startColumn": 39,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7b0920228c40ac4d647067bf155a4c6441070f269b672e16ecc71b10f85896cf",
+            "1": "e98aaca0.cc3c5c1c.e6aaf2ba.4d1392c1.915b1335.0d476878.94a33612.43fa68b5.516bdf66.7f413d6f.0c7fd3f2.c48320d7.408180c7.ec096324.94a33612.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDomDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "endLine": 95,
+                            "startColumn": 53,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDomDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 95,
+                            "endLine": 95,
+                            "startColumn": 39,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XXE",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a local file flows into createXMLStreamReader, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0),(1),(2),(3),(4),(5)",
+              "[createXMLStreamReader](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 234,
+                  "endLine": 234,
+                  "startColumn": 16,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "eb776ec614fbac7a08e5278a77594689e530fee29121b30bc951a0cf1a9d9af1",
+            "1": "8a48953d.f49dd6c0.f798d16e.6c52ae28.47ebfd7c.07c9e6e8.94a33612.203bd690.8a48953d.7ef9ab6e.f798d16e.de031890.c41fd899.07c9e6e8.c66d287d.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "endLine": 135,
+                            "startColumn": 25,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "endLine": 135,
+                            "startColumn": 25,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "endLine": 135,
+                            "startColumn": 25,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "endLine": 134,
+                            "startColumn": 81,
+                            "endColumn": 93
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 233,
+                            "endLine": 233,
+                            "startColumn": 44,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 234,
+                            "endLine": 234,
+                            "startColumn": 56,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxDriver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 234,
+                            "endLine": 234,
+                            "startColumn": 16,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 18,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 656,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 34,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

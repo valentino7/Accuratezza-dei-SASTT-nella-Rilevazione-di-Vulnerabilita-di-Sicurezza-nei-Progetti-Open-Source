@@ -1,0 +1,3666 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/UsageOfUnencryptedSocket",
+              "name": "UsageOfUnencryptedSocket",
+              "shortDescription": {
+                "text": "Cleartext Transmission of Sensitive Information"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nThis weakness occurs when software transmits sensitive information, such as passwords or credit card numbers, in unencrypted form. This information may then be intercepted by threat actors using sniffer tools or interception techniques such as man-in-the-middle (MITM) attacks (often involving social engineering). Attackers can then use information gleaned to perform a variety of actions, depending on the information type. Possible actions include gaining unauthorized access, impersonating a user, moving laterally within the organization's network, or retrieving and potentially modifying files. This weakness is almost completely avoidable through intelligent architecture and design.\n\n### Best practices for prevention\n* Build web applications around a security mindset and the awareness that sniffers may be present at any time.\n* Ensure that all sensitive data transmission uses reliable encryption.\n* Implement security measures so that sensitive results are never returned in plain text.\n* Implement multiple-factor authentication methods to validate remote instances.\n* Use SSL not only at logon but throughout communications.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/ME1312/SubServers-2/commit/9a219a7d0fd259870a94d1f875f3cbb3c942ec1e?diff=split#diff-4a76c605749ad18708be15720e8fac67L57",
+                    "lines": [
+                      {
+                        "line": "public SubDataClient(SubPlugin plugin, InetAddress address, int port, Encryption encryption) throws IOException {",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (Util.isNull(plugin, address, port)) throw new NullPointerException();",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket = new Socket(address, port);",
+                        "lineNumber": 56,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    socket = new NamedContainer<>(false, new Socket(address, port));",
+                        "lineNumber": 60,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    this.plugin = plugin;",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    this.writer = new PrintWriter(socket.getOutputStream(), true);",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    this.writer = new PrintWriter(socket.get().getOutputStream(), true);",
+                        "lineNumber": 62,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    this.encryption = encryption;",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    this.queue = new LinkedList<NamedContainer<String, PacketOut>>();",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dddpaul/android-SimpleNetCat/commit/3235f85ae26fa31e1e36739c608668e15c53a04c?diff=split#diff-6689eedf89cc41d9c93933ea7ff5ebf4L62",
+                    "lines": [
+                      {
+                        "line": "    int port = Integer.parseInt( params[2] );",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Log.d( CLASS_NAME, String.format( \"Connecting to %s:%d\", host, port ) );",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket = new Socket( host, port );",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    result.object = new Socket( host, port );",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    break;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "case RECEIVE:",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 110,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    BufferedReader reader = new BufferedReader( new InputStreamReader( input ) );",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    PrintWriter writer = new PrintWriter( socket.getOutputStream() );",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    transferStreams( reader, writer );",
+                        "lineNumber": 113,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 114,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/rancher/cattle/commit/b06df6f37fdfe906b7804fbba41d2c02d472f8ab?diff=split#diff-125505ce5e24cbf259a0267dd1d3af77L314",
+                    "lines": [
+                      {
+                        "line": "String[] parts = master.getConfig().getAdvertiseAddress().split(\":\");",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try (",
+                        "lineNumber": 312,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Socket socket = new Socket(parts[0], Integer.parseInt(parts[1]));",
+                        "lineNumber": 313,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    OutputStream os = socket.getOutputStream();",
+                        "lineNumber": 314,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Socket socket = new Socket();",
+                        "lineNumber": 313,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": ") {",
+                        "lineNumber": 315,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket.connect(new InetSocketAddress(parts[0], Integer.parseInt(parts[1])), 5000);",
+                        "lineNumber": 315,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    log.info(\"Connection test to master\");",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " } catch (IOException e) {",
+                        "lineNumber": 317,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Use thread local sockets for everything except IDLE and STATUS.",
+                  "- Adding a test that a locator can shut itself down\nwith SSL.",
+                  "Added support for SSL secured Manager connections"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 108,
+                "cwe": [
+                  "CWE-319"
+                ]
+              }
+            },
+            {
+              "id": "java/TimingAttack",
+              "name": "TimingAttack",
+              "shortDescription": {
+                "text": "Observable Timing Discrepancy (Timing Attack)"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nA timing attack is a form of side-channel attack, meaning it does not take advantage of the way the code is structured, but rather exploits external clues that let an attacker infer the program's state. In a timing attack, program state is inferred from the time it takes to execute a particular operation. For example, an app might use a lookup table of valid session IDs to speed up access.\nWhile this is convenient for validated users, an invalid session ID will take far longer to be rejected (since it's not in the lookup table), giving the attackers a valuable way to engineer a brute-force attack. All they need to do is test a large number of randomly generated session IDs in the hope of discovering a valid one. Once access is granted, through the session ID, the malicious actor may impersonate a legitimate user, executing actions or freely accessing secure data. Through brute force, such as a massive bot attack, this weakness can be successfully exploited to bypass even very strong encryption algorithms.\n\n### Best practices for prevention\n* Implement a constant-time algorithm to ensure that timing is identical regardless of input validity and returned outcome.\n* If a constant-time algorithm is impractical due to a desire to optimize performance, choose another technique such as blinding.\n* Promote an awareness among developers that encryption is not enough if your app is giving off clues to help attackers.\n* Timing attacks often depend on the production environment and are thus difficult to test during development; be sure to use a staging environment as close as possible to production.\n* Choose hardened, reliable libraries for encryption and authentication with side-channel attack protection strategies rather than implementing your own methods.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0,
+                "cwe": [
+                  "CWE-208"
+                ]
+              }
+            },
+            {
+              "id": "java/TooPermissiveHostnameVerifier",
+              "name": "TooPermissiveHostnameVerifier",
+              "shortDescription": {
+                "text": "Improper Certificate Validation"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCommunication through encrypted TLS/SSL protocols can only take place when the server bears a valid certificate associating that server with a valid public-key identity issued by a third-party authority. If certificate validation is cursory or incomplete, this creates a weakness whereby an attacker can spoof one or more certificate details (e.g., expiration date), gaining unauthorized access to confidential data and privileged actions.\n\n### Best practices for prevention\n* Verify all aspects of any certificate provided, particularly chain of trust (issuing authority), host identity, and expiration.\n* Limit the validity period for certificates.\n* Avoid using self-signed certificates, certificate pinning, and wildcard certificates, as these all add levels of convenience but can also lead to loss of control over site/app security.\n* Disable older and insecure protocols (for example, SSL 2.0/3.0, MD5, and 3DES).\n* Ensure that all team members are familiar with current best practices and approaches, such as current TLS protocols.\n* Implement automated and manual testing using current tools and techniques designed to reveal this and related SSL weaknesses (for example, web application scanners).",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/bonigarcia/webdrivermanager/commit/90dedd67b71d59a9a15a9b11892be3cd0a1c2e4e?diff=split#diff-5fd27e182b6d09ea7f5901daab03449dL114",
+                    "lines": [
+                      {
+                        "line": "HostnameVerifier allHostsValid = new HostnameVerifier() {",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 113,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 114,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        return hostname.equalsIgnoreCase(session.getPeerHost());",
+                        "lineNumber": 114,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 115,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "};",
+                        "lineNumber": 116,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wso2-attic/product-private-paas/commit/a42df7abce437ad996fad1097a74ca7bf83da0c0?diff=split#diff-7568b7c1be7d23d9a86361e05ff18598L47",
+                    "lines": [
+                      {
+                        "line": "if (Constants.ENABLE_SELF_CERTIFIED) {",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        @Override public boolean verify(String s, SSLSession sslSession) {",
+                        "lineNumber": 46,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "            return true;",
+                        "lineNumber": 47,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 40,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "            return hostname.equals(System.getProperty(Constants.HOSTNAME));",
+                        "lineNumber": 41,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        }",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    });",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Liberuman/SimpleProject/commit/f7afc6477bcfb9b2f78f742df913aa9a86d251d1?diff=split#diff-68c680467370001ab531d6c88431244dL95",
+                    "lines": [
+                      {
+                        "line": ".sslSocketFactory(sslContext.getSocketFactory(), trustManager)",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": ".hostnameVerifier(new HostnameVerifier() {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 97,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return true;",
+                        "lineNumber": 96,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    if (!TextUtils.isEmpty(baseUrl) && baseUrl.contains(hostname)) {",
+                        "lineNumber": 98,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      return true;",
+                        "lineNumber": 99,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 100,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "})",
+                        "lineNumber": 105,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "merged the rest client and test cases according to the new folder structure",
+                  "workaround for SSL verify",
+                  "Smarter hostname verifier"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 53,
+                "cwe": [
+                  "CWE-295"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword",
+              "name": "HardcodedPassword",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/TLS",
+              "name": "TLS",
+              "shortDescription": {
+                "text": "Inadequate Encryption Strength"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/91f7012b015249d9d74dace8874ee8f38b54bfc2?diff=split#diff-5604a4e589dc38cc8d80f2f4020c2a23L53",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/MissionCriticalCloud/cosmic/commit/3a4004a34b42e30a49a1c48f1ff57e5f3ca26913?diff=split#diff-49bfef0c8d16a2c34d787d4fca65e2e7L35",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/hypercube1024/firefly/commit/e2e4d7810c9bb202bbef3d5022e3b13447f102dd?diff=split#diff-fb5cd0d3953731ed2bdb241178f1ce05L32",
+                    "lines": [
+                      {
+                        "line": "  tmf.init(ks);",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLS\");",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "return sslContext;",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Configuring TSL/SSL now supports property placeholders.",
+                  "support for TLS config tweaks",
+                  "Temporarily peg SSL version to TLSv1.2."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 78,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/XXE",
+              "name": "XXE",
+              "shortDescription": {
+                "text": "XML External Entity (XXE) Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nFor convenience, XML documents can use system identifiers to enable access to stored content, whether local or remote. The XML processor then uses the system identifier to access the resource rather than using the URI. When this weakness exists, the application permits user-supplied data, which could include the address of an XML external identity, to be passed directly to the XML parser. The application will then attempt to retrieve documents from outside of secure, controlled areas.\n\nAttackers can exploit this weakness to expose sensitive data, execute port scanning on the server side, or launch a denial-of-service attack (DoS) such as Billion Laughs.\n\n### Best practices for prevention\n\n* When possible, disable loading of data from external entities. The method of doing this will vary based on the language and XML parser being used.\n* Use a local, static document type definitions (DTDs) and ensure that external DTDs are disallowed entirely.\n* If user input cannot be avoided, perform validation against an allowlist of possible data sources. However, as long as external DTDs are allowed, XML code remains inherently vulnerable to attacks exploiting this weakness.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Unidata/netcdf-java/commit/475707c10fd20b92a48187aad1ac6379fe126e32?diff=split#diff-2ab50dd3fd1834707ceae5e424963a52L98",
+                    "lines": [
+                      {
+                        "line": "static private org.jdom.Document getCapabilities(String endpoint) throws IOException {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  org.jdom.Document doc;",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  HttpMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  HTTPMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    method = CdmRemote.sendQuery(endpoint, \"req=capabilities\");",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    InputStream in = method.getResponseBodyAsStream();",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SAXBuilder builder = new SAXBuilder(false);",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    doc = builder.build(in);",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } catch (Throwable t) {",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wirecardBrasil/mockkid/commit/002008cf918a84f962f2fe27cbdb4ba2685c6ae0?diff=split#diff-b441fb2c8c0aa00121642142978b8a0bL18",
+                    "lines": [
+                      {
+                        "line": "private static final Logger logger = LoggerFactory.getLogger(XMLBodyVariableResolver.class);",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static String extractValueFromXml(String name, HttpServletRequest request) {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 19,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilderFactory builderFactory =",
+                        "lineNumber": 20,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                DocumentBuilderFactory.newInstance();",
+                        "lineNumber": 21,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilder builder = builderFactory.newDocumentBuilder();",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(request.getInputStream());",
+                        "lineNumber": 22,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(((MockkidRequest) request).getSafeInputStream());",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        XPath xPath =  XPathFactory.newInstance().newXPath();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/IanDarwin/javasrc/commit/8251ef48893e6333dee02e29925c16ba933d7d14?diff=split#diff-f4d7011ca260d567d50d5aa022009b3dL17",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class SAXLister {",
+                        "lineNumber": 17,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public static void main(String[] args) throws Exception {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    new SAXLister(args);",
+                        "lineNumber": 19,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 21,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  public SAXLister(String[] args) throws SAXException, IOException {",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    XMLReader parser = XMLReaderFactory",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .createXMLReader(\"org.apache.xerces.parsers.SAXParser\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // should load properties rather than hardcoding class name",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.setContentHandler(new PeopleHandler());",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.parse(args.length == 1 ? args[0] : \"parents.xml\");",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Move loadind XML documents from streams to XML utils class.",
+                  "Added support for File comparator",
+                  "Adding unit tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 110,
+                "cwe": [
+                  "CWE-611"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureAesWithBadPaddingCipher",
+              "name": "InsecureAesWithBadPaddingCipher",
+              "shortDescription": {
+                "text": "Inadequate Padding for AES encryption"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/terracotta-bank/terracotta-bank/commit/a27453b52859d32ef25694869c1662a9493c621c?diff=split#diff-49444057459eecb4ff09662c3beab114L95",
+                    "lines": [
+                      {
+                        "line": "String ivHeader = request.getHeader(\"X-Encryption-Iv\");",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] iv = Base64.getDecoder().decode(ivHeader);",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 94,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new IvParameterSpec(iv));",
+                        "lineNumber": 95,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 95,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new GCMParameterSpec(128, iv));",
+                        "lineNumber": 96,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.updateAAD(version.getBytes(UTF_8));",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "InputStream plain = new CipherInputStream(new Base64InputStream(request.getInputStream()), cipher);",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\treturn new DecryptedWrapper(request, plain);",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/oracle/helidon/commit/bd7b527d900fc3c7c5204459f9bf6dabb5de9f3f?diff=split#diff-c80e0c0f8ccdd12b672e5ad32aeee36dL151",
+                    "lines": [
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 151,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 152,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new IvParameterSpec(salt));",
+                        "lineNumber": 153,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, HASH_ITERATIONS, KEY_LENGTH);",
+                        "lineNumber": 165,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 166,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 167,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new GCMParameterSpec(AUTHENTICATION_TAG_LENGTH, nonce));",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/vauvenal5/pieShare/commit/18468bf783a7ee736a4b05d6c66e363cb041ea72?diff=split#diff-164a90f5642f53516d8333a485e295a6L27",
+                    "lines": [
+                      {
+                        "line": "private String provName;",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private final String passwordEncryptionAlgo = \"PBEWithSHAAndTwofish-CBC\";",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private final String encryptionAlgo = \"AES/CBC/PKCS5Padding\";",
+                        "lineNumber": 26,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private final String encryptionAlgo = \"AES/CFB8/NoPadding\";//AES/CFB/PKCS7Padding\";",
+                        "lineNumber": 26,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private final String fileHashAlgo = \"MD5\";",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Cipher getEnDeCryptCipher() {",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return Cipher.getInstance(this.encryptionAlgo, this.provName);//return \"PBEWithSHAAndTwofish-CBC\";",
+                        "lineNumber": 67,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return Cipher.getInstance(this.encryptionAlgo, this.provName);",
+                        "lineNumber": 67,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  catch (NoSuchAlgorithmException | NoSuchProviderException | NoSuchPaddingException ex) {",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "added versioning and included salt in encrypted byte stream.",
+                  "Switch from CBC to GCM",
+                  "Add support for other AES transformation"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 52,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureCipherNoIntegrity",
+              "name": "InsecureCipherNoIntegrity",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/terracotta-bank/terracotta-bank/commit/a27453b52859d32ef25694869c1662a9493c621c?diff=split#diff-49444057459eecb4ff09662c3beab114L95",
+                    "lines": [
+                      {
+                        "line": "String ivHeader = request.getHeader(\"X-Encryption-Iv\");",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] iv = Base64.getDecoder().decode(ivHeader);",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 94,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new IvParameterSpec(iv));",
+                        "lineNumber": 95,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 95,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new GCMParameterSpec(128, iv));",
+                        "lineNumber": 96,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.updateAAD(version.getBytes(UTF_8));",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "InputStream plain = new CipherInputStream(new Base64InputStream(request.getInputStream()), cipher);",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\treturn new DecryptedWrapper(request, plain);",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/oracle/helidon/commit/bd7b527d900fc3c7c5204459f9bf6dabb5de9f3f?diff=split#diff-5ab21f1b0b5ca2653372fd39b4aa40b0L64",
+                    "lines": [
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 128);",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 256);",
+                        "lineNumber": 61,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new IvParameterSpec(salt));",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new GCMParameterSpec(128, nonce));",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " return cipher;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "added versioning and included salt in encrypted byte stream.",
+                  "Switch from CBC to GCM"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/UsageOfUnencryptedSocket",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Writing to an unencrypted socket is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "markdown": "{0} an unencrypted {1} is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "arguments": [
+              "[Writing to](0)",
+              "[socket](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 446,
+                  "endLine": 446,
+                  "startColumn": 59,
+                  "endColumn": 76
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d821cfd00cd8beacb55b8453a1e9165ff54e910a8c4ecf4513eca52d1295a2cc",
+            "1": "ac4e7c8b.c6f63401.bb993ef0.6c52ae28.e27b77c0.58ece204.f8a998d3.0f01a149.ac4e7c8b.c6f63401.bb993ef0.6c52ae28.e27b77c0.7fda7c5e.8c5f03ec.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 446,
+                            "endLine": 446,
+                            "startColumn": 59,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 446,
+                            "endLine": 446,
+                            "startColumn": 59,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/UsageOfUnencryptedSocket",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Reading from an unencrypted socket is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "markdown": "{0} an unencrypted {1} is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "arguments": [
+              "[Reading from](0)",
+              "[socket](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 449,
+                  "endLine": 449,
+                  "startColumn": 54,
+                  "endColumn": 70
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "604a3f1408d5f807dd0ad19b0180a6334f0aa1c7818e5af3813a8eb21dfa3a5f",
+            "1": "a045a79a.c6f63401.bb993ef0.6c52ae28.e27b77c0.754ce743.cb1ff4db.0f01a149.a045a79a.c6f63401.bb993ef0.6c52ae28.e27b77c0.7fda7c5e.cb1ff4db.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 449,
+                            "endLine": 449,
+                            "startColumn": 54,
+                            "endColumn": 70
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/tcp/io/TcpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 449,
+                            "endLine": 449,
+                            "startColumn": 54,
+                            "endColumn": 70
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TimingAttack",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "An attacker can guess the secret value of getEncoded because it is compared using java.util.Arrays.equals, which is vulnerable to timing attacks. Use java.security.MessageDigest.isEqual to compare values securely.",
+            "markdown": "An attacker can guess the secret value of {0} because it is compared using {1}, which is vulnerable to timing attacks. Use java.security.MessageDigest.isEqual to compare values securely.",
+            "arguments": [
+              "[getEncoded](0)",
+              "[java.util.Arrays.equals](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/Cert.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 177,
+                  "endLine": 177,
+                  "startColumn": 8,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a9ab4ca6311a8e42a08c168100b38a0a406de3b2e943b5f5b11ce823ad52b713",
+            "1": "1d6fe040.8ba1272f.54350824.3dc81a4d.fc4f4634.0bdcf4c7.7221b28e.b2f53266.1d6fe040.8ba1272f.54350824.3dc81a4d.fc4f4634.0bdcf4c7.7221b28e.b2f53266"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/Cert.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 156,
+                            "endLine": 156,
+                            "startColumn": 24,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/Cert.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 177,
+                            "endLine": 177,
+                            "startColumn": 8,
+                            "endColumn": 21
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 301,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveHostnameVerifier",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "The verify method always returns true, which means that any hostname is accepted. Such behaviour is insecure.",
+            "markdown": "The {0} method always returns {1}, which means that any hostname is accepted. Such behaviour is insecure.",
+            "arguments": [
+              "[verify](0)",
+              "[true](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsClient.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 513,
+                  "endLine": 513,
+                  "startColumn": 26,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "07cac23d465a189bfcdc03f003c44496eae8603fe4b576c8a4704edada10d971",
+            "1": "3577ba7a.528e35bc.85365f17.e22980a8.0681ed2b.eacd09e2.5b1ccecb.9c4228d3.3577ba7a.528e35bc.85365f17.e22980a8.0681ed2b.eacd09e2.5b1ccecb.9c4228d3"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsClient.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 513,
+                            "endLine": 513,
+                            "startColumn": 26,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsClient.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 513,
+                            "endLine": 513,
+                            "startColumn": 72,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.spongycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.spongycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 368,
+                  "endLine": 368,
+                  "startColumn": 24,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "153b808cfa828b695625527c19f5c65b3e2fee1856798a8a3a24279fc05e2aa2",
+            "1": "5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f.5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 368,
+                            "endLine": 368,
+                            "startColumn": 24,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.spongycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.spongycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 388,
+                  "endLine": 388,
+                  "startColumn": 51,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "aa733d002fc177eaa089b954e7c0c8339919c1eaca13a4bb977a2a35034e3d39",
+            "1": "5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f.5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 388,
+                            "endLine": 388,
+                            "startColumn": 51,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.spongycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.spongycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 425,
+                  "endLine": 425,
+                  "startColumn": 37,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e070a6c0fdf7203512596e6653d0195b24dd19e063e597ee93bd7a796d1958fe",
+            "1": "5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f.5d7d11e9.716d582c.d3b06a81.85370242.9aad3355.7ec8d05c.55890b33.5f34d68f"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 425,
+                            "endLine": 425,
+                            "startColumn": 37,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 218,
+                  "endLine": 218,
+                  "startColumn": 33,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ceb774316890caad5b9855692a983cb849a7e752bc782374303c3a8a9bd7f07b",
+            "1": "19689298.da263459.e99130b3.5e6ab657.3d2bca12.b70401ce.6dbe2d3b.c4e81b6c.19689298.da263459.e99130b3.5e6ab657.3d2bca12.b70401ce.6dbe2d3b.c4e81b6c"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 218,
+                            "endLine": 218,
+                            "startColumn": 59,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 218,
+                            "endLine": 218,
+                            "startColumn": 33,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[SHA1](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/utils/CertificateUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 170,
+                  "endLine": 170,
+                  "startColumn": 30,
+                  "endColumn": 55
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "47173c01103ffa693a6f43e99a1b944e9299493c16e7ec8a9917a9b14fc80a51",
+            "1": "9038722f.38559511.09fc77c2.ccdece0a.4a9c8cbc.c80ba7fb.6f3c635c.54d46e25.9038722f.38559511.09fc77c2.ccdece0a.4a9c8cbc.c80ba7fb.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/utils/CertificateUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 170,
+                            "endLine": 170,
+                            "startColumn": 56,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/utils/CertificateUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 170,
+                            "endLine": 170,
+                            "startColumn": 30,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.bouncycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.bouncycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 358,
+                  "endLine": 358,
+                  "startColumn": 24,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "aed72defcb569e9b88e93530ed9e27d9e54412adf00ca07ef6e11b2cd182334f",
+            "1": "7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1.7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 358,
+                            "endLine": 358,
+                            "startColumn": 24,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.bouncycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.bouncycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 378,
+                  "endLine": 378,
+                  "startColumn": 51,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "320582b361508c63590e79f46d259dc4e37dad12edeb60d7f696835a8e355812",
+            "1": "7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1.7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 378,
+                            "endLine": 378,
+                            "startColumn": 51,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.bouncycastle.crypto.digests.SHA1Digest) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.bouncycastle.crypto.digests.SHA1Digest](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 415,
+                  "endLine": 415,
+                  "startColumn": 37,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4dfaacf472079b038362dc273cfa6dd7fcb3cbd9740ab6b696cc36883ccc3a0c",
+            "1": "7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1.7f4ba093.6c62d26b.037845c7.ba67a2a3.183073b8.b7132861.af6033d0.ca4854a1"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 415,
+                            "endLine": 415,
+                            "startColumn": 37,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/certs/ExampleKeys.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 253,
+                  "endLine": 253,
+                  "startColumn": 14,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6badcd9b2958067ba7e538636f1b485ec4b4d2f5dadb1fc47611c244d9230452",
+            "1": "362af7fe.83dbfe52.33fa5dbe.d6ab05b5.ae63d11c.7fda7c5e.57fc8460.54d46e25.362af7fe.607e2927.075f7928.383ea08e.d31a8364.7fda7c5e.57fc8460.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/certs/ExampleKeys.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 253,
+                            "endLine": 253,
+                            "startColumn": 43,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/certs/ExampleKeys.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 274,
+                  "endLine": 274,
+                  "startColumn": 5,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6c714d6152a8af417537539a2a01aecf7de8fbd79336ed1deeccbf174818d8c2",
+            "1": "362af7fe.1f519e92.075f7928.d6ab05b5.d31a8364.7fda7c5e.bae646e8.54d46e25.362af7fe.607e2927.075f7928.383ea08e.d31a8364.7fda7c5e.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/certs/ExampleKeys.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 18,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/NanoServer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 2551,
+                  "endLine": 2551,
+                  "startColumn": 49,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ea6947a8dd6ac93dd9fa0846ea0ad3a1014760ef38c1eedc1a5e7e66e733b430",
+            "1": "793e43be.83dbfe52.7ce0c5c1.9998adc9.dd06b926.31ccdec6.2ed7aa4c.41a65120.793e43be.83dbfe52.7ce0c5c1.9998adc9.dd06b926.31ccdec6.2ed7aa4c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/basic/src/main/java/org/opcfoundation/ua/examples/NanoServer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2551,
+                            "endLine": 2551,
+                            "startColumn": 74,
+                            "endColumn": 84
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsServer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 369,
+                  "endLine": 369,
+                  "startColumn": 23,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5167eba9ed4391c1f32191b575638d8baa5ba9cfb3c297beb5e8924bcb5efd89",
+            "1": "ca9876a9.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.01fae08d.54d46e25.ca9876a9.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsServer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 369,
+                            "endLine": 369,
+                            "startColumn": 23,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 802,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 5,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsClient.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 227,
+                  "endLine": 227,
+                  "startColumn": 21,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ff6313982c05bb7c57f7636eb7fd00ae90e527d91db78ab683a0e15c5c79cc27",
+            "1": "ca9876a9.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.01fae08d.54d46e25.ca9876a9.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/https/HttpsClient.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 227,
+                            "endLine": 227,
+                            "startColumn": 21,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 802,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/opcfoundation/ua/unittests/UnitTestKeys.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 215,
+                  "endLine": 215,
+                  "startColumn": 14,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d3ae2f7e818783265dfaa2f21cd62a073b5b1cc6a6f8a38f64e29d14197e5a5c",
+            "1": "362af7fe.83dbfe52.33fa5dbe.d6ab05b5.ae63d11c.7fda7c5e.57fc8460.54d46e25.362af7fe.607e2927.075f7928.383ea08e.d31a8364.7fda7c5e.57fc8460.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/opcfoundation/ua/unittests/UnitTestKeys.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 215,
+                            "endLine": 215,
+                            "startColumn": 43,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/opcfoundation/ua/unittests/UnitTestKeys.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 236,
+                  "endLine": 236,
+                  "startColumn": 5,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ee377224786439b48f8c57d2763ceafa582f10f5eebfa5774d77b7aa65151ee3",
+            "1": "362af7fe.1f519e92.075f7928.d6ab05b5.d31a8364.7fda7c5e.bae646e8.54d46e25.362af7fe.607e2927.075f7928.383ea08e.d31a8364.7fda7c5e.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/opcfoundation/ua/unittests/UnitTestKeys.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 236,
+                            "endLine": 236,
+                            "startColumn": 18,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XXE",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a local file flows into parse, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0)",
+              "[parse](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "codegen/src/main/java/org/opcfoundation/ua/codegen/DOMUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 157,
+                  "endLine": 157,
+                  "startColumn": 12,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2a20c114e4126e81bd7ab0a176a016d042bdbd2045980d2351310a9dc083b99a",
+            "1": "19689298.34cd7446.33fa5dbe.6c52ae28.b7dd2760.7fda7c5e.437c33ba.54d46e25.19689298.1cbd3ff4.33fa5dbe.e22980a8.b519b04e.7fda7c5e.ce6f65cb.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "codegen/src/main/java/org/opcfoundation/ua/codegen/DOMUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 29,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "codegen/src/main/java/org/opcfoundation/ua/codegen/DOMUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 12,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureAesWithBadPaddingCipher",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "AES with CBC mode and PKCS5Padding (AES/CBC/PKCS5Padding) used in javax.crypto.Cipher.getInstance is vulnerable to padding oracle attacks. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "markdown": "AES with CBC mode and PKCS5Padding ({0}) used in {1} is vulnerable to padding oracle attacks. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "arguments": [
+              "[AES/CBC/PKCS5Padding](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 207,
+                  "endLine": 207,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "036908d99b807167f818dedbf25bc05105a35c07a17aa3f4b7d44e32709b6b23",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.42d324ee.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.42d324ee.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "endLine": 207,
+                            "startColumn": 40,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "endLine": 207,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in org.spongycastle.crypto.modes.CBCBlockCipher does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The CBC mode used in {0} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[org.spongycastle.crypto.modes.CBCBlockCipher](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 151,
+                  "endLine": 151,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2772f07977867687821bb2cb261ed2e4cda99abb67ff794b8a6e54628b15ce04",
+            "1": "2cacdd36.5b700978.3615907e.d865b0fb.875f54f4.34bac7a8.fdfdc24e.76563550.2cacdd36.5b700978.3615907e.d865b0fb.875f54f4.34bac7a8.fdfdc24e.76563550"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 151,
+                            "endLine": 151,
+                            "startColumn": 9,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in org.spongycastle.crypto.modes.CBCBlockCipher does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The CBC mode used in {0} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[org.spongycastle.crypto.modes.CBCBlockCipher](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 220,
+                  "endLine": 220,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2d56b5af226473653c1dd5cec9debb2193d745af79f44cc998a3400abce6ffb3",
+            "1": "2cacdd36.5b700978.3615907e.d865b0fb.875f54f4.34bac7a8.fdfdc24e.76563550.2cacdd36.5b700978.3615907e.d865b0fb.875f54f4.34bac7a8.fdfdc24e.76563550"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/ScCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "endLine": 220,
+                            "startColumn": 9,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[CBC](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 207,
+                  "endLine": 207,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "28f4b0571bda17f3153318a8073620e70b096356b425e9e8ee3ffbcc8091c81a",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.42d324ee.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.42d324ee.3a890aa4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "endLine": 207,
+                            "startColumn": 40,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/PrivKey.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "endLine": 207,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in org.bouncycastle.crypto.modes.CBCBlockCipher does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The CBC mode used in {0} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[org.bouncycastle.crypto.modes.CBCBlockCipher](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 151,
+                  "endLine": 151,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d959b9c08ddb11f8f7ad6d143aa3d172e809c77d1b33e903be256095fb94d0a1",
+            "1": "36a7805c.95da1133.b18591d2.8bab4604.3e561d04.b8eab8d1.ca17e78f.c06f9b34.36a7805c.95da1133.b18591d2.8bab4604.3e561d04.b8eab8d1.ca17e78f.c06f9b34"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 151,
+                            "endLine": 151,
+                            "startColumn": 9,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 9,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in org.bouncycastle.crypto.modes.CBCBlockCipher does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The CBC mode used in {0} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[org.bouncycastle.crypto.modes.CBCBlockCipher](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 219,
+                  "endLine": 219,
+                  "startColumn": 9,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5236d960c2843f51611c0b84d5c5c2eab6100a0bd7882c584e67b8d1db82aa5d",
+            "1": "36a7805c.95da1133.b18591d2.8bab4604.3e561d04.b8eab8d1.ca17e78f.c06f9b34.36a7805c.95da1133.b18591d2.8bab4604.3e561d04.b8eab8d1.ca17e78f.c06f9b34"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/opcfoundation/ua/transport/security/BcCryptoProvider.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 219,
+                            "endLine": 219,
+                            "startColumn": 9,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 23,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 580,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

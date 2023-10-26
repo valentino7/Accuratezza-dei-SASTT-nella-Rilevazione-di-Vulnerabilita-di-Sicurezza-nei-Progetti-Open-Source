@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:31:45.775">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$7288bc70a14edcfeff0a96e333a858be374cfc64$66$WebdavServlet.java">
+<violation beginline="207" endline="207" begincolumn="22" endcolumn="45" rule="AvoidMessageDigestField" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidmessagedigestfield" priority="3">
+You shouldnt declare field of MessageDigest type, because unsynchronized access could cause problems
+</violation>
+<violation beginline="221" endline="221" begincolumn="9" endcolumn="38" rule="UnsynchronizedStaticFormatter" ruleset="Multithreading" package="org.apache.catalina.servlets" class="WebdavServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#unsynchronizedstaticformatter" priority="3">
+Static Formatter objects should be accessed in a synchronized manner
+</violation>
+<violation beginline="234" endline="234" begincolumn="13" endcolumn="38" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+<violation beginline="246" endline="246" begincolumn="13" endcolumn="44" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+<violation beginline="256" endline="256" begincolumn="13" endcolumn="28" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="292" endline="292" begincolumn="13" endcolumn="67" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="295" endline="296" begincolumn="13" endcolumn="69" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="299" endline="300" begincolumn="13" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="306" endline="306" begincolumn="13" endcolumn="53" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="330" endline="331" begincolumn="13" endcolumn="59" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="getDocumentBuilder" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="362" endline="362" begincolumn="13" endcolumn="42" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="364" endline="364" begincolumn="20" endcolumn="50" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="366" endline="366" begincolumn="20" endcolumn="46" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="368" endline="368" begincolumn="20" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="370" endline="370" begincolumn="20" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="372" endline="372" begincolumn="20" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="374" endline="374" begincolumn="20" endcolumn="47" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="service" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="390" endline="394" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isSpecialPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'isSpecialPath': private methods cannot be overridden
+</violation>
+<violation beginline="414" endline="415" begincolumn="9" endcolumn="25" rule="SimplifyBooleanReturns" ruleset="Design" package="org.apache.catalina.servlets" class="WebdavServlet" method="checkIfHeaders" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="415" endline="415" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="checkIfHeaders" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="509" endline="509" begincolumn="13" endcolumn="56" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="523" endline="523" begincolumn="17" endcolumn="36" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="525" endline="525" begincolumn="24" endcolumn="43" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="527" endline="527" begincolumn="24" endcolumn="50" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="547" endline="562" begincolumn="21" endcolumn="21" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="568" endline="572" begincolumn="15" endcolumn="13" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'SAXException' branch
+</violation>
+<violation beginline="583" endline="598" begincolumn="17" endcolumn="17" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="669" endline="669" begincolumn="21" endcolumn="36" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="669" endline="669" begincolumn="43" endcolumn="52" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="681" endline="681" begincolumn="22" endcolumn="49" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="681" endline="681" begincolumn="56" endcolumn="64" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="690" endline="690" begincolumn="33" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="705" endline="706" begincolumn="25" endcolumn="73" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doPropfind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="953" endline="953" begincolumn="17" endcolumn="36" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="975" endline="975" begincolumn="21" endcolumn="64" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1009" endline="1011" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="1027" endline="1042" begincolumn="17" endcolumn="17" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="1050" endline="1062" begincolumn="21" endcolumn="21" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="1080" endline="1092" begincolumn="21" endcolumn="21" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="1110" endline="1121" begincolumn="21" endcolumn="21" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="1160" endline="1160" begincolumn="19" endcolumn="24" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1160" endline="1160" begincolumn="31" endcolumn="58" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1161" endline="1161" begincolumn="19" endcolumn="40" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1175" endline="1175" begincolumn="27" endcolumn="64" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1176" endline="1176" begincolumn="28" endcolumn="52" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1177" endline="1177" begincolumn="28" endcolumn="45" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1189" endline="1189" begincolumn="27" endcolumn="64" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1190" endline="1190" begincolumn="28" endcolumn="52" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1191" endline="1191" begincolumn="28" endcolumn="45" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1236" endline="1236" begincolumn="28" endcolumn="33" rule="CloseResource" ruleset="Error Prone" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Writer object are closed after use
+</violation>
+<violation beginline="1284" endline="1284" begincolumn="26" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1284" endline="1284" begincolumn="57" endcolumn="74" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1336" endline="1336" begincolumn="17" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1394" endline="1394" begincolumn="16" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.apache.catalina.servlets" class="WebdavServlet" method="doLock" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Writer object are closed after use
+</violation>
+<violation beginline="1421" endline="1421" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="doUnlock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1494" endline="1494" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1498" endline="1498" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1520" endline="1520" begincolumn="14" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1520" endline="1520" begincolumn="32" endcolumn="48" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1536" endline="1536" begincolumn="17" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1559" endline="1559" begincolumn="21" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="isLocked" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1606" endline="1606" begincolumn="18" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1606" endline="1606" begincolumn="40" endcolumn="75" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1630" endline="1630" begincolumn="14" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1631" endline="1631" begincolumn="14" endcolumn="52" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1638" endline="1638" begincolumn="18" endcolumn="36" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1639" endline="1639" begincolumn="18" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1646" endline="1646" begincolumn="13" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1667" endline="1667" begincolumn="17" endcolumn="53" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1711" endline="1711" begincolumn="14" endcolumn="20" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1711" endline="1711" begincolumn="27" endcolumn="46" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1746" endline="1746" begincolumn="13" endcolumn="37" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+<violation beginline="1749" endline="1749" begincolumn="13" endcolumn="52" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1754" endline="1756" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1774" endline="1774" begincolumn="26" endcolumn="46" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1775" endline="1775" begincolumn="25" endcolumn="41" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1778" endline="1778" begincolumn="26" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1779" endline="1779" begincolumn="25" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="copyResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1853" endline="1853" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1857" endline="1857" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1877" endline="1877" begincolumn="31" endcolumn="58" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteResource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1925" endline="1925" begincolumn="35" endcolumn="59" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+<violation beginline="1928" endline="1928" begincolumn="13" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1938" endline="1938" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1942" endline="1942" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1956" endline="1956" begincolumn="18" endcolumn="38" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1957" endline="1957" begincolumn="17" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="deleteCollection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2004" endline="2004" begincolumn="29" endcolumn="53" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="sendReport" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+<violation beginline="2029" endline="2029" begincolumn="17" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="sendReport" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2043" endline="2043" begincolumn="16" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.apache.catalina.servlets" class="WebdavServlet" method="sendReport" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Writer object are closed after use
+</violation>
+<violation beginline="2064" endline="2064" begincolumn="34" endcolumn="47" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="2068" endline="2068" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2085" endline="2085" begincolumn="14" endcolumn="31" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2085" endline="2085" begincolumn="38" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2086" endline="2086" begincolumn="13" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2088" endline="2088" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2089" endline="2089" begincolumn="14" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2089" endline="2089" begincolumn="46" endcolumn="64" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2090" endline="2090" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2099" endline="2099" begincolumn="13" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2101" endline="2328" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="2210" endline="2210" begincolumn="21" endcolumn="51" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2214" endline="2214" begincolumn="28" endcolumn="57" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2220" endline="2220" begincolumn="28" endcolumn="64" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2227" endline="2227" begincolumn="28" endcolumn="62" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2233" endline="2233" begincolumn="31" endcolumn="86" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2235" endline="2235" begincolumn="28" endcolumn="60" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2244" endline="2244" begincolumn="28" endcolumn="53" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2251" endline="2251" begincolumn="28" endcolumn="61" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2259" endline="2259" begincolumn="28" endcolumn="58" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2271" endline="2271" begincolumn="28" endcolumn="52" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2273" endline="2273" begincolumn="28" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2286" endline="2286" begincolumn="28" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2288" endline="2288" begincolumn="25" endcolumn="64" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2348" endline="2348" begincolumn="42" endcolumn="55" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="2352" endline="2352" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2358" endline="2358" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2371" endline="2371" begincolumn="13" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2381" endline="2381" begincolumn="13" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2383" endline="2562" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="2475" endline="2475" begincolumn="21" endcolumn="51" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2478" endline="2478" begincolumn="28" endcolumn="57" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2484" endline="2484" begincolumn="28" endcolumn="64" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2487" endline="2487" begincolumn="28" endcolumn="62" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2489" endline="2489" begincolumn="30" endcolumn="46" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2490" endline="2490" begincolumn="28" endcolumn="60" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2492" endline="2492" begincolumn="28" endcolumn="53" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2494" endline="2494" begincolumn="28" endcolumn="61" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2499" endline="2499" begincolumn="28" endcolumn="58" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2506" endline="2506" begincolumn="28" endcolumn="52" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2508" endline="2508" begincolumn="28" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2521" endline="2521" begincolumn="28" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2523" endline="2523" begincolumn="25" endcolumn="64" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet" method="parseLockNullProperties" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2618" endline="2618" begincolumn="14" endcolumn="38" rule="UnsynchronizedStaticFormatter" ruleset="Multithreading" package="org.apache.catalina.servlets" class="WebdavServlet" method="getISOCreationDate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#unsynchronizedstaticformatter" priority="3">
+Static Formatter objects should be accessed in a synchronized manner
+</violation>
+<violation beginline="2705" endline="2705" begincolumn="9" endcolumn="22" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet$LockInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="2743" endline="2743" begincolumn="21" endcolumn="58" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet$LockInfo" method="hasExpired" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2752" endline="2752" begincolumn="21" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet$LockInfo" method="isExclusive" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2752" endline="2752" begincolumn="21" endcolumn="45" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.servlets" class="WebdavServlet$LockInfo" method="isExclusive" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2824" endline="2825" begincolumn="13" endcolumn="40" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavServlet$WebdavResolver" method="resolveEntity" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2845" endline="3150" begincolumn="20" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="org.apache.catalina.servlets" class="WebdavStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="2856" endline="2856" begincolumn="20" endcolumn="44" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.servlets" class="WebdavStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Hashtable'; use the interface instead
+</violation>
+</file>
+</pmd>

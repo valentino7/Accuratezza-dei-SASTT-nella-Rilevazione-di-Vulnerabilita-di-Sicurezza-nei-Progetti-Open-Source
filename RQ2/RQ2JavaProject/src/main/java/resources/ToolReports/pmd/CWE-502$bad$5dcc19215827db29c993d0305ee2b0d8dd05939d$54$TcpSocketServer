@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T21:19:49.800">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-502/bad$5dcc19215827db29c993d0305ee2b0d8dd05939d$54$TcpSocketServer.java">
+<violation beginline="72" endline="72" begincolumn="26" endcolumn="50" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.logging.log4j.core.net.server" class="TcpSocketServer$SocketHandler" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="90" endline="90" begincolumn="21" endcolumn="97" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.logging.log4j.core.net.server" class="TcpSocketServer$SocketHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="268" endline="268" begincolumn="30" endcolumn="41" rule="CloseResource" ruleset="Error Prone" package="org.apache.logging.log4j.core.net.server" class="TcpSocketServer" method="run" variable="clientSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+</file>
+</pmd>

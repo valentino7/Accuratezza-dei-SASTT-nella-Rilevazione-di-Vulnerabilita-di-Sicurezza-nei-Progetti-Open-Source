@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671848910636" analysisTimestamp="1672072316300" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-1188/good_d83a7673_CorsFilter.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-1188/good_d83a7673_CorsFilter.java</SrcDir>
+  </Project>
+  <BugInstance type="HRS_REQUEST_PARAMETER_TO_HTTP_HEADER" priority="2" rank="7" abbrev="HRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <LocalVariable name="accessControlRequestMethod" register="6" pc="382" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="397" end="397" startBytecode="383" endBytecode="383" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HRS_REQUEST_PARAMETER_TO_HTTP_HEADER" priority="2" rank="7" abbrev="HRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <LocalVariable name="origin" register="5" pc="304" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="371" end="371" startBytecode="305" endBytecode="305" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="383" end="383" startBytecode="348" endBytecode="348" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+  </BugInstance>
+  <BugInstance type="HRS_REQUEST_PARAMETER_TO_HTTP_HEADER" priority="2" rank="7" abbrev="HRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <LocalVariable name="origin" register="5" pc="136" role="LOCAL_VARIABLE_NAMED"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="267" end="267" startBytecode="137" endBytecode="137" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="2" rank="12" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="371" end="371" startBytecode="305" endBytecode="305" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="322" end="322" startBytecode="53" endBytecode="53" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="2" rank="12" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="383" end="383" startBytecode="348" endBytecode="348" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="322" end="322" startBytecode="53" endBytecode="53" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="2" rank="12" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="397" end="397" startBytecode="383" endBytecode="383" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <String value="java/util/Collection.contains(Ljava/lang/Object;)Z" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="331" end="331" startBytecode="80" endBytecode="80" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="337" end="337" startBytecode="102" endBytecode="102" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="354" end="354" startBytecode="211" endBytecode="211" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="2" rank="12" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="267" end="267" startBytecode="137" endBytecode="137" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="243" end="243" startBytecode="58" endBytecode="58" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="403" end="403" startBytecode="420" endBytecode="420" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="java/util/Iterator.next()Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String; parameter 1" role="Unknown source"/>
+    <String value="java/util/Collection.iterator()Ljava/util/Iterator;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.allowedHttpHeaders" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String; parameter 0" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="403" end="403" startBytecode="412" endBytecode="412" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="405" end="405" startBytecode="417" endBytecode="417" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="565" end="565" startBytecode="46" endBytecode="46" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="567" end="567" startBytecode="63" endBytecode="63" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="573" end="573" startBytecode="81" endBytecode="81" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="577" end="577" startBytecode="89" endBytecode="89" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="288" end="288" startBytecode="194" endBytecode="194" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="java/util/Iterator.next()Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.exposedHeaders" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String; parameter 1" role="Unknown source"/>
+    <String value="java/util/Collection.iterator()Ljava/util/Iterator;" role="Unknown source"/>
+    <String value="org/apache/catalina/filters/CorsFilter.join(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String; parameter 0" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="287" end="287" startBytecode="179" endBytecode="179" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="565" end="565" startBytecode="46" endBytecode="46" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="567" end="567" startBytecode="63" endBytecode="63" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="573" end="573" startBytecode="81" endBytecode="81" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="577" end="577" startBytecode="89" endBytecode="89" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="getMediaType" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="678" end="687" startBytecode="0" endBytecode="155" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="681" end="681" startBytecode="10" endBytecode="10" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="isLocalOrigin" signature="(Ljavax/servlet/http/HttpServletRequest;Ljava/lang/String;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="646" end="669" startBytecode="0" endBytecode="332" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="651" end="651" startBytecode="28" endBytecode="28" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="isLocalOrigin" signature="(Ljavax/servlet/http/HttpServletRequest;Ljava/lang/String;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="646" end="669" startBytecode="0" endBytecode="332" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="669" end="669" startBytecode="134" endBytecode="134" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="parseAndStore" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="735" end="781" startBytecode="0" endBytecode="750" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="751" end="751" startBytecode="133" endBytecode="133" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="PERMISSIVE_CORS" priority="1" rank="10" abbrev="SECCORS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="371" end="371" startBytecode="305" endBytecode="305" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="322" end="322" startBytecode="53" endBytecode="53" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="PERMISSIVE_CORS" priority="1" rank="10" abbrev="SECCORS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="379" end="379" startBytecode="335" endBytecode="335" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+  </BugInstance>
+  <BugInstance type="PERMISSIVE_CORS" priority="1" rank="10" abbrev="SECCORS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="383" end="383" startBytecode="348" endBytecode="348" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="322" end="322" startBytecode="53" endBytecode="53" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="PERMISSIVE_CORS" priority="1" rank="10" abbrev="SECCORS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="261" end="261" startBytecode="124" endBytecode="124" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+  </BugInstance>
+  <BugInstance type="PERMISSIVE_CORS" priority="1" rank="10" abbrev="SECCORS" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="267" end="267" startBytecode="137" endBytecode="137" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.addHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getHeader(Ljava/lang/String;)Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="243" end="243" startBytecode="58" endBytecode="58" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_CONTENT_TYPE" priority="3" rank="15" abbrev="SECSCT" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="checkRequestType" signature="(Ljavax/servlet/http/HttpServletRequest;)Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="588" end="639" startBytecode="0" endBytecode="559" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="621" end="621" startBytecode="202" endBytecode="202" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="checkRequestType" signature="(Ljavax/servlet/http/HttpServletRequest;)Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="588" end="639" startBytecode="0" endBytecode="559" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="593" end="593" startBytecode="28" endBytecode="28" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="checkRequestType" signature="(Ljavax/servlet/http/HttpServletRequest;)Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="588" end="639" startBytecode="0" endBytecode="559" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="607" end="607" startBytecode="106" endBytecode="106" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="decorateCORSProperties" signature="(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;)V" isStatic="true">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="485" end="542" startBytecode="0" endBytecode="507" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="501" end="501" startBytecode="99" endBytecode="99" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="decorateCORSProperties" signature="(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;)V" isStatic="true">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="485" end="542" startBytecode="0" endBytecode="507" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="511" end="511" startBytecode="150" endBytecode="150" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="decorateCORSProperties" signature="(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;)V" isStatic="true">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="485" end="542" startBytecode="0" endBytecode="507" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="521" end="521" startBytecode="201" endBytecode="201" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="decorateCORSProperties" signature="(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/filters/CorsFilter$CORSRequestType;)V" isStatic="true">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="485" end="542" startBytecode="0" endBytecode="507" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="525" end="525" startBytecode="233" endBytecode="233" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleInvalidCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="440" end="462" startBytecode="0" endBytecode="349" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="440" end="440" startBytecode="3" endBytecode="3" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleInvalidCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="440" end="462" startBytecode="0" endBytecode="349" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="442" end="442" startBytecode="21" endBytecode="21" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="322" end="322" startBytecode="53" endBytecode="53" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="331" end="331" startBytecode="80" endBytecode="80" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handlePreflightCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="315" end="409" startBytecode="0" endBytecode="901" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="341" end="341" startBytecode="110" endBytecode="110" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="handleSimpleCORS" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Ljavax/servlet/FilterChain;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="233" end="299" startBytecode="0" endBytecode="449" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="243" end="243" startBytecode="58" endBytecode="58" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_SERVER_NAME" priority="3" rank="15" abbrev="SECSSN" category="SECURITY">
+    <Class classname="org.apache.catalina.filters.CorsFilter">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="78" end="1070" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.filters.CorsFilter" name="isLocalOrigin" signature="(Ljavax/servlet/http/HttpServletRequest;Ljava/lang/String;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="646" end="669" startBytecode="0" endBytecode="332" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.filters.CorsFilter" start="656" end="656" startBytecode="49" endBytecode="49" sourcefile="CorsFilter.java" sourcepath="org/apache/catalina/filters/CorsFilter.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="12">
+    <MissingClass>javax.servlet.FilterChain</MissingClass>
+    <MissingClass>javax.servlet.GenericFilter</MissingClass>
+    <MissingClass>javax.servlet.ServletException</MissingClass>
+    <MissingClass>javax.servlet.ServletRequest</MissingClass>
+    <MissingClass>javax.servlet.ServletResponse</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>org.apache.catalina.filters.CorsFilter$1</MissingClass>
+    <MissingClass>org.apache.catalina.filters.CorsFilter$CORSRequestType</MissingClass>
+    <MissingClass>org.apache.juli.logging.Log</MissingClass>
+    <MissingClass>org.apache.juli.logging.LogFactory</MissingClass>
+    <MissingClass>org.apache.tomcat.util.res.StringManager</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 03:28:30 +0100" total_classes="1" referenced_classes="22" total_bugs="32" total_size="364" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="23.25" clock_seconds="6.26" peak_mbytes="145.53" alloc_mbytes="768.00" gc_seconds="0.09" priority_3="20" priority_2="7" priority_1="5">
+    <PackageStats package="org.apache.catalina.filters" total_bugs="32" total_types="1" total_size="364" priority_3="20" priority_2="7" priority_1="5">
+      <ClassStats class="org.apache.catalina.filters.CorsFilter" sourceFile="CorsFilter.java" interface="false" size="364" bugs="32" priority_3="20" priority_2="7" priority_1="5"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="721" invocations="478" avgMicrosecondsPerInvocation="1509" maxMicrosecondsPerInvocation="23068" standardDeviationMicrosecondsPerInvocation="1223"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="575" invocations="475" avgMicrosecondsPerInvocation="1210" maxMicrosecondsPerInvocation="48895" standardDeviationMicrosecondsPerInvocation="3299"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="180" invocations="25" avgMicrosecondsPerInvocation="7203" maxMicrosecondsPerInvocation="168331" standardDeviationMicrosecondsPerInvocation="32895"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="162" invocations="25" avgMicrosecondsPerInvocation="6501" maxMicrosecondsPerInvocation="70941" standardDeviationMicrosecondsPerInvocation="13971"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="148" invocations="25" avgMicrosecondsPerInvocation="5944" maxMicrosecondsPerInvocation="31017" standardDeviationMicrosecondsPerInvocation="8504"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="136" invocations="22" avgMicrosecondsPerInvocation="6187" maxMicrosecondsPerInvocation="24224" standardDeviationMicrosecondsPerInvocation="7240"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="107" invocations="25" avgMicrosecondsPerInvocation="4308" maxMicrosecondsPerInvocation="37783" standardDeviationMicrosecondsPerInvocation="8059"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="106" invocations="178" avgMicrosecondsPerInvocation="598" maxMicrosecondsPerInvocation="5636" standardDeviationMicrosecondsPerInvocation="813"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="97" invocations="25" avgMicrosecondsPerInvocation="3908" maxMicrosecondsPerInvocation="27036" standardDeviationMicrosecondsPerInvocation="6654"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="97" invocations="25" avgMicrosecondsPerInvocation="3906" maxMicrosecondsPerInvocation="22299" standardDeviationMicrosecondsPerInvocation="5815"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="90" invocations="22" avgMicrosecondsPerInvocation="4128" maxMicrosecondsPerInvocation="24102" standardDeviationMicrosecondsPerInvocation="5829"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="81" invocations="69" avgMicrosecondsPerInvocation="1176" maxMicrosecondsPerInvocation="46096" standardDeviationMicrosecondsPerInvocation="5623"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="75" invocations="25" avgMicrosecondsPerInvocation="3010" maxMicrosecondsPerInvocation="33336" standardDeviationMicrosecondsPerInvocation="6757"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="58" invocations="1" avgMicrosecondsPerInvocation="58494" maxMicrosecondsPerInvocation="58494" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="58" invocations="22" avgMicrosecondsPerInvocation="2643" maxMicrosecondsPerInvocation="16588" standardDeviationMicrosecondsPerInvocation="3912"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="57" invocations="1" avgMicrosecondsPerInvocation="57809" maxMicrosecondsPerInvocation="57809" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="55" invocations="25" avgMicrosecondsPerInvocation="2200" maxMicrosecondsPerInvocation="23672" standardDeviationMicrosecondsPerInvocation="5363"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="48" invocations="428" avgMicrosecondsPerInvocation="114" maxMicrosecondsPerInvocation="2134" standardDeviationMicrosecondsPerInvocation="223"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.MethodReturnCheck" totalMilliseconds="48" invocations="1" avgMicrosecondsPerInvocation="48928" maxMicrosecondsPerInvocation="48928" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="45" invocations="18" avgMicrosecondsPerInvocation="2533" maxMicrosecondsPerInvocation="14938" standardDeviationMicrosecondsPerInvocation="3879"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="41" invocations="25" avgMicrosecondsPerInvocation="1661" maxMicrosecondsPerInvocation="8167" standardDeviationMicrosecondsPerInvocation="1886"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="40" invocations="1" avgMicrosecondsPerInvocation="40866" maxMicrosecondsPerInvocation="40866" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison" totalMilliseconds="37" invocations="1" avgMicrosecondsPerInvocation="37783" maxMicrosecondsPerInvocation="37783" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="37" invocations="22" avgMicrosecondsPerInvocation="1682" maxMicrosecondsPerInvocation="8888" standardDeviationMicrosecondsPerInvocation="2261"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="34" invocations="22" avgMicrosecondsPerInvocation="1560" maxMicrosecondsPerInvocation="15658" standardDeviationMicrosecondsPerInvocation="3227"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="33" invocations="628" avgMicrosecondsPerInvocation="53" maxMicrosecondsPerInvocation="10532" standardDeviationMicrosecondsPerInvocation="499"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

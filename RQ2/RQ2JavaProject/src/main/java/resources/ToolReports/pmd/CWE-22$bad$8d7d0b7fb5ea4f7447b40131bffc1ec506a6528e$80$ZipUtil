@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:34:47.412">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$8d7d0b7fb5ea4f7447b40131bffc1ec506a6528e$80$ZipUtil.java">
+<violation beginline="33" endline="842" begincolumn="22" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="cn.hutool.core.util" class="ZipUtil" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="268" endline="268" begincolumn="19" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="zip" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ZipOutputStream object are closed after use
+</violation>
+<violation beginline="381" endline="381" begincolumn="11" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="unzip" variable="zipFileObj" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ZipFile object are closed after use
+</violation>
+<violation beginline="453" endline="453" begincolumn="11" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="unzipFileBytes" variable="zipFileObj" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ZipFile object are closed after use
+</violation>
+<violation beginline="471" endline="471" begincolumn="10" endcolumn="13" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="unzipFileBytes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="496" endline="496" begincolumn="20" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="gzip" variable="gos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this GZIPOutputStream object are closed after use
+</violation>
+<violation beginline="520" endline="520" begincolumn="20" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="gzip" variable="gos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this GZIPOutputStream object are closed after use
+</violation>
+<violation beginline="521" endline="521" begincolumn="23" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="gzip" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedInputStream object are closed after use
+</violation>
+<violation beginline="554" endline="554" begincolumn="19" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="unGzip" variable="gzi" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this GZIPInputStream object are closed after use
+</violation>
+<violation beginline="594" endline="594" begincolumn="23" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="zlib" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedInputStream object are closed after use
+</violation>
+<violation beginline="708" endline="708" begincolumn="23" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="addFile" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedInputStream object are closed after use
+</violation>
+<violation beginline="792" endline="794" begincolumn="5" endcolumn="3" rule="EmptyCatchBlock" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="closeEntry" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="806" endline="806" begincolumn="15" endcolumn="16" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="copy" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="807" endline="807" begincolumn="16" endcolumn="18" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.util" class="ZipUtil" method="copy" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStream object are closed after use
+</violation>
+<violation beginline="825" endline="825" begincolumn="37" endcolumn="71" rule="UselessParentheses" ruleset="Code Style" package="cn.hutool.core.util" class="ZipUtil" method="inflater" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="837" endline="837" begincolumn="37" endcolumn="71" rule="UselessParentheses" ruleset="Code Style" package="cn.hutool.core.util" class="ZipUtil" method="deflater" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T16:49:24.833">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/bad$bf7a47847dfb5ef2d1e2a537e2eb9f28063988c6$125$KubernetesCloud.java">
+<violation beginline="45" endline="45" begincolumn="1" endcolumn="36" rule="UnnecessaryImport" ruleset="Code Style" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.ctc.wstx.util.StringUtil'
+</violation>
+<violation beginline="46" endline="46" begincolumn="1" endcolumn="44" rule="UnnecessaryImport" ruleset="Code Style" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.google.common.base.Preconditions'
+</violation>
+<violation beginline="115" endline="115" begincolumn="23" endcolumn="46" rule="SingularField" ruleset="Design" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'client' could be replaced by a local variable.
+</violation>
+<violation beginline="319" endline="319" begincolumn="13" endcolumn="38" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="setContainerCapStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="403" endline="403" begincolumn="13" endcolumn="105" rule="GuardLogStatement" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="provision" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="408" endline="408" begincolumn="17" endcolumn="73" rule="GuardLogStatement" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="provision" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="415" endline="415" begincolumn="21" endcolumn="26" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="provision" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="465" endline="467" begincolumn="57" endcolumn="97" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="addProvisionedSlave" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="473" endline="475" begincolumn="57" endcolumn="97" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="addProvisionedSlave" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="526" endline="526" begincolumn="12" endcolumn="33" rule="LooseCoupling" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="getMatchingTemplates" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="600" endline="600" begincolumn="17" endcolumn="64" rule="ControlStatementBraces" ruleset="Code Style" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud$DescriptorImpl" method="doTestConnection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="611" endline="611" begincolumn="17" endcolumn="98" rule="GuardLogStatement" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud$DescriptorImpl" method="doTestConnection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="616" endline="616" begincolumn="17" endcolumn="98" rule="GuardLogStatement" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud$DescriptorImpl" method="doTestConnection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="657" endline="657" begincolumn="14" endcolumn="38" rule="UselessParentheses" ruleset="Code Style" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="readResolve" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="659" endline="660" begincolumn="13" endcolumn="55" rule="GuardLogStatement" ruleset="Best Practices" package="org.csanchez.jenkins.plugins.kubernetes" class="KubernetesCloud" method="readResolve" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

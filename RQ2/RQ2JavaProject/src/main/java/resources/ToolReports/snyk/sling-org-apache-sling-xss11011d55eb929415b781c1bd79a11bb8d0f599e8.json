@@ -1,0 +1,1607 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/XSS",
+              "name": "XSS",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/lutece-platform/lutece-core/commit/5387450fe0f3cf1b705bda89d553a6f67bc342b6?diff=split#diff-015efa4f075bbbac52efd486f29f3ca5L80",
+                    "lines": [
+                      {
+                        "line": " *             the io exception",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 80,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void processRequest( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValue = request.getParameter( PARAMETER_DATA );",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strValue ) : \"\";",
+                        "lineNumber": 82,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    String strEscaped = StringEscapeUtils.escapeHtml( strValue );",
+                        "lineNumber": 84,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strEscaped ) : \"\";",
+                        "lineNumber": 85,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    OutputStream out = response.getOutputStream( );",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.write( strValueReturn.getBytes( AppPropertiesService.getProperty( PROPERTY_ENCODING ) ) );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.flush( );",
+                        "lineNumber": 88,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.close( );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/square/keywhiz/commit/b08aeb5d31e17cd3706f646c595884181813121b?diff=split#diff-37c8fdba6768ae3e9126a316519ae714L35",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override protected void doPost(HttpServletRequest req, HttpServletResponse resp)",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    throws ServletException, IOException {",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String path = req.getPathInfo();",
+                        "lineNumber": 36,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String path = StringEscapeUtils.escapeHtml4(req.getPathInfo());",
+                        "lineNumber": 37,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  if(path != null && path.equals(\"/enable\")){",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(true);",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else if(path != null && path.equals(\"/disable\")) {",
+                        "lineNumber": 40,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(false);",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    resp.sendError(HttpServletResponse.SC_NOT_FOUND,",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        \"Need to pass /status/enable or /status/disable, not /status\" + path);",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apereo/cas/commit/9d81e9ba85945b0d0caaab58b10bf0c3b2e0af73?diff=split#diff-d950cb17562422f18fa1b11dc72e57deL72",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public final boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object o) throws Exception {",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // we only care about post because that's the only instance where we can get anything useful besides IP address.",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!\"POST\".equals(request.getMethod())) {",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 75,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (exceedsThreshold(request)) {",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        recordThrottle(request);",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + request.getParameter(usernameParameter)",
+                        "lineNumber": 79,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        final String username = StringEscapeUtils.escapeHtml4(request.getParameter(usernameParameter));",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + username",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                            + \" from IP Address [\" + request.getRemoteAddr() + \"]\");",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return false;",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " * @param request the request",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void recordThrottle(final HttpServletRequest request) {",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.warn(\"Throttling submission from {}.  More than {} failed login attempts within {} seconds.\",",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            new Object[] {request.getRemoteAddr(), failureThreshold, failureRangeInSeconds});",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Also started a IT testing harness to test servlets with a live sling instance",
+                  "* using properties file so that spring boot can read it too"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 308,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into printf, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[printf](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 115,
+                  "endLine": 115,
+                  "startColumn": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "286f98005cc0a459d98dbc8918be4c1597193240ea0b90bf76a6f238b60396a3",
+            "1": "19689298.83dbfe52.9f1cf61f.4ae3c302.98ca06e4.c6fbc499.fd4733c8.54d46e25.69e5fcf2.9594c955.9f9d2026.105521d4.a1bf88f3.c6fbc499.fd4733c8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 46,
+                            "endColumn": 75
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 17,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into printf, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[printf](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 116,
+                  "endLine": 116,
+                  "startColumn": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7cf50f7853a80838cefabe12cf9dcb8cce511eebe373b15c2d726cbad67a0341",
+            "1": "e6fcc0e0.6f58d1b4.695e7438.87cf4944.98ca06e4.c6fbc499.4dc4535f.54d46e25.69e5fcf2.9594c955.9f9d2026.105521d4.a1bf88f3.c6fbc499.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "endLine": 116,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "endLine": 116,
+                            "startColumn": 48,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "endLine": 116,
+                            "startColumn": 17,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into printf, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[printf](8)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 181,
+                  "endLine": 181,
+                  "startColumn": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9a044abbbfe187c3258af73e7eda05894398a51e06f5e3cef7012264eb1f40f5",
+            "1": "e6fcc0e0.9594c955.e02a36e2.87cf4944.98ca06e4.c6fbc499.dbac51bf.54d46e25.69e5fcf2.49766a9f.9f9d2026.105521d4.a1bf88f3.c6fbc499.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 107,
+                            "endLine": 107,
+                            "startColumn": 40,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 174,
+                            "endLine": 174,
+                            "startColumn": 45,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "endLine": 181,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "endLine": 181,
+                            "startColumn": 48,
+                            "endColumn": 79
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "endLine": 181,
+                            "startColumn": 17,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into printf, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[printf](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 183,
+                  "endLine": 183,
+                  "startColumn": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "57e6056906e0e4ef808b8de06f3e2556e7f1ec6c3d81391fa5f2ef5ef33e96e2",
+            "1": "e6fcc0e0.9594c955.e02a36e2.92ee92aa.98ca06e4.c6fbc499.046a5c2d.54d46e25.69e5fcf2.49766a9f.9f9d2026.105521d4.a1bf88f3.c6fbc499.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 107,
+                            "endLine": 107,
+                            "startColumn": 40,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 174,
+                            "endLine": 174,
+                            "startColumn": 45,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "endLine": 181,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "endLine": 183,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "endLine": 183,
+                            "startColumn": 46,
+                            "endColumn": 80
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "endLine": 183,
+                            "startColumn": 17,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into printf, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9)",
+              "[printf](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 184,
+                  "endLine": 184,
+                  "startColumn": 17,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0080b3cef2f4f3b8665d4924eb67232fae5eb97a73c5eccf40d19b83de4f3a9a",
+            "1": "e6fcc0e0.4401e118.b31d7a37.6483b32f.98ca06e4.c6fbc499.db83fc15.54d46e25.69e5fcf2.49766a9f.9f9d2026.105521d4.a1bf88f3.c6fbc499.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 107,
+                            "endLine": 107,
+                            "startColumn": 40,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 174,
+                            "endLine": 174,
+                            "startColumn": 45,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 181,
+                            "endLine": 181,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "endLine": 183,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "endLine": 184,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "endLine": 184,
+                            "startColumn": 48,
+                            "endColumn": 81
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 184,
+                            "endLine": 184,
+                            "startColumn": 17,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[println](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 121,
+                  "endLine": 121,
+                  "startColumn": 21,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5a5f402df0662a570c0f31f793407d88c60f9463f913cabdd51dd33552b7b877",
+            "1": "e6fcc0e0.1cbd3ff4.b9f0faf2.c115fc0d.98ca06e4.c6fbc499.4aab7667.54d46e25.69e5fcf2.9594c955.9f9d2026.105521d4.a1bf88f3.c6fbc499.0684bd51.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 30,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 16,
+                            "endColumn": 115
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 115,
+                            "endLine": 115,
+                            "startColumn": 46,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "endLine": 116,
+                            "startColumn": 48,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "endLine": 123,
+                            "startColumn": 37,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "endLine": 123,
+                            "startColumn": 37,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 122,
+                            "endLine": 122,
+                            "startColumn": 29,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/apache/sling/xss/impl/webconsole/XSSProtectionAPIWebConsolePlugin.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 121,
+                            "endLine": 121,
+                            "startColumn": 21,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 840,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 4,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 49,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 3,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,926 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/NonCryptoHardcodedSecret/test",
+              "name": "NonCryptoHardcodedSecret/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded, Security-relevant Constants"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n* Never hard code security-related constants; use symbolic names or configuration lookup files.\n* As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n* Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/RocketChat/Rocket.Chat.Java.SDK/commit/6f17474770cd120650daa9945ed65273aaa5ec5c?diff=split#diff-fc51f9a049d8a8cd9df2a4226b87c214L19",
+                    "lines": [
+                      {
+                        "line": "String username = \"sachin.shinde\";",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String password = \"sachin9924\";",
+                        "lineNumber": 18,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = \"sachin123\";",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private static String serverurl = \"wss://demo.rocket.chat\";",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wso2-attic/ballerina-message-broker/commit/8d606a4838b057411b7226e4651f7ca59d9746ce?diff=split#diff-2d8482e5c13da266ce6e6196d45bdf1eL66",
+                    "lines": [
+                      {
+                        "line": "private String user = \"wso2carbon\";",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String user = \"ballerina\";",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private String password = \"wso2carbon\";",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"ballerina\";",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public String getUrl() {",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/games647/FlexibleLogin/commit/9ea9726f145063f4436ca47ef864735e247c34c1?diff=split#diff-02a91e75dcc99d9c759ee4d9e0c88734L26",
+                    "lines": [
+                      {
+                        "line": "@Setting(comment = \"Password in order to login\")",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String password = \"password123456789\";",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"\";",
+                        "lineNumber": 25,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public SQLType getType() {",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Removed test keys",
+                  "Remove API keys",
+                  "Remove DropBox sync API libraries and dependencies"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 158,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 235,
+                  "endLine": 235,
+                  "startColumn": 9,
+                  "endColumn": 43
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1d12eebd99bec533ad0284c3400062d75ef5f36fc43b92ffe96d4ab43db504ca",
+            "1": "04cc0e45.0d13f447.ee64c6f1.3677d318.ae63d11c.4725ba78.529333fc.800bcb68.04cc0e45.0d13f447.ee64c6f1.3677d318.ae63d11c.4725ba78.529333fc.800bcb68"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 235,
+                            "endLine": 235,
+                            "startColumn": 9,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 755,
+                  "endLine": 755,
+                  "startColumn": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e3e1d5a350a1af85f70a51e47afc5060b2e0fa0c31eb62d2c0bba5d17cef4f6c",
+            "1": "d41c1715.9b6ddfbf.7ed1a20c.9269de86.1ab514f2.eedfda65.76cd3f61.3c6daf28.d41c1715.9b6ddfbf.7ed1a20c.9269de86.1ab514f2.eedfda65.76cd3f61.3c6daf28"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 755,
+                            "endLine": 755,
+                            "startColumn": 9,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 791,
+                  "endLine": 791,
+                  "startColumn": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9fc52ef757ace37e9cae71b9ced6fec4b40cc1ec5cc0c24cb607e62fed874da4",
+            "1": "e6fcc0e0.3fe2d4c9.2e4eb371.28753c5e.ae63d11c.13315039.f0e0ed1a.ba657196.e6fcc0e0.3fe2d4c9.2e4eb371.28753c5e.ae63d11c.13315039.f0e0ed1a.ba657196"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 791,
+                            "endLine": 791,
+                            "startColumn": 9,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 819,
+                  "endLine": 819,
+                  "startColumn": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "18ac1a0e8b4ef5cb31c71bb9994795dbb19fb04614c83035f0d54808a5a69775",
+            "1": "e6fcc0e0.45c67b46.33251ef2.8e253fc4.ae63d11c.6e7b4dd3.f0e0ed1a.39213a66.e6fcc0e0.45c67b46.33251ef2.8e253fc4.ae63d11c.6e7b4dd3.f0e0ed1a.39213a66"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 819,
+                            "endLine": 819,
+                            "startColumn": 9,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 950,
+                  "endLine": 950,
+                  "startColumn": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5689b7e59c1d1b1dd1ffb4d03ff67d18330c6cb20d36595046ff80ca8cf84d44",
+            "1": "e6fcc0e0.9339ef95.516bcdc5.28753c5e.1de12351.6347df20.f0e0ed1a.b3c5a7b8.e6fcc0e0.9339ef95.516bcdc5.28753c5e.1de12351.6347df20.f0e0ed1a.b3c5a7b8"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 950,
+                            "endLine": 950,
+                            "startColumn": 9,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 978,
+                  "endLine": 978,
+                  "startColumn": 9,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f91ca9f34e71712e65bc096adeecc0ee73a8a39329b23732285d05c619a3b7e4",
+            "1": "acbed9c8.dcdaba35.263a8619.df978580.23e485a9.dea76727.20cdb1e7.2df4e781.acbed9c8.dcdaba35.263a8619.df978580.23e485a9.dea76727.20cdb1e7.2df4e781"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/fusionauth/jwt/JWTTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 978,
+                            "endLine": 978,
+                            "startColumn": 9,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 429,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "The SHA-1 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[SHA-1](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/fusionauth/jwt/JWTUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 296,
+                  "endLine": 296,
+                  "startColumn": 23,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "fb24ff937d83cb5ff7bad2cf17d625906abbece2df7a72c185548457dd490b48",
+            "1": "9faa7dab.1cbd3ff4.33fa5dbe.e22980a8.f1d9f854.c80ba7fb.a7ce700b.54d46e25.8df8fa68.7f413d6f.33fa5dbe.e22980a8.f0e1baa5.c80ba7fb.d63a5bff.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/io/fusionauth/jwt/JWTUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 198,
+                            "endLine": 198,
+                            "startColumn": 28,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/io/fusionauth/jwt/JWTUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 296,
+                            "endLine": 296,
+                            "startColumn": 23,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 560,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "The SHA-1 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[SHA-1](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/primeframework/jwt/rsa/RSAUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 157,
+                  "endLine": 157,
+                  "startColumn": 23,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c8999e14cb62bf059b2f7bc88d9d377b574da8e311422887d32aeb9e4c84e5ea",
+            "1": "9faa7dab.1cbd3ff4.33fa5dbe.e22980a8.f1d9f854.c80ba7fb.a7ce700b.54d46e25.8df8fa68.7f413d6f.33fa5dbe.e22980a8.f0e1baa5.c80ba7fb.d63a5bff.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/primeframework/jwt/rsa/RSAUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 102,
+                            "endLine": 102,
+                            "startColumn": 19,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/primeframework/jwt/rsa/RSAUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 23,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 510,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 142,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

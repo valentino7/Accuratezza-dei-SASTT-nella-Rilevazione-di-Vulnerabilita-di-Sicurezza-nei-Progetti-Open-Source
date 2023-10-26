@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:03:48.709">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-295/bad$bde7097fb8173cf871827df7811b3865679b963d$19$TcpTransportServer.java">
+<violation beginline="72" endline="72" begincolumn="24" endcolumn="49" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="73" endline="73" begincolumn="24" endcolumn="41" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="137" endline="137" begincolumn="17" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="bind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="156" endline="156" begincolumn="17" endcolumn="52" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="bind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="213" endline="214" begincolumn="54" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="setBrokerInfo" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="316" endline="316" begincolumn="32" endcolumn="43" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="run" variable="serverSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocket object are closed after use
+</violation>
+<violation beginline="321" endline="321" begincolumn="39" endcolumn="45" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="run" variable="channel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocketChannel object are closed after use
+</violation>
+<violation beginline="333" endline="333" begincolumn="28" endcolumn="35" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocketChannel" variable="selector" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Selector object are closed after use
+</violation>
+<violation beginline="340" endline="340" begincolumn="19" endcolumn="47" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocketChannel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="361" endline="361" begincolumn="43" endcolumn="44" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocketChannel" variable="sc" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SocketChannel object are closed after use
+</violation>
+<violation beginline="374" endline="376" begincolumn="27" endcolumn="25" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocketChannel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="401" endline="401" begincolumn="20" endcolumn="25" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocket" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+<violation beginline="415" endline="417" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doRunWithServerSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="479" endline="479" begincolumn="36" endcolumn="39" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="run" variable="sock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+<violation beginline="483" endline="490" begincolumn="35" endcolumn="33" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="519" endline="520" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doStop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="523" endline="523" begincolumn="32" endcolumn="43" rule="CloseResource" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doStop" variable="serverSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocket object are closed after use
+</violation>
+<violation beginline="606" endline="608" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doHandleSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="617" endline="618" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="doHandleSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="692" endline="693" begincolumn="42" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.activemq.transport.tcp" class="TcpTransportServer" method="started" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+</file>
+</pmd>

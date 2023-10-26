@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:00:06.197">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/good$6b710a42e00acca405e085724c89cda016cf7442$202$MRAppMaster.java">
+<violation beginline="222" endline="222" begincolumn="11" endcolumn="66" rule="SingularField" ruleset="Design" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'taskAttemptFinishingMonitor' could be replaced by a local variable.
+</violation>
+<violation beginline="229" endline="229" begincolumn="22" endcolumn="51" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="264" endline="264" begincolumn="5" endcolumn="75" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="MRAppMaster" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="270" endline="270" begincolumn="5" endcolumn="19" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="createTaskAttemptFinishingMonitor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'monitor'
+</violation>
+<violation beginline="298" endline="299" begincolumn="10" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="300" endline="301" begincolumn="12" endcolumn="58" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="320" endline="322" begincolumn="9" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="332" endline="334" begincolumn="9" endcolumn="45" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="361" endline="361" begincolumn="29" endcolumn="76" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.jobhistory.EventType' due to existing import 'org.apache.hadoop.mapreduce.jobhistory.EventType'
+</violation>
+<violation beginline="364" endline="364" begincolumn="29" endcolumn="76" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.jobhistory.EventType' due to existing import 'org.apache.hadoop.mapreduce.jobhistory.EventType'
+</violation>
+<violation beginline="428" endline="428" begincolumn="27" endcolumn="74" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceInit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.jobhistory.EventType' due to existing import 'org.apache.hadoop.mapreduce.jobhistory.EventType'
+</violation>
+<violation beginline="488" endline="489" begincolumn="9" endcolumn="56" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="492" endline="492" begincolumn="11" endcolumn="59" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.v2.api.records.TaskId' due to existing import 'org.apache.hadoop.mapreduce.v2.api.records.TaskId'
+</violation>
+<violation beginline="511" endline="511" begincolumn="9" endcolumn="72" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="524" endline="525" begincolumn="13" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="keepJobFiles" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="558" endline="559" begincolumn="9" endcolumn="29" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="cleanupStagingDir" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="563" endline="563" begincolumn="7" endcolumn="66" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="cleanupStagingDir" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="593" endline="593" begincolumn="7" endcolumn="17" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="shutDownJob" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="600" endline="601" begincolumn="13" endcolumn="45" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="shutDownJob" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="613" endline="614" begincolumn="13" endcolumn="49" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="shutDownJob" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="625" endline="628" begincolumn="7" endcolumn="5" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="shutDownJob" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="650" endline="655" begincolumn="7" endcolumn="5" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="exitMRAppMaster" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="727" endline="729" begincolumn="7" endcolumn="5" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="initJobCredentialsAndUGI" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="759" endline="759" begincolumn="11" endcolumn="24" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'result'
+</violation>
+<violation beginline="761" endline="762" begincolumn="11" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="764" endline="768" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'InstantiationException' branch
+</violation>
+<violation beginline="765" endline="766" begincolumn="11" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="768" endline="772" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'InstantiationException' branch
+</violation>
+<violation beginline="769" endline="770" begincolumn="11" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="772" endline="776" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'InstantiationException' branch
+</violation>
+<violation beginline="773" endline="774" begincolumn="11" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="call" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="786" endline="786" begincolumn="5" endcolumn="15" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="createTaskAttemptListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'lis'
+</violation>
+<violation beginline="1154" endline="1154" begincolumn="21" endcolumn="80" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceStart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1163" endline="1165" begincolumn="9" endcolumn="42" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceStart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1171" endline="1172" begincolumn="9" endcolumn="41" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="serviceStart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1205" endline="1205" begincolumn="24" endcolumn="34" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="isRecoverySupported" variable="_jobContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name '_jobContext' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="1253" endline="1258" begincolumn="7" endcolumn="42" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="processRecovery" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1269" endline="1269" begincolumn="5" endcolumn="58" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="getPreviousJobHistoryStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1297" endline="1298" begincolumn="9" endcolumn="57" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="parsePreviousJobHistory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1301" endline="1302" begincolumn="5" endcolumn="47" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="parsePreviousJobHistory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1412" endline="1412" begincolumn="22" endcolumn="38" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster$SpeculatorEventDispatcher" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1441" endline="1441" begincolumn="13" endcolumn="69" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster$SpeculatorEventDispatcher" method="handle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1442" endline="1442" begincolumn="13" endcolumn="75" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster$SpeculatorEventDispatcher" method="handle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1527" endline="1530" begincolumn="7" endcolumn="5" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="main" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1557" endline="1557" begincolumn="7" endcolumn="71" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="notifyIsLastAMRetry" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1562" endline="1562" begincolumn="7" endcolumn="61" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" method="notifyIsLastAMRetry" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1633" endline="1633" begincolumn="35" endcolumn="70" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1670" endline="1670" begincolumn="35" endcolumn="70" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1678" endline="1680" begincolumn="7" endcolumn="5" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="1694" endline="1696" begincolumn="18" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster$Action" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'Action': member interfaces are implicitly static
+</violation>
+<violation beginline="1698" endline="1700" begincolumn="18" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.hadoop.mapreduce.v2.app" class="MRAppMaster$ExceptionAction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'ExceptionAction': member interfaces are implicitly static
+</violation>
+</file>
+</pmd>

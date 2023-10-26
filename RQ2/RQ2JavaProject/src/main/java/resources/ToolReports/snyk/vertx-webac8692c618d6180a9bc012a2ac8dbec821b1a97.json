@@ -1,0 +1,3927 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetHttpOnly/test",
+              "name": "WebCookieMissesCallToSetHttpOnly/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie Without 'HttpOnly' Flag"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe `HttpOnly` flag is a simple parameter used when setting a user cookie to ensure that cookies with sensitive session data are visible only to the browser rather than to scripts. This helps prevent cross-site scripting attacks, in which an attacker gains access to sensitive session information and uses this information to trick legitimate web-based applications into disclosing confidential information or accepting illegitimate requests. When developers use the `HttpOnly` flag to set the cookie, they ensure that this sensitive session information is not readable or writable except by the browser (read) and server (write), respectively. While most modern browsers and versions now recognize the HttpOnly flag, some legacy and custom browsers still do not.\n\n### Best practices for prevention\n* Include the `HttpOnly` attribute in the response header when setting cookies on the client side. Be aware, however, that this crucial step provides only partial remediation.\n* Integrate client-side scripts to determine browser version; require browser compatibility or avoid transmitting sensitive data to browsers that do not support `HttpOnly`.\n* Understand and evaluate risks of third-party components or plugins, which may expose cookies.\n* Educate developers in a zero-trust approach, understanding the risks and best practices to prevent cross-site scripting, such as sanitizing all user input for code and special characters.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/417511458/jbone/commit/af32abbc24e2e27aad90f60f96cb9de5d1794a6b?diff=split#diff-a896741011f3ab283be812e19dc1cdb1L167",
+                    "lines": [
+                      {
+                        "line": "@Bean",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public SimpleCookie getCookie(){",
+                        "lineNumber": 165,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie cookie = new SimpleCookie();",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setName(\"jbone.session.id\");",
+                        "lineNumber": 167,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(false);",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Dreampie/Resty/commit/2808658b3e7d46ebac839fa9620b84bc7eb38e55?diff=split#diff-6c1831bb7349c574c1ec5a92f5ca0072L60",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Cookie c = new Cookie(cookie, value);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setPath(\"/\");",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setMaxAge(expiration);",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setHttpOnly(httpOnly);",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  response.addCookie(c);",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/igniterealtime/Openfire/commit/db32bf15648e53d810be358f6fe8bb914544dad9?diff=split#diff-ccf715fb4529c9f89d175d29aef63cf5L127",
+                    "lines": [
+                      {
+                        "line": "        path = \"/\";",
+                        "lineNumber": 124,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 125,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(name, value);",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(maxAge);",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setPath(path);",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(true);",
+                        "lineNumber": 129,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Implemented Cookie HttpOnly support."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 103,
+                "cwe": [
+                  "CWE-1004"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash/test",
+              "name": "InsecureHash/test",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "python/InsecureHash/test",
+              "name": "InsecureHash/test",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "python"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetSecure/test",
+              "name": "WebCookieMissesCallToSetSecure/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIn a session hijacking attack, if a cookie containing sensitive data is set without the `secure` attribute, an attacker might be able to intercept that cookie. Once the attacker has this information, they can potentially impersonate a user, accessing confidential data and performing actions that they would not normally be authorized to do. Attackers often gain access to this sensitive cookie data when it is transmitted insecurely in plain text over a standard HTTP session, rather than being encrypted and sent over an HTTPS session. This type of attack is highly preventable by following best practices when setting sensitive session cookies.\n\n### Best practices for prevention\n* Set the `secure` attribute in the response header when setting cookies on the client side, and use a test tool to verify that secure cookie transmission is in place.\n* Always use HTTPS for all login pages and never redirect from HTTP to HTTPS, which leaves secure session data open to interception.\n* Follow other best practices when it comes to session cookies, such as setting the HttpOnly flag and maintaining highly time-limited sessions.\n* Consider implementing browser checks and providing secure data only within a browser that supports tight cookie security.\n* Generate session IDs in a way that is not easily predictable, invalidate sessions upon logout, and never reuse session IDs.\n* Educate developers to use built-in secure session-management functionality within the development environment instead of taking a DIY approach.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pippo-java/pippo/commit/baa786cf11e875461090175df964a88ac7d4ecd5?diff=split#diff-8aed5e116d7d7ad41bf04c851e1d5dc7L269",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 266,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Cookie generateLanguageCookie(String language) {",
+                        "lineNumber": 267,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(applicationCookiePrefix + \"_LANG\", language);",
+                        "lineNumber": 268,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(true);",
+                        "lineNumber": 269,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(TEN_YEARS);",
+                        "lineNumber": 270,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 271,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 272,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/eclipse/rap/commit/bec1d767c1435f13c923c90a578473e02aa24996?diff=split#diff-a8821336a5cc73da073db6bbfff0ae4eL87",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC  ",
+                        "lineNumber": 85,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC",
+                        "lineNumber": 86,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie( COOKIE_NAME, result );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "cookie.setSecure( RWT.getRequest().isSecure() );",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cookie.setMaxAge( COOKIE_MAX_AGE_SEC );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "ContextProvider.getResponse().addCookie( cookie );",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) update storeId stored in session",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/InnovateUKGitHub/innovation-funding-service/commit/a770f11236a0a40bfdd1e6b181d5a80e0da970ea?diff=split#diff-e27b77e438734a64c56eb279998f82b3L80",
+                    "lines": [
+                      {
+                        "line": "public void removeAuthentication(HttpServletResponse response) {",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(AUTH_TOKEN, null);",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(0);",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(cookieSecure);",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(cookieHttpOnly);",
+                        "lineNumber": 89,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added cookie support in HttpRequest/Response",
+                  "Set secure user cookies and only for HTTP."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 88,
+                "cwe": [
+                  "CWE-614"
+                ]
+              }
+            },
+            {
+              "id": "java/TooPermissiveCors",
+              "name": "TooPermissiveCors",
+              "shortDescription": {
+                "text": "Origin Validation Error"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nAs a legacy of early web design and site limitations, most web applications default, for security reasons, to a \"same origin policy\". This means that browsers can only retrieve data from another site if the two sites share the same domain. In today's complex online environment, however, sites and applications often need to retrieve data from other domains. This is done under fairly limited conditions through an exception to the same origin policy known as \"cross-origin resource sharing\".\n\nDevelopers may create definitions of trusted domains that are broader than absolutely necessary, inadvertently opening up wider access than intended. This weakness could result in data exposure or loss, or even allow an attacker to take over the site or application.\n\n### Best practices for prevention\n* Avoid using wildcards for cross-origin resource sharing. Instead, define intended domains explicitly.\n* Ensure that your site or app is well defended against cross-site scripting attacks (XSS), which could lead to takeover via an overly permissive cross-domain policy.\n* Do not mix secure and insecure protocols when defining cross-domain policies.\n* Consider defining a clear approved list to specify which domains will be given resource-level access; use this approved list to validate all domain access requests.\n* Clearly define which methods (view, read, and update) are permitted for each resource and domain to avoid abuse.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/DSM-DMS/DMS/commit/2604c498b3e44dc9b7e03dc16107a52788c37df6?diff=split#diff-01bead2e2006ad276fe0c80d5f84dc4fL134",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "response.putHeader(\"Access-Control-Allow-Origin\", \"*\");",
+                        "lineNumber": 133,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "response.putHeader(\"Access-Control-Allow-Origin\", \"dsm2015.cafe24.com\");",
+                        "lineNumber": 133,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "/*",
+                        "lineNumber": 134,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " * Allow all of domains",
+                        "lineNumber": 135,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/ibissource/iaf/commit/b00b9318da78f3ec989ee2d67f459ee74f7da8eb?diff=split#diff-4d078022735f5014cb05064c42d6ef5eL97",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(method.equals(\"OPTIONS\")) {",
+                        "lineNumber": 97,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  response.setHeader(\"Access-Control-Allow-Origin\", \"*\");",
+                        "lineNumber": 96,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  response.setHeader(\"Access-Control-Allow-Origin\", CorsAllowOrigin);",
+                        "lineNumber": 98,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  String headers = request.getHeader(\"Access-Control-Request-Headers\");",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (headers != null)",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/KnowledgeCaptureAndDiscovery/wings/commit/aa88c48acc28670df01c53350795122f3214da8d?diff=split#diff-94b73927c425c8d79b4928fe18881b1cL61",
+                    "lines": [
+                      {
+                        "line": "\t//\treturn;",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String format = request.getParameter(\"format\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "response.addHeader(\"Access-Control-Allow-Origin\", \"*\");",
+                        "lineNumber": 60,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "response.addHeader(\"Access-Control-Allow-Origin\", config.getClients());",
+                        "lineNumber": 59,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "response.addHeader(\"Access-Control-Allow-Credentials\", \"true\");",
+                        "lineNumber": 60,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "response.addHeader(\"Access-Control-Allow-Methods\", \"GET, POST, DELETE, PUT\");",
+                        "lineNumber": 61,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "String uri = config.getServerUrl() + request.getRequestURI();",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Polish CORS support",
+                  "enhance CORS support to allow to define origin",
+                  "Add support for X-Forwarded-For header and allowed proxies"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 67,
+                "cwe": [
+                  "CWE-942",
+                  "CWE-346"
+                ]
+              }
+            },
+            {
+              "id": "python/ssl~wrap_socket~without~protocol/test",
+              "name": "ssl~wrap_socket~without~protocol/test",
+              "shortDescription": {
+                "text": "Missing protocol in ssl.wrap_socket"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCalling `ssl.wrap_socket` without specifying the `ssl_version` results in using a protocol version that is deprecated due to no longer being strong enough.\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\n\n\n### Best practices for prevention\n* Avoid calling `ssl.wrap_socket` without specifying the `ssl_version`\n\n\n## References\n\n* [ssl.wrap_socket](https://docs.python.org/3/library/ssl.html#ssl.wrap_socket)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "python"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Gallopsled/pwntools/commit/5fe760e70be3dc30a6e87b32bfb7fb009eb6b067?diff=split#diff-5979bfeb2208b5aa5b3f6ada06d80b92L84",
+                    "lines": [
+                      {
+                        "line": "        if ssl:",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            self.sock = _ssl.wrap_socket(self.sock)",
+                        "lineNumber": 83,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "            self.sock = _ssl.wrap_socket(self.sock,**ssl_args)",
+                        "lineNumber": 84,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "def _connect(self, fam, typ):",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/tornadoweb/tornado/commit/cfa8857b819579170a7fc949bcf8c27cca040215?diff=split#diff-46c2c62b2b1964831d9332ba934cb623L428",
+                    "lines": [
+                      {
+                        "line": "def _handle_connect(self):",
+                        "lineNumber": 431,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    # TODO(bdarnell): cert verification, etc",
+                        "lineNumber": 426,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    self.socket = ssl.wrap_socket(self.socket,",
+                        "lineNumber": 432,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                                  do_handshake_on_connect=False)",
+                        "lineNumber": 428,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "                                  do_handshake_on_connect=False,",
+                        "lineNumber": 433,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                                  **self._ssl_options)",
+                        "lineNumber": 434,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    # Don't call the superclass's _handle_connect (which is responsible",
+                        "lineNumber": 435,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/lxc/pylxd/commit/17cddd8c84443214972c6d1cdd03b378ec3b82fb?diff=split#diff-62c66f6d66b8da5f1f0e9608b759fc35L68",
+                    "lines": [
+                      {
+                        "line": "(cert_file, key_file) = self._get_ssl_certs()",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "self.sock = ssl.wrap_socket(sock, certfile=cert_file,",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                            keyfile=key_file)",
+                        "lineNumber": 68,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "                            keyfile=key_file,",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                            ssl_version=ssl.PROTOCOL_TLSv1_2)",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support for specifying the SSL protocol version (Python v2) ()",
+                  "Progress on TLS support"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 27,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword",
+              "name": "HardcodedPassword",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/MultiAuthorizationHandlerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 33,
+                  "endLine": 36,
+                  "startColumn": 20,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f017ab8ed8e078fc973b171d19738e7081d56eba461801a47f2ef41e60b79c66",
+            "1": "5387ee68.e8c02a15.21975e2f.6c52ae28.75f548fa.80e5b635.712e5312.fde7589e.5387ee68.e8c02a15.21975e2f.6c52ae28.75f548fa.80e5b635.712e5312.fde7589e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/MultiAuthorizationHandlerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 36,
+                            "endLine": 36,
+                            "startColumn": 22,
+                            "endColumn": 30
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/JWTAuthHandlerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 41,
+                  "startColumn": 62,
+                  "endColumn": 13
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "27af36f88e6bdd9b6769a367525c636474ee1f4bb850091a4e0c673513008caa",
+            "1": "a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690.a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/JWTAuthHandlerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 41,
+                            "endLine": 41,
+                            "startColumn": 26,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/AuthHandlerTestBase.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 87,
+                  "endLine": 87,
+                  "startColumn": 31,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "69e3797b2700f4355ba82edecac4f6421462a191cb7459742eb1002ff7c6bf11",
+            "1": "19689298.83dbfe52.c2dbeeec.6c52ae28.f5f4b203.f9725739.d75a0942.54d46e25.19689298.83dbfe52.c2dbeeec.6c52ae28.f5f4b203.f9725739.d75a0942.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/AuthHandlerTestBase.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 87,
+                            "endLine": 87,
+                            "startColumn": 90,
+                            "endColumn": 110
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/EventbusBridgeTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1047,
+                  "endLine": 1047,
+                  "startColumn": 31,
+                  "endColumn": 74
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a36790518887ea8a7b0e1fdf313b1b98c09f53c941ef2aaa30efdd463c7cec81",
+            "1": "19689298.83dbfe52.c2dbeeec.6c52ae28.f5f4b203.f9725739.d75a0942.54d46e25.19689298.83dbfe52.c2dbeeec.6c52ae28.f5f4b203.f9725739.d75a0942.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/EventbusBridgeTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1047,
+                            "endLine": 1047,
+                            "startColumn": 87,
+                            "endColumn": 107
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 163,
+                  "endLine": 163,
+                  "startColumn": 22,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "81b8f7a57e5d55a59dbcec99bb69bcf5c9909475fcbb74cec753484c0b5fe329",
+            "1": "19689298.98dbaec4.4e9590e2.6c52ae28.60644571.77715af1.533894bc.203bd690.19689298.98dbaec4.b2863c3a.e22980a8.f2a5bca1.77715af1.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 163,
+                            "endLine": 163,
+                            "startColumn": 22,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 230,
+                  "endLine": 230,
+                  "startColumn": 17,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e34745421586adef8f6f06c61cbc14272025e59569ff0ce8af56ada4088afc21",
+            "1": "e6fcc0e0.98dbaec4.33fa5dbe.6c52ae28.ae63d11c.7fda7c5e.f0e0ed1a.54d46e25.e6fcc0e0.98dbaec4.b2863c3a.e22980a8.3ee457e0.7fda7c5e.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 230,
+                            "endLine": 230,
+                            "startColumn": 17,
+                            "endColumn": 30
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 367,
+                  "endLine": 367,
+                  "startColumn": 22,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b335fae0041dfe2f6d56cc36fb541ba45464f26a05060fb16023a057e98cdea8",
+            "1": "19689298.98dbaec4.8909275b.6c52ae28.60644571.77715af1.533894bc.203bd690.19689298.98dbaec4.b2863c3a.33056f84.f2a5bca1.77715af1.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 367,
+                            "endLine": 367,
+                            "startColumn": 22,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 509,
+                  "endLine": 509,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f23febfb852ef5abd5215e404e2f5b4414b95aee834602b8100a26fa444d1777",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.98cc48ae.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 509,
+                            "endLine": 509,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 513,
+                  "endLine": 513,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "fea453b3869373d25c0f26f43665585b777aa6d5c04fd9485d903db854320ad4",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.4a9c8cbc.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 513,
+                            "endLine": 513,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 518,
+                  "endLine": 518,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ef65cda1f82f9acfe0305c498ef7f2622619cd78ee4116b4ddc6ee9c0c617ab7",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.4a9c8cbc.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 518,
+                            "endLine": 518,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 522,
+                  "endLine": 522,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "05863e15304dc2a70425fc929cbb68f1c8d69dac9324260d69c43b95122e7ba7",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.4a9c8cbc.7fda7c5e.74d2738d.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.0681ed2b.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 522,
+                            "endLine": 522,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 527,
+                  "endLine": 527,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "64bf072e03c3529837b2d3c61efd25b52b148059bfdd6e84dbec7630f1f3eaa3",
+            "1": "45d43885.98dbaec4.5127d7fc.6c52ae28.98cc48ae.7fda7c5e.87f16211.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 527,
+                            "endLine": 527,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 531,
+                  "endLine": 531,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "466c4a770aebc52f40904efc4e5d25a49ef0ec0d7bfeba0ead35412f982627a1",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.98cc48ae.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 531,
+                            "endLine": 531,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/DigestAuthHandlerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 39,
+                  "endLine": 39,
+                  "startColumn": 13,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "42edf0e3a9ddf9a759bafdb4ed4170c4892c2b0180c52065d0c6a1e42786b691",
+            "1": "14b5f39f.da263459.33fa5dbe.e22980a8.e91c5128.7fda7c5e.ed07dab4.54d46e25.14b5f39f.da263459.33fa5dbe.e22980a8.e91c5128.7fda7c5e.ed07dab4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/DigestAuthHandlerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 39,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/java/io/vertx/ext/web/handler/DigestAuthHandlerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 13,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/InsecureHash/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "hashlib.sha1 is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "markdown": "{0} is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "arguments": [
+              "[hashlib.sha1](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/sockjs-protocol/ws4py/client/__init__.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 81,
+                  "endLine": 81,
+                  "startColumn": 35,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f1155ab4f9d6b6703794cb7d5999e53c0083d7c44c8134175c2edc8e37fd7f33",
+            "1": "b2dd68c0.577bab1d.403ee3c8.139c59a8.25e30b7d.ba14daf2.8658ac02.8794408a.b2dd68c0.577bab1d.403ee3c8.139c59a8.25e30b7d.ba14daf2.8658ac02.8794408a"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/sockjs-protocol/ws4py/client/__init__.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "endLine": 81,
+                            "startColumn": 35,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 203,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/InsecureHash/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "hashlib.sha1 is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "markdown": "{0} is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "arguments": [
+              "[hashlib.sha1](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/sockjs-protocol/ws4py/server/cherrypyserver.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 188,
+                  "endLine": 188,
+                  "startColumn": 69,
+                  "endColumn": 73
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "684ee68a579b5f0cd9b8e7e85294342019854f45f0a652efaa83b87ae1d3ee60",
+            "1": "3783e1cb.e169c641.85ec23ad.139c59a8.30c69829.ba14daf2.8658ac02.8794408a.3783e1cb.e169c641.85ec23ad.139c59a8.30c69829.ba14daf2.8658ac02.8794408a"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/sockjs-protocol/ws4py/server/cherrypyserver.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 188,
+                            "endLine": 188,
+                            "startColumn": 69,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 203,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/InsecureHash/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "hashlib.sha1 is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "markdown": "{0} is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "arguments": [
+              "[hashlib.sha1](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/sockjs-protocol/websocket/_handshake.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 200,
+                  "endLine": 200,
+                  "startColumn": 27,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6e7e80dc08cc8c7a1dec921e82e6e796b87fe4ec52424bf4fb7bc933742ab367",
+            "1": "5e6e75af.59b34bce.763ba90d.139c59a8.cc857d4e.ba14daf2.8658ac02.8356f9c3.5e6e75af.59b34bce.763ba90d.139c59a8.cc857d4e.ba14daf2.8658ac02.8356f9c3"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/sockjs-protocol/websocket/_handshake.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 200,
+                            "endLine": 200,
+                            "startColumn": 27,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 153,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/InsecureHash/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "hashlib.sha1 is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "markdown": "{0} is insecure. Consider changing it to a secure hashing algorithm (e.g. SHA256).",
+            "arguments": [
+              "[hashlib.sha1](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/sockjs-protocol/ws4py/server/wsgi/middleware.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 260,
+                  "endLine": 260,
+                  "startColumn": 55,
+                  "endColumn": 59
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "82976f3db34a93164874c1e89d3f9c8c571ff3e045f598ccde9f5c48d5846c51",
+            "1": "3783e1cb.e169c641.85ec23ad.139c59a8.30c69829.ba14daf2.8658ac02.8794408a.3783e1cb.e169c641.85ec23ad.139c59a8.30c69829.ba14daf2.8658ac02.8794408a"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/sockjs-protocol/ws4py/server/wsgi/middleware.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 260,
+                            "endLine": 260,
+                            "startColumn": 55,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 203,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 163,
+                  "endLine": 163,
+                  "startColumn": 22,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "03f3e7d1e97fa38c263adb1d92bbf009ea59afb06e73db4a618a264bc733bc19",
+            "1": "19689298.98dbaec4.4e9590e2.6c52ae28.60644571.77715af1.533894bc.203bd690.19689298.98dbaec4.b2863c3a.e22980a8.f2a5bca1.77715af1.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 163,
+                            "endLine": 163,
+                            "startColumn": 22,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 230,
+                  "endLine": 230,
+                  "startColumn": 17,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7059b863dff4e3326015a083faefce51063c1072dd9735f416af890b02a0732c",
+            "1": "e6fcc0e0.98dbaec4.33fa5dbe.6c52ae28.ae63d11c.7fda7c5e.f0e0ed1a.54d46e25.e6fcc0e0.98dbaec4.b2863c3a.e22980a8.3ee457e0.7fda7c5e.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 230,
+                            "endLine": 230,
+                            "startColumn": 17,
+                            "endColumn": 30
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 367,
+                  "endLine": 367,
+                  "startColumn": 22,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "781d297e77623307d71d0b4d81959e708ebbf0b857266b5ea64e52761a2b395d",
+            "1": "19689298.98dbaec4.8909275b.6c52ae28.60644571.77715af1.533894bc.203bd690.19689298.98dbaec4.b2863c3a.33056f84.f2a5bca1.77715af1.d4ec22af.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 367,
+                            "endLine": 367,
+                            "startColumn": 22,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 509,
+                  "endLine": 509,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "159edcc67bbf0a1f7ac952066eeaf29617fad9b619ea752a106e09b3f7149506",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.98cc48ae.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 509,
+                            "endLine": 509,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 513,
+                  "endLine": 513,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f1bdd76cc1c5f6f0da7db3a2fa0aa1df4ba6e30c3cf43ce00ee745fa6d2c53c9",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.4a9c8cbc.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 513,
+                            "endLine": 513,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 518,
+                  "endLine": 518,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e6207bb6e538dd25b419de783ebfcef2e0a007d9db461cb172e643bf7649e46c",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.4a9c8cbc.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 518,
+                            "endLine": 518,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 527,
+                  "endLine": 527,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b5cecacbe06352ebb5e70690bc7069e24afde6967393888f798f2d332a1060c6",
+            "1": "45d43885.98dbaec4.5127d7fc.6c52ae28.98cc48ae.7fda7c5e.87f16211.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 527,
+                            "endLine": 527,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 4,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 531,
+                  "endLine": 531,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "80b7de8af80d67aeb0626cc34ce0ceaba9751a77cad0fac5499dadd0d05949aa",
+            "1": "45d43885.98dbaec4.33fa5dbe.6c52ae28.98cc48ae.7fda7c5e.be04624c.54d46e25.92762d9a.98dbaec4.b2863c3a.e22980a8.93bf3f8c.7fda7c5e.a9154dac.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web-client/src/test/java/io/vertx/ext/web/client/SessionAwareWebClientTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 531,
+                            "endLine": 531,
+                            "startColumn": 13,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveCors",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "CORS policy \"*\" might be too permissive. This allows malicious code on other domains to communicate with the application, which is a security risk",
+            "markdown": "{0} {1} might be too permissive. This allows malicious code on other domains to communicate with the application, which is a security risk",
+            "arguments": [
+              "[CORS policy](0)",
+              "[\"*\"](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/BaseTransport.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 161,
+                  "endLine": 161,
+                  "startColumn": 5,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "677773dbb8069f1606639dacb116a5d19f139f3117f825eb7f27175fc852603b",
+            "1": "cbfd4675.6ed6e5fc.fdbc0497.e22980a8.f1d9f854.4bae721f.5ac02bbc.54d46e25.bbbd7c96.9cad87d2.fdbc0497.e22980a8.f1d9f854.4bae721f.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/BaseTransport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "endLine": 161,
+                            "startColumn": 5,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/BaseTransport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 159,
+                            "endLine": 159,
+                            "startColumn": 16,
+                            "endColumn": 19
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveCors",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "CORS policy \"*\" might be too permissive. This allows malicious code on other domains to communicate with the application, which is a security risk",
+            "markdown": "{0} {1} might be too permissive. This allows malicious code on other domains to communicate with the application, which is a security risk",
+            "arguments": [
+              "[CORS policy](0)",
+              "[\"*\"](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/CorsHandlerImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 161,
+                  "endLine": 161,
+                  "startColumn": 7,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "bc137aa6ba77eb38e0606ce3896240db340822fff5c938d2cc0ba63a4521187f",
+            "1": "da9120e8.9cad87d2.a224ef38.90303a35.6c69ab4e.0d476878.e1128e97.54d46e25.bbbd7c96.9cad87d2.e48f6acc.90303a35.6c69ab4e.0d476878.e1128e97.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/CorsHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 161,
+                            "endLine": 161,
+                            "startColumn": 7,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/CorsHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 178,
+                            "endLine": 178,
+                            "startColumn": 36,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 502,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/ssl~wrap_socket~without~protocol/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Call to deprecated method ssl.wrap_socket does not specify a protocol, which may result in an insecure default being used",
+            "markdown": "Call to deprecated method {0} does not specify a protocol, which may result in an insecure default being used",
+            "arguments": [
+              "[ssl.wrap_socket](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/test/sockjs-protocol/httplib_fork.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1159,
+                  "endLine": 1159,
+                  "startColumn": 25,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e55a3aa2f0432477e8a7716602a7fd015e043f70526f56b1cd29bb9628259d13",
+            "1": "b2dd68c0.577bab1d.79e62dc9.1ee5c859.3e18df67.ba14daf2.081ac3f4.cde74a1f.b2dd68c0.577bab1d.79e62dc9.1ee5c859.3e18df67.ba14daf2.081ac3f4.cde74a1f"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/test/sockjs-protocol/httplib_fork.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1159,
+                            "endLine": 1159,
+                            "startColumn": 25,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1049,
+                  "endLine": 1052,
+                  "startColumn": 62,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1c386fb4091cfbc09f4d5adbf2c02d6cbcf247eead3832bc666ca0eec3423249",
+            "1": "a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690.a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1052,
+                            "endLine": 1052,
+                            "startColumn": 24,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1070,
+                  "endLine": 1073,
+                  "startColumn": 62,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6243a8931ca087682ae4cadac6e8d956797fea18ef3cf43c01d7d449dad176f4",
+            "1": "a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690.a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1073,
+                            "endLine": 1073,
+                            "startColumn": 24,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1086,
+                  "endLine": 1089,
+                  "startColumn": 62,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4783bf30205790c99f23ac3f965f21b222b989e342b912599aa5b446854b07eb",
+            "1": "a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690.a4f1ec39.861518ae.21975e2f.6c52ae28.75f548fa.51c5d720.61ac12fa.203bd690"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/examples/WebExamples.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1089,
+                            "endLine": 1089,
+                            "startColumn": 24,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/DigestAuthHandlerImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "endLine": 58,
+                  "startColumn": 13,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2598724a3803a9c083cc421b4873a8cd89d9a8ce2a7515716173f07e46f306c1",
+            "1": "14b5f39f.da263459.33fa5dbe.e22980a8.e91c5128.7fda7c5e.ed07dab4.54d46e25.14b5f39f.da263459.33fa5dbe.e22980a8.e91c5128.7fda7c5e.ed07dab4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/DigestAuthHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 39,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/DigestAuthHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 13,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSHandlerImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 251,
+                  "endLine": 251,
+                  "startColumn": 28,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "065fb58eb9f00683cd687d4491f4a8ea7fc0f5cfd6594dc62a423b1d11d892e4",
+            "1": "19689298.da263459.09fc77c2.5e6ab657.98fa8f9f.c80ba7fb.0a026dee.54d46e25.19689298.da263459.09fc77c2.5e6ab657.98fa8f9f.c80ba7fb.0a026dee.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 251,
+                            "endLine": 251,
+                            "startColumn": 54,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSHandlerImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 251,
+                            "endLine": 251,
+                            "startColumn": 28,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 502,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 8,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 246,
+                  "endLine": 246,
+                  "startColumn": 26,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "196475a34b80e16edf19a9654267eca7b090490c3c44bdb5eea6db1af8fea02f",
+            "1": "19689298.da263459.09fc77c2.5e6ab657.98fa8f9f.c80ba7fb.0a026dee.54d46e25.19689298.da263459.09fc77c2.5e6ab657.98fa8f9f.c80ba7fb.0a026dee.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 246,
+                            "endLine": 246,
+                            "startColumn": 52,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/sockjs/impl/SockJSImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 246,
+                            "endLine": 246,
+                            "startColumn": 26,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 502,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 27,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 738,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 90,
+            "isSupported": true,
+            "lang": "JavaScript"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "Ruby"
+          },
+          {
+            "files": 37,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 1,
+            "isSupported": false,
+            "lang": "Unknown"
+          },
+          {
+            "files": 77,
+            "isSupported": true,
+            "lang": "Python"
+          }
+        ]
+      }
+    }
+  ]
+}

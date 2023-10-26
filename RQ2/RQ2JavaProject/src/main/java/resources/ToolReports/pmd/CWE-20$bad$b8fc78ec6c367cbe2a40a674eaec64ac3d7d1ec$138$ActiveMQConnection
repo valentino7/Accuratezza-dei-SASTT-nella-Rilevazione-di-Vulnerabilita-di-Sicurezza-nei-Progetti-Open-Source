@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:55:36.074">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-20/bad$b8fc78ec6c367cbe2a40a674eaec64ac3d7d1ec$138$ActiveMQConnection.java">
+<violation beginline="236" endline="236" begincolumn="17" endcolumn="30" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.activemq" class="ActiveMQConnection" method="newThread" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'thread'
+</violation>
+<violation beginline="529" endline="532" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="584" endline="587" begincolumn="17" endcolumn="17" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="doStop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="690" endline="692" begincolumn="89" endcolumn="33" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.activemq" class="ActiveMQConnection" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="718" endline="720" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.activemq" class="ActiveMQConnection" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="719" endline="719" begincolumn="17" endcolumn="113" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1353" endline="1355" begincolumn="35" endcolumn="33" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.activemq" class="ActiveMQConnection" method="onCompletion" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1354" endline="1354" begincolumn="37" endcolumn="118" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="onCompletion" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1376" endline="1376" begincolumn="9" endcolumn="102" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="forceCloseOnSecurityException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1400" endline="1402" begincolumn="27" endcolumn="25" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.activemq" class="ActiveMQConnection" method="syncSendPacket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1401" endline="1401" begincolumn="29" endcolumn="118" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="syncSendPacket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1903" endline="1906" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="onCommand" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1933" endline="1934" begincolumn="17" endcolumn="39" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="onClientInternalException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1961" endline="1961" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="onAsyncException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1979" endline="1979" begincolumn="25" endcolumn="80" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1981" endline="1984" begincolumn="21" endcolumn="21" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2009" endline="2012" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="transportInterupted" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2017" endline="2020" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="transportResumed" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2335" endline="2335" begincolumn="13" endcolumn="137" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.activemq" class="ActiveMQConnection" method="waitForTransportInterruptionProcessingToComplete" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2481" endline="2484" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.activemq" class="ActiveMQConnection" method="cleanUpTempDestinations" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

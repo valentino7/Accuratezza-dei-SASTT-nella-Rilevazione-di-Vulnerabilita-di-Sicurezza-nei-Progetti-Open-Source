@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:09:52.700">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-119/bad$269a583330695d1418a4f5578f7169350b2e1332$1$HttpServerImpl.java">
+<violation beginline="41" endline="41" begincolumn="1" endcolumn="48" rule="UnnecessaryImport" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'io.netty.handler.codec.http.websocketx.*'
+</violation>
+<violation beginline="42" endline="42" begincolumn="1" endcolumn="38" rule="UnnecessaryImport" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'io.netty.handler.codec.http2.*'
+</violation>
+<violation beginline="69" endline="69" begincolumn="1" endcolumn="32" rule="UnnecessaryImport" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'io.vertx.core.net.impl.*'
+</violation>
+<violation beginline="87" endline="87" begincolumn="1" endcolumn="63" rule="UnnecessaryImport" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'io.netty.handler.codec.http.HttpResponseStatus.*'
+</violation>
+<violation beginline="88" endline="88" begincolumn="1" endcolumn="56" rule="UnnecessaryImport" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'io.netty.handler.codec.http.HttpVersion.*'
+</violation>
+<violation beginline="120" endline="120" begincolumn="20" endcolumn="37" rule="AvoidUsingVolatile" ruleset="Multithreading" package="io.vertx.core.http.impl" class="HttpServerImpl" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="124" endline="124" begincolumn="20" endcolumn="34" rule="AvoidUsingVolatile" ruleset="Multithreading" package="io.vertx.core.http.impl" class="HttpServerImpl" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="211" endline="211" begincolumn="25" endcolumn="33" rule="AvoidUsingHardCodedIP" ruleset="Best Practices" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidusinghardcodedip" priority="3">
+Do not hard code the IP address 
+</violation>
+<violation beginline="216" endline="216" begincolumn="25" endcolumn="33" rule="AvoidUsingHardCodedIP" ruleset="Best Practices" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidusinghardcodedip" priority="3">
+Do not hard code the IP address 
+</violation>
+<violation beginline="231" endline="231" begincolumn="78" endcolumn="95" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'HttpVersion.HTTP_2' due to existing static import 'io.netty.handler.codec.http.HttpVersion.*'
+</violation>
+<violation beginline="335" endline="335" begincolumn="15" endcolumn="28" rule="UselessQualifiedThis" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="341" endline="351" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="366" endline="366" begincolumn="42" endcolumn="55" rule="UselessQualifiedThis" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="375" endline="375" begincolumn="11" endcolumn="35" rule="GuardLogStatement" ruleset="Best Practices" package="io.vertx.core.http.impl" class="HttpServerImpl" method="listen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="636" endline="636" begincolumn="35" endcolumn="92" rule="ControlStatementBraces" ruleset="Code Style" package="io.vertx.core.http.impl" class="HttpServerImpl$ServerHandlerWithWebSockets" method="handleMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="644" endline="644" begincolumn="44" endcolumn="93" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="io.vertx.core.http.impl" class="HttpServerImpl$ServerHandlerWithWebSockets" method="handleMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="735" endline="735" begincolumn="13" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="io.vertx.core.http.impl" class="HttpServerImpl$ServerHandlerWithWebSockets" method="handshake" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="954" endline="954" begincolumn="67" endcolumn="95" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="io.vertx.core.http.impl" class="HttpServerImpl$Http2UpgradeHandler" method="channelRead" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="983" endline="985" begincolumn="75" endcolumn="17" rule="EmptyIfStmt" ruleset="Error Prone" package="io.vertx.core.http.impl" class="HttpServerImpl$Http2UpgradeHandler" method="channelRead" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+</file>
+</pmd>

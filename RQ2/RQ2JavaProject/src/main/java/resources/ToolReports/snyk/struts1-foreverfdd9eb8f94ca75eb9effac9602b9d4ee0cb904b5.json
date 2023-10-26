@@ -1,0 +1,2115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/TrustBoundaryViolation",
+              "name": "TrustBoundaryViolation",
+              "shortDescription": {
+                "text": "Trust Boundary Violation"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nGood application design includes defining trusted and untrusted areas. Trusted areas might include secure session information, while untrusted areas might include general website content such as a company logo. When this weakness is present, the application allows untrusted data-such as unsanitized user input-to be moved into trusted areas, generally data structures. If this happens, the data is often inadvertently then treated as \"trusted\" by the server, allowing attackers to gain higher-level access, taking control of the application or leading to denial of service.\n\n### Best practices for prevention\n\n* In early application planning stages, incorporate secure design principles in consultation with application security professionals.\n* Sanitize and validate all user input, including data from cookies and HTTP headers-limiting input to expected values if possible-before transferring to a trusted data structure (Never pass user input directly to a trusted data structure.).\n* Use sanitization and validation methods built into your development environment if these are available rather than relying on DIY methods, which are more complex to implement and may not catch special cases or can break if the application is modified.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/OAuth-Apis/apis/commit/0a7301608cc377bc36922ae25f352ad7aab2cc05?diff=split#diff-e76222cf463c219da7ab44271ef36583L24",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpServletRequest httpServletRequest = (HttpServletRequest) request;",
+                        "lineNumber": 31,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpServletResponse httpResponse = (HttpServletResponse) response;",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    httpServletRequest.getSession().setAttribute(POST_CAS_AUTHENTICATION_INFO, httpServletRequest.getRemoteUser());",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    CasUser casUser = new CasUser();",
+                        "lineNumber": 33,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String uid = httpServletRequest.getRemoteUser();",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    casUser.setUid(uid);",
+                        "lineNumber": 35,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (admins.contains(uid)) {",
+                        "lineNumber": 36,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        casUser.setAdmin(true);",
+                        "lineNumber": 37,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 38,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    httpServletRequest.getSession().setAttribute(POST_CAS_AUTHENTICATION_INFO, casUser);",
+                        "lineNumber": 39,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String uri = (String) httpServletRequest.getSession().getAttribute(REDIRECT_URL);",
+                        "lineNumber": 40,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    httpResponse.sendRedirect(uri);",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/NCIP/catissue-core/commit/a396754f0b45452079559ba517c824dc5179ac2b?diff=split#diff-c141ef2cd4e78ddc0295139e37574051L53",
+                    "lines": [
+                      {
+                        "line": " * */",
+                        "lineNumber": 50,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public ActionForward executeSecureAction(ActionMapping mapping, ActionForm form,",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpServletRequest request, HttpServletResponse response) throws Exception",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Validator validator = new Validator();",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "//For Pagenation\t",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "//Gets the session of this request.",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpSession session = request.getSession();",
+                        "lineNumber": 60,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String pageNumStr = request.getParameter(Constants.PAGE_NUMBER);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int pageNum = 0;",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if(!validator.isEmpty(pageNumStr))",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    \tpageNum = Integer.parseInt(pageNumStr);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    \tsession.setAttribute(Constants.PAGE_NUMBER,pageNumStr);",
+                        "lineNumber": 66,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    \trequest.setAttribute(Constants.PAGE_NUMBER,pageNumStr);",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "//The start index in the list of users to be approved/rejected.",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/handexing/geekHome/commit/480c34dc8e4c889fb75df481295943e0412795c6?diff=split#diff-e356bbe1a48e1105917313c37d5b1882L196",
+                    "lines": [
+                      {
+                        "line": "@RequestMapping(\"getEmailCode\")",
+                        "lineNumber": 195,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @CrossOrigin",
+                        "lineNumber": 196,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public ExecuteResult<User> getEmailCode(@RequestBody User user , HttpServletRequest request) {",
+                        "lineNumber": 197,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      final ExecuteResult<User> result = new ExecuteResult<>();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      try {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "          User u = userService.verifyByNameAndEmail(user);",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "          if(u.getId()!=null){",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              String code = EmailUtils.sendEmail(u.getEmail()); //ÕÅæÚÇüÚé«õ╗ÂÚ¬îÞ»ü",
+                        "lineNumber": 200,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "              String code = EmailUtils.getCode(); ",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "              emailUtils.doTask(u.getEmail() , code); //Õ╝éµ¡ÑÕÅæÚÇü",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "              result.setData(userService.verifyByNameAndEmail(user));",
+                        "lineNumber": 204,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              result.setSuccess(true);",
+                        "lineNumber": 205,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              //Õ░åÚ¬îÞ»üþáüµö¥õ║Äsessionõ©¡õ┐ØÕ¡ÿ´╝îÕ¡ÿµö¥õ╣ïÕëìÕàêµ©àÚÖñ",
+                        "lineNumber": 206,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              if(request.getSession().getAttribute(\"verifyCode\") != null)",
+                        "lineNumber": 207,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                  request.getSession().removeAttribute(\"verifyCode\"); ",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              }",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              request.getSession().setAttribute(\"verifyCode\", code);",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "          }else {",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "              result.setData(new User());",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "* fix unit test",
+                  "When a user logs in, change what is viewed.",
+                  "Added OIDC WS login and unit test."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 94,
+                "cwe": [
+                  "CWE-501"
+                ]
+              }
+            },
+            {
+              "id": "java/ReturnsPassword",
+              "name": "ReturnsPassword",
+              "shortDescription": {
+                "text": "Unprotected Storage of Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nIf credentials are not protected or not sufficiently protected through strong encryption, attackers can access this information in a number of ways. Developers may rely on plain-text storage of credentials when they believe the system is completely secure from attack or only accessible to insiders. This confidence is misguided and dangerous. If a malicious insider-such as a former employee-or a hostile attacker using SQL injection, XML injection, or a brute-force attack accesses the system, they can access this credential information to gain unauthorized permissions within the system and to export other confidential and secure information.\n\n### Best practices for prevention\n* Ensure that passwords are never stored in plain text, even for \"purely internal\" use.\n* Never rely on password encoding, such as base 64 encoding; choose a complex encryption algorithm that includes salting, then hashing.\n* Implement zero-trust approaches in which users have access only to information needed for legitimate business purposes.\n* To the greatest extent possible, secure the application against injection attacks and other types of weaknesses.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Raysmond/SpringBlog/commit/3fbcae1e4627151fef017182e2be25404efb6778?diff=split#diff-5db28c34e3a8215d068e1650562a5e85L78",
+                    "lines": [
+                      {
+                        "line": "logger.info(\"\" + passwordEncoder.matches(password, user.getPassword()));",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (!user.getPassword().equals(passwordEncoder.encode(password)))",
+                        "lineNumber": 77,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "boolean match = passwordEncoder.matches(password, user.getPassword());",
+                        "lineNumber": 77,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (!match)",
+                        "lineNumber": 78,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return false;",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/linlinjava/litemall/commit/62964b8be5856976d673e0942a3457d252147d47?diff=split#diff-350e06b09af70876f8b603fb1d33080fL64",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(!user.getPassword().equals(password)){",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return ResponseUtil.badArgumentValue();",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if(!encoder.matches(password, user.getPassword())){",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return ResponseUtil.fail(403, \"Þ┤ªÕÅÀÕ»åþáüõ©ìÕ»╣\");",
+                        "lineNumber": 66,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/guchengwuyue/yshopmall/commit/28985ae95e09e9433788475d8bef2a10a197d0ec?diff=split#diff-3eddbc993068925ffebe6bd98b170164L155",
+                    "lines": [
+                      {
+                        "line": "    throw new BadRequestException(\"õ┐«µö╣Õñ▒Þ┤Ñ´╝îµùºÕ»åþáüÚöÖÞ»»\");",
+                        "lineNumber": 176,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 177,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(userDetails.getPassword().equals(EncryptUtils.encryptPassword(user.getNewPass()))){",
+                        "lineNumber": 154,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "if(passwordEncoder.matches(newPass, user.getPassword())){",
+                        "lineNumber": 178,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new BadRequestException(\"µû░Õ»åþáüõ©ìÞâ¢õ©ÄµùºÕ»åþáüþø©ÕÉî\");",
+                        "lineNumber": 179,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 180,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Rollback to Password File instead of password"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 147,
+                "cwe": [
+                  "CWE-256"
+                ]
+              }
+            },
+            {
+              "id": "java/Ssrf",
+              "name": "Ssrf",
+              "shortDescription": {
+                "text": "Server-Side Request Forgery (SSRF)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\nIn a server-side request forgery attack, a malicious user supplies a URL (an external URL or a network IP address such as 127.0.0.1) to the application's back end. The server then accesses the URL and shares its results, which may include sensitive information such as AWS metadata, internal configuration information, or database contents with the attacker. Because the request comes from the back end, it bypasses access controls, potentially exposing information the user does not have sufficient privileges to receive. The attacker can then exploit this information to gain access, modify the web application, or demand a ransom payment.\n\n### Best practices for prevention\n* Blacklists are problematic and attackers have numerous ways to bypass them; ideally, use a whitelist of all permitted domains and IP addresses.\n* Use authentication even within your own network to prevent exploitation of server-side requests.\n* Implement zero trust and sanitize and validate all URL and header data returning to the server from the user. Strip invalid or suspect characters, then inspect to be certain it contains a valid and expected value.\n* Ideally, avoid sending server requests based on user-provided data altogether.\n* Ensure that you are not sending raw response bodies from the server directly to the client. Only deliver expected responses.\n* Disable suspect and exploitable URL schemas. Common culprits include obscure and little-used schemas such as `file://`, `dict://`, `ftp://`, and `gopher://`.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/httpcache4j/httpcache4j/commit/81f9db7ad6e7e18227b8b5de717c580da15ed7ae?diff=split#diff-99799647d646d0fff0a1b4b465dd5de0L49",
+                    "lines": [
+                      {
+                        "line": "public HTTPResponse resolve(HTTPRequest request) throws IOException {",
+                        "lineNumber": 47,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    req = getAuthenticator().preparePreemptiveAuthentication(req);",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 51,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "URL url = request.getRequestURI().toURL();",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "URLConnection openConnection = url.openConnection();",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (openConnection instanceof HttpURLConnection) {",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpURLConnection connection = (HttpURLConnection) openConnection;",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LearnLib/alex/commit/cb22c1446dfa65bb405f50baa79ba77866c4c706?diff=split#diff-1723d8f955b61289dccacfea34e7737dL58",
+                    "lines": [
+                      {
+                        "line": "@GET",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Produces(MediaType.TEXT_HTML)",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Response doGetProxy(@QueryParam(\"url\") String url, @HeaderParam(\"Cookie\") String cookies) {",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    LOGGER.trace(\"IFrameProxyResource.doGetProxy(\" + url + \", \" + cookies + \").\");",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 60,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Connection connection = Jsoup.connect(url);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = parseAndProcessCookies(connection, cookies);",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = connection.method(Connection.Method.GET);",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dotnet/aspnetcore/commit/e089cfc11cb86d6da786d82ee92aeef1c903f0f5?diff=split#diff-f69c44e82917810b055809e4c47c7e7dL84",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest) {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 99,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest, String bodyContent) {",
+                        "lineNumber": 100,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    Request.Builder requestBuilder = new Request.Builder().url(httpRequest.getUrl());",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    switch (httpRequest.getMethod()) {",
+                        "lineNumber": 103,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support Java 8 class files",
+                  "- app requests work in tests",
+                  "* Add logic to catch unranked hiscores and display them properly."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 233,
+                "cwe": [
+                  "CWE-918"
+                ]
+              }
+            },
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/share/org/apache/struts/util/TokenProcessor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 179,
+                  "endLine": 179,
+                  "startColumn": 32,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8fbd78ecc25870f6cf1c45cbba03f6490e5b45c2b8650a71669b30d1feae3559",
+            "1": "19689298.da263459.e99130b3.5e6ab657.98fa8f9f.f53a5558.0a026dee.54d46e25.19689298.da263459.e99130b3.5e6ab657.98fa8f9f.f53a5558.0a026dee.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/TokenProcessor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 179,
+                            "endLine": 179,
+                            "startColumn": 58,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/TokenProcessor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 179,
+                            "endLine": 179,
+                            "startColumn": 32,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TrustBoundaryViolation",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into setAttribute where it is used to modify the HTTP session object. This could result in mixing trusted and untrusted data in the same data structure, thus increasing the likelihood to mistakenly trust unvalidated data.",
+            "markdown": "Unsanitized input from {0} {1} into {2} where it is used to modify the HTTP session object. This could result in mixing trusted and untrusted data in the same data structure, thus increasing the likelihood to mistakenly trust unvalidated data.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[setAttribute](8)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 111,
+                  "endLine": 111,
+                  "startColumn": 9,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "20053114ec57ead9217617d44e5160a6c6d9f3c3feb63660cc5243b2a8101f0c",
+            "1": "c1c46fae.1cbd3ff4.33fa5dbe.e22980a8.53e0e770.7fda7c5e.5fa5ecf9.54d46e25.cf266d98.9389f161.ad72eba2.280e977c.53e0e770.e4d7b7ac.0ac97cd8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "endLine": 98,
+                            "startColumn": 27,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "endLine": 98,
+                            "startColumn": 27,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "endLine": 98,
+                            "startColumn": 16,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 103,
+                            "endLine": 103,
+                            "startColumn": 23,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "endLine": 42,
+                            "startColumn": 29,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 104,
+                            "endLine": 104,
+                            "startColumn": 26,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 104,
+                            "endLine": 104,
+                            "startColumn": 13,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "endLine": 111,
+                            "startColumn": 50,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LocaleAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 111,
+                            "endLine": 111,
+                            "startColumn": 9,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 351,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TrustBoundaryViolation",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into setAttribute where it is used to modify the HTTP session object. This could result in mixing trusted and untrusted data in the same data structure, thus increasing the likelihood to mistakenly trust unvalidated data.",
+            "markdown": "Unsanitized input from {0} {1} into {2} where it is used to modify the HTTP session object. This could result in mixing trusted and untrusted data in the same data structure, thus increasing the likelihood to mistakenly trust unvalidated data.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4)",
+              "[setAttribute](5)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 66,
+                  "endLine": 66,
+                  "startColumn": 7,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b88d320c9260115f92055fa31403039b98a642739e9511842081d2fc99d70dcf",
+            "1": "bbbd7c96.c8c8034f.56016534.6483b32f.53e0e770.89505584.5fa5ecf9.54d46e25.bbbd7c96.7f413d6f.6be8e552.e22980a8.53e0e770.95df3f17.d11a1cde.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 32,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 32,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 24,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 12,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 66,
+                            "endLine": 66,
+                            "startColumn": 68,
+                            "endColumn": 77
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/tiles-documentation/org/apache/struts/webapp/tiles/channel/SelectChannelAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 66,
+                            "endLine": 66,
+                            "startColumn": 7,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 351,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/ReturnsPassword",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "markdown": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/example/org/apache/struts/webapp/example/LogonAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 74,
+                  "endLine": 74,
+                  "startColumn": 36,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d74ad5efbe4a9411d62b678146dc88fa71411f0167e7c2a60d5ac90fa29a1461",
+            "1": "bbbd7c96.02e6f4cd.71a71d19.9998adc9.dd06b926.7fda7c5e.b192288b.ac56be65.bbbd7c96.c8c8034f.71a71d19.9998adc9.dd06b926.7fda7c5e.2ed7aa4c.cfafd018"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/example/org/apache/struts/webapp/example/LogonAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 36,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/Ssrf",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into openConnection, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17)",
+              "[openConnection](18)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 205,
+                  "endLine": 205,
+                  "startColumn": 20,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "904f25d7f8f2a7a79276819382d52f9002d2f9f48eff0cd2e66427f323f4da46",
+            "1": "6d351a63.9a87848e.33fa5dbe.e22980a8.f1d9f854.7fda7c5e.a0c1e924.54d46e25.6d351a63.277c621c.1a98fad1.c2195bd9.7d73cd7b.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 925,
+                            "endLine": 925,
+                            "startColumn": 33,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 925,
+                            "endLine": 925,
+                            "startColumn": 33,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 989,
+                            "endLine": 989,
+                            "startColumn": 97,
+                            "endColumn": 107
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 992,
+                            "endLine": 992,
+                            "startColumn": 9,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 992,
+                            "endLine": 992,
+                            "startColumn": 9,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 993,
+                            "endLine": 993,
+                            "startColumn": 16,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 924,
+                            "endLine": 924,
+                            "startColumn": 22,
+                            "endColumn": 105
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 926,
+                            "endLine": 926,
+                            "startColumn": 16,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 886,
+                            "endLine": 886,
+                            "startColumn": 22,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 887,
+                            "endLine": 887,
+                            "startColumn": 25,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 887,
+                            "endLine": 887,
+                            "startColumn": 25,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 887,
+                            "endLine": 887,
+                            "startColumn": 21,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 887,
+                            "endLine": 887,
+                            "startColumn": 17,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/util/RequestUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 887,
+                            "endLine": 887,
+                            "startColumn": 16,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 14,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "endLine": 193,
+                            "startColumn": 31,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 15,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "endLine": 193,
+                            "startColumn": 27,
+                            "endColumn": 30
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 16,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "endLine": 193,
+                            "startColumn": 17,
+                            "endColumn": 75
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 17,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "endLine": 205,
+                            "startColumn": 20,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 18,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/taglib/bean/IncludeTag.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 205,
+                            "endLine": 205,
+                            "startColumn": 20,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into java.io.FileInputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1),(2),(3)",
+              "[java.io.FileInputStream](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 313,
+                  "endLine": 313,
+                  "startColumn": 34,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9db59bc819fdfdcde2a747f40d9d8ab4bced9a17c72b608ee9fa7bf4ff3473b6",
+            "1": "19689298.5cad1622.50c8bb92.6c52ae28.025462d2.7fda7c5e.55c6f621.54d46e25.3b23116d.64f3c955.50c8bb92.de031890.a7b964d9.7fda7c5e.377b98a3.77438af7"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 302,
+                            "endLine": 302,
+                            "startColumn": 18,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 302,
+                            "endLine": 302,
+                            "startColumn": 18,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 302,
+                            "endLine": 302,
+                            "startColumn": 7,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 313,
+                            "endLine": 313,
+                            "startColumn": 51,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/share/org/apache/struts/tiles/xmlDefinition/XmlParser.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 313,
+                            "endLine": 313,
+                            "startColumn": 34,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 254,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 890,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 1,
+            "isSupported": false,
+            "lang": "Unknown"
+          },
+          {
+            "files": 1,
+            "isSupported": false,
+            "lang": "Roff Manpage"
+          },
+          {
+            "files": 515,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

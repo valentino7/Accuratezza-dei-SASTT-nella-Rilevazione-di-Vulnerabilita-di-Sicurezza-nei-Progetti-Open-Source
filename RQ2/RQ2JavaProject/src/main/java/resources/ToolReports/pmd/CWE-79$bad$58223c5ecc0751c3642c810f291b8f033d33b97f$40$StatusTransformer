@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:28:27.363">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-79/bad$58223c5ecc0751c3642c810f291b8f033d33b97f$40$StatusTransformer.java">
+<violation beginline="47" endline="938" begincolumn="32" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="org.apache.catalina.manager" class="StatusTransformer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="161" endline="163" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeOSState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="186" endline="188" begincolumn="34" endcolumn="13" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeOSState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="234" endline="234" begincolumn="13" endcolumn="30" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.manager" class="StatusTransformer" method="writeConnectorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="235" endline="235" begincolumn="13" endcolumn="30" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.catalina.manager" class="StatusTransformer" method="writeConnectorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'Vector'; use the interface instead
+</violation>
+<violation beginline="253" endline="255" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeConnectorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="373" endline="410" begincolumn="9" endcolumn="9" rule="ImplicitSwitchFallThrough" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#implicitswitchfallthrough" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="375" endline="375" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="379" endline="379" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="383" endline="383" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="386" endline="386" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="389" endline="389" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="392" endline="392" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="396" endline="396" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="401" endline="401" begincolumn="15" endcolumn="15" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="456" endline="456" begincolumn="26" endcolumn="44" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="456" endline="456" begincolumn="51" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="511" endline="511" begincolumn="26" endcolumn="44" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="511" endline="511" begincolumn="51" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeProcessorState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="594" endline="596" begincolumn="30" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeDetailedState" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="647" endline="647" begincolumn="17" endcolumn="39" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.catalina.manager" class="StatusTransformer" method="writeContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="686" endline="688" begincolumn="30" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="727" endline="729" begincolumn="31" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeManager" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="761" endline="763" begincolumn="31" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeJspMonitor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="782" endline="782" begincolumn="18" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeWrapper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="782" endline="782" begincolumn="40" endcolumn="58" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="writeWrapper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="812" endline="814" begincolumn="30" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="writeWrapper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="829" endline="829" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="filter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="829" endline="829" begincolumn="21" endcolumn="23" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="filter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="835" endline="852" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.catalina.manager" class="StatusTransformer" method="filter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="836" endline="851" begincolumn="13" endcolumn="13" rule="ImplicitSwitchFallThrough" ruleset="Error Prone" package="org.apache.catalina.manager" class="StatusTransformer" method="filter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#implicitswitchfallthrough" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="853" endline="853" begincolumn="17" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="filter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="889" endline="889" begincolumn="21" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="formatSize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="911" endline="911" begincolumn="21" endcolumn="51" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="formatTime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="913" endline="913" begincolumn="21" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="formatTime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="935" endline="935" begincolumn="17" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="org.apache.catalina.manager" class="StatusTransformer" method="formatSeconds" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+</file>
+</pmd>

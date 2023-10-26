@@ -1,0 +1,1622 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/RegexInjection",
+              "name": "RegexInjection",
+              "shortDescription": {
+                "text": "Regular expression injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIf user input is used to build a regular expression it is possible to alter the original regex leading to unexpected results. For example, an attacker can cause the execution of a regex that takes a long time to execute, resulting in performance degradation and possibly Denial of Service (DoS).\nRegular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\n### Best practices for prevention\n* Avoid building dynamic regular expression that rely on user data\n* Escape regular expressions that are built from user data\n\n\n## References\n* [Regular expression Denial of Service](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/BaseXdb/basex/commit/a1ecd592e626169ab12033042a337627a7e35769?diff=split#diff-476207d3b0e544152c1f0d08af6943e5L33",
+                    "lines": [
+                      {
+                        "line": "public Uri baseUri() throws QueryException {",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final HTTPContext http = http();",
+                        "lineNumber": 31,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  return Uri.uri(http.req.getRequestURI().replaceAll(http.req.getPathInfo(), \"\"));",
+                        "lineNumber": 32,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  return Uri.uri(http.req.getRequestURI().replace(http.req.getPathInfo(), \"\"));",
+                        "lineNumber": 32,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LineageOS/android_packages_apps_Dialer/commit/f976beb4b56b9b0b1ea17c6466d79b16a4eb7477?diff=split#diff-2fcec35c6424c22dba00f5f15a205e43L73",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void setHighlight(ContactListItemView view, Cursor cursor) {",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  view.clearHighlightSequences();",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (mNameMatcher.matches(cursor.getString(PhoneQuery.DISPLAY_NAME))) {",
+                        "lineNumber": 75,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (mNameMatcher.matches(mContext, cursor.getString(PhoneQuery.DISPLAY_NAME))) {",
+                        "lineNumber": 76,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    final ArrayList<SmartDialMatchPosition> nameMatches = mNameMatcher.getMatchPositions();",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    for (SmartDialMatchPosition match : nameMatches) {",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/magicgis/pig/commit/73379652c9496c4ae9611ee29a5f4954909a6dbf?diff=split#diff-10891392bd362181c06fadc7105fadb0L26",
+                    "lines": [
+                      {
+                        "line": "private MenuService menuService;",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private AntPathMatcher antPathMatcher = new AntPathMatcher();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Set<String> urls = menuService.findMenuByRole(grantedAuthorityList.get(0).getAuthority());",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "for (String url : urls) {",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (antPathMatcher.match(request.getRequestURI(), url)) {",
+                        "lineNumber": 40,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    if (antPathMatcher.match(url,request.getRequestURI())) {",
+                        "lineNumber": 40,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        hasPermission = true;",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        break;",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Custom timemap support using CDX server with full cdx server query support",
+                  "close connection on count query fail or throws exception"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 108,
+                "cwe": [
+                  "CWE-400",
+                  "CWE-730"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/DisablesCSRFProtection/test",
+              "name": "DisablesCSRFProtection/test",
+              "shortDescription": {
+                "text": "Cross-Site Request Forgery (CSRF)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\nCross-site request forgery is an attack in which a malicious third party takes advantage of a user's authenticated credentials (such as a browser cookie) to impersonate that trusted user and perform unauthorized actions. The web application server cannot tell the difference between legitimate and malicious requests. This type of attack generally begins by tricking the user with a social engineering attack, such as a link or popup that the user inadvertently clicks, causing an unauthorized request to be sent to the web server. Consequences vary: At a standard user level, attackers can change passwords, transfer funds, make purchases, or connect with contacts; from an administrator account, attackers can then make changes to or even take down the app itself.\n\n### Best practices for prevention\n* Use development frameworks that defend against CSRF, using a nonce, hash, or some other security device to the URL and/or to forms.\n* Implement secure, unique, hidden tokens that are checked by the server each time to validate state-change requests.\n* Never assume that authentication tokens and session identifiers mean a request is legitimate.\n* Understand and implement other safe-cookie techniques, such as double submit cookies.\n* Terminate user sessions when not in use, including automatic timeout.\n* Ensure rigorous coding practices and defenses against other commonly exploited CWEs, since cross-site scripting (XSS), for example, can be used to bypass defenses against CSRF.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/bjornharvold/bearchoke/commit/5d260b47df5670c1ac30af97add1ebd90838f152?diff=split#diff-1510c528c44771e9ae58a2a78df1e580L129",
+                    "lines": [
+                      {
+                        "line": "        .csrf().disable();",
+                        "lineNumber": 126,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        .addFilter(preAuthFilter());",
+                        "lineNumber": 132,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "http",
+                        "lineNumber": 133,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .csrf().disable();",
+                        "lineNumber": 128,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        .csrf();",
+                        "lineNumber": 134,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "http",
+                        "lineNumber": 136,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/syndesisio/syndesis/commit/6948069a3b2cb3a8c94664a8a28ebbc778d69e15?diff=split#diff-59ad9e33e5e2af9499ee7e6e61b6cf18L69",
+                    "lines": [
+                      {
+                        "line": "    .anyRequest().permitAll();",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "http.csrf().disable();",
+                        "lineNumber": 68,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "http.csrf()",
+                        "lineNumber": 73,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    .ignoringAntMatchers(COMMON_NON_SECURED_PATHS)",
+                        "lineNumber": 74,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    .ignoringAntMatchers(\"/api/v1/credentials/callback\")",
+                        "lineNumber": 75,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/fred4jupiter/fredbet/commit/f6170a2d0d921b4c6350b5f403d3ae5d039d0e74?diff=split#diff-fcf6852dd6e995764dda9d03ad6900c9L82",
+                    "lines": [
+                      {
+                        "line": "    // otherwise the H2 console will not work",
+                        "lineNumber": 80,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    http.csrf().disable();",
+                        "lineNumber": 81,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    http.csrf().ignoringAntMatchers(\"/console/*\");",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Initial set of changes to support CSRF token",
+                  "Compliance Api Migration to Spring Boot 2"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 46,
+                "cwe": [
+                  "CWE-352"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/RegexInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into matches, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[matches](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 186,
+                  "endLine": 186,
+                  "startColumn": 41,
+                  "endColumn": 87
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7783c54ed1b8021407dc3e6ca80fec7a9f3c1b890df6420753e6658ad45e4d0b",
+            "1": "9003322f.a1e8f583.7439a7ad.c3267091.da79aac4.0d476878.879f2435.7efdba51.9003322f.3b454c6f.7439a7ad.c3267091.da79aac4.58c3080a.a9a8610e.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 179,
+                            "endLine": 179,
+                            "startColumn": 60,
+                            "endColumn": 87
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 179,
+                            "endLine": 179,
+                            "startColumn": 60,
+                            "endColumn": 87
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 182,
+                            "endLine": 182,
+                            "startColumn": 59,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 319,
+                            "endLine": 319,
+                            "startColumn": 81,
+                            "endColumn": 98
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 186,
+                            "endLine": 186,
+                            "startColumn": 88,
+                            "endColumn": 94
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-core/src/main/java/org/springframework/data/rest/core/mapping/SearchResourceMappings.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 129,
+                            "endLine": 129,
+                            "startColumn": 63,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-core/src/main/java/org/springframework/data/rest/core/mapping/SearchResourceMappings.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "endLine": 135,
+                            "startColumn": 58,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-core/src/main/java/org/springframework/data/rest/core/mapping/SearchResourceMappings.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 135,
+                            "endLine": 135,
+                            "startColumn": 32,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 816,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/RegexInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into matches, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16)",
+              "[matches](17)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 220,
+                  "endLine": 220,
+                  "startColumn": 10,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9ff86a6da6e93b8df3291de15a5e301b18f34bc1b63b3ec8b867dd5a808d5cef",
+            "1": "19689298.7ef9ab6e.f7ad0f7d.06e46ac2.5ef953d3.a663ac0f.0e351fc7.b7dd4115.e1d7cd7c.7ef9ab6e.f7ad0f7d.de031890.9a0b6ac7.7fda7c5e.a342677c.96f2b075"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 178,
+                            "endLine": 178,
+                            "startColumn": 41,
+                            "endColumn": 84
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 178,
+                            "endLine": 178,
+                            "startColumn": 41,
+                            "endColumn": 84
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 182,
+                            "endLine": 182,
+                            "startColumn": 38,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 319,
+                            "endLine": 319,
+                            "startColumn": 36,
+                            "endColumn": 79
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 183,
+                            "endLine": 183,
+                            "startColumn": 38,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 185,
+                            "endLine": 185,
+                            "startColumn": 43,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 67,
+                            "endColumn": 86
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 203,
+                            "endLine": 203,
+                            "startColumn": 61,
+                            "endColumn": 96
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 213,
+                            "endLine": 213,
+                            "startColumn": 35,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 213,
+                            "endLine": 213,
+                            "startColumn": 35,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 213,
+                            "endLine": 213,
+                            "startColumn": 26,
+                            "endColumn": 68
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 216,
+                            "endLine": 216,
+                            "startColumn": 8,
+                            "endColumn": 14
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositorySearchController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "endLine": 220,
+                            "startColumn": 62,
+                            "endColumn": 68
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 4,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 14,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 64,
+                            "endLine": 64,
+                            "startColumn": 17,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 15,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "endLine": 65,
+                            "startColumn": 56,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 16,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 23,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 17,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 10,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 816,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/RegexInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into matches, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11)",
+              "[matches](12)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 343,
+                  "endLine": 343,
+                  "startColumn": 10,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "88aff2d3f02281edce0b5cd10fe3140e2f23bdbb9b9f2f463125666aa167e0db",
+            "1": "e1d7cd7c.277c621c.f7ad0f7d.06e46ac2.5ef953d3.2b9a6484.c32a98a1.54d46e25.e1d7cd7c.277c621c.f7ad0f7d.de031890.c2ff6059.1bc5a521.d06157b9.96f2b075"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 331,
+                            "endLine": 331,
+                            "startColumn": 53,
+                            "endColumn": 96
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 331,
+                            "endLine": 331,
+                            "startColumn": 53,
+                            "endColumn": 96
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 335,
+                            "endLine": 335,
+                            "startColumn": 44,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 519,
+                            "endLine": 519,
+                            "startColumn": 33,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 341,
+                            "endLine": 341,
+                            "startColumn": 35,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 341,
+                            "endLine": 341,
+                            "startColumn": 35,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 341,
+                            "endLine": 341,
+                            "startColumn": 26,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/RepositoryEntityController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 343,
+                            "endLine": 343,
+                            "startColumn": 65,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 4,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 64,
+                            "endLine": 64,
+                            "startColumn": 17,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "endLine": 65,
+                            "startColumn": 56,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 23,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-webmvc/src/main/java/org/springframework/data/rest/webmvc/ResourceStatus.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 10,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 766,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityIntegrationTests.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 72,
+                  "endLine": 72,
+                  "startColumn": 60,
+                  "endColumn": 95
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a29271ae6629e5abd07516e2c371b8526f1335c9920223642992db80970212fb",
+            "1": "fe69b77a.41d4ee69.750d773f.1bc7f334.d10418c5.5a22c7a3.75c6bf9d.203bd690.fe69b77a.41d4ee69.750d773f.1bc7f334.d10418c5.5a22c7a3.75c6bf9d.203bd690"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityIntegrationTests.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "endLine": 72,
+                            "startColumn": 104,
+                            "endColumn": 110
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 366,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 36,
+                  "endLine": 37,
+                  "startColumn": 3,
+                  "endColumn": 30
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3a3df3e0caa4f5b10c82f323a0b0e5b6d050ae078ca1ebe9fe080ec92f96a804",
+            "1": "aa33d23c.298e54fe.4a19bc6c.8d260ebb.74423550.5a22c7a3.b257c465.1bc68a67.aa33d23c.298e54fe.4a19bc6c.8d260ebb.74423550.5a22c7a3.b257c465.1bc68a67"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 37,
+                            "endLine": 37,
+                            "startColumn": 31,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 416,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 36,
+                  "endLine": 38,
+                  "startColumn": 3,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3a3df3e0caa4f5b10c82f323a0b0e5b6d050ae078ca1ebe9fe080ec92f96a804",
+            "1": "aa33d23c.298e54fe.fc7d5400.e22980a8.f1d9f854.57bc8f74.b257c465.54d46e25.aa33d23c.298e54fe.fc7d5400.e22980a8.f1d9f854.57bc8f74.b257c465.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 38,
+                            "endLine": 38,
+                            "startColumn": 32,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 416,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/DisablesCSRFProtection/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "CSRF protection is disabled by disable. This allows the attackers to execute requests on a user's behalf.",
+            "markdown": "CSRF protection is disabled by {0}. This allows the attackers to execute requests on a user's behalf.",
+            "arguments": [
+              "[disable](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "endLine": 51,
+                  "startColumn": 3,
+                  "endColumn": 9
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5e69607771be4bd23d3197c5fc420109e74e4d1164c43d10776c993844633c5f",
+            "1": "b5099633.0268ef4f.b1578a41.e22980a8.f1d9f854.ba2b7f9a.3953228b.54d46e25.b5099633.0268ef4f.b1578a41.e22980a8.f1d9f854.ba2b7f9a.3953228b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-data-rest-tests/spring-data-rest-tests-security/src/test/java/org/springframework/data/rest/tests/security/SecurityConfiguration.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 44,
+                            "endLine": 51,
+                            "startColumn": 3,
+                            "endColumn": 19
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 30,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 483,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "JavaScript"
+          },
+          {
+            "files": 8,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 2,
+            "isSupported": false,
+            "lang": "Unknown"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:53:04.826">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-863/bad$25f6afbb02a5863f363b0a2f664ac717ace743b4$6$SubversionRepositoryStatus.java">
+<violation beginline="67" endline="70" begincolumn="12" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobProvider" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on interface 'JobProvider': member interfaces are implicitly static
+</violation>
+<violation beginline="101" endline="101" begincolumn="24" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" variable="r" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedReader object are closed after use
+</violation>
+<violation beginline="120" endline="120" begincolumn="13" endcolumn="94" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="142" endline="144" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="143" endline="143" begincolumn="17" endcolumn="116" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="147" endline="147" begincolumn="36" endcolumn="121" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="147" endline="147" begincolumn="47" endcolumn="59" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus" method="doNotifyCommit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Level.WARNING' due to existing static import 'java.util.logging.Level.WARNING'
+</violation>
+<violation beginline="189" endline="189" begincolumn="21" endcolumn="115" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="remoteUUIDAndRootPathFromCacheOrFromSVN" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="210" endline="210" begincolumn="56" endcolumn="104" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="doModuleLocationHasAPathFromAffectedPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="228" endline="228" begincolumn="13" endcolumn="69" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="scheduleImediatePollingOfJob" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="242" endline="242" begincolumn="13" endcolumn="96" rule="OneDeclarationPerLine" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="254" endline="254" begincolumn="55" endcolumn="70" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="254" endline="254" begincolumn="77" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="257" endline="257" begincolumn="79" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="257" endline="257" begincolumn="105" endcolumn="113" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="272" endline="272" begincolumn="62" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="272" endline="272" begincolumn="85" endcolumn="93" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="285" endline="285" begincolumn="33" endcolumn="311" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="287" endline="287" begincolumn="33" endcolumn="180" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="296" endline="296" begincolumn="25" endcolumn="155" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="302" endline="302" begincolumn="37" endcolumn="79" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="303" endline="303" begincolumn="37" endcolumn="152" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="304" endline="304" begincolumn="37" endcolumn="98" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="304" endline="304" begincolumn="37" endcolumn="99" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="305" endline="305" begincolumn="37" endcolumn="93" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus$JobTriggerListenerImpl" method="onNotify" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="313" endline="313" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.scm" class="SubversionRepositoryStatus" method="doesIgnorePostCommitHooks" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="326" endline="328" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.scm" class="SubversionRepositoryStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

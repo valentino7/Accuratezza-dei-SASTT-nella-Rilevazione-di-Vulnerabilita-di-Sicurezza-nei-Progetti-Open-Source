@@ -1,0 +1,880 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/PT/test",
+              "name": "PT/test",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into mkdirs, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[mkdirs](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 329,
+                  "endLine": 329,
+                  "startColumn": 13,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5432a3eb903b65acab3a10b3e3dc60d002d9cf57a9cac28e02097304775fae14",
+            "1": "a5d5aa64.83dbfe52.8828b72d.e22980a8.a3e4400c.41d8b89f.ae5ab75a.54d46e25.a5d5aa64.2329d1ab.2159a181.e22980a8.a3e4400c.41d8b89f.ae5ab75a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 41,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 18,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "endLine": 329,
+                            "startColumn": 13,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "endLine": 329,
+                            "startColumn": 13,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "endLine": 329,
+                            "startColumn": 13,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into mkdirs, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[mkdirs](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 331,
+                  "endLine": 331,
+                  "startColumn": 17,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e123651beabd797fdb32007f8c39ba0b1673538518d80ea0b6d9a7a97f8a5496",
+            "1": "a5d5aa64.c8c8034f.8828b72d.6c52ae28.a3e4400c.41d8b89f.ae5ab75a.54d46e25.a5d5aa64.2329d1ab.8828b72d.e22980a8.a3e4400c.41d8b89f.ae5ab75a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 41,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 18,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "endLine": 329,
+                            "startColumn": 13,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 331,
+                            "endLine": 331,
+                            "startColumn": 17,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 331,
+                            "endLine": 331,
+                            "startColumn": 17,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from a zip file flows into java.nio.file.Files.newOutputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[a zip file](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[java.nio.file.Files.newOutputStream](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 334,
+                  "endLine": 334,
+                  "startColumn": 41,
+                  "endColumn": 62
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "6668f4f0f0cdc8ad9f984ab4038958c7ba6e607079ccf53f4ddd2b3254983266",
+            "1": "a5d5aa64.1cbd3ff4.8d6ba44b.ede9cf8e.a3e4400c.f940a352.ae5ab75a.5beac6a6.a5d5aa64.2329d1ab.8828b72d.e22980a8.d31a8364.41d8b89f.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 58,
+                            "endColumn": 71
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 41,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 328,
+                            "endLine": 328,
+                            "startColumn": 18,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 329,
+                            "endLine": 329,
+                            "startColumn": 13,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 334,
+                            "endLine": 334,
+                            "startColumn": 63,
+                            "endColumn": 79
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 334,
+                            "endLine": 334,
+                            "startColumn": 63,
+                            "endColumn": 86
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/plugins/git/SCMTriggerTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 334,
+                            "endLine": 334,
+                            "startColumn": 41,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 11,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 288,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 200,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

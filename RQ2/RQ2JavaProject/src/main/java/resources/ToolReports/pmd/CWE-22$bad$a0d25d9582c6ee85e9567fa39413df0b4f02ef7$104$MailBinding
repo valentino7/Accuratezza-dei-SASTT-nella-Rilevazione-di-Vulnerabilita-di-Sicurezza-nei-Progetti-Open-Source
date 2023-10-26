@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:37:35.047">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$a0d25d9582c6ee85e9567fa39413df0b4f02ef7$104$MailBinding.java">
+<violation beginline="101" endline="101" begincolumn="36" endcolumn="105" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.camel.component.mail" class="MailBinding" method="populateMailMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="258" endline="258" begincolumn="17" endcolumn="80" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="extractBodyFromMail" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="274" endline="276" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.camel.component.mail" class="MailBinding" method="extractBodyFromMail" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="299" endline="299" begincolumn="13" endcolumn="112" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="extractAttachmentsFromMail" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="367" endline="367" begincolumn="25" endcolumn="62" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="appendHeadersFromCamelMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="371" endline="371" begincolumn="25" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="appendHeadersFromCamelMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="375" endline="375" begincolumn="25" endcolumn="61" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="appendHeadersFromCamelMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="495" endline="495" begincolumn="25" endcolumn="75" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.camel.component.mail" class="MailBinding" method="addAttachmentsToMultipart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="506" endline="506" begincolumn="21" endcolumn="101" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="addAttachmentsToMultipart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="514" endline="514" begincolumn="29" endcolumn="109" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.camel.component.mail" class="MailBinding" method="addAttachmentsToMultipart" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="632" endline="632" begincolumn="25" endcolumn="78" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.camel.component.mail" class="MailBinding" method="extractHeadersFromMail" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="654" endline="654" begincolumn="58" endcolumn="133" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.camel.component.mail" class="MailBinding" method="appendRecipientToMimeMessage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="681" endline="681" begincolumn="66" endcolumn="81" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.camel.component.mail" class="MailBinding" method="getAlternativeBody" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'java.lang.String' due to existing implicit import 'java.lang.*'
+</violation>
+</file>
+</pmd>

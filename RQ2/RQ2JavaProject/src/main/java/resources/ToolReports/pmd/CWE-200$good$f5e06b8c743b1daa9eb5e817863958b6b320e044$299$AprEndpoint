@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:13:24.996">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/good$f5e06b8c743b1daa9eb5e817863958b6b320e044$299$AprEndpoint.java">
+<violation beginline="80" endline="80" begincolumn="26" endcolumn="72" rule="ProperLogger" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="220" endline="220" begincolumn="50" endcolumn="58" rule="AvoidUsingHardCodedIP" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="getLocalAddress" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidusinghardcodedip" priority="3">
+Do not hard code the IP address 
+</violation>
+<violation beginline="237" endline="238" begincolumn="13" endcolumn="58" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setMaxConnections" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="242" endline="243" begincolumn="13" endcolumn="58" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setMaxConnections" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="293" endline="293" begincolumn="13" endcolumn="72" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="bind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="406" endline="406" begincolumn="25" endcolumn="85" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.tomcat.util.net" class="AprEndpoint" method="createSSLContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="412" endline="412" begincolumn="25" endcolumn="81" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.tomcat.util.net" class="AprEndpoint" method="createSSLContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="427" endline="429" begincolumn="80" endcolumn="17" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="createSSLContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="517" endline="530" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="createSSLContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="536" endline="536" begincolumn="17" endcolumn="72" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="createSSLContext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="642" endline="644" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="stopInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="659" endline="660" begincolumn="21" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="stopInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="671" endline="673" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="stopInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="679" endline="681" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="stopInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="753" endline="753" begincolumn="17" endcolumn="96" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="755" endline="755" begincolumn="17" endcolumn="106" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="755" endline="755" begincolumn="64" endcolumn="103" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="782" endline="793" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="786" endline="786" begincolumn="21" endcolumn="72" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="788" endline="788" begincolumn="21" endcolumn="73" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="810" endline="810" begincolumn="17" endcolumn="82" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="allocatePoller" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="813" endline="813" begincolumn="17" endcolumn="68" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="allocatePoller" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="844" endline="844" begincolumn="13" endcolumn="76" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="processSocketWithOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="846" endline="852" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint" method="processSocketWithOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="850" endline="850" begincolumn="13" endcolumn="63" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint" method="processSocketWithOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="928" endline="928" begincolumn="23" endcolumn="78" rule="ProperLogger" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Acceptor" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="996" endline="1012" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="999" endline="999" begincolumn="25" endcolumn="25" rule="AvoidInstanceofChecksInCatchClause" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause" priority="3">
+An instanceof check is being performed on the caught exception.  Create a separate catch clause for this exception type.
+</violation>
+<violation beginline="1114" endline="1114" begincolumn="28" endcolumn="36" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$SocketList" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1278" endline="1278" begincolumn="26" endcolumn="54" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1291" endline="1291" begincolumn="50" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1364" endline="1364" begincolumn="17" endcolumn="29" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="destroy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="1440" endline="1440" begincolumn="21" endcolumn="33" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="1473" endline="1473" begincolumn="13" endcolumn="25" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="1538" endline="1545" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="toString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1583" endline="1586" begincolumn="23" endcolumn="21" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1699" endline="1702" begincolumn="37" endcolumn="69" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1715" endline="1715" begincolumn="38" endcolumn="87" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1716" endline="1716" begincolumn="45" endcolumn="94" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1717" endline="1717" begincolumn="45" endcolumn="96" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1757" endline="1757" begincolumn="45" endcolumn="92" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1758" endline="1758" begincolumn="45" endcolumn="94" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1760" endline="1760" begincolumn="42" endcolumn="89" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1767" endline="1767" begincolumn="46" endcolumn="95" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1809" endline="1809" begincolumn="34" endcolumn="54" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1809" endline="1809" begincolumn="61" endcolumn="80" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1834" endline="1837" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1845" endline="1848" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1916" endline="1916" begincolumn="19" endcolumn="45" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="1921" endline="1921" begincolumn="19" endcolumn="41" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="1923" endline="1923" begincolumn="26" endcolumn="56" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1934" endline="1934" begincolumn="25" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1934" endline="1934" begincolumn="56" endcolumn="63" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1934" endline="1934" begincolumn="69" endcolumn="77" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1960" endline="1960" begincolumn="21" endcolumn="33" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="destroy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="1967" endline="1967" begincolumn="27" endcolumn="41" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="destroy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2006" endline="2006" begincolumn="31" endcolumn="50" rule="LogicInversion" ruleset="Design" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#logicinversion" priority="3">
+Use opposite operator instead of the logic complement operator.
+</violation>
+<violation beginline="2027" endline="2027" begincolumn="17" endcolumn="68" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2034" endline="2034" begincolumn="17" endcolumn="29" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="2072" endline="2072" begincolumn="64" endcolumn="72" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="2091" endline="2091" begincolumn="25" endcolumn="33" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="2093" endline="2093" begincolumn="43" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2121" endline="2121" begincolumn="34" endcolumn="83" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2122" endline="2122" begincolumn="41" endcolumn="90" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2147" endline="2174" begincolumn="33" endcolumn="33" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="2180" endline="2180" begincolumn="30" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2180" endline="2180" begincolumn="57" endcolumn="76" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2213" endline="2216" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$Sendfile" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2322" endline="2322" begincolumn="26" endcolumn="48" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="2483" endline="2483" begincolumn="22" endcolumn="66" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="fillReadBuffer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2504" endline="2504" begincolumn="13" endcolumn="27" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="isReadyForRead" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'isReady'
+</violation>
+<violation beginline="2648" endline="2652" begincolumn="28" endcolumn="21" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="doWriteInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="2670" endline="2670" begincolumn="26" endcolumn="72" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="doWriteInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2737" endline="2737" begincolumn="17" endcolumn="84" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateRemoteAddr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2755" endline="2755" begincolumn="17" endcolumn="84" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateRemoteHost" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2771" endline="2771" begincolumn="17" endcolumn="84" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateRemotePort" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2786" endline="2786" begincolumn="17" endcolumn="70" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateLocalName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2801" endline="2801" begincolumn="17" endcolumn="70" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateLocalAddr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="2817" endline="2817" begincolumn="17" endcolumn="70" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="AprEndpoint$AprSocketWrapper" method="populateLocalPort" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

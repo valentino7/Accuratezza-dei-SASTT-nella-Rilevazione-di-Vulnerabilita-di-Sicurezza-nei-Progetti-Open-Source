@@ -1,0 +1,2033 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/TooPermissiveTrustManager",
+              "name": "TooPermissiveTrustManager",
+              "shortDescription": {
+                "text": "Improper Certificate Validation"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCommunication through encrypted TLS/SSL protocols can only take place when the server bears a valid certificate associating that server with a valid public-key identity issued by a third-party authority. If certificate validation is cursory or incomplete, this creates a weakness whereby an attacker can spoof one or more certificate details (e.g., expiration date), gaining unauthorized access to confidential data and privileged actions.\n\n### Best practices for prevention\n* Verify all aspects of any certificate provided, particularly chain of trust (issuing authority), host identity, and expiration.\n* Limit the validity period for certificates.\n* Avoid using self-signed certificates, certificate pinning, and wildcard certificates, as these all add levels of convenience but can also lead to loss of control over site/app security.\n* Disable older and insecure protocols (for example, SSL 2.0/3.0, MD5, and 3DES).\n* Ensure that all team members are familiar with current best practices and approaches, such as current TLS protocols.\n* Implement automated and manual testing using current tools and techniques designed to reveal this and related SSL weaknesses (for example, web application scanners).",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pentaho/pentaho-kettle/commit/5a4014d3e4e7307198635a1d9d1cbe7e868fb889?diff=split#diff-b711fa3a1339a77fb1b62ea5a608f827L143",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public X509Certificate[] getAcceptedIssuers() {",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return null;",
+                        "lineNumber": 144,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return new X509Certificate[0];",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "};",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/guardianproject/NetCipher/commit/3b971438ed74870685f404c43feae65fc413d703?diff=split#diff-6f4869070d4eee5c76931a7bf27ed055L179",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 181,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {",
+                        "lineNumber": 183,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    //not yet implemented",
+                        "lineNumber": 179,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    ",
+                        "lineNumber": 184,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tdebug (\"WARNING: Client Cert Trust NOT YET IMPLEMENTED\");",
+                        "lineNumber": 185,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 186,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 671,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\tif (SHOW_DEBUG_OUTPUT)",
+                        "lineNumber": 672,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\t\tLog.d(TAG, msg);",
+                        "lineNumber": 673,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 674,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/HtmlUnit/htmlunit/commit/2ab74fb459fa25764fa3c6f56d00cf076fadf69d?diff=split#diff-3070dfb96ed2fae966d731bf849982d1L125",
+                    "lines": [
+                      {
+                        "line": " * {@inheritDoc}",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void checkClientTrusted(final X509Certificate[] chain, final String authType) throws CertificateException {",
+                        "lineNumber": 129,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // Everyone is trusted!",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    acceptedIssuers_.addAll(Arrays.asList(chain));",
+                        "lineNumber": 131,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 132,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Finalize tests for HTTP libraries",
+                  "Relates elastic/elasticsearch",
+                  "* Allow possibility for pushing trust issue to user"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-295"
+                ]
+              }
+            },
+            {
+              "id": "java/TLS",
+              "name": "TLS",
+              "shortDescription": {
+                "text": "Inadequate Encryption Strength"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/91f7012b015249d9d74dace8874ee8f38b54bfc2?diff=split#diff-5604a4e589dc38cc8d80f2f4020c2a23L53",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/MissionCriticalCloud/cosmic/commit/3a4004a34b42e30a49a1c48f1ff57e5f3ca26913?diff=split#diff-49bfef0c8d16a2c34d787d4fca65e2e7L35",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/hypercube1024/firefly/commit/e2e4d7810c9bb202bbef3d5022e3b13447f102dd?diff=split#diff-fb5cd0d3953731ed2bdb241178f1ce05L32",
+                    "lines": [
+                      {
+                        "line": "  tmf.init(ks);",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLS\");",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "return sslContext;",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Configuring TSL/SSL now supports property placeholders.",
+                  "support for TLS config tweaks",
+                  "Temporarily peg SSL version to TLSv1.2."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 78,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword",
+              "name": "HardcodedPassword",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/TLS/test",
+              "name": "TLS/test",
+              "shortDescription": {
+                "text": "Inadequate Encryption Strength"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/91f7012b015249d9d74dace8874ee8f38b54bfc2?diff=split#diff-5604a4e589dc38cc8d80f2f4020c2a23L53",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/MissionCriticalCloud/cosmic/commit/3a4004a34b42e30a49a1c48f1ff57e5f3ca26913?diff=split#diff-49bfef0c8d16a2c34d787d4fca65e2e7L35",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/hypercube1024/firefly/commit/e2e4d7810c9bb202bbef3d5022e3b13447f102dd?diff=split#diff-fb5cd0d3953731ed2bdb241178f1ce05L32",
+                    "lines": [
+                      {
+                        "line": "  tmf.init(ks);",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLS\");",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "return sslContext;",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Configuring TSL/SSL now supports property placeholders.",
+                  "support for TLS config tweaks",
+                  "Temporarily peg SSL version to TLSv1.2."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 78,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "python/BindToAllNetworkInterfaces/test",
+              "name": "BindToAllNetworkInterfaces/test",
+              "shortDescription": {
+                "text": "Binding to all network interfaces may open service to unintended traffic"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nBinding to `0.0.0.0` makes a server listen on all network interfaces, which may open the service to unintended traffic.\n\n### Best practices\n * Allow binding on a specific interface instead of `0.0.0.0`",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "python"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/flask-admin/flask-admin/commit/a81d5d26b0b2fea92e67ed76457aac72ed7b68fc?diff=split#diff-f689ac23f96e78586940353c61e6d196L70",
+                    "lines": [
+                      {
+                        "line": "# Start app",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "app.debug = True",
+                        "lineNumber": 68,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.run('0.0.0.0', 8000)",
+                        "lineNumber": 69,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.run(debug=True)",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/jpf/okta-oidc-beta/commit/faaa8c0e8cb1ccb8b213ec46081cfcad2251f94a?diff=split#diff-3f41e546893dc64b71aaacad12cad815L187",
+                    "lines": [
+                      {
+                        "line": "if port == 5000:",
+                        "lineNumber": 233,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    app.debug = True",
+                        "lineNumber": 234,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "app.run(\"0.0.0.0\", port=port)",
+                        "lineNumber": 186,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.run(port=port)",
+                        "lineNumber": 235,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/GoogleCloudPlatform/continuous-deployment-bitbucket/commit/7e7bec9d9020a1732f7dc84b53bf8912222a17f3?diff=split#diff-5bc02cefb3ea9e27f1a6776eabd1935dL27",
+                    "lines": [
+                      {
+                        "line": "if __name__ == '__main__':",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    app.run('0.0.0.0', 9000)",
+                        "lineNumber": 26,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    app.run(debug=True)",
+                        "lineNumber": 36,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "* Added ability to log to syslog instead of logging to a log file.",
+                  "Api server logging updates ()"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 91,
+                "cwe": [
+                  "CWE-284"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 318,
+                  "endLine": 318,
+                  "startColumn": 13,
+                  "endColumn": 26
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f63175b8c2133981bf6c654c18fe6a9c81756e86f41ca6e8efbb809050b5dd91",
+            "1": "19689298.f4249e2a.075f7928.383ea08e.d31a8364.e2f0b62f.bae646e8.54d46e25.fc8e5d3d.f4249e2a.075f7928.383ea08e.d31a8364.0d476878.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 44,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 320,
+                  "endLine": 320,
+                  "startColumn": 9,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ee4451e8fe6ce5b30ca1d2921a591ddb93fdeff97aa8c610981e59b4d36f3c7e",
+            "1": "19689298.f4249e2a.fc7d5400.d6ab05b5.3e1a31cb.3965381b.1854910d.54d46e25.fc8e5d3d.f4249e2a.075f7928.d6ab05b5.ade640d7.3965381b.1854910d.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 44,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 325,
+                  "endLine": 325,
+                  "startColumn": 13,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "afcddf383cd1aa462fa5aea5897f615982432bceb01ce15ff84c8cd841ecb83b",
+            "1": "1be82056.83dbfe52.075f7928.383ea08e.d31a8364.e2f0b62f.bae646e8.54d46e25.19f079a4.1cbd3ff4.075f7928.383ea08e.d31a8364.0d476878.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 44,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into java.io.FileInputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1)",
+              "[java.io.FileInputStream](2)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "examples/reactor/src/main/java/org/apache/qpid/proton/example/reactor/Cat.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 94,
+                  "endLine": 94,
+                  "startColumn": 38,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b0d99ffa104c3aa38f5406bd99de08495140c12955df2dd176fc2daf548094ba",
+            "1": "daa1bb49.b24c339f.b7e09557.6c52ae28.f6d438cc.117e971f.55c6f621.6f114b23.73b206cc.dd05ec30.b7e09557.de031890.a7b964d9.ce109560.377b98a3.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/reactor/src/main/java/org/apache/qpid/proton/example/reactor/Cat.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "endLine": 94,
+                            "startColumn": 54,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/reactor/src/main/java/org/apache/qpid/proton/example/reactor/Cat.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "endLine": 94,
+                            "startColumn": 54,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "examples/reactor/src/main/java/org/apache/qpid/proton/example/reactor/Cat.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 94,
+                            "endLine": 94,
+                            "startColumn": 38,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all Certificate Authorities are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all Certificate Authorities are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 610,
+                  "endLine": 610,
+                  "startColumn": 34,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7eeaa2a7ae22baf5f3ec8bcc6a5e2a945fd897381928d456d3b0210d26e84700",
+            "1": "94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.5b1ccecb.1d874c72.94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.5b1ccecb.1d874c72"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 612,
+                            "endLine": 612,
+                            "startColumn": 20,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all servers are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all servers are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 616,
+                  "endLine": 616,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4983614698b147b770b75ee5b9e3714f440b63032f0441f817a55bb9ccce4a0f",
+            "1": "94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.7011a60a.1d874c72.94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.7011a60a.1d874c72"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 616,
+                            "endLine": 616,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all clients are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all clients are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 623,
+                  "endLine": 623,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a97fb8d330b19ec04cdc4588e45b9f05daaad9b3317435a1871d35d888f580bb",
+            "1": "94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.7011a60a.1d874c72.94f40915.7f413d6f.b1ce14cf.e22980a8.f0e1baa5.58c3080a.7011a60a.1d874c72"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 623,
+                            "endLine": 623,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 3,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 306,
+                  "endLine": 306,
+                  "startColumn": 41,
+                  "endColumn": 63
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d7e0cbbb4a660c26e9f69d6d5fafb932ca18ad4ea6d74d991bacf797f8c9812d",
+            "1": "19689298.1cbd3ff4.011b8e79.b2f7d106.8232f058.67356b77.3d39ca0c.54d46e25.19689298.dd05ec30.011b8e79.de031890.8232f058.67356b77.a69038bc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 306,
+                            "endLine": 306,
+                            "startColumn": 41,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 310,
+                  "endLine": 310,
+                  "startColumn": 17,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "08bfdf860f8f1120fc9927af13753968e19558c517c99857c84379edbb62ae8f",
+            "1": "ecbd6007.2969f3fa.db7680f7.e22980a8.d31a8364.3965381b.06f0c6c1.54d46e25.ecbd6007.7797192f.db7680f7.d6ab05b5.408180c7.3965381b.06f0c6c1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 302,
+                            "endLine": 302,
+                            "startColumn": 42,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 377,
+                  "endLine": 377,
+                  "startColumn": 17,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a6284b4bc9e132c56d79cd6d192ef9a52e5679e6e9fdb036e6970eec03c4980b",
+            "1": "4a422fca.c8c8034f.9f117aa1.e22980a8.998bd951.987d5477.c9b49c90.54d46e25.4d9dffb9.81ff730a.075f7928.383ea08e.408180c7.987d5477.06f0c6c1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/main/java/org/apache/qpid/proton/engine/impl/ssl/SslEngineFacadeFactory.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 302,
+                            "endLine": 302,
+                            "startColumn": 42,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 310,
+                  "endLine": 310,
+                  "startColumn": 30,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b57a211fae6369c3d3807a92d1d646f1143e8ba7e86020c1407c06c615726173",
+            "1": "19689298.1cbd3ff4.011b8e79.788ea034.8afeca56.afca3b91.82bd02e5.54d46e25.19689298.1cbd3ff4.011b8e79.788ea034.8afeca56.afca3b91.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "proton-j/src/test/java/org/apache/qpid/proton/systemtests/engine/SslTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 310,
+                            "endLine": 310,
+                            "startColumn": 30,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "python/BindToAllNetworkInterfaces/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Using bind in bind makes it listen on all network interfaces, which may open the service to unintended traffic.",
+            "markdown": "Using {0} in {1} makes it listen on all network interfaces, which may open the service to unintended traffic.",
+            "arguments": [
+              "[bind](0)",
+              "[bind](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tests/python/proton_tests/common.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 72,
+                  "endLine": 72,
+                  "startColumn": 7,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "627d0e916e92c7e936e94195f6f9870ae0dcb2d328819713735339c239433757",
+            "1": "a6b41d6e.e505eac4.2683ade8.ef463c52.e737520c.bcaa763b.a2237efa.6aac30d8.a6b41d6e.e505eac4.2683ade8.139c59a8.e737520c.bcaa763b.a2237efa.6aac30d8"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tests/python/proton_tests/common.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "endLine": 72,
+                            "startColumn": 7,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tests/python/proton_tests/common.py",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "endLine": 72,
+                            "startColumn": 7,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 464,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 32,
+            "isSupported": true,
+            "lang": "Python"
+          }
+        ]
+      }
+    }
+  ]
+}

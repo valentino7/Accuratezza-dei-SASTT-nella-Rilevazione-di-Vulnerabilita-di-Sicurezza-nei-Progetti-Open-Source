@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671839327691" analysisTimestamp="1672073747055" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-295/bad_2835bb4e_WsWebSocketContainer.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-295/bad_2835bb4e_WsWebSocketContainer.java</SrcDir>
+  </Project>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="connectToServerRecursive" signature="(Ljavax/websocket/Endpoint;Ljavax/websocket/ClientEndpointConfig;Ljava/net/URI;Ljava/util/Set;)Ljavax/websocket/Session;" isStatic="false">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="203" end="522" startBytecode="0" endBytecode="4717" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="209" end="209" startBytecode="16" endBytecode="16" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="connectToServerRecursive" signature="(Ljavax/websocket/Endpoint;Ljavax/websocket/ClientEndpointConfig;Ljava/net/URI;Ljava/util/Set;)Ljavax/websocket/Session;" isStatic="false">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="203" end="522" startBytecode="0" endBytecode="4717" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="211" end="211" startBytecode="60" endBytecode="60" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="connectToServerRecursive" signature="(Ljavax/websocket/Endpoint;Ljavax/websocket/ClientEndpointConfig;Ljava/net/URI;Ljava/util/Set;)Ljavax/websocket/Session;" isStatic="false">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="203" end="522" startBytecode="0" endBytecode="4717" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="250" end="250" startBytecode="291" endBytecode="291" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="parseHeaders" signature="(Ljava/lang/String;Ljava/util/Map;)V" isStatic="false">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="834" end="851" startBytecode="0" endBytecode="315" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="840" end="840" startBytecode="51" endBytecode="51" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+  </BugInstance>
+  <BugInstance type="PATH_TRAVERSAL_IN" priority="2" rank="12" abbrev="SECPTI" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="createSSLEngine" signature="(Ljava/util/Map;Ljava/lang/String;I)Ljavax/net/ssl/SSLEngine;" isStatic="false">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="875" end="928" startBytecode="0" endBytecode="766" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="892" end="892" startBytecode="76" endBytecode="76" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    <String value="java/io/File.&lt;init&gt;(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/apache/tomcat/websocket/WsWebSocketContainer.createSSLEngine(Ljava/util/Map;Ljava/lang/String;I)Ljavax/net/ssl/SSLEngine; parameter 2" role="Unknown source"/>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="332" end="332" startBytecode="680" endBytecode="680" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="884" end="884" startBytecode="31" endBytecode="31" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+  </BugInstance>
+  <BugInstance type="PREDICTABLE_RANDOM" priority="2" rank="12" abbrev="SECPR" category="SECURITY">
+    <Class classname="org.apache.tomcat.websocket.WsWebSocketContainer">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="77" end="1081" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Class>
+    <Method classname="org.apache.tomcat.websocket.WsWebSocketContainer" name="&lt;clinit&gt;" signature="()V" isStatic="true">
+      <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="79" end="85" startBytecode="0" endBytecode="122" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    </Method>
+    <SourceLine classname="org.apache.tomcat.websocket.WsWebSocketContainer" start="80" end="80" startBytecode="12" endBytecode="12" sourcefile="WsWebSocketContainer.java" sourcepath="org/apache/tomcat/websocket/WsWebSocketContainer.java"/>
+    <String value="java.util.Random"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="36">
+    <MissingClass>javax.websocket.ClientEndpoint</MissingClass>
+    <MissingClass>javax.websocket.ClientEndpointConfig</MissingClass>
+    <MissingClass>javax.websocket.ClientEndpointConfig$Builder</MissingClass>
+    <MissingClass>javax.websocket.ClientEndpointConfig$Configurator</MissingClass>
+    <MissingClass>javax.websocket.CloseReason</MissingClass>
+    <MissingClass>javax.websocket.CloseReason$CloseCodes</MissingClass>
+    <MissingClass>javax.websocket.DeploymentException</MissingClass>
+    <MissingClass>javax.websocket.Endpoint</MissingClass>
+    <MissingClass>javax.websocket.Extension</MissingClass>
+    <MissingClass>javax.websocket.Extension$Parameter</MissingClass>
+    <MissingClass>javax.websocket.HandshakeResponse</MissingClass>
+    <MissingClass>javax.websocket.WebSocketContainer</MissingClass>
+    <MissingClass>org.apache.juli.logging.Log</MissingClass>
+    <MissingClass>org.apache.juli.logging.LogFactory</MissingClass>
+    <MissingClass>org.apache.tomcat.util.buf.StringUtils</MissingClass>
+    <MissingClass>org.apache.tomcat.util.codec.binary.Base64</MissingClass>
+    <MissingClass>org.apache.tomcat.util.collections.CaseInsensitiveKeyMap</MissingClass>
+    <MissingClass>org.apache.tomcat.util.res.StringManager</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AsyncChannelGroupUtil</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AsyncChannelWrapper</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AsyncChannelWrapperNonSecure</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AsyncChannelWrapperSecure</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AuthenticationException</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.Authenticator</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.AuthenticatorFactory</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.BackgroundProcessManager</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.Constants</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.Transformation</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.TransformationFactory</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.Util</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.WsFrameClient</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.WsHandshakeResponse</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.WsRemoteEndpointImplClient</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.WsSession</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.WsWebSocketContainer$HttpResponse</MissingClass>
+    <MissingClass>org.apache.tomcat.websocket.pojo.PojoEndpointClient</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 00:48:47 +0100" total_classes="1" referenced_classes="64" total_bugs="6" total_size="552" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="29.07" clock_seconds="7.61" peak_mbytes="165.76" alloc_mbytes="768.00" gc_seconds="0.12" priority_3="4" priority_2="2">
+    <PackageStats package="org.apache.tomcat.websocket" total_bugs="6" total_types="1" total_size="552" priority_3="4" priority_2="2">
+      <ClassStats class="org.apache.tomcat.websocket.WsWebSocketContainer" sourceFile="WsWebSocketContainer.java" interface="false" size="552" bugs="6" priority_3="4" priority_2="2"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="1147" invocations="789" avgMicrosecondsPerInvocation="1453" maxMicrosecondsPerInvocation="17002" standardDeviationMicrosecondsPerInvocation="681"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="622" invocations="785" avgMicrosecondsPerInvocation="793" maxMicrosecondsPerInvocation="47334" standardDeviationMicrosecondsPerInvocation="2258"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="439" invocations="39" avgMicrosecondsPerInvocation="11273" maxMicrosecondsPerInvocation="339553" standardDeviationMicrosecondsPerInvocation="53677"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="218" invocations="64" avgMicrosecondsPerInvocation="3411" maxMicrosecondsPerInvocation="22090" standardDeviationMicrosecondsPerInvocation="5495"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="199" invocations="39" avgMicrosecondsPerInvocation="5111" maxMicrosecondsPerInvocation="92086" standardDeviationMicrosecondsPerInvocation="15048"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="194" invocations="39" avgMicrosecondsPerInvocation="4981" maxMicrosecondsPerInvocation="167771" standardDeviationMicrosecondsPerInvocation="26524"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="189" invocations="39" avgMicrosecondsPerInvocation="4850" maxMicrosecondsPerInvocation="90041" standardDeviationMicrosecondsPerInvocation="14564"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="188" invocations="313" avgMicrosecondsPerInvocation="603" maxMicrosecondsPerInvocation="16329" standardDeviationMicrosecondsPerInvocation="1194"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="164" invocations="41" avgMicrosecondsPerInvocation="4020" maxMicrosecondsPerInvocation="71383" standardDeviationMicrosecondsPerInvocation="11894"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="134" invocations="64" avgMicrosecondsPerInvocation="2109" maxMicrosecondsPerInvocation="14125" standardDeviationMicrosecondsPerInvocation="3375"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="117" invocations="171" avgMicrosecondsPerInvocation="688" maxMicrosecondsPerInvocation="42626" standardDeviationMicrosecondsPerInvocation="3777"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="99" invocations="39" avgMicrosecondsPerInvocation="2540" maxMicrosecondsPerInvocation="47883" standardDeviationMicrosecondsPerInvocation="7630"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="95" invocations="1" avgMicrosecondsPerInvocation="95719" maxMicrosecondsPerInvocation="95719" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="85" invocations="64" avgMicrosecondsPerInvocation="1339" maxMicrosecondsPerInvocation="23337" standardDeviationMicrosecondsPerInvocation="3291"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="84" invocations="39" avgMicrosecondsPerInvocation="2165" maxMicrosecondsPerInvocation="33192" standardDeviationMicrosecondsPerInvocation="5650"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="83" invocations="39" avgMicrosecondsPerInvocation="2142" maxMicrosecondsPerInvocation="65673" standardDeviationMicrosecondsPerInvocation="10350"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="80" invocations="39" avgMicrosecondsPerInvocation="2075" maxMicrosecondsPerInvocation="33329" standardDeviationMicrosecondsPerInvocation="5678"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="76" invocations="26" avgMicrosecondsPerInvocation="2931" maxMicrosecondsPerInvocation="58399" standardDeviationMicrosecondsPerInvocation="11106"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="62" invocations="705" avgMicrosecondsPerInvocation="88" maxMicrosecondsPerInvocation="1966" standardDeviationMicrosecondsPerInvocation="171"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="52" invocations="64" avgMicrosecondsPerInvocation="822" maxMicrosecondsPerInvocation="9472" standardDeviationMicrosecondsPerInvocation="1513"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

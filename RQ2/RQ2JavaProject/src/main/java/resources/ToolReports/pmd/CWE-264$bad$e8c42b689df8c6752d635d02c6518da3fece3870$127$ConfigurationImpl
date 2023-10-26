@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T18:41:48.375">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-264/bad$e8c42b689df8c6752d635d02c6518da3fece3870$127$ConfigurationImpl.java">
+<violation beginline="74" endline="74" begincolumn="23" endcolumn="53" rule="ProperLogger" ruleset="Error Prone" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="143" endline="143" begincolumn="5" endcolumn="98" rule="GuardLogStatement" ruleset="Best Practices" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="messageInterpolator" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="154" endline="154" begincolumn="5" endcolumn="94" rule="GuardLogStatement" ruleset="Best Practices" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="traversableResolver" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="165" endline="168" begincolumn="5" endcolumn="5" rule="GuardLogStatement" ruleset="Best Practices" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="constraintValidatorFactory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="179" endline="182" begincolumn="5" endcolumn="5" rule="GuardLogStatement" ruleset="Best Practices" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="parameterNameProvider" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="255" endline="255" begincolumn="13" endcolumn="26" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="buildValidatorFactory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="262" endline="262" begincolumn="22" endcolumn="23" rule="CloseResource" ruleset="Error Prone" package="org.hibernate.validator.internal.engine" class="ConfigurationImpl" method="buildValidatorFactory" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+</file>
+</pmd>

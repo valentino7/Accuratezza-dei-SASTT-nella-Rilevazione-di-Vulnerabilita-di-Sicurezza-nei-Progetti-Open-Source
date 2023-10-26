@@ -1,0 +1,56 @@
+﻿CWE:111;"Direct Use of Unsafe JNI";"PMD.Controversial.AvoidUsingNativeCode";Avoid Using Native Code;closely mapped
+CWE:252;"Unchecked Return Value";PMD.Basic.CheckResultSet;Check Result Set;closely mapped
+CWE:252;"Unchecked Return Value";PMD.Basic.CheckSkipResult;Check Skip Result;closely mapped
+CWE:252;"Unchecked Return";"PMD.Unnecessary.UselessOperationOnImmutable";"Useless Operation OnImmutable";closely mapped
+CWE:382;"J2EE Bad Practices: Use of System.exit()";PMD.J2EE.DoNotCallSystemExit;Do Not Call System Exit;closely mapped
+CWE:383;"J2EE Bad Practices: Direct Use of Threads";PMD.J2EE.DoNotUseThreads;Do Not Use Threads;closely mapped
+CWE:391;"Unchecked Error Condition";PMD.Empty-Code.EmptyCatchBlock;Empty Catch Block;closely mapped
+CWE:395;"Use of NullPointerException Catch to Detect NULL";PMD.Strict-Exceptions.AvoidCatchingNPE;Avoid Catching NPE;closely mapped
+CWE:396;"Declaration of Catch for Generic Exception";"PMD.Strict-Exceptions.AvoidCatchingGenericException";"Avoid Catching Generic Exception";closely mapped
+CWE:397;"Declaration of Throws for Generic Exception";"PMD.Strict-Exceptions.AvoidThrowingRawExceptionTypes";"Avoid Throwing Raw Exception Types";closely mapped
+CWE:397;"Declaration of Throws for Generic Exception";"PMD.Type-Resolution.SignatureDeclareThrowsException";"Signature Declare Throws Exception";closely mapped
+CWE:397;"Declaration of Throws for Generic Exception";"PMD.Strict-Exceptions.SignatureDeclareThrowsException";"Signature Declare Throws Exception (Strict-Exceptions)";closely mapped
+CWE:398;"Indicator of Poor Code Quality";PMD.Naming.AvoidDollarSigns;Avoid Dollar Signs;closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.AvoidFieldNameMatchingMethodName";"Avoid Field Name Matching Method Name";closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.AvoidFieldNameMatchingTypeName";"Avoid Field Name Matching Type Name";closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Controversial.DoNotCallGarbageCollectionExplicitly";"Do Not Call Garbage Collection Explicitly";closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.MethodNamingConventions";Method Naming Conventions;closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.MethodWithSameNameAsEnclosingClass";"Method With Same Name As Enclosing Class";closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.SuspiciousEqualsMethodName";Suspicious Equals Method Name;closely mapped
+CWE:398;"Indicator of Poor Code Quality";"PMD.Naming.SuspiciousHashcodeMethodName";"Suspicious Hashcode Method Name";closely mapped
+CWE:439;"Behavioral Change in New Version or";"PMD.Migration.AvoidAssertAsIdentifier";Avoid Assert As Identifier;closely mapped
+CWE:439;"Behavioral Change in New Version or";"PMD.Migration.AvoidEnumAsIdentifier";Avoid Enum As Identifier;closely mapped
+CWE:459;Incomplete Cleanup;PMD.Design.CloseResource;Close Resource;closely mapped
+CWE:476;"NULL Pointer Dereference";PMD.Basic.BrokenNullCheck;Broken Null Check;closely mapped
+CWE:478;"Missing Default Case in Switch Statement";"PMD.Design.SwitchStmtsShouldHaveDefault";"Switch Stmts Should Have Default";closely mapped
+CWE:484;"Omitted Break Statement in Switch";PMD.Design.MissingBreakInSwitch;Missing Break In Switch;closely mapped
+CWE:495;"Private Array-Typed Field Returned From A Public Method";"PMD.Security-Code-Guidelines.MethodReturnsInternalArray";Method Returns Internal Array;closely mapped
+CWE:500;"Public Static Field Not Marked Final";"PMD.Design.AssignmentToNonFinalStatic";Assignment To Non Final Static;closely mapped
+CWE:500;"Public Static Field NotMarked Final";"PMD.J2EE.StaticEJBFieldShouldBeFinal";Static EJB Field Should Be Final;closely mapped
+CWE:543;"Use of SingletonPattern WithoutSynchronization in a";"PMD.Design.NonThreadSafeSingleton";Non Thread Safe Singleton;closely mapped
+CWE:547;"Use of Hard-coded,Security-relevant";"PMD.Basic.AvoidUsingHardCodedIP";Avoid Using Hard Coded IP;closely mapped
+CWE:547;"Use of Hard-coded,Security-relevant";"PMD.Android.DoNotHardCodeSDCard";Do Not Hard Code SD Card;closely mapped
+CWE:561;Dead Code;"PMD.Finalizer.FinalizeDoesNotCallSuperFinalize";"Finalize Does Not Call SuperFinalize";closely mapped
+CWE:561;Dead Code;PMD.Unused-Code.UnusedPrivateMethod;Unused Private Method;closely mapped
+CWE:563;"Assignment toVariable without Use('Unused Variable')";PMD.Unused-Code.UnusedFormalParameter;Unused Formal Parameter;closely mapped
+CWE:563;"Assignment toVariable without Use('Unused Variable')";PMD.Unused-Code.UnusedLocalVariable;Unused Local Variable;closely mapped
+CWE:563;"Assignment toVariable without Use('Unused Variable')";PMD.Unused-Code.UnusedPrivateField;Unused Private Field;closely mapped
+CWE:570;"Expression is AlwaysFalse";PMD.Design.BadComparison;Bad Comparison;closely mapped
+CWE:570;"Expression is AlwaysFalse";PMD.Design.EqualsNull;Equals Null;closely mapped
+CWE:570;"Expression is AlwaysFalse";"PMD.Basic.UnconditionalIfStatement";Unconditional If Statement;closely mapped
+CWE:571;"Expression is AlwaysTrue";"PMD.Basic.UnconditionalIfStatement";Unconditional If Statement;closely mapped
+CWE:572;"Call to Thread run()instead of start()";PMD.Basic.DontCallThreadRun;Don't Call Thread Run;closely mapped
+CWE:580;"clone() MethodWithout super.clone()";"PMD.Clone-Implementation.ProperCloneImplementation";Proper Clone Implementation;closely mapped
+CWE:581;"Object ModelViolation: Just One ofEquals and Hashcode";"PMD.Basic.OverrideBothEqualsAndHashcode";"Override Both Equals AndHashcode";closely mapped
+CWE:584;"Return Inside FinallyBlock";PMD.Basic.ReturnFromFinallyBlock;Return From Finally Block;closely mapped
+CWE:585;"Empty SynchronizedBlock";PMD.Empty-Code.EmptySynchronizedBlock;Empty Synchronized Block;closely mapped
+CWE:586;"Explicit Call toFinalize()";PMD.Finalizer.AvoidCallingFinalize;Avoid Calling Finalize;closely mapped
+CWE:595;"Comparison of ObjectReferences Instead of";"PMD.Design.CompareObjectsWithEquals";Compare Objects With Equals;closely mapped
+CWE:597;"Use of WrongOperator in StringComparison";"PMD.String-and-StringBuffer.UseEqualsToCompareStrings";Use Equals To Compare Strings;closely mapped
+CWE:609;"Double-CheckedLocking";"PMD.Basic.DoubleCheckedLocking";Double Checked Locking;closely mapped
+CWE:681;"Incorrect Conversion between Numeric Types";"PMD.Basic.AvoidDecimalLiteralsInBigDecimalConstructor";Avoid Decimal Literals In Big Decimal Constructor;closely mapped
+CWE:686;"Function Call With Incorrect Argument Type";"PMD.Basic.ClassCastExceptionWithToArray";Class Cast Exception With To Array;closely mapped
+CWE:696;"Incorrect Behavior Order";PMD.Basic.MisplacedNullCheck;Misplaced Null Check;closely mapped
+CWE:767;"Access to Critical Private Variable via Public Method";"PMD.Security-Code-Guidelines.MethodReturnsInternalArray";Method Returns Internal Array;closely mapped
+CWE:19;"UseLocaleWithCaseConversions"
+CWE:755;"EmptyIfStmt"

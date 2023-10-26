@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:21:03.828">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-77/good$c041ea8b3748089937168839791a6d64382b34de$8$CassandraDaemon.java">
+<violation beginline="50" endline="50" begincolumn="1" endcolumn="33" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.apache.cassandra.db.*'
+</violation>
+<violation beginline="60" endline="60" begincolumn="1" endcolumn="36" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.apache.cassandra.utils.*'
+</violation>
+<violation beginline="87" endline="87" begincolumn="17" endcolumn="132" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="maybeInitJmx" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="91" endline="91" begincolumn="63" endcolumn="73" rule="AvoidUsingHardCodedIP" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="maybeInitJmx" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidusinghardcodedip" priority="3">
+Do not hard code the IP address 
+</violation>
+<violation beginline="122" endline="122" begincolumn="13" endcolumn="91" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="maybeInitJmx" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="149" endline="149" begincolumn="13" endcolumn="81" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="165" endline="165" begincolumn="13" endcolumn="122" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="196" endline="196" begincolumn="9" endcolumn="109" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="197" endline="198" begincolumn="9" endcolumn="90" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="198" endline="198" begincolumn="13" endcolumn="89" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="199" endline="199" begincolumn="9" endcolumn="75" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="231" endline="231" begincolumn="29" endcolumn="35" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.apache.cassandra.service" class="CassandraDaemon" method="uncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="232" endline="232" begincolumn="29" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="uncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="238" endline="238" begincolumn="29" endcolumn="35" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.apache.cassandra.service" class="CassandraDaemon" method="uncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="239" endline="239" begincolumn="29" endcolumn="73" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="uncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="275" endline="275" begincolumn="13" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="280" endline="281" begincolumn="9" endcolumn="56" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="302" endline="302" begincolumn="17" endcolumn="108" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="311" endline="311" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="313" endline="314" begincolumn="13" endcolumn="60" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="322" endline="322" begincolumn="17" endcolumn="66" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="334" endline="334" begincolumn="13" endcolumn="108" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="334" endline="334" begincolumn="13" endcolumn="109" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="337" endline="337" begincolumn="13" endcolumn="108" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="337" endline="337" begincolumn="13" endcolumn="109" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="343" endline="347" begincolumn="9" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="367" endline="367" begincolumn="25" endcolumn="53" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="380" endline="381" begincolumn="25" endcolumn="79" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="422" endline="422" begincolumn="13" endcolumn="36" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="setup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="462" endline="462" begincolumn="14" endcolumn="67" rule="UselessParentheses" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="462" endline="462" begincolumn="74" endcolumn="136" rule="UselessParentheses" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="463" endline="463" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="465" endline="465" begincolumn="13" endcolumn="159" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="468" endline="468" begincolumn="14" endcolumn="61" rule="UselessParentheses" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="468" endline="468" begincolumn="68" endcolumn="115" rule="UselessParentheses" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="469" endline="469" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="471" endline="471" begincolumn="13" endcolumn="147" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="490" endline="490" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="stop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="511" endline="511" begincolumn="5" endcolumn="6" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.cassandra.service" class="CassandraDaemon" method="destroy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="548" endline="557" begincolumn="9" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.cassandra.service" class="CassandraDaemon" method="activate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="576" endline="576" begincolumn="19" endcolumn="43" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="waitForGossipToSettle" variable="GOSSIP_SETTLE_MIN_WAIT_MS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'GOSSIP_SETTLE_MIN_WAIT_MS' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="577" endline="577" begincolumn="19" endcolumn="48" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="waitForGossipToSettle" variable="GOSSIP_SETTLE_POLL_INTERVAL_MS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'GOSSIP_SETTLE_POLL_INTERVAL_MS' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="578" endline="578" begincolumn="19" endcolumn="55" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="waitForGossipToSettle" variable="GOSSIP_SETTLE_POLL_SUCCESSES_REQUIRED" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'GOSSIP_SETTLE_POLL_SUCCESSES_REQUIRED' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="610" endline="610" begincolumn="13" endcolumn="127" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="waitForGossipToSettle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="612" endline="612" begincolumn="13" endcolumn="57" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon" method="waitForGossipToSettle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="645" endline="645" begincolumn="16" endcolumn="28" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon$Server" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'start': the method is declared in an interface type
+</violation>
+<violation beginline="652" endline="652" begincolumn="16" endcolumn="27" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon$Server" method="stop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'stop': the method is declared in an interface type
+</violation>
+<violation beginline="657" endline="657" begincolumn="16" endcolumn="35" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.cassandra.service" class="CassandraDaemon$Server" method="isRunning" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'isRunning': the method is declared in an interface type
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,1202 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/XXE/test",
+              "name": "XXE/test",
+              "shortDescription": {
+                "text": "XML External Entity (XXE) Injection"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nFor convenience, XML documents can use system identifiers to enable access to stored content, whether local or remote. The XML processor then uses the system identifier to access the resource rather than using the URI. When this weakness exists, the application permits user-supplied data, which could include the address of an XML external identity, to be passed directly to the XML parser. The application will then attempt to retrieve documents from outside of secure, controlled areas.\n\nAttackers can exploit this weakness to expose sensitive data, execute port scanning on the server side, or launch a denial-of-service attack (DoS) such as Billion Laughs.\n\n### Best practices for prevention\n\n* When possible, disable loading of data from external entities. The method of doing this will vary based on the language and XML parser being used.\n* Use a local, static document type definitions (DTDs) and ensure that external DTDs are disallowed entirely.\n* If user input cannot be avoided, perform validation against an allowlist of possible data sources. However, as long as external DTDs are allowed, XML code remains inherently vulnerable to attacks exploiting this weakness.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Unidata/netcdf-java/commit/475707c10fd20b92a48187aad1ac6379fe126e32?diff=split#diff-2ab50dd3fd1834707ceae5e424963a52L98",
+                    "lines": [
+                      {
+                        "line": "static private org.jdom.Document getCapabilities(String endpoint) throws IOException {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  org.jdom.Document doc;",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  HttpMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  HTTPMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    method = CdmRemote.sendQuery(endpoint, \"req=capabilities\");",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    InputStream in = method.getResponseBodyAsStream();",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SAXBuilder builder = new SAXBuilder(false);",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    doc = builder.build(in);",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } catch (Throwable t) {",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wirecardBrasil/mockkid/commit/002008cf918a84f962f2fe27cbdb4ba2685c6ae0?diff=split#diff-b441fb2c8c0aa00121642142978b8a0bL18",
+                    "lines": [
+                      {
+                        "line": "private static final Logger logger = LoggerFactory.getLogger(XMLBodyVariableResolver.class);",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static String extractValueFromXml(String name, HttpServletRequest request) {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 19,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilderFactory builderFactory =",
+                        "lineNumber": 20,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                DocumentBuilderFactory.newInstance();",
+                        "lineNumber": 21,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilder builder = builderFactory.newDocumentBuilder();",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(request.getInputStream());",
+                        "lineNumber": 22,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(((MockkidRequest) request).getSafeInputStream());",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        XPath xPath =  XPathFactory.newInstance().newXPath();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/IanDarwin/javasrc/commit/8251ef48893e6333dee02e29925c16ba933d7d14?diff=split#diff-f4d7011ca260d567d50d5aa022009b3dL17",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class SAXLister {",
+                        "lineNumber": 17,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public static void main(String[] args) throws Exception {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    new SAXLister(args);",
+                        "lineNumber": 19,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 21,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  public SAXLister(String[] args) throws SAXException, IOException {",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    XMLReader parser = XMLReaderFactory",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .createXMLReader(\"org.apache.xerces.parsers.SAXParser\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // should load properties rather than hardcoding class name",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.setContentHandler(new PeopleHandler());",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.parse(args.length == 1 ? args[0] : \"parents.xml\");",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Move loadind XML documents from streams to XML utils class.",
+                  "Added support for File comparator",
+                  "Adding unit tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 110,
+                "cwe": [
+                  "CWE-611"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetHttpOnly/test",
+              "name": "WebCookieMissesCallToSetHttpOnly/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie Without 'HttpOnly' Flag"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe `HttpOnly` flag is a simple parameter used when setting a user cookie to ensure that cookies with sensitive session data are visible only to the browser rather than to scripts. This helps prevent cross-site scripting attacks, in which an attacker gains access to sensitive session information and uses this information to trick legitimate web-based applications into disclosing confidential information or accepting illegitimate requests. When developers use the `HttpOnly` flag to set the cookie, they ensure that this sensitive session information is not readable or writable except by the browser (read) and server (write), respectively. While most modern browsers and versions now recognize the HttpOnly flag, some legacy and custom browsers still do not.\n\n### Best practices for prevention\n* Include the `HttpOnly` attribute in the response header when setting cookies on the client side. Be aware, however, that this crucial step provides only partial remediation.\n* Integrate client-side scripts to determine browser version; require browser compatibility or avoid transmitting sensitive data to browsers that do not support `HttpOnly`.\n* Understand and evaluate risks of third-party components or plugins, which may expose cookies.\n* Educate developers in a zero-trust approach, understanding the risks and best practices to prevent cross-site scripting, such as sanitizing all user input for code and special characters.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/417511458/jbone/commit/af32abbc24e2e27aad90f60f96cb9de5d1794a6b?diff=split#diff-a896741011f3ab283be812e19dc1cdb1L167",
+                    "lines": [
+                      {
+                        "line": "@Bean",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public SimpleCookie getCookie(){",
+                        "lineNumber": 165,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie cookie = new SimpleCookie();",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setName(\"jbone.session.id\");",
+                        "lineNumber": 167,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(false);",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Dreampie/Resty/commit/2808658b3e7d46ebac839fa9620b84bc7eb38e55?diff=split#diff-6c1831bb7349c574c1ec5a92f5ca0072L60",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Cookie c = new Cookie(cookie, value);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setPath(\"/\");",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setMaxAge(expiration);",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setHttpOnly(httpOnly);",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  response.addCookie(c);",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/igniterealtime/Openfire/commit/db32bf15648e53d810be358f6fe8bb914544dad9?diff=split#diff-ccf715fb4529c9f89d175d29aef63cf5L127",
+                    "lines": [
+                      {
+                        "line": "        path = \"/\";",
+                        "lineNumber": 124,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 125,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(name, value);",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(maxAge);",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setPath(path);",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(true);",
+                        "lineNumber": 129,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Implemented Cookie HttpOnly support."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 103,
+                "cwe": [
+                  "CWE-1004"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieTooLongMaxAge/test",
+              "name": "WebCookieTooLongMaxAge/test",
+              "shortDescription": {
+                "text": "Insufficient Session Expiration"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\nModern sites and web apps make extensive use of session information to provide a richly customized user experience: keeping track of everything from language preferences to access rights, shopping carts, and much more. On initial connection, the server issues a unique session ID, usually communicated to the client as a cookie. A session may be persistent (permanent) or non-persistent (temporary). In addition, while session tracking can be anonymous (like for maintaining a user's language preference), authentication is often used to provide authorized access to private information through a secure session (using TLS/HTTPS).\n\nWhen this weakness is present, the code allows the site or app to inadvertently define a secure session either as persistent or with an overly long expiry. In either case, this gives attackers the opportunity to intercept a valid session ID through physical access (via a shared computer, such as at a library), using a network sniffer, or through brute force algorithms. They can then hijack the session associated with it to view confidential data and perform unauthorized activities.\n\n### Best practices for prevention\n* Never open a secure session without implementing both an idle and an absolute timeout, using reasonable values such as the OWASP recommended 2-5 minutes for sensitive apps, and 15-30 minutes for lower-risk apps.\n* Provide and communicate to users clear ways of disconnecting a secure session, such as a prominent LOGOUT button, and verify that this functionality works as intended, particularly even when the browser's Back button is used.\n* Generate session IDs with an algorithm that ensures a large pool of hard-to-predict, hard-to-guess values.\n* Use the standardized session management functionality available within your development framework wherever possible, rather than resorting to DIY.\n* Be vigilant about related session-management weaknesses, such as not setting the `Secure` and `HttpOnly` flags.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/zhangyd-c/springboot-shiro/commit/da888d149105f6ed50b12067dfdc3f13dfcc929b?diff=split#diff-48657a1a2a8c91cc263467115790a904L227",
+                    "lines": [
+                      {
+                        "line": "public SimpleCookie rememberMeCookie() {",
+                        "lineNumber": 225,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    //Þ┐Öõ©¬ÕÅéµò░µÿ»cookieþÜäÕÉìþº░´╝îÕ»╣Õ║öÕëìþ½»þÜächeckboxþÜäname = rememberMe",
+                        "lineNumber": 226,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie simpleCookie = new SimpleCookie(\"rememberMe\");",
+                        "lineNumber": 227,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    //<!-- Þ«░õ¢ÅµêæcookieþöƒµòêµùÂÚù┤30Õñ® ,Õìòõ¢ìþºÆ;-->",
+                        "lineNumber": 228,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    simpleCookie.setMaxAge(2592000);",
+                        "lineNumber": 228,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    simpleCookie.setMaxAge(redisProperties.getExpire());",
+                        "lineNumber": 229,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return simpleCookie;",
+                        "lineNumber": 230,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 231,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/FoxBPM/FoxBPM/commit/2348f8cd063132a3ba8b4fe1623fffdf527c80c7?diff=split#diff-da02bb1f4e963a5d7f23b1e7fbf29728L50",
+                    "lines": [
+                      {
+                        "line": "if (null != userEntity && StringUtil.equals(password, userEntity.getPassword())) {",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie(\"foxbpm\", \"2222\");",
+                        "lineNumber": 49,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cookie.setMaxAge(1000000);",
+                        "lineNumber": 50,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie(\"foxSid\", userEntity.getUserId());",
+                        "lineNumber": 51,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cookie.setMaxAge(-1);",
+                        "lineNumber": 52,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "response.addCookie(cookie);",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "response.sendRedirect(contextPath + \"/portal/index.html\");",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dataiku/wt1/commit/63ab81004fc29659fabf5f1a5913581634dc5872?diff=split#diff-0a4da474a1e7455742be201728716a66R49",
+                    "lines": [
+                      {
+                        "line": "   public static final String VISITOR_ID_OPTOUT_COOKIE = \"__wt1optout\";",
+                        "lineNumber": 46,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\r",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "   public static final int VISITOR_ID_THIRD_PARTY_COOKIE_LIFETIME = 2 * 365 * 86400;",
+                        "lineNumber": 48,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "   public static final int VISITOR_ID_OPTOUT_COOKIE_LIFETIME = 5 * 365 * 86400;",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "   ",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "@Override\r",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void init(ServletConfig config) throws ServletException {\r",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 139,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "/* Refresh the cookie */",
+                        "lineNumber": 134,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cookie visitorIdTPCookie = new Cookie(VISITOR_ID_THIRD_PARTY_COOKIE, globalVisitorId);",
+                        "lineNumber": 135,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "visitorIdTPCookie.setMaxAge(2 * 365 * 86400);",
+                        "lineNumber": 136,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "visitorIdTPCookie.setPath(\"/\");",
+                        "lineNumber": 137,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "resp.addCookie(visitorIdTPCookie);",
+                        "lineNumber": 138,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "if (globalVisitorId != null) {",
+                        "lineNumber": 156,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\t/* Refresh the cookie */",
+                        "lineNumber": 157,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tCookie visitorIdTPCookie = new Cookie(VISITOR_ID_THIRD_PARTY_COOKIE, globalVisitorId);",
+                        "lineNumber": 158,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tvisitorIdTPCookie.setMaxAge(VISITOR_ID_THIRD_PARTY_COOKIE_LIFETIME);",
+                        "lineNumber": 159,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tvisitorIdTPCookie.setPath(\"/\");",
+                        "lineNumber": 160,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tresp.addCookie(visitorIdTPCookie);",
+                        "lineNumber": 161,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Add an opt-out servlet to check / opt in / opt out third party cookie"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 5,
+                "cwe": [
+                  "CWE-613"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetSecure/test",
+              "name": "WebCookieMissesCallToSetSecure/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIn a session hijacking attack, if a cookie containing sensitive data is set without the `secure` attribute, an attacker might be able to intercept that cookie. Once the attacker has this information, they can potentially impersonate a user, accessing confidential data and performing actions that they would not normally be authorized to do. Attackers often gain access to this sensitive cookie data when it is transmitted insecurely in plain text over a standard HTTP session, rather than being encrypted and sent over an HTTPS session. This type of attack is highly preventable by following best practices when setting sensitive session cookies.\n\n### Best practices for prevention\n* Set the `secure` attribute in the response header when setting cookies on the client side, and use a test tool to verify that secure cookie transmission is in place.\n* Always use HTTPS for all login pages and never redirect from HTTP to HTTPS, which leaves secure session data open to interception.\n* Follow other best practices when it comes to session cookies, such as setting the HttpOnly flag and maintaining highly time-limited sessions.\n* Consider implementing browser checks and providing secure data only within a browser that supports tight cookie security.\n* Generate session IDs in a way that is not easily predictable, invalidate sessions upon logout, and never reuse session IDs.\n* Educate developers to use built-in secure session-management functionality within the development environment instead of taking a DIY approach.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pippo-java/pippo/commit/baa786cf11e875461090175df964a88ac7d4ecd5?diff=split#diff-8aed5e116d7d7ad41bf04c851e1d5dc7L269",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 266,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Cookie generateLanguageCookie(String language) {",
+                        "lineNumber": 267,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(applicationCookiePrefix + \"_LANG\", language);",
+                        "lineNumber": 268,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(true);",
+                        "lineNumber": 269,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(TEN_YEARS);",
+                        "lineNumber": 270,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 271,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 272,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/eclipse/rap/commit/bec1d767c1435f13c923c90a578473e02aa24996?diff=split#diff-a8821336a5cc73da073db6bbfff0ae4eL87",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC  ",
+                        "lineNumber": 85,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC",
+                        "lineNumber": 86,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie( COOKIE_NAME, result );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "cookie.setSecure( RWT.getRequest().isSecure() );",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cookie.setMaxAge( COOKIE_MAX_AGE_SEC );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "ContextProvider.getResponse().addCookie( cookie );",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) update storeId stored in session",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/InnovateUKGitHub/innovation-funding-service/commit/a770f11236a0a40bfdd1e6b181d5a80e0da970ea?diff=split#diff-e27b77e438734a64c56eb279998f82b3L80",
+                    "lines": [
+                      {
+                        "line": "public void removeAuthentication(HttpServletResponse response) {",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(AUTH_TOKEN, null);",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(0);",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(cookieSecure);",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(cookieHttpOnly);",
+                        "lineNumber": 89,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added cookie support in HttpRequest/Response",
+                  "Set secure user cookies and only for HTTP."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 88,
+                "cwe": [
+                  "CWE-614"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/XXE/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from a local file flows into parse, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0),(1),(2),(3),(4),(5),(6)",
+              "[parse](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 153,
+                  "endLine": 153,
+                  "startColumn": 28,
+                  "endColumn": 91
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b340d656e970419c7920fd32e627522038b45b03420b7b83af6d6f21a5425d3d",
+            "1": "ac4e7c8b.aaeee1bb.d6688933.44ab356c.1672ff53.a1cba6c8.df7e59ba.41ec51de.5ea1a60e.fbbc39dc.cce3a19f.44ab356c.1672ff53.ce7a5e73.069cae10.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 152,
+                            "endLine": 152,
+                            "startColumn": 58,
+                            "endColumn": 95
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 152,
+                            "endLine": 152,
+                            "startColumn": 31,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 152,
+                            "endLine": 152,
+                            "startColumn": 20,
+                            "endColumn": 96
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 117,
+                            "endColumn": 125
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 117,
+                            "endColumn": 134
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 96,
+                            "endColumn": 116
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 92,
+                            "endColumn": 159
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/io/jenkins/plugins/junit/storage/TestResultStorageJunitTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 28,
+                            "endColumn": 91
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 146,
+                  "endLine": 146,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5b6365e3e605a7d02c0b6472bd8ecceffc5c0289164b8e4bb5c41d941c2af337",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.511ee51d.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.c631c4d4.f1d9f854.99961f89.bcf9c65a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 146,
+                            "endLine": 146,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieTooLongMaxAge/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Setting the cookie's MaxAge attribute to high values is dangerous because it gives attackers more time to steal sensitive data.",
+            "markdown": "Setting the cookie's MaxAge attribute to {0} is dangerous because it gives attackers more time to steal sensitive data.",
+            "arguments": [
+              "[high values](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 150,
+                  "endLine": 150,
+                  "startColumn": 9,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "73be606a52b090e291a860ffdf14db4f6eb6e9f15fa5e6898bdd2a25b5e0950e",
+            "1": "732eeeb2.b2b6b83e.59997255.e22980a8.f1d9f854.99961f89.bcf9c65a.54d46e25.732eeeb2.b2b6b83e.59997255.c631c4d4.ca58bf6e.162a871f.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 150,
+                            "endLine": 150,
+                            "startColumn": 9,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 146,
+                  "endLine": 146,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5588e30b168eb4e1fd65cc3c04671379a9ead30285244abddb43bd099201e31d",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.511ee51d.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.c631c4d4.f1d9f854.99961f89.bcf9c65a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/tasks/test/TestResultProjectAction.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 146,
+                            "endLine": 146,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 403,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 46,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 86,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 65,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

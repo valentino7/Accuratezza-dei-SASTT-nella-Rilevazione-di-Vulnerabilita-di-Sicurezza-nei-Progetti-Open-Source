@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T23:17:49.919">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-89/bad$b384a650a122e42d75e8cbb5624d0274a65cd848$18$ClientAdminEndpoints.java">
+<violation beginline="88" endline="88" begincolumn="19" endcolumn="61" rule="ProperLogger" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="201" endline="201" begincolumn="13" endcolumn="73" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="getClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="202" endline="206" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="getClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'InvalidClientException' branch
+</violation>
+<violation beginline="205" endline="205" begincolumn="13" endcolumn="73" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="getClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="225" endline="225" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="getRestrictedClientScopes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="271" endline="271" begincolumn="47" endcolumn="47" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="updateClientDetailsTx" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="315" endline="315" begincolumn="17" endcolumn="93" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="updateClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="320" endline="320" begincolumn="13" endcolumn="85" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="updateClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="424" endline="424" begincolumn="13" endcolumn="75" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="changeSecretTx" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="470" endline="470" begincolumn="13" endcolumn="114" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="listClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="486" endline="487" begincolumn="13" endcolumn="60" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="listClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="488" endline="491" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="listClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'SpelParseException' branch
+</violation>
+<violation beginline="489" endline="490" begincolumn="13" endcolumn="60" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="listClientDetails" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="502" endline="502" begincolumn="13" endcolumn="73" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="changeSecret" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="508" endline="508" begincolumn="13" endcolumn="68" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="changeSecret" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="577" endline="578" begincolumn="17" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="checkPasswordChangeIsAllowed" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="601" endline="603" begincolumn="10" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="authenticateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="610" endline="610" begincolumn="13" endcolumn="72" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.client" class="ClientAdminEndpoints" method="authenticateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

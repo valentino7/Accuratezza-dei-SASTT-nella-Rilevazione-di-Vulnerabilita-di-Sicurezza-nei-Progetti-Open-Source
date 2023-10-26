@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T16:25:45.573">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-20/good$d50df341432df1049c6c85bf2dcda9eb0be04d73$378$CoordUpdateXCommand.java">
+<violation beginline="63" endline="63" begincolumn="5" endcolumn="16" rule="AvoidStringBufferField" ruleset="Best Practices" package="org.apache.oozie.command.coord" class="CoordUpdateXCommand" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+<violation beginline="104" endline="104" begincolumn="13" endcolumn="65" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.oozie.command.coord" class="CoordUpdateXCommand" method="storeToDB" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="266" endline="267" begincolumn="69" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.oozie.command.coord" class="CoordUpdateXCommand" method="queueMaterializeTransitionXCommand" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="270" endline="271" begincolumn="56" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.oozie.command.coord" class="CoordUpdateXCommand" method="notifyParent" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="284" endline="285" begincolumn="33" endcolumn="5" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.oozie.command.coord" class="CoordUpdateXCommand" method="transitToNext" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+</file>
+</pmd>

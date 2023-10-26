@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:00:04.634">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-611/good$39909bf21fd694f4fb792d1de8adc72562ead25e$154$MainFrame.java">
+<violation beginline="209" endline="209" begincolumn="11" endcolumn="32" rule="SingularField" ruleset="Design" package="org.apache.uima.tools.cvd" class="MainFrame" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'fileStatus' could be replaced by a local variable.
+</violation>
+<violation beginline="268" endline="268" begincolumn="11" endcolumn="39" rule="SingularField" ruleset="Design" package="org.apache.uima.tools.cvd" class="MainFrame" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'typeSystemReadItem' could be replaced by a local variable.
+</violation>
+<violation beginline="285" endline="285" begincolumn="11" endcolumn="32" rule="SingularField" ruleset="Design" package="org.apache.uima.tools.cvd" class="MainFrame" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'cpButtons' could be replaced by a local variable.
+</violation>
+<violation beginline="295" endline="295" begincolumn="11" endcolumn="34" rule="SingularField" ruleset="Design" package="org.apache.uima.tools.cvd" class="MainFrame" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'langButtons' could be replaced by a local variable.
+</violation>
+<violation beginline="479" endline="482" begincolumn="7" endcolumn="5" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadAEDescriptor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'Exception' branch
+</violation>
+<violation beginline="596" endline="619" begincolumn="24" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="getMnemonic" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'getMnemonic': private methods cannot be overridden
+</violation>
+<violation beginline="621" endline="627" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="createRecentTextFileItem" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'createRecentTextFileItem': private methods cannot be overridden
+</violation>
+<violation beginline="639" endline="645" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="createRecentDescFileItem" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'createRecentDescFileItem': private methods cannot be overridden
+</violation>
+<violation beginline="705" endline="705" begincolumn="22" endcolumn="34" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveFile" variable="fileOutStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="712" endline="712" begincolumn="12" endcolumn="17" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveFile" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Writer object are closed after use
+</violation>
+<violation beginline="790" endline="790" begincolumn="50" endcolumn="75" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="populateEditMenu" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="799" endline="799" begincolumn="51" endcolumn="76" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="populateEditMenu" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="808" endline="808" begincolumn="47" endcolumn="72" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="populateEditMenu" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="816" endline="816" begincolumn="11" endcolumn="33" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="createEditActionMap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="819" endline="822" begincolumn="5" endcolumn="5" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="createEditActionMap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="946" endline="948" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="addCursorOwningComponent" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'addCursorOwningComponent': private methods cannot be overridden
+</violation>
+<violation beginline="950" endline="958" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="setWaitCursor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'setWaitCursor': private methods cannot be overridden
+</violation>
+<violation beginline="1240" endline="1240" begincolumn="7" endcolumn="18" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="setCaretStatus" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1322" endline="1322" begincolumn="19" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="initializeLogging" variable="ins" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="1335" endline="1338" begincolumn="7" endcolumn="5" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="initializeLogging" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'SecurityException' branch
+</violation>
+<violation beginline="1432" endline="1447" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="initFileLists" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'initFileLists': private methods cannot be overridden
+</violation>
+<violation beginline="1505" endline="1505" begincolumn="7" endcolumn="15" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="setupAE" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="1513" endline="1516" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="initCas" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'initCas': private methods cannot be overridden
+</violation>
+<violation beginline="1536" endline="1536" begincolumn="38" endcolumn="46" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="internalRunAE" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="1537" endline="1537" begincolumn="28" endcolumn="36" rule="UselessQualifiedThis" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="internalRunAE" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="1624" endline="1625" begincolumn="37" endcolumn="30" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="updateIndexTree" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.uima.tools.cvd.tsview.MainFrame.getTreeModelListeners' due to existing same package import 'org.apache.uima.tools.cvd.*'
+</violation>
+<violation beginline="1632" endline="1634" begincolumn="5" endcolumn="5" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="updateIndexTree" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1642" endline="1642" begincolumn="11" endcolumn="27" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="getAnnotationsAtPos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="1683" endline="1683" begincolumn="23" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadProgramPreferences" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileInputStream object are closed after use
+</violation>
+<violation beginline="1726" endline="1728" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadProgramPreferences" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1730" endline="1732" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadProgramPreferences" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1768" endline="1779" begincolumn="24" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="stringListToString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'stringListToString': private methods cannot be overridden
+</violation>
+<violation beginline="1769" endline="1769" begincolumn="9" endcolumn="17" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="stringListToString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="1781" endline="1790" begincolumn="24" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.uima.tools.cvd" class="MainFrame" method="stringToArrayList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'stringToArrayList': private methods cannot be overridden
+</violation>
+<violation beginline="1831" endline="1831" begincolumn="49" endcolumn="53" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveProgramPreferences" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="1845" endline="1845" begincolumn="22" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveProgramPreferences" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="1854" endline="1854" begincolumn="5" endcolumn="16" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveColorPreferences" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1862" endline="1862" begincolumn="22" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="saveColorPreferences" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="1870" endline="1870" begincolumn="21" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadColorPreferences" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileInputStream object are closed after use
+</violation>
+<violation beginline="1872" endline="1872" begincolumn="5" endcolumn="26" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="loadColorPreferences" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1933" endline="1938" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.uima.tools.cvd" class="MainFrame" method="showTextPopup" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+</file>
+</pmd>

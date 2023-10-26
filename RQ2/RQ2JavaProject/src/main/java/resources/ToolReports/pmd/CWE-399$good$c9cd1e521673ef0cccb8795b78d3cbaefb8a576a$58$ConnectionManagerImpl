@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T21:03:48.127">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-399/good$c9cd1e521673ef0cccb8795b78d3cbaefb8a576a$58$ConnectionManagerImpl.java">
+<violation beginline="24" endline="24" begincolumn="1" endcolumn="35" rule="UnnecessaryImport" ruleset="Code Style" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jivesoftware.openfire.*'
+</violation>
+<violation beginline="29" endline="29" begincolumn="1" endcolumn="39" rule="UnnecessaryImport" ruleset="Code Style" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jivesoftware.openfire.net.*'
+</violation>
+<violation beginline="34" endline="34" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jivesoftware.util.*'
+</violation>
+<violation beginline="60" endline="60" begincolumn="13" endcolumn="33" rule="LooseCoupling" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="67" endline="67" begincolumn="24" endcolumn="29" rule="UnusedPrivateField" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" variable="server" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'server'.
+</violation>
+<violation beginline="67" endline="67" begincolumn="13" endcolumn="30" rule="SingularField" ruleset="Design" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#singularfield" priority="3">
+Perhaps 'server' could be replaced by a local variable.
+</violation>
+<violation beginline="152" endline="152" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="createServerListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="166" endline="166" begincolumn="17" endcolumn="82" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startServerListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="171" endline="171" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startServerListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="224" endline="224" begincolumn="17" endcolumn="87" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startConnectionManagerListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="229" endline="229" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startConnectionManagerListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="288" endline="288" begincolumn="17" endcolumn="85" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startComponentListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="293" endline="293" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startComponentListener" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="353" endline="353" begincolumn="17" endcolumn="81" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startClientListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="358" endline="358" begincolumn="17" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startClientListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="428" endline="428" begincolumn="21" endcolumn="98" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="createClientSSLListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="431" endline="431" begincolumn="25" endcolumn="102" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="createClientSSLListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="440" endline="440" begincolumn="17" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="createClientSSLListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="466" endline="466" begincolumn="17" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startClientSSLListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="471" endline="471" begincolumn="17" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="startClientSSLListeners" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="586" endline="588" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.jivesoftware.openfire.spi" class="ConnectionManagerImpl" method="isClientSSLListenerEnabled" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'KeyStoreException' branch
+</violation>
+</file>
+</pmd>

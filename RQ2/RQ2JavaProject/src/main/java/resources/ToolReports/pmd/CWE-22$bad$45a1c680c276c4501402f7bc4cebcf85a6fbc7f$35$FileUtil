@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:26:41.458">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$45a1c680c276c4501402f7bc4cebcf85a6fbc7f$35$FileUtil.java">
+<violation beginline="55" endline="1322" begincolumn="23" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="org.apache.hadoop.fs" class="FileUtil" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="75" endline="75" begincolumn="14" endcolumn="17" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="stat2Paths" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="75" endline="75" begincolumn="7" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="stat2Paths" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="94" endline="94" begincolumn="7" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="stat2Paths" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="96" endline="96" begincolumn="7" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="stat2Paths" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="187" endline="188" begincolumn="7" endcolumn="56" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="deleteImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="220" endline="242" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="fullyDeleteContents" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="270" endline="270" begincolumn="9" endcolumn="22" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="checkDependencies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="302" endline="302" begincolumn="7" endcolumn="77" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="311" endline="312" begincolumn="9" endcolumn="60" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="318" endline="318" begincolumn="11" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="355" endline="359" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="361" endline="361" begincolumn="19" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="copy" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="362" endline="362" begincolumn="20" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="copy" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStream object are closed after use
+</violation>
+<violation beginline="389" endline="389" begincolumn="7" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="copyMerge" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="396" endline="408" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="copyMerge" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="402" endline="402" begincolumn="15" endcolumn="53" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="copyMerge" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="433" endline="436" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="438" endline="438" begincolumn="19" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="copy" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="439" endline="439" begincolumn="20" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="copy" variable="out" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStream object are closed after use
+</violation>
+<violation beginline="478" endline="482" begincolumn="7" endcolumn="7" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="484" endline="484" begincolumn="19" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="copy" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="558" endline="558" begincolumn="7" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="getDU" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="564" endline="574" begincolumn="10" endcolumn="10" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="getDU" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="685" endline="685" begincolumn="17" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="unTarUsingJava" variable="inputStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="749" endline="749" begincolumn="40" endcolumn="68" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil$HardLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.fs.HardLink' due to existing same package import 'org.apache.hadoop.fs.*'
+</violation>
+<violation beginline="784" endline="785" begincolumn="9" endcolumn="75" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="symLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="788" endline="789" begincolumn="11" endcolumn="33" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="symLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="795" endline="796" begincolumn="9" endcolumn="30" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="symLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="829" endline="830" begincolumn="9" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="symLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1098" endline="1098" begincolumn="5" endcolumn="18" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="execCommand" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'output'
+</violation>
+<violation beginline="1141" endline="1141" begincolumn="11" endcolumn="60" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="replaceFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1243" endline="1243" begincolumn="7" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.fs" class="FileUtil" method="createJarWithClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1308" endline="1308" begincolumn="22" endcolumn="24" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="createJarWithClassPath" variable="fos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="1309" endline="1309" begincolumn="26" endcolumn="28" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="createJarWithClassPath" variable="bos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this BufferedOutputStream object are closed after use
+</violation>
+<violation beginline="1310" endline="1310" begincolumn="21" endcolumn="23" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.fs" class="FileUtil" method="createJarWithClassPath" variable="jos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this JarOutputStream object are closed after use
+</violation>
+<violation beginline="1320" endline="1320" begincolumn="5" endcolumn="17" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.fs" class="FileUtil" method="createJarWithClassPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'jarCp'
+</violation>
+</file>
+</pmd>

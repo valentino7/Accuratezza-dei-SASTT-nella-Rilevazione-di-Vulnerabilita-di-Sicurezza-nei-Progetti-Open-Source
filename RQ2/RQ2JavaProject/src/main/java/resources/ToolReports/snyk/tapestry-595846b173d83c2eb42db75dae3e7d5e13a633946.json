@@ -1,0 +1,3007 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/XXE",
+              "name": "XXE",
+              "shortDescription": {
+                "text": "XML External Entity (XXE) Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nFor convenience, XML documents can use system identifiers to enable access to stored content, whether local or remote. The XML processor then uses the system identifier to access the resource rather than using the URI. When this weakness exists, the application permits user-supplied data, which could include the address of an XML external identity, to be passed directly to the XML parser. The application will then attempt to retrieve documents from outside of secure, controlled areas.\n\nAttackers can exploit this weakness to expose sensitive data, execute port scanning on the server side, or launch a denial-of-service attack (DoS) such as Billion Laughs.\n\n### Best practices for prevention\n\n* When possible, disable loading of data from external entities. The method of doing this will vary based on the language and XML parser being used.\n* Use a local, static document type definitions (DTDs) and ensure that external DTDs are disallowed entirely.\n* If user input cannot be avoided, perform validation against an allowlist of possible data sources. However, as long as external DTDs are allowed, XML code remains inherently vulnerable to attacks exploiting this weakness.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Unidata/netcdf-java/commit/475707c10fd20b92a48187aad1ac6379fe126e32?diff=split#diff-2ab50dd3fd1834707ceae5e424963a52L98",
+                    "lines": [
+                      {
+                        "line": "static private org.jdom.Document getCapabilities(String endpoint) throws IOException {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  org.jdom.Document doc;",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  HttpMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  HTTPMethod method = null;",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    method = CdmRemote.sendQuery(endpoint, \"req=capabilities\");",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    InputStream in = method.getResponseBodyAsStream();",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SAXBuilder builder = new SAXBuilder(false);",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    doc = builder.build(in);",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } catch (Throwable t) {",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wirecardBrasil/mockkid/commit/002008cf918a84f962f2fe27cbdb4ba2685c6ae0?diff=split#diff-b441fb2c8c0aa00121642142978b8a0bL18",
+                    "lines": [
+                      {
+                        "line": "private static final Logger logger = LoggerFactory.getLogger(XMLBodyVariableResolver.class);",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static String extractValueFromXml(String name, HttpServletRequest request) {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 19,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilderFactory builderFactory =",
+                        "lineNumber": 20,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                DocumentBuilderFactory.newInstance();",
+                        "lineNumber": 21,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DocumentBuilder builder = builderFactory.newDocumentBuilder();",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(request.getInputStream());",
+                        "lineNumber": 22,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        Document document = builder.parse(((MockkidRequest) request).getSafeInputStream());",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        XPath xPath =  XPathFactory.newInstance().newXPath();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/IanDarwin/javasrc/commit/8251ef48893e6333dee02e29925c16ba933d7d14?diff=split#diff-f4d7011ca260d567d50d5aa022009b3dL17",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 16,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class SAXLister {",
+                        "lineNumber": 17,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public static void main(String[] args) throws Exception {",
+                        "lineNumber": 18,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    new SAXLister(args);",
+                        "lineNumber": 19,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 21,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  public SAXLister(String[] args) throws SAXException, IOException {",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    XMLReader parser = XMLReaderFactory",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .createXMLReader(\"org.apache.xerces.parsers.SAXParser\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // should load properties rather than hardcoding class name",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.setContentHandler(new PeopleHandler());",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    parser.parse(args.length == 1 ? args[0] : \"parents.xml\");",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Move loadind XML documents from streams to XML utils class.",
+                  "Added support for File comparator",
+                  "Adding unit tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 110,
+                "cwe": [
+                  "CWE-611"
+                ]
+              }
+            },
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetSecure/test",
+              "name": "WebCookieMissesCallToSetSecure/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIn a session hijacking attack, if a cookie containing sensitive data is set without the `secure` attribute, an attacker might be able to intercept that cookie. Once the attacker has this information, they can potentially impersonate a user, accessing confidential data and performing actions that they would not normally be authorized to do. Attackers often gain access to this sensitive cookie data when it is transmitted insecurely in plain text over a standard HTTP session, rather than being encrypted and sent over an HTTPS session. This type of attack is highly preventable by following best practices when setting sensitive session cookies.\n\n### Best practices for prevention\n* Set the `secure` attribute in the response header when setting cookies on the client side, and use a test tool to verify that secure cookie transmission is in place.\n* Always use HTTPS for all login pages and never redirect from HTTP to HTTPS, which leaves secure session data open to interception.\n* Follow other best practices when it comes to session cookies, such as setting the HttpOnly flag and maintaining highly time-limited sessions.\n* Consider implementing browser checks and providing secure data only within a browser that supports tight cookie security.\n* Generate session IDs in a way that is not easily predictable, invalidate sessions upon logout, and never reuse session IDs.\n* Educate developers to use built-in secure session-management functionality within the development environment instead of taking a DIY approach.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pippo-java/pippo/commit/baa786cf11e875461090175df964a88ac7d4ecd5?diff=split#diff-8aed5e116d7d7ad41bf04c851e1d5dc7L269",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 266,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Cookie generateLanguageCookie(String language) {",
+                        "lineNumber": 267,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(applicationCookiePrefix + \"_LANG\", language);",
+                        "lineNumber": 268,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(true);",
+                        "lineNumber": 269,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(TEN_YEARS);",
+                        "lineNumber": 270,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 271,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 272,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/eclipse/rap/commit/bec1d767c1435f13c923c90a578473e02aa24996?diff=split#diff-a8821336a5cc73da073db6bbfff0ae4eL87",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC  ",
+                        "lineNumber": 85,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC",
+                        "lineNumber": 86,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie( COOKIE_NAME, result );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "cookie.setSecure( RWT.getRequest().isSecure() );",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cookie.setMaxAge( COOKIE_MAX_AGE_SEC );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "ContextProvider.getResponse().addCookie( cookie );",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) update storeId stored in session",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/InnovateUKGitHub/innovation-funding-service/commit/a770f11236a0a40bfdd1e6b181d5a80e0da970ea?diff=split#diff-e27b77e438734a64c56eb279998f82b3L80",
+                    "lines": [
+                      {
+                        "line": "public void removeAuthentication(HttpServletResponse response) {",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(AUTH_TOKEN, null);",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(0);",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(cookieSecure);",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(cookieHttpOnly);",
+                        "lineNumber": 89,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added cookie support in HttpRequest/Response",
+                  "Set secure user cookies and only for HTTP."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 88,
+                "cwe": [
+                  "CWE-614"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetHttpOnly",
+              "name": "WebCookieMissesCallToSetHttpOnly",
+              "shortDescription": {
+                "text": "Sensitive Cookie Without 'HttpOnly' Flag"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe `HttpOnly` flag is a simple parameter used when setting a user cookie to ensure that cookies with sensitive session data are visible only to the browser rather than to scripts. This helps prevent cross-site scripting attacks, in which an attacker gains access to sensitive session information and uses this information to trick legitimate web-based applications into disclosing confidential information or accepting illegitimate requests. When developers use the `HttpOnly` flag to set the cookie, they ensure that this sensitive session information is not readable or writable except by the browser (read) and server (write), respectively. While most modern browsers and versions now recognize the HttpOnly flag, some legacy and custom browsers still do not.\n\n### Best practices for prevention\n* Include the `HttpOnly` attribute in the response header when setting cookies on the client side. Be aware, however, that this crucial step provides only partial remediation.\n* Integrate client-side scripts to determine browser version; require browser compatibility or avoid transmitting sensitive data to browsers that do not support `HttpOnly`.\n* Understand and evaluate risks of third-party components or plugins, which may expose cookies.\n* Educate developers in a zero-trust approach, understanding the risks and best practices to prevent cross-site scripting, such as sanitizing all user input for code and special characters.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/417511458/jbone/commit/af32abbc24e2e27aad90f60f96cb9de5d1794a6b?diff=split#diff-a896741011f3ab283be812e19dc1cdb1L167",
+                    "lines": [
+                      {
+                        "line": "@Bean",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public SimpleCookie getCookie(){",
+                        "lineNumber": 165,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie cookie = new SimpleCookie();",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setName(\"jbone.session.id\");",
+                        "lineNumber": 167,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(false);",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Dreampie/Resty/commit/2808658b3e7d46ebac839fa9620b84bc7eb38e55?diff=split#diff-6c1831bb7349c574c1ec5a92f5ca0072L60",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Cookie c = new Cookie(cookie, value);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setPath(\"/\");",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setMaxAge(expiration);",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setHttpOnly(httpOnly);",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  response.addCookie(c);",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/igniterealtime/Openfire/commit/db32bf15648e53d810be358f6fe8bb914544dad9?diff=split#diff-ccf715fb4529c9f89d175d29aef63cf5L127",
+                    "lines": [
+                      {
+                        "line": "        path = \"/\";",
+                        "lineNumber": 124,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 125,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(name, value);",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(maxAge);",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setPath(path);",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(true);",
+                        "lineNumber": 129,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Implemented Cookie HttpOnly support."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 103,
+                "cwe": [
+                  "CWE-1004"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetHttpOnly/test",
+              "name": "WebCookieMissesCallToSetHttpOnly/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie Without 'HttpOnly' Flag"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe `HttpOnly` flag is a simple parameter used when setting a user cookie to ensure that cookies with sensitive session data are visible only to the browser rather than to scripts. This helps prevent cross-site scripting attacks, in which an attacker gains access to sensitive session information and uses this information to trick legitimate web-based applications into disclosing confidential information or accepting illegitimate requests. When developers use the `HttpOnly` flag to set the cookie, they ensure that this sensitive session information is not readable or writable except by the browser (read) and server (write), respectively. While most modern browsers and versions now recognize the HttpOnly flag, some legacy and custom browsers still do not.\n\n### Best practices for prevention\n* Include the `HttpOnly` attribute in the response header when setting cookies on the client side. Be aware, however, that this crucial step provides only partial remediation.\n* Integrate client-side scripts to determine browser version; require browser compatibility or avoid transmitting sensitive data to browsers that do not support `HttpOnly`.\n* Understand and evaluate risks of third-party components or plugins, which may expose cookies.\n* Educate developers in a zero-trust approach, understanding the risks and best practices to prevent cross-site scripting, such as sanitizing all user input for code and special characters.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/417511458/jbone/commit/af32abbc24e2e27aad90f60f96cb9de5d1794a6b?diff=split#diff-a896741011f3ab283be812e19dc1cdb1L167",
+                    "lines": [
+                      {
+                        "line": "@Bean",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public SimpleCookie getCookie(){",
+                        "lineNumber": 165,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie cookie = new SimpleCookie();",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setName(\"jbone.session.id\");",
+                        "lineNumber": 167,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(false);",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Dreampie/Resty/commit/2808658b3e7d46ebac839fa9620b84bc7eb38e55?diff=split#diff-6c1831bb7349c574c1ec5a92f5ca0072L60",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Cookie c = new Cookie(cookie, value);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setPath(\"/\");",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setMaxAge(expiration);",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setHttpOnly(httpOnly);",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  response.addCookie(c);",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/igniterealtime/Openfire/commit/db32bf15648e53d810be358f6fe8bb914544dad9?diff=split#diff-ccf715fb4529c9f89d175d29aef63cf5L127",
+                    "lines": [
+                      {
+                        "line": "        path = \"/\";",
+                        "lineNumber": 124,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 125,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(name, value);",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(maxAge);",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setPath(path);",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(true);",
+                        "lineNumber": 129,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Implemented Cookie HttpOnly support."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 103,
+                "cwe": [
+                  "CWE-1004"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedSecret",
+              "name": "HardcodedSecret",
+              "shortDescription": {
+                "text": "Hardcoded Secret"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n- Never hard code security-related constants; use symbolic names or configuration lookup files.\n- As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n- Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/aberic/fabric-net-server/commit/963bb9fe026b454672fb83fd739f3d754b6844e1?diff=split#diff-759baf3d057123b5320b6a399e775967L67",
+                    "lines": [
+                      {
+                        "line": "app.setKey(MathUtil.getRandom8());",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "app.setPublicKey(\"pub1\");",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.setPrivateKey(\"pri1\");",
+                        "lineNumber": 66,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPublicKey(key.getPublicKey());",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPrivateKey(key.getPrivateKey());",
+                        "lineNumber": 83,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return appMapper.updateKey(app);",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/karutaproject/karuta-backend/commit/a05377ace2292896e3768e70aa2fde992ddaae62?diff=split#diff-a46279e5e2a97eaacfba9b55e2e3b9b0L104",
+                    "lines": [
+                      {
+                        "line": "{",
+                        "lineNumber": 108,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  rc4 = Cipher.getInstance(\"RC4\");",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(\"testkey\".getBytes(), \"RC4\");",
+                        "lineNumber": 103,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String secretkey = ConfigUtils.get(\"directkey\");",
+                        "lineNumber": 110,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(secretkey.getBytes(), \"RC4\");",
+                        "lineNumber": 111,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  rc4.init(Cipher.DECRYPT_MODE, key);",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/0653d6d7f6283752984ea181ef27559bed4b05af?diff=split#diff-af0be1b2a17efe3a3d4ae1941c2e946fL309",
+                    "lines": [
+                      {
+                        "line": "long ts = (new Date()).getTime();",
+                        "lineNumber": 306,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "long ts = normalizedHashTime.getTime();",
+                        "lineNumber": 310,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "ts = ts/60000;\t\t// round up to 1 minute",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String secretKey = \"cloud.com\";",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String secretKey = _ms.getHashKey();",
+                        "lineNumber": 312,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), \"HmacSHA1\");",
+                        "lineNumber": 314,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.init(keySpec);",
+                        "lineNumber": 315,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.update(params.getBytes());",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Api keys from json file",
+                  "Made security file and session key configurable"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 62,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/XXE",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a local file flows into parse, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "markdown": "Unsanitized input from a local file {0} into {1}, which allows expansion of external entity references. This may result in a XXE attack leading to the disclosure of confidential data or denial of service.",
+            "arguments": [
+              "[flows](0),(1),(2),(3),(4)",
+              "[parse](5)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 296,
+                  "endLine": 296,
+                  "startColumn": 13,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c501fc0d70b98dc67c190040d21f0ac6c26e248c2ecc4da282ada9e287adccd2",
+            "1": "a1092ece.1f519e92.8ccfa8fe.857e8281.03452af8.31c50941.a1439b9f.54d46e25.e723e2f9.fc89c5ee.9fdc2890.e22980a8.a7b964d9.31c50941.a1439b9f.63b50afa"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 294,
+                            "endLine": 294,
+                            "startColumn": 54,
+                            "endColumn": 79
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 294,
+                            "endLine": 294,
+                            "startColumn": 34,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 294,
+                            "endLine": 294,
+                            "startColumn": 25,
+                            "endColumn": 80
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 296,
+                            "endLine": 296,
+                            "startColumn": 30,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 296,
+                            "endLine": 296,
+                            "startColumn": 26,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-javadoc/src/main/java/org/apache/tapestry5/javadoc/XDocStreamer.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 296,
+                            "endLine": 296,
+                            "startColumn": 13,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 751,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into java.io.FileInputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1)",
+              "[java.io.FileInputStream](2)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "plastic/src/external/java/org/apache/tapestry5/internal/plastic/asm/util/Textifier.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 189,
+                  "endLine": 189,
+                  "startColumn": 38,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ebffd0de9bc8de6c202a27379ae784fa07388bd6e5bba6bdf5ad89ba031aff4d",
+            "1": "ac4e7c8b.83545221.c55f45e9.6c52ae28.025462d2.0a9aa1ee.55c6f621.6f114b23.8df8fa68.dd05ec30.622565c7.de031890.a7b964d9.ce109560.377b98a3.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "plastic/src/external/java/org/apache/tapestry5/internal/plastic/asm/util/Textifier.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 54,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "plastic/src/external/java/org/apache/tapestry5/internal/plastic/asm/util/Textifier.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 54,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "plastic/src/external/java/org/apache/tapestry5/internal/plastic/asm/util/Textifier.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 38,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "df7ef6c2dd47b383f98416a51e22139d932ca43ac5b7b524f1937e9cd3857586",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.92762d9a.121d6fd5.f5bbb76a.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 117,
+                            "endLine": 117,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 141,
+                  "endLine": 141,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8136869e0f04f9e171cbf2c25ce336737d91cea71eee70ba93e7b99921f95802",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.a75c0e3b.fc7d5400.e22980a8.536fcb13.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 141,
+                            "endLine": 141,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 153,
+                  "endLine": 153,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c10fc4ac1041e4b5e0716790371e078da2d8373a32d7357699e281e388ad6226",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.121d6fd5.fc7d5400.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 2,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 165,
+                  "endLine": 165,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f1997d2e0c33437f9d05184143dda1e21faa7fd7c64827863304fb976ccd4107",
+            "1": "19689298.6dd37de6.0363d321.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.121d6fd5.fc7d5400.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 165,
+                            "endLine": 165,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 89,
+                  "endLine": 89,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5e6a6fb770513c4198274675d620b574ece470e371800a6cdc87359479d02892",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.e39a9447.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.526d647c.180748e0.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 99,
+                  "endLine": 99,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "49a4ab1d018f3df165572a479fc582381f015a096e03845ab9b2d4867e2885cd",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.e39a9447.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.526d647c.7ee59929.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 99,
+                            "endLine": 99,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 114,
+                  "endLine": 114,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1d4effedf5c34bd311953b51600b727fc6e6886cae67553323c0987a606ce70c",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.e39a9447.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.526d647c.180748e0.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 114,
+                            "endLine": 114,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 125,
+                  "endLine": 125,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3608406e1e1e6e871c2f3af706a790d4beee745b6565d552880e0bb36a02956d",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.e39a9447.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.526d647c.7ee59929.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 125,
+                            "endLine": 125,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 136,
+                  "endLine": 136,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "16147bfe0971ab06de572898ea4db8dbc6c0df716357dbbccb42a0794a494d99",
+            "1": "19689298.b2b6b83e.59997255.6c52ae28.e39a9447.99961f89.47ef669e.c50f08e7.732eeeb2.b2b6b83e.59997255.526d647c.93bf3f8c.7fda7c5e.76a0da3b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/CookiesImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 136,
+                            "endLine": 136,
+                            "startColumn": 29,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ResourceDigestGeneratorImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 50,
+                  "endLine": 50,
+                  "startColumn": 36,
+                  "endColumn": 61
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "93884bf419b7962d26ab867961eccaa44d9faacb0f3904a19dc5d32cd04dfdca",
+            "1": "19689298.da263459.e99130b3.5e6ab657.3d2bca12.b70401ce.6dbe2d3b.c4e81b6c.19689298.da263459.e99130b3.5e6ab657.3d2bca12.b70401ce.6dbe2d3b.c4e81b6c"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ResourceDigestGeneratorImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 50,
+                            "endLine": 50,
+                            "startColumn": 62,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ResourceDigestGeneratorImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 50,
+                            "endLine": 50,
+                            "startColumn": 36,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 117,
+                  "endLine": 117,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0f8bdd562bf50ae19f511b40cd543a89d4d20c25684180ca668c5ff6460ebdd0",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.92762d9a.121d6fd5.f5bbb76a.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 117,
+                            "endLine": 117,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 141,
+                  "endLine": 141,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d27ce8265cde95b6e4d5d539c26d4aa31359881e7648df4eaa5e9065148efece",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.a75c0e3b.fc7d5400.e22980a8.536fcb13.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 141,
+                            "endLine": 141,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 153,
+                  "endLine": 153,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ffa34549384cb2235ae6a30f5e1711410ed72b31df501177fba8bbe08e18c9a3",
+            "1": "19689298.6dd37de6.fd396cbd.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.121d6fd5.fc7d5400.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 153,
+                            "endLine": 153,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 165,
+                  "endLine": 165,
+                  "startColumn": 37,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "60d41ea3f15435dafe2660e3bc99b38e3cfe8c42de75c510617bd885e98a2349",
+            "1": "19689298.6dd37de6.0363d321.6c52ae28.b90ff0f5.3de97616.9fde09a8.203bd690.19689298.121d6fd5.fc7d5400.e22980a8.b90ff0f5.3de97616.9fde09a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/internal/services/CookiesImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 165,
+                            "endLine": 165,
+                            "startColumn": 37,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedSecret",
+          "ruleIndex": 6,
+          "level": "error",
+          "message": {
+            "text": "Hardcoded value string is used as a cipher key. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "markdown": "Hardcoded value {0} is used as a {1}. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "arguments": [
+              "[string](0)",
+              "[cipher key](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ClientDataEncoderImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 56,
+                  "endLine": 56,
+                  "startColumn": 23,
+                  "endColumn": 36
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3e86b1ed657ac9a38b0182f14a8cca8da27c270dd0467057c38b1471827929e9",
+            "1": "054a6249.97acdc08.33fa5dbe.44ab356c.309b226e.7fda7c5e.1812d2ca.54d46e25.054a6249.e24c257b.33fa5dbe.44ab356c.309b226e.7fda7c5e.0f76778b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ClientDataEncoderImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "endLine": 53,
+                            "startColumn": 26,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/main/java/org/apache/tapestry5/internal/services/ClientDataEncoderImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 56,
+                            "endLine": 56,
+                            "startColumn": 23,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 7,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-core/src/test/java/org/apache/tapestry5/integration/app1/services/AppModule.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 133,
+                  "endLine": 133,
+                  "startColumn": 24,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "78a5f999c51f82024a35b5014a040b8512f2e9df24f5a41efe06906eca846747",
+            "1": "8e265ef8.a1e8f583.7ce0c5c1.e22980a8.ec020ac1.0d476878.3b3ff476.0759ac0e.8e265ef8.528e35bc.7ce0c5c1.e22980a8.f0e1baa5.eacd09e2.3b3ff476.0759ac0e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-core/src/test/java/org/apache/tapestry5/integration/app1/services/AppModule.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 133,
+                            "endLine": 133,
+                            "startColumn": 49,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 351,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 7,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "tapestry-test/src/main/java/org/apache/tapestry5/test/Jetty7Runner.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 71,
+                  "endLine": 71,
+                  "startColumn": 13,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "22ea87ef7a89780132423ae6b623d2f1d02262a0d0494f77d86049120d66a21e",
+            "1": "3953f5eb.e8c02a15.9f03b98b.e22980a8.ec020ac1.935029da.06e95f30.fde7589e.3953f5eb.e8c02a15.9f03b98b.e22980a8.ec020ac1.935029da.06e95f30.fde7589e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "tapestry-test/src/main/java/org/apache/tapestry5/test/Jetty7Runner.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "endLine": 71,
+                            "startColumn": 38,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 351,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 81,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 2645,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 10,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 42,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

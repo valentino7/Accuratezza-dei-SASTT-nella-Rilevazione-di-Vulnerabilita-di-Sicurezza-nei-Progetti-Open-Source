@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T21:49:00.780">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-611/bad$44e4fbf1d0f6db295df34601972741d4cf706cbd$36$SVGParser.java">
+<violation beginline="94" endline="94" begincolumn="12" endcolumn="24" rule="AvoidStringBufferField" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+<violation beginline="98" endline="98" begincolumn="12" endcolumn="24" rule="AvoidStringBufferField" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+<violation beginline="144" endline="144" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$SVGElem" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="146" endline="146" begincolumn="14" endcolumn="33" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser$SVGElem" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="159" endline="162" begincolumn="10" endcolumn="10" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser$SVGElem" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="310" endline="310" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$SVGAttr" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="312" endline="312" begincolumn="14" endcolumn="32" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser$SVGAttr" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="329" endline="332" begincolumn="10" endcolumn="10" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser$SVGAttr" method="fromString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="351" endline="508" begincolumn="40" endcolumn="4" rule="UseUtilityClass" ruleset="Design" package="com.caverock.androidsvg" class="SVGParser$ColourKeywords" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="510" endline="527" begincolumn="42" endcolumn="4" rule="UseUtilityClass" ruleset="Design" package="com.caverock.androidsvg" class="SVGParser$FontSizeKeywords" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="529" endline="550" begincolumn="44" endcolumn="4" rule="UseUtilityClass" ruleset="Design" package="com.caverock.androidsvg" class="SVGParser$FontWeightKeywords" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="552" endline="570" begincolumn="45" endcolumn="4" rule="UseUtilityClass" ruleset="Design" package="com.caverock.androidsvg" class="SVGParser$AspectRatioKeywords" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="595" endline="598" begincolumn="7" endcolumn="7" rule="EmptyCatchBlock" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="parse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="624" endline="627" begincolumn="7" endcolumn="7" rule="IdenticalCatchBranches" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'XmlPullParserException' branch
+</violation>
+<violation beginline="685" endline="685" begincolumn="13" endcolumn="67" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$XPPAttributesWrapper" method="getQName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="725" endline="749" begincolumn="10" endcolumn="10" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseUsingXmlPullParser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="732" endline="732" begincolumn="19" endcolumn="59" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseUsingXmlPullParser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="738" endline="738" begincolumn="19" endcolumn="59" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseUsingXmlPullParser" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="836" endline="836" begincolumn="7" endcolumn="15" rule="UselessQualifiedThis" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="startDocument" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessqualifiedthis" priority="3">
+Useless qualified this usage in the same class.
+</violation>
+<violation beginline="850" endline="850" begincolumn="21" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="startElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="928" endline="928" begincolumn="10" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="933" endline="933" begincolumn="13" endcolumn="77" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="939" endline="939" begincolumn="13" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="952" endline="952" begincolumn="10" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="957" endline="957" begincolumn="13" endcolumn="64" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="963" endline="963" begincolumn="13" endcolumn="61" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="994" endline="994" begincolumn="14" endcolumn="31" rule="AssignmentInOperand" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1004" endline="1004" begincolumn="21" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1013" endline="1013" begincolumn="19" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1015" endline="1015" begincolumn="19" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="endElement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1062" endline="1062" begincolumn="10" endcolumn="52" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="endDocument" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1084" endline="1084" begincolumn="10" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="debug" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1130" endline="1130" begincolumn="19" endcolumn="97" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesSVG" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1135" endline="1135" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesSVG" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1156" endline="1156" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="g" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1178" endline="1178" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="defs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1199" endline="1199" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="use" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1229" endline="1229" begincolumn="19" endcolumn="97" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesUse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1234" endline="1234" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesUse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1238" endline="1238" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesUse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1256" endline="1256" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="image" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1286" endline="1286" begincolumn="19" endcolumn="97" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesImage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1291" endline="1291" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesImage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1295" endline="1295" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesImage" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1316" endline="1316" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="path" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1342" endline="1342" begincolumn="19" endcolumn="103" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1360" endline="1360" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="rect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1389" endline="1389" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesRect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1394" endline="1394" begincolumn="19" endcolumn="99" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesRect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1399" endline="1399" begincolumn="19" endcolumn="95" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesRect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1404" endline="1404" begincolumn="19" endcolumn="95" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesRect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1422" endline="1422" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="circle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1451" endline="1451" begincolumn="19" endcolumn="96" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesCircle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1469" endline="1469" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="ellipse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1498" endline="1498" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesEllipse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1503" endline="1503" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesEllipse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1521" endline="1521" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="line" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1569" endline="1569" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="polyline" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1598" endline="1598" begincolumn="19" endcolumn="123" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPolyLine" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1602" endline="1602" begincolumn="19" endcolumn="132" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPolyLine" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1626" endline="1626" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="polygon" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1648" endline="1648" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="text" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1697" endline="1697" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tspan" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1699" endline="1699" begincolumn="10" endcolumn="131" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tspan" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1710" endline="1710" begincolumn="10" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tspan" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1712" endline="1712" begincolumn="10" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tspan" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1725" endline="1725" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tref" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1727" endline="1727" begincolumn="10" endcolumn="124" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tref" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1737" endline="1737" begincolumn="10" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tref" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1739" endline="1739" begincolumn="10" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="tref" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1752" endline="1752" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesTRef" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1770" endline="1770" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="zwitch" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1823" endline="1823" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="symbol" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1845" endline="1845" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="marker" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1875" endline="1875" begincolumn="19" endcolumn="106" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesMarker" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1880" endline="1880" begincolumn="19" endcolumn="107" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesMarker" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1914" endline="1914" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="linearGradient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1953" endline="1953" begincolumn="19" endcolumn="115" rule="PreserveStackTrace" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesGradient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1958" endline="1958" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesGradient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2002" endline="2002" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="radialGradient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2031" endline="2031" begincolumn="19" endcolumn="104" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesRadialGradient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2055" endline="2055" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="stop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2057" endline="2057" begincolumn="10" endcolumn="143" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="stop" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2089" endline="2089" begincolumn="10" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseGradientOffset" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2101" endline="2101" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseGradientOffset" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2102" endline="2102" begincolumn="18" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseGradientOffset" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2120" endline="2120" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="solidColor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2140" endline="2140" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="clipPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2186" endline="2186" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="textPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2197" endline="2197" begincolumn="10" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="textPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2199" endline="2199" begincolumn="10" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="textPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2212" endline="2212" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesTextPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2233" endline="2233" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="pattern" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2284" endline="2284" begincolumn="19" endcolumn="101" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPattern" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2289" endline="2289" begincolumn="19" endcolumn="102" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPattern" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2293" endline="2293" begincolumn="19" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesPattern" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2311" endline="2311" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="view" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2332" endline="2332" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="mask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2379" endline="2379" begincolumn="19" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesMask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2384" endline="2384" begincolumn="19" endcolumn="99" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesMask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2418" endline="2418" begincolumn="18" endcolumn="40" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="empty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2423" endline="2423" begincolumn="18" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="isWhitespace" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2430" endline="2430" begincolumn="16" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="skipWhitespace" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2437" endline="2437" begincolumn="18" endcolumn="35" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="isEOL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2446" endline="2446" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="skipCommaWhitespace" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2447" endline="2447" begincolumn="16" endcolumn="44" rule="LogicInversion" ruleset="Design" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="skipCommaWhitespace" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#logicinversion" priority="3">
+Use opposite operator instead of the logic complement operator.
+</violation>
+<violation beginline="2448" endline="2448" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="skipCommaWhitespace" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2459" endline="2459" begincolumn="13" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFloat" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2473" endline="2473" begincolumn="13" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="possibleNextFloat" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2514" endline="2514" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextChar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2522" endline="2522" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2525" endline="2525" begincolumn="13" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2527" endline="2527" begincolumn="13" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2536" endline="2536" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFlag" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2540" endline="2540" begincolumn="21" endcolumn="29" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFlag" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2559" endline="2559" begincolumn="28" endcolumn="81" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="consume" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2561" endline="2561" begincolumn="13" endcolumn="23" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="consume" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2569" endline="2569" begincolumn="28" endcolumn="112" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="consume" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2571" endline="2571" begincolumn="13" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="consume" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2579" endline="2579" begincolumn="13" endcolumn="22" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="advanceChar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2582" endline="2582" begincolumn="13" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="advanceChar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2584" endline="2584" begincolumn="13" endcolumn="22" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="advanceChar" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2627" endline="2627" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2630" endline="2630" begincolumn="15" endcolumn="50" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2631" endline="2631" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2637" endline="2637" begincolumn="16" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2639" endline="2639" begincolumn="16" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2653" endline="2653" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFunction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2657" endline="2658" begincolumn="10" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFunction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2657" endline="2657" begincolumn="18" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFunction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2657" endline="2657" begincolumn="46" endcolumn="67" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFunction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2660" endline="2661" begincolumn="10" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextFunction" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2676" endline="2677" begincolumn="10" endcolumn="23" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="ahead" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2686" endline="2686" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextUnit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2693" endline="2693" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextUnit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2709" endline="2709" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="hasLetter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2711" endline="2711" begincolumn="18" endcolumn="69" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="hasLetter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2711" endline="2711" begincolumn="19" endcolumn="40" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="hasLetter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2711" endline="2711" begincolumn="47" endcolumn="68" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="hasLetter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2720" endline="2720" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextQuotedString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2725" endline="2725" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextQuotedString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2727" endline="2728" begincolumn="10" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="nextQuotedString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2743" endline="2743" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser$TextScanner" method="restOfText" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2763" endline="2763" begincolumn="14" endcolumn="31" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesCore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2763" endline="2763" begincolumn="36" endcolumn="57" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesCore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2768" endline="2768" begincolumn="19" endcolumn="43" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesCore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2808" endline="2808" begincolumn="19" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseAttributesStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2828" endline="2828" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2832" endline="2832" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2837" endline="2837" begincolumn="16" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2850" endline="2850" begincolumn="11" endcolumn="31" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2851" endline="2851" begincolumn="10" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2912" endline="2912" begincolumn="16" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2914" endline="2914" begincolumn="16" endcolumn="65" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2986" endline="2986" begincolumn="38" endcolumn="117" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3006" endline="3006" begincolumn="16" endcolumn="92" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3007" endline="3007" begincolumn="30" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3013" endline="3013" begincolumn="16" endcolumn="95" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3014" endline="3014" begincolumn="32" endcolumn="52" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3019" endline="3019" begincolumn="17" endcolumn="40" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3059" endline="3059" begincolumn="17" endcolumn="40" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3079" endline="3079" begincolumn="17" endcolumn="40" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="processStyleProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3158" endline="3158" begincolumn="13" endcolumn="102" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3177" endline="3177" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3191" endline="3191" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3194" endline="3194" begincolumn="19" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3196" endline="3196" begincolumn="19" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3206" endline="3206" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3209" endline="3209" begincolumn="19" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3211" endline="3211" begincolumn="19" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3222" endline="3222" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3240" endline="3240" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3252" endline="3252" begincolumn="19" endcolumn="80" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3263" endline="3263" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTransformList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3283" endline="3283" begincolumn="10" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3297" endline="3297" begincolumn="13" endcolumn="79" rule="PreserveStackTrace" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseLength" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="3318" endline="3318" begincolumn="10" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseLengthList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3329" endline="3329" begincolumn="13" endcolumn="84" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseLengthList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3332" endline="3332" begincolumn="13" endcolumn="27" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseLengthList" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3347" endline="3347" begincolumn="10" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFloat" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3369" endline="3369" begincolumn="15" endcolumn="20" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseOpacity" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3390" endline="3390" begincolumn="10" endcolumn="94" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseViewBox" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3392" endline="3392" begincolumn="10" endcolumn="82" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseViewBox" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3394" endline="3394" begincolumn="10" endcolumn="83" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseViewBox" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3443" endline="3443" begincolumn="13" endcolumn="100" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parsePaintSpecifier" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3450" endline="3450" begincolumn="13" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parsePaintSpecifier" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3483" endline="3483" begincolumn="10" endcolumn="28" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3517" endline="3517" begincolumn="13" endcolumn="36" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3521" endline="3521" begincolumn="13" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3525" endline="3525" begincolumn="13" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3531" endline="3531" begincolumn="16" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3536" endline="3536" begincolumn="16" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3552" endline="3552" begincolumn="16" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3556" endline="3556" begincolumn="16" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3562" endline="3562" begincolumn="19" endcolumn="79" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3567" endline="3567" begincolumn="19" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseColour" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3581" endline="3581" begincolumn="15" endcolumn="21" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="clamp255" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3588" endline="3588" begincolumn="14" endcolumn="22" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hslToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3592" endline="3592" begincolumn="14" endcolumn="21" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hslToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3593" endline="3593" begincolumn="16" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hslToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3594" endline="3594" begincolumn="7" endcolumn="19" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="hslToRgb" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3608" endline="3608" begincolumn="21" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3609" endline="3609" begincolumn="22" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3611" endline="3611" begincolumn="20" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3612" endline="3612" begincolumn="26" endcolumn="35" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3613" endline="3613" begincolumn="26" endcolumn="60" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3614" endline="3614" begincolumn="12" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="hueToRgb" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3639" endline="3639" begincolumn="10" endcolumn="16" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3649" endline="3649" begincolumn="13" endcolumn="102" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3651" endline="3651" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3652" endline="3652" begincolumn="14" endcolumn="34" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3653" endline="3653" begincolumn="13" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3657" endline="3657" begincolumn="16" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3662" endline="3662" begincolumn="16" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3665" endline="3665" begincolumn="37" endcolumn="61" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="3670" endline="3670" begincolumn="10" endcolumn="15" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="3682" endline="3682" begincolumn="13" endcolumn="93" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3692" endline="3692" begincolumn="32" endcolumn="137" rule="UselessParentheses" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFont" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3705" endline="3705" begincolumn="13" endcolumn="53" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontFamily" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3707" endline="3707" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontFamily" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3709" endline="3709" begincolumn="13" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontFamily" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3713" endline="3713" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontFamily" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3746" endline="3746" begincolumn="10" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3748" endline="3748" begincolumn="10" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFontStyle" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3757" endline="3757" begincolumn="10" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="fontStyleKeyword" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3759" endline="3759" begincolumn="10" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="fontStyleKeyword" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3761" endline="3761" begincolumn="10" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="fontStyleKeyword" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3763" endline="3763" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="fontStyleKeyword" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3771" endline="3771" begincolumn="10" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDecoration" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3773" endline="3773" begincolumn="10" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDecoration" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3775" endline="3775" begincolumn="10" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDecoration" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3777" endline="3777" begincolumn="10" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDecoration" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3779" endline="3779" begincolumn="10" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDecoration" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3788" endline="3788" begincolumn="10" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDirection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3790" endline="3790" begincolumn="10" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextDirection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3799" endline="3799" begincolumn="10" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFillRule" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3801" endline="3801" begincolumn="10" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFillRule" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3810" endline="3810" begincolumn="10" endcolumn="36" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineCap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3812" endline="3812" begincolumn="10" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineCap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3814" endline="3814" begincolumn="10" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineCap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3823" endline="3823" begincolumn="10" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineJoin" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3825" endline="3825" begincolumn="10" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineJoin" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3827" endline="3827" begincolumn="10" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeLineJoin" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3839" endline="3839" begincolumn="17" endcolumn="20" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="3839" endline="3839" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3843" endline="3843" begincolumn="17" endcolumn="20" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="3843" endline="3843" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3845" endline="3845" begincolumn="10" endcolumn="105" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3856" endline="3856" begincolumn="13" endcolumn="100" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3858" endline="3858" begincolumn="13" endcolumn="108" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3866" endline="3866" begincolumn="17" endcolumn="20" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="3866" endline="3866" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3868" endline="3868" begincolumn="14" endcolumn="54" rule="OptimizableToArrayCall" ruleset="Performance" package="com.caverock.androidsvg" class="SVGParser" method="parseStrokeDashArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="3876" endline="3876" begincolumn="10" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextAnchor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3878" endline="3878" begincolumn="10" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextAnchor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3880" endline="3880" begincolumn="10" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseTextAnchor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3889" endline="3889" begincolumn="10" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseOverflow" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3891" endline="3891" begincolumn="10" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseOverflow" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3900" endline="3900" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseClip" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3902" endline="3902" begincolumn="10" endcolumn="96" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseClip" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3917" endline="3917" begincolumn="10" endcolumn="73" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseClip" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3926" endline="3926" begincolumn="10" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseLengthOrAuto" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3936" endline="3936" begincolumn="10" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseVectorEffect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3938" endline="3938" begincolumn="10" endcolumn="52" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseVectorEffect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3947" endline="3947" begincolumn="10" endcolumn="35" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseRenderQuality" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3949" endline="3949" begincolumn="10" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseRenderQuality" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3951" endline="3951" begincolumn="10" endcolumn="44" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseRenderQuality" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3964" endline="3964" begincolumn="7" endcolumn="42" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3965" endline="3965" begincolumn="7" endcolumn="44" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3966" endline="3966" begincolumn="7" endcolumn="50" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3967" endline="3967" begincolumn="7" endcolumn="31" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3968" endline="3968" begincolumn="7" endcolumn="34" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3969" endline="3969" begincolumn="7" endcolumn="37" rule="OneDeclarationPerLine" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="3974" endline="3974" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3979" endline="3979" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="4193" endline="4193" begincolumn="13" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parsePath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="4275" endline="4275" begincolumn="11" endcolumn="26" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="parseFunctionalIRI" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="4276" endline="4276" begincolumn="10" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFunctionalIRI" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="4278" endline="4278" begincolumn="10" endcolumn="106" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="parseFunctionalIRI" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="4295" endline="4295" begincolumn="10" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="com.caverock.androidsvg" class="SVGParser" method="style" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="4307" endline="4307" begincolumn="28" endcolumn="49" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="com.caverock.androidsvg" class="SVGParser" method="style" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+</file>
+</pmd>

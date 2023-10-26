@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671849582327" analysisTimestamp="1672073603700" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-264/good_970c23bf_DefaultServlet.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-264/good_970c23bf_DefaultServlet.java</SrcDir>
+  </Project>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="checkIfModifiedSince" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1669" end="1688" startBytecode="0" endBytecode="252" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1680" end="1680" startBytecode="71" endBytecode="71" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.setHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/WebResource.getETag()Ljava/lang/String;" role="Unknown source"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="checkIfNoneMatch" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1706" end="1744" startBytecode="0" endBytecode="420" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1736" end="1736" startBytecode="147" endBytecode="147" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.setHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/WebResource.getETag()Ljava/lang/String;" role="Unknown source"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="814" end="814" startBytecode="679" endBytecode="679" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.setHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/WebResource.getETag()Ljava/lang/String;" role="Unknown source"/>
+  </BugInstance>
+  <BugInstance type="HTTP_RESPONSE_SPLITTING" priority="3" rank="15" abbrev="SECHRS" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="817" end="817" startBytecode="690" endBytecode="690" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.setHeader(Ljava/lang/String;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/WebResource.getLastModifiedHttp()Ljava/lang/String;" role="Unknown source"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderHtml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1320" end="1450" startBytecode="0" endBytecode="1741" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1390" end="1390" startBytecode="563" endBytecode="563" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderHtml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1320" end="1450" startBytecode="0" endBytecode="1741" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1391" end="1391" startBytecode="574" endBytecode="574" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1240" end="1240" startBytecode="194" endBytecode="194" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1241" end="1241" startBytecode="205" endBytecode="205" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1242" end="1242" startBytecode="217" endBytecode="217" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="MALICIOUS_XSLT" priority="2" rank="12" abbrev="SECXSLT" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1296" end="1296" startBytecode="629" endBytecode="629" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/xml/transform/TransformerFactory.newTransformer(Ljavax/xml/transform/Source;)Ljavax/xml/transform/Transformer;" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.renderXml(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream; parameter 0" role="Unknown source"/>
+    <String value="javax/xml/transform/stream/StreamSource.&lt;init&gt;(Ljava/io/InputStream;)V" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1196" end="1196" startBytecode="2" endBytecode="2" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1201" end="1201" startBytecode="21" endBytecode="21" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1295" end="1295" startBytecode="620" endBytecode="620" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1520" end="1520" startBytecode="119" endBytecode="119" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1536" end="1536" startBytecode="220" endBytecode="220" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1537" end="1537" startBytecode="230" endBytecode="230" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="PATH_TRAVERSAL_IN" priority="1" rank="10" abbrev="SECPTI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="executePartialPut" signature="(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/servlets/DefaultServlet$Range;Ljava/lang/String;)Ljava/io/File;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="533" end="577" startBytecode="0" endBytecode="662" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="537" end="537" startBytecode="34" endBytecode="34" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="java/io/File.&lt;init&gt;(Ljava/io/File;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.executePartialPut(Ljavax/servlet/http/HttpServletRequest;Lorg/apache/catalina/servlets/DefaultServlet$Range;Ljava/lang/String;)Ljava/io/File; parameter 0" role="Unknown source"/>
+    <String value="with tainted arguments detected" role="Method usage"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="325" end="325" startBytecode="64" endBytecode="64" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="335" end="335" startBytecode="90" endBytecode="90" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="337" end="337" startBytecode="101" endBytecode="101" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="339" end="339" startBytecode="123" endBytecode="123" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="480" end="480" startBytecode="19" endBytecode="19" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="494" end="494" startBytecode="56" endBytecode="56" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="536" end="536" startBytecode="21" endBytecode="21" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="PATH_TRAVERSAL_IN" priority="2" rank="12" abbrev="SECPTI" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="validateGlobalXsltFile" signature="(Ljava/io/File;)Ljava/io/File;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1561" end="1578" startBytecode="0" endBytecode="220" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1561" end="1561" startBytecode="9" endBytecode="9" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="java/io/File.&lt;init&gt;(Ljava/io/File;Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.globalXsltFile" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1561" end="1561" startBytecode="6" endBytecode="6" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="checkIfMatch" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1627" end="1652" startBytecode="0" endBytecode="332" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1628" end="1628" startBytecode="12" endBytecode="12" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="checkIfModifiedSince" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1669" end="1688" startBytecode="0" endBytecode="252" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1675" end="1675" startBytecode="32" endBytecode="32" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="checkIfNoneMatch" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Z" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1706" end="1744" startBytecode="0" endBytecode="420" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1707" end="1707" startBytecode="12" endBytecode="12" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="parseContentRange" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;)Lorg/apache/catalina/servlets/DefaultServlet$Range;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1000" end="1044" startBytecode="0" endBytecode="478" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1000" end="1000" startBytecode="4" endBytecode="4" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="parseRange" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Ljava/util/ArrayList;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1062" end="1184" startBytecode="0" endBytecode="1164" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1062" end="1062" startBytecode="4" endBytecode="4" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="parseRange" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;Lorg/apache/catalina/WebResource;)Ljava/util/ArrayList;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1062" end="1184" startBytecode="0" endBytecode="1164" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1101" end="1101" startBytecode="116" endBytecode="116" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_HEADER" priority="3" rank="15" abbrev="SECSH" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="876" end="876" startBytecode="889" endBytecode="889" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="1" rank="10" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="698" end="698" startBytecode="171" endBytecode="171" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.sendError(ILjava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getRequestURI()Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="689" end="689" startBytecode="129" endBytecode="129" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="1" rank="10" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="719" end="719" startBytecode="248" endBytecode="248" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.sendError(ILjava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getRequestURI()Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="709" end="709" startBytecode="206" endBytecode="206" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="1" rank="10" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="735" end="735" startBytecode="317" endBytecode="317" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.sendError(ILjava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getAttribute(Ljava/lang/String;)Ljava/lang/Object;" role="Unknown source"/>
+    <String value="javax/servlet/http/HttpServletRequest.getRequestURI()Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="733" end="733" startBytecode="304" endBytecode="304" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="1" rank="10" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="serveResource" signature="(Ljavax/servlet/http/HttpServletRequest;Ljavax/servlet/http/HttpServletResponse;ZLjava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="668" end="985" startBytecode="0" endBytecode="2623" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="798" end="798" startBytecode="625" endBytecode="625" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/http/HttpServletResponse.sendError(ILjava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="javax/servlet/http/HttpServletRequest.getRequestURI()Ljava/lang/String;" role="Tainted source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="799" end="799" startBytecode="620" endBytecode="620" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="2" rank="12" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="copy" signature="(Lorg/apache/catalina/WebResource;Ljavax/servlet/ServletOutputStream;Ljava/util/Iterator;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1917" end="1952" startBytecode="0" endBytecode="439" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1931" end="1931" startBytecode="89" endBytecode="89" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="javax/servlet/ServletOutputStream.println(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.copy(Lorg/apache/catalina/WebResource;Ljavax/servlet/ServletOutputStream;Ljava/util/Iterator;Ljava/lang/String;)V parameter 0" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="976" end="976" startBytecode="1433" endBytecode="1433" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1931" end="1931" startBytecode="83" endBytecode="83" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="2" rank="12" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="copyRange" signature="(Ljava/io/Reader;Ljava/io/PrintWriter;)Ljava/io/IOException;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="2000" end="2015" startBytecode="0" endBytecode="246" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="2008" end="2008" startBytecode="38" endBytecode="38" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="java/io/PrintWriter.write([CII)V" role="Sink method"/>
+    <String value="2" role="Sink parameter"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="2005" end="2005" startBytecode="18" endBytecode="18" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="2008" end="2008" startBytecode="38" endBytecode="38" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="2" rank="12" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderHtml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1320" end="1450" startBytecode="0" endBytecode="1741" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1448" end="1448" startBytecode="988" endBytecode="988" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="java/io/PrintWriter.write(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/catalina/util/URLEncoder.encode(Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.getReadme(Lorg/apache/catalina/WebResource;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/tomcat/util/res/StringManager.getString(Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/servlets/DefaultServlet.rewriteUrl(Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/tomcat/util/res/StringManager.getString(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="java/io/StringWriter.&lt;init&gt;()V" role="Unknown source"/>
+    <String value="org/apache/catalina/WebResource.getLastModifiedHttp()Ljava/lang/String;" role="Unknown source"/>
+    <String value="java/io/StringWriter.toString()Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/util/RequestUtil.filter(Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/catalina/util/ServerInfo.getServerInfo()Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1329" end="1329" startBytecode="60" endBytecode="60" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1336" end="1336" startBytecode="120" endBytecode="120" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1337" end="1337" startBytecode="129" endBytecode="129" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1338" end="1338" startBytecode="138" endBytecode="138" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1339" end="1339" startBytecode="147" endBytecode="147" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1340" end="1340" startBytecode="156" endBytecode="156" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1341" end="1341" startBytecode="165" endBytecode="165" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1342" end="1342" startBytecode="174" endBytecode="174" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1343" end="1343" startBytecode="183" endBytecode="183" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1344" end="1344" startBytecode="207" endBytecode="207" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1355" end="1355" startBytecode="269" endBytecode="269" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1356" end="1356" startBytecode="277" endBytecode="277" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1359" end="1359" startBytecode="303" endBytecode="303" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1361" end="1361" startBytecode="321" endBytecode="321" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1362" end="1362" startBytecode="330" endBytecode="330" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1363" end="1363" startBytecode="339" endBytecode="339" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1364" end="1364" startBytecode="363" endBytecode="363" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1365" end="1365" startBytecode="372" endBytecode="372" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1366" end="1366" startBytecode="381" endBytecode="381" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1369" end="1369" startBytecode="390" endBytecode="390" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1370" end="1370" startBytecode="399" endBytecode="399" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1372" end="1372" startBytecode="408" endBytecode="408" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1376" end="1376" startBytecode="417" endBytecode="417" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1377" end="1377" startBytecode="426" endBytecode="426" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1378" end="1378" startBytecode="441" endBytecode="441" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1379" end="1379" startBytecode="450" endBytecode="450" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1380" end="1380" startBytecode="459" endBytecode="459" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1381" end="1381" startBytecode="474" endBytecode="474" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1382" end="1382" startBytecode="483" endBytecode="483" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1383" end="1383" startBytecode="492" endBytecode="492" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1384" end="1384" startBytecode="507" endBytecode="507" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1385" end="1385" startBytecode="516" endBytecode="516" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1386" end="1386" startBytecode="525" endBytecode="525" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1400" end="1400" startBytecode="632" endBytecode="632" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1402" end="1402" startBytecode="646" endBytecode="646" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1403" end="1403" startBytecode="655" endBytecode="655" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1406" end="1406" startBytecode="676" endBytecode="676" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1407" end="1407" startBytecode="685" endBytecode="685" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1408" end="1408" startBytecode="693" endBytecode="693" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1409" end="1409" startBytecode="723" endBytecode="723" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1411" end="1411" startBytecode="741" endBytecode="741" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1412" end="1412" startBytecode="750" endBytecode="750" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1413" end="1413" startBytecode="761" endBytecode="761" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1415" end="1415" startBytecode="779" endBytecode="779" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1416" end="1416" startBytecode="788" endBytecode="788" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1418" end="1418" startBytecode="797" endBytecode="797" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1420" end="1420" startBytecode="816" endBytecode="816" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1422" end="1422" startBytecode="836" endBytecode="836" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1423" end="1423" startBytecode="845" endBytecode="845" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1425" end="1425" startBytecode="854" endBytecode="854" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1426" end="1426" startBytecode="867" endBytecode="867" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1427" end="1427" startBytecode="876" endBytecode="876" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1429" end="1429" startBytecode="885" endBytecode="885" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1433" end="1433" startBytecode="900" endBytecode="900" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1435" end="1435" startBytecode="909" endBytecode="909" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1437" end="1437" startBytecode="915" endBytecode="915" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1439" end="1439" startBytecode="929" endBytecode="929" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1440" end="1440" startBytecode="938" endBytecode="938" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1443" end="1443" startBytecode="953" endBytecode="953" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1444" end="1444" startBytecode="968" endBytecode="968" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1445" end="1445" startBytecode="977" endBytecode="977" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1448" end="1448" startBytecode="985" endBytecode="985" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1481" end="1481" startBytecode="56" endBytecode="56" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1483" end="1483" startBytecode="83" endBytecode="83" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1485" end="1485" startBytecode="91" endBytecode="91" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+  </BugInstance>
+  <BugInstance type="XXE_DTD_TRANSFORM_FACTORY" priority="2" rank="12" abbrev="SECXXETFDTD" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1293" end="1293" startBytecode="589" endBytecode="589" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="TransformerFactory.newInstance(...)"/>
+  </BugInstance>
+  <BugInstance type="XXE_XSLT_TRANSFORM_FACTORY" priority="2" rank="12" abbrev="SECXXETFXSLT" category="SECURITY">
+    <Class classname="org.apache.catalina.servlets.DefaultServlet">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="111" end="2072" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Class>
+    <Method classname="org.apache.catalina.servlets.DefaultServlet" name="renderXml" signature="(Ljava/lang/String;Lorg/apache/catalina/WebResource;Ljava/io/InputStream;)Ljava/io/InputStream;" isStatic="false">
+      <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1217" end="1305" startBytecode="0" endBytecode="1437" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    </Method>
+    <SourceLine classname="org.apache.catalina.servlets.DefaultServlet" start="1293" end="1293" startBytecode="589" endBytecode="589" sourcefile="DefaultServlet.java" sourcepath="org/apache/catalina/servlets/DefaultServlet.java"/>
+    <String value="TransformerFactory.newInstance(...)"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="21">
+    <MissingClass>javax.servlet.ServletConfig</MissingClass>
+    <MissingClass>javax.servlet.ServletContext</MissingClass>
+    <MissingClass>javax.servlet.ServletException</MissingClass>
+    <MissingClass>javax.servlet.ServletInputStream</MissingClass>
+    <MissingClass>javax.servlet.ServletOutputStream</MissingClass>
+    <MissingClass>javax.servlet.ServletResponse</MissingClass>
+    <MissingClass>javax.servlet.ServletResponseWrapper</MissingClass>
+    <MissingClass>javax.servlet.UnavailableException</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServlet</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>org.apache.catalina.Context</MissingClass>
+    <MissingClass>org.apache.catalina.WebResource</MissingClass>
+    <MissingClass>org.apache.catalina.WebResourceRoot</MissingClass>
+    <MissingClass>org.apache.catalina.connector.RequestFacade</MissingClass>
+    <MissingClass>org.apache.catalina.connector.ResponseFacade</MissingClass>
+    <MissingClass>org.apache.catalina.servlets.DefaultServlet$Range</MissingClass>
+    <MissingClass>org.apache.catalina.util.RequestUtil</MissingClass>
+    <MissingClass>org.apache.catalina.util.ServerInfo</MissingClass>
+    <MissingClass>org.apache.catalina.util.URLEncoder</MissingClass>
+    <MissingClass>org.apache.tomcat.util.res.StringManager</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 03:39:42 +0100" total_classes="1" referenced_classes="42" total_bugs="28" total_size="870" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="26.88" clock_seconds="7.17" peak_mbytes="161.58" alloc_mbytes="768.00" gc_seconds="0.12" priority_3="16" priority_2="7" priority_1="5">
+    <PackageStats package="org.apache.catalina.servlets" total_bugs="28" total_types="1" total_size="870" priority_3="16" priority_2="7" priority_1="5">
+      <ClassStats class="org.apache.catalina.servlets.DefaultServlet" sourceFile="DefaultServlet.java" interface="false" size="870" bugs="28" priority_3="16" priority_2="7" priority_1="5"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="812" invocations="507" avgMicrosecondsPerInvocation="1602" maxMicrosecondsPerInvocation="24455" standardDeviationMicrosecondsPerInvocation="1271"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="577" invocations="503" avgMicrosecondsPerInvocation="1148" maxMicrosecondsPerInvocation="65856" standardDeviationMicrosecondsPerInvocation="3494"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="232" invocations="39" avgMicrosecondsPerInvocation="5957" maxMicrosecondsPerInvocation="55847" standardDeviationMicrosecondsPerInvocation="11738"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="198" invocations="39" avgMicrosecondsPerInvocation="5083" maxMicrosecondsPerInvocation="181119" standardDeviationMicrosecondsPerInvocation="28562"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="184" invocations="44" avgMicrosecondsPerInvocation="4194" maxMicrosecondsPerInvocation="32733" standardDeviationMicrosecondsPerInvocation="7380"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="177" invocations="42" avgMicrosecondsPerInvocation="4220" maxMicrosecondsPerInvocation="25588" standardDeviationMicrosecondsPerInvocation="6456"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="160" invocations="43" avgMicrosecondsPerInvocation="3743" maxMicrosecondsPerInvocation="22493" standardDeviationMicrosecondsPerInvocation="5813"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="159" invocations="39" avgMicrosecondsPerInvocation="4100" maxMicrosecondsPerInvocation="27200" standardDeviationMicrosecondsPerInvocation="6276"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="150" invocations="39" avgMicrosecondsPerInvocation="3871" maxMicrosecondsPerInvocation="28920" standardDeviationMicrosecondsPerInvocation="6188"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="124" invocations="152" avgMicrosecondsPerInvocation="816" maxMicrosecondsPerInvocation="12349" standardDeviationMicrosecondsPerInvocation="1390"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="110" invocations="1" avgMicrosecondsPerInvocation="110967" maxMicrosecondsPerInvocation="110967" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="110" invocations="42" avgMicrosecondsPerInvocation="2626" maxMicrosecondsPerInvocation="12401" standardDeviationMicrosecondsPerInvocation="3242"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="91" invocations="39" avgMicrosecondsPerInvocation="2334" maxMicrosecondsPerInvocation="31071" standardDeviationMicrosecondsPerInvocation="5068"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="78" invocations="115" avgMicrosecondsPerInvocation="681" maxMicrosecondsPerInvocation="37886" standardDeviationMicrosecondsPerInvocation="3644"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="77" invocations="39" avgMicrosecondsPerInvocation="1995" maxMicrosecondsPerInvocation="15658" standardDeviationMicrosecondsPerInvocation="3125"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="60" invocations="42" avgMicrosecondsPerInvocation="1442" maxMicrosecondsPerInvocation="21784" standardDeviationMicrosecondsPerInvocation="3391"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="52" invocations="444" avgMicrosecondsPerInvocation="118" maxMicrosecondsPerInvocation="2316" standardDeviationMicrosecondsPerInvocation="201"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="49" invocations="38" avgMicrosecondsPerInvocation="1306" maxMicrosecondsPerInvocation="13775" standardDeviationMicrosecondsPerInvocation="2453"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="47" invocations="42" avgMicrosecondsPerInvocation="1141" maxMicrosecondsPerInvocation="9702" standardDeviationMicrosecondsPerInvocation="2082"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="47" invocations="39" avgMicrosecondsPerInvocation="1224" maxMicrosecondsPerInvocation="17132" standardDeviationMicrosecondsPerInvocation="2992"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="44" invocations="42" avgMicrosecondsPerInvocation="1054" maxMicrosecondsPerInvocation="18045" standardDeviationMicrosecondsPerInvocation="2794"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="42" invocations="42" avgMicrosecondsPerInvocation="1012" maxMicrosecondsPerInvocation="10180" standardDeviationMicrosecondsPerInvocation="2014"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="41" invocations="42" avgMicrosecondsPerInvocation="987" maxMicrosecondsPerInvocation="20092" standardDeviationMicrosecondsPerInvocation="3070"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueRangeAnalysisFactory" totalMilliseconds="39" invocations="39" avgMicrosecondsPerInvocation="1021" maxMicrosecondsPerInvocation="19880" standardDeviationMicrosecondsPerInvocation="3386"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="39" invocations="1" avgMicrosecondsPerInvocation="39504" maxMicrosecondsPerInvocation="39504" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="35" invocations="21" avgMicrosecondsPerInvocation="1686" maxMicrosecondsPerInvocation="5308" standardDeviationMicrosecondsPerInvocation="1513"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.file.PathTraversalDetector" totalMilliseconds="33" invocations="1" avgMicrosecondsPerInvocation="33256" maxMicrosecondsPerInvocation="33256" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="32" invocations="42" avgMicrosecondsPerInvocation="785" maxMicrosecondsPerInvocation="4715" standardDeviationMicrosecondsPerInvocation="1084"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="30" invocations="2220" avgMicrosecondsPerInvocation="13" maxMicrosecondsPerInvocation="6410" standardDeviationMicrosecondsPerInvocation="154"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="29" invocations="39" avgMicrosecondsPerInvocation="744" maxMicrosecondsPerInvocation="6383" standardDeviationMicrosecondsPerInvocation="1446"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

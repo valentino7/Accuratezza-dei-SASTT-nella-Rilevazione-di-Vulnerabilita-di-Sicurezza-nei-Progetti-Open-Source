@@ -1,0 +1,1395 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/PT/test",
+              "name": "PT/test",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+              "name": "SetBroadcastPermissionsOnRegisterNoArg3",
+              "shortDescription": {
+                "text": "Improper Handling of Insufficient Permissions or Privileges"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nCall to `registerReceiver` misses the broadcastPermission argument. As such, no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.\n\n## References\n* [Android Developer Guide](https://developer.android.com/guide/topics/manifest/receiver-element)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/irccloud/android/commit/857287d6d9da443b0ff667505d5bf4a383922784?diff=split#diff-f06bf5e27b9130d322139330f7f31997L40",
+                    "lines": [
+                      {
+                        "line": "RefreshReceiver receiver;",
+                        "lineNumber": 37,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "class RefreshReceiver extends BroadcastReceiver {",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        onUpdateData(0);",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        }",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    IntentFilter intentFilter = new IntentFilter(REFRESH_INTENT);",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    receiver = new RefreshReceiver();",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    registerReceiver(receiver, intentFilter);",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    registerReceiver(receiver, intentFilter, BuildConfig.APPLICATION_ID + \".permission.BROADCAST\", null);",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/alvinhkh/buseta/commit/6b791de8e3622ef157b065f9c82fcfd5a0e2302a?diff=split#diff-a75527f97c6732197964c1dbf30fd385L66",
+                    "lines": [
+                      {
+                        "line": "private static final String KEY_LIST_VIEW_STATE = \"KEY_LIST_VIEW_STATE_ROUTE_STOP\";",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Context mContext = super.getActivity();",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private ActionBar mActionBar = null;",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private SwipeRefreshLayout mSwipeRefreshLayout;",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Runnable to get all stops eta",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "int iEta = 0;",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Handler mEtaHandler = new Handler();",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Runnable mEtaRunnable = new Runnable() {",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public View onCreateView(LayoutInflater inflater, ViewGroup container,",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                         final Bundle savedInstanceState) {",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    View view = inflater.inflate(R.layout.fragment_routestop, container, false);",
+                        "lineNumber": 129,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mContext = super.getActivity();",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Broadcast Receiver",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (null != mContext) {",
+                        "lineNumber": 171,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Looper looper = handlerThread.getLooper();",
+                        "lineNumber": 174,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Handler handler = new Handler(looper);",
+                        "lineNumber": 175,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "mReceiver_view = new UpdateViewReceiver();",
+                        "lineNumber": 176,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "IntentFilter mFilter_view = new IntentFilter(Constants.MESSAGE.STOPS_UPDATED);",
+                        "lineNumber": 177,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mFilter_view.addAction(Constants.MESSAGE.STOPS_UPDATED);",
+                        "lineNumber": 178,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mContext.registerReceiver(mReceiver_view, mFilter_view);",
+                        "lineNumber": 173,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "mContext.registerReceiver(mReceiver_view, mFilter_view, null, handler);",
+                        "lineNumber": 179,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "mReceiver_item = new UpdateItemReceiver();",
+                        "lineNumber": 180,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "IntentFilter mFilter_item = new IntentFilter(Constants.MESSAGE.FOLLOW_UPDATED);",
+                        "lineNumber": 181,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 310,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    requestEta(position);",
+                        "lineNumber": 312,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 313,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 591,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "class UpdateViewReceiver extends BroadcastReceiver {",
+                        "lineNumber": 593,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 594,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 595,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        final Bundle bundle = intent.getExtras();",
+                        "lineNumber": 596,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Thread thread = new Thread() {",
+                        "lineNumber": 597,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/serso/android-messengerpp/commit/1528fdc2d3561bab192dfde9a84a737a26a19fce?diff=split#diff-7ff52f2abe79bd0a68d54916fe71aef2L92",
+                    "lines": [
+                      {
+                        "line": "private final CallListener callListener;",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "SmsAccountConnection(@Nonnull SmsAccount account, @Nonnull Context context) {",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  super(account, context);",
+                        "lineNumber": 92,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  callListener = new CallListener(context);",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void start0() throws AccountConnectionException {",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (receiver == null) {",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    receiver = new ReportsBroadcastReceiver();",
+                        "lineNumber": 103,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final Application application = getApplication();",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final IntentFilter intentReceivedFilter = new IntentFilter(INTENT_RECEIVED);",
+                        "lineNumber": 106,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    intentReceivedFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);",
+                        "lineNumber": 107,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    application.registerReceiver(receiver, intentReceivedFilter);",
+                        "lineNumber": 108,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  intentFilter.addAction(INTENT_SMS_DELIVER);",
+                        "lineNumber": 108,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  intentFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);",
+                        "lineNumber": 109,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  application.registerReceiver(receiver, intentFilter, android.Manifest.permission.BROADCAST_SMS, null);",
+                        "lineNumber": 110,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private class ReportsBroadcastReceiver extends BroadcastReceiver {",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      final String action = intent.getAction();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 171,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private void onSmsReceived(@Nonnull BroadcastReceiver broadcastReceiver, @Nonnull Intent intent) throws AccountException {",
+                        "lineNumber": 173,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final SmsAccount account = getAccount();",
+                        "lineNumber": 174,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final Multimap<String, SmsData> messagesByPhoneNumber = getMessagesByPhoneNumber(intent);",
+                        "lineNumber": 175,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Multimap<String, SmsData> smss = ArrayListMultimap.create();",
+                        "lineNumber": 207,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Bundle extras = intent.getExtras();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (extras != null) {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final Object[] smsExtras = (Object[]) extras.get(SmsRealm.INTENT_EXTRA_PDUS);",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Using callback instead of broadcast for sync status updates\n(testing in progress)",
+                  "Add support for default SMS app",
+                  "Move receiver registration to App class"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 263,
+                "cwe": [
+                  "CWE-280"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the database flows into delete, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[the database](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9)",
+              "[delete](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 144,
+                  "endLine": 144,
+                  "startColumn": 17,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9ac52133d7ede5b65c6dae67ca58b711d4c6591308aa32d2c4564592b7a7f701",
+            "1": "6d34e306.f1efe30e.a224ef38.b20eed91.22e94730.0d476878.db5f2ac3.54d46e25.c0f88425.121d6fd5.a224ef38.de031890.d31a8364.b6d250af.bae646e8.0d5116c8"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 47,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 47,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 36,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 44,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 40,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 118,
+                            "endLine": 118,
+                            "startColumn": 30,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 118,
+                            "endLine": 118,
+                            "startColumn": 18,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 120,
+                            "endLine": 120,
+                            "startColumn": 54,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "endLine": 81,
+                            "startColumn": 67,
+                            "endColumn": 89
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 144,
+                            "endLine": 144,
+                            "startColumn": 17,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 144,
+                            "endLine": 144,
+                            "startColumn": 17,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the database flows into delete, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to manipulate arbitrary files.",
+            "arguments": [
+              "[the database](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9)",
+              "[delete](10)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 154,
+                  "endLine": 154,
+                  "startColumn": 17,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7d2776f5a7fe25e70a003a3f4a293cfdb416a91adc001a3b8b392e5f696800d4",
+            "1": "6d34e306.f1efe30e.a224ef38.b20eed91.22e94730.0d476878.db5f2ac3.54d46e25.c0f88425.121d6fd5.a224ef38.de031890.d31a8364.ce109560.bae646e8.0d5116c8"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 47,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 47,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 155,
+                            "endLine": 155,
+                            "startColumn": 36,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 44,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CordovaResourceApi.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 157,
+                            "endLine": 157,
+                            "startColumn": 40,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 118,
+                            "endLine": 118,
+                            "startColumn": 30,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 118,
+                            "endLine": 118,
+                            "startColumn": 18,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 120,
+                            "endLine": 120,
+                            "startColumn": 54,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "endLine": 81,
+                            "startColumn": 67,
+                            "endColumn": 89
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 154,
+                            "endLine": 154,
+                            "startColumn": 17,
+                            "endColumn": 18
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "test/androidTest/src/org/apache/cordova/test/CordovaResourceApiTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 154,
+                            "endLine": 154,
+                            "startColumn": 17,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 405,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "framework/src/org/apache/cordova/CoreAndroid.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 306,
+                  "endLine": 306,
+                  "startColumn": 9,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "78440dc30e05a0db33c05155d7742a74da2065d0195715d5fbc17b0a9748064d",
+            "1": "8693f414.33bd7f18.33fa5dbe.a5d6d8de.adb8716e.7fda7c5e.ab3240cb.54d46e25.72d339ef.bece668b.33fa5dbe.a5d6d8de.adb8716e.7fda7c5e.ab3240cb.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/CoreAndroid.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 306,
+                            "endLine": 306,
+                            "startColumn": 9,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "framework/src/org/apache/cordova/engine/SystemWebViewEngine.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 213,
+                  "endLine": 213,
+                  "startColumn": 13,
+                  "endColumn": 50
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "f8a5e8fe58b789a67c9eba23c1e542debd44a9e52eaf4b9353212bebec070c83",
+            "1": "9cf53582.33bd7f18.f64d9e59.a5d6d8de.435fad45.7fda7c5e.ab3240cb.54d46e25.72d339ef.bece668b.f64d9e59.a5d6d8de.435fad45.7fda7c5e.ab3240cb.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "framework/src/org/apache/cordova/engine/SystemWebViewEngine.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 213,
+                            "endLine": 213,
+                            "startColumn": 13,
+                            "endColumn": 50
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 59,
+            "isSupported": true,
+            "lang": "JavaScript"
+          },
+          {
+            "files": 12,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 54,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 25,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

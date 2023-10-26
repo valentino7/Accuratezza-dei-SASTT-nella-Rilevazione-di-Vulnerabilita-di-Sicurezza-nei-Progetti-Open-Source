@@ -1,0 +1,458 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/ReturnsPassword/test",
+              "name": "ReturnsPassword/test",
+              "shortDescription": {
+                "text": "Unprotected Storage of Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nIf credentials are not protected or not sufficiently protected through strong encryption, attackers can access this information in a number of ways. Developers may rely on plain-text storage of credentials when they believe the system is completely secure from attack or only accessible to insiders. This confidence is misguided and dangerous. If a malicious insider-such as a former employee-or a hostile attacker using SQL injection, XML injection, or a brute-force attack accesses the system, they can access this credential information to gain unauthorized permissions within the system and to export other confidential and secure information.\n\n### Best practices for prevention\n* Ensure that passwords are never stored in plain text, even for \"purely internal\" use.\n* Never rely on password encoding, such as base 64 encoding; choose a complex encryption algorithm that includes salting, then hashing.\n* Implement zero-trust approaches in which users have access only to information needed for legitimate business purposes.\n* To the greatest extent possible, secure the application against injection attacks and other types of weaknesses.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Raysmond/SpringBlog/commit/3fbcae1e4627151fef017182e2be25404efb6778?diff=split#diff-5db28c34e3a8215d068e1650562a5e85L78",
+                    "lines": [
+                      {
+                        "line": "logger.info(\"\" + passwordEncoder.matches(password, user.getPassword()));",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (!user.getPassword().equals(passwordEncoder.encode(password)))",
+                        "lineNumber": 77,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "boolean match = passwordEncoder.matches(password, user.getPassword());",
+                        "lineNumber": 77,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (!match)",
+                        "lineNumber": 78,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return false;",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/linlinjava/litemall/commit/62964b8be5856976d673e0942a3457d252147d47?diff=split#diff-350e06b09af70876f8b603fb1d33080fL64",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(!user.getPassword().equals(password)){",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return ResponseUtil.badArgumentValue();",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if(!encoder.matches(password, user.getPassword())){",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return ResponseUtil.fail(403, \"Þ┤ªÕÅÀÕ»åþáüõ©ìÕ»╣\");",
+                        "lineNumber": 66,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/guchengwuyue/yshopmall/commit/28985ae95e09e9433788475d8bef2a10a197d0ec?diff=split#diff-3eddbc993068925ffebe6bd98b170164L155",
+                    "lines": [
+                      {
+                        "line": "    throw new BadRequestException(\"õ┐«µö╣Õñ▒Þ┤Ñ´╝îµùºÕ»åþáüÚöÖÞ»»\");",
+                        "lineNumber": 176,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 177,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(userDetails.getPassword().equals(EncryptUtils.encryptPassword(user.getNewPass()))){",
+                        "lineNumber": 154,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "if(passwordEncoder.matches(newPass, user.getPassword())){",
+                        "lineNumber": 178,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new BadRequestException(\"µû░Õ»åþáüõ©ìÞâ¢õ©ÄµùºÕ»åþáüþø©ÕÉî\");",
+                        "lineNumber": 179,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 180,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Rollback to Password File instead of password"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 147,
+                "cwe": [
+                  "CWE-256"
+                ]
+              }
+            },
+            {
+              "id": "java/ReturnsPassword",
+              "name": "ReturnsPassword",
+              "shortDescription": {
+                "text": "Unprotected Storage of Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nIf credentials are not protected or not sufficiently protected through strong encryption, attackers can access this information in a number of ways. Developers may rely on plain-text storage of credentials when they believe the system is completely secure from attack or only accessible to insiders. This confidence is misguided and dangerous. If a malicious insider-such as a former employee-or a hostile attacker using SQL injection, XML injection, or a brute-force attack accesses the system, they can access this credential information to gain unauthorized permissions within the system and to export other confidential and secure information.\n\n### Best practices for prevention\n* Ensure that passwords are never stored in plain text, even for \"purely internal\" use.\n* Never rely on password encoding, such as base 64 encoding; choose a complex encryption algorithm that includes salting, then hashing.\n* Implement zero-trust approaches in which users have access only to information needed for legitimate business purposes.\n* To the greatest extent possible, secure the application against injection attacks and other types of weaknesses.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Raysmond/SpringBlog/commit/3fbcae1e4627151fef017182e2be25404efb6778?diff=split#diff-5db28c34e3a8215d068e1650562a5e85L78",
+                    "lines": [
+                      {
+                        "line": "logger.info(\"\" + passwordEncoder.matches(password, user.getPassword()));",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (!user.getPassword().equals(passwordEncoder.encode(password)))",
+                        "lineNumber": 77,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "boolean match = passwordEncoder.matches(password, user.getPassword());",
+                        "lineNumber": 77,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (!match)",
+                        "lineNumber": 78,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return false;",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/linlinjava/litemall/commit/62964b8be5856976d673e0942a3457d252147d47?diff=split#diff-350e06b09af70876f8b603fb1d33080fL64",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(!user.getPassword().equals(password)){",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return ResponseUtil.badArgumentValue();",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if(!encoder.matches(password, user.getPassword())){",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return ResponseUtil.fail(403, \"Þ┤ªÕÅÀÕ»åþáüõ©ìÕ»╣\");",
+                        "lineNumber": 66,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/guchengwuyue/yshopmall/commit/28985ae95e09e9433788475d8bef2a10a197d0ec?diff=split#diff-3eddbc993068925ffebe6bd98b170164L155",
+                    "lines": [
+                      {
+                        "line": "    throw new BadRequestException(\"õ┐«µö╣Õñ▒Þ┤Ñ´╝îµùºÕ»åþáüÚöÖÞ»»\");",
+                        "lineNumber": 176,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 177,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if(userDetails.getPassword().equals(EncryptUtils.encryptPassword(user.getNewPass()))){",
+                        "lineNumber": 154,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "if(passwordEncoder.matches(newPass, user.getPassword())){",
+                        "lineNumber": 178,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new BadRequestException(\"µû░Õ»åþáüõ©ìÞâ¢õ©ÄµùºÕ»åþáüþø©ÕÉî\");",
+                        "lineNumber": 179,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 180,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Rollback to Password File instead of password"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 147,
+                "cwe": [
+                  "CWE-256"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/ReturnsPassword/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "markdown": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/hudson/scm/SubversionSCMTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1255,
+                  "endLine": 1255,
+                  "startColumn": 64,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0d52305169d9371810aec086d667ede305e9d13e0c6cb92d9c1e0367637c241e",
+            "1": "c9f51d48.c8c8034f.34c5e934.8210b4a9.7b703bdb.31ccdec6.0ac97cd8.cfafd018.c9f51d48.c8c8034f.fc7d5400.e22980a8.7b703bdb.31ccdec6.0ac97cd8.1d874c72"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/hudson/scm/SubversionSCMTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1255,
+                            "endLine": 1255,
+                            "startColumn": 64,
+                            "endColumn": 78
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 353,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/ReturnsPassword",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "markdown": "An attacker might be able to detect the value of the password due to the exposure of comparison timing. When the functions Arrays.equals() or String.equals() are called, they will exit earlier if fewer bytes are matched. Use password encoder such as BCrypt for comparing passwords.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/hudson/scm/SubversionSCM.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 2062,
+                  "endLine": 2062,
+                  "startColumn": 25,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "183d1677a610e8756d9ef3b861833d331fcb76c8d51267d37690d18343f6b6a1",
+            "1": "19689298.b3b6fa6a.fc7d5400.e22980a8.71177ac3.31ccdec6.533894bc.1d874c72.19689298.b3b6fa6a.fc7d5400.e22980a8.71177ac3.31ccdec6.533894bc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/hudson/scm/SubversionSCM.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 2062,
+                            "endLine": 2062,
+                            "startColumn": 25,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 87,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 387,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

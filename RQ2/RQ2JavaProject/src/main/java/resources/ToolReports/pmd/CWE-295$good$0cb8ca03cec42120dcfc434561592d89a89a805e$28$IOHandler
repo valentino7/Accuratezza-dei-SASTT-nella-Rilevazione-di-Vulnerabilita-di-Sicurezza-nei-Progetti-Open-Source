@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:05:14.449">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-295/good$0cb8ca03cec42120dcfc434561592d89a89a805e$28$IOHandler.java">
+<violation beginline="48" endline="48" begincolumn="1" endcolumn="56" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unnecessary import from the current package 'org.apache.qpid.proton.reactor.impl.AcceptorImpl'
+</violation>
+<violation beginline="56" endline="56" begincolumn="34" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleQuiesced" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="80" endline="80" begincolumn="20" endcolumn="29" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleOpen" variable="connection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Connection object are closed after use
+</violation>
+<violation beginline="100" endline="102" begincolumn="16" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleOpen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="124" endline="124" begincolumn="20" endcolumn="29" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleBound" variable="connection" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Connection object are closed after use
+</violation>
+<violation beginline="125" endline="125" begincolumn="16" endcolumn="24" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleBound" variable="conn_recs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'conn_recs' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="160" endline="160" begincolumn="16" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleBound" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+<violation beginline="162" endline="162" begincolumn="27" endcolumn="39" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="handleBound" variable="socketChannel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SocketChannel object are closed after use
+</violation>
+<violation beginline="207" endline="207" begincolumn="9" endcolumn="24" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="deadline" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'deadline'
+</violation>
+<violation beginline="228" endline="228" begincolumn="31" endcolumn="43" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="run" variable="socketChannel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SocketChannel object are closed after use
+</violation>
+<violation beginline="260" endline="260" begincolumn="31" endcolumn="37" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="run" variable="channel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SocketChannel object are closed after use
+</violation>
+<violation beginline="314" endline="314" begincolumn="21" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="run" variable="channel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Channel object are closed after use
+</violation>
+<violation beginline="318" endline="320" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.qpid.proton.reactor.impl" class="IOHandler" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

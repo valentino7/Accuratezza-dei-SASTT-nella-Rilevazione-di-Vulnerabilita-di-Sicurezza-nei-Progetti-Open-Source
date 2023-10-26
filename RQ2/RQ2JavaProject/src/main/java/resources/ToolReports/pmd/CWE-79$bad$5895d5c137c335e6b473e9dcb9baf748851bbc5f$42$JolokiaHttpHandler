@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:28:42.180">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-79/bad$5895d5c137c335e6b473e9dcb9baf748851bbc5f$42$JolokiaHttpHandler.java">
+<violation beginline="42" endline="42" begincolumn="1" endcolumn="32" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.restrictor.*'
+</violation>
+<violation beginline="43" endline="43" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.util.*'
+</violation>
+<violation beginline="114" endline="114" begincolumn="17" endcolumn="85" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="start" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="195" endline="195" begincolumn="13" endcolumn="92" rule="PreserveStackTrace" ruleset="Best Practices" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="doHandleAs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="208" endline="208" begincolumn="93" endcolumn="95" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="checkAuthentication" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="278" endline="278" begincolumn="21" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="executePostRequest" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="324" endline="324" begincolumn="22" endcolumn="23" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="sendForbidden" variable="os" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStream object are closed after use
+</violation>
+<violation beginline="347" endline="347" begincolumn="20" endcolumn="25" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.jvmagent.handler" class="JolokiaHttpHandler" method="sendStreamingResponse" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStreamWriter object are closed after use
+</violation>
+</file>
+</pmd>

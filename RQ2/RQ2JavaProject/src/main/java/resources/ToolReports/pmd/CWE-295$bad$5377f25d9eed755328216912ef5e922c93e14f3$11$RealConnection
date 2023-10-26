@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:02:27.319">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-295/bad$5377f25d9eed755328216912ef5e922c93e14f3$11$RealConnection.java">
+<violation beginline="79" endline="79" begincolumn="19" endcolumn="52" rule="AvoidUsingVolatile" ruleset="Multithreading" package="com.squareup.okhttp.internal.io" class="RealConnection" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="93" endline="93" begincolumn="27" endcolumn="79" rule="ControlStatementBraces" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="113" endline="113" begincolumn="9" endcolumn="25" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Util.closeQuietly' due to existing static import 'com.squareup.okhttp.internal.Util.closeQuietly'
+</violation>
+<violation beginline="114" endline="114" begincolumn="9" endcolumn="25" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Util.closeQuietly' due to existing static import 'com.squareup.okhttp.internal.Util.closeQuietly'
+</violation>
+<violation beginline="142" endline="142" begincolumn="7" endcolumn="85" rule="PreserveStackTrace" ruleset="Best Practices" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connectSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="177" endline="177" begincolumn="15" endcolumn="23" rule="CloseResource" ruleset="Error Prone" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connectTls" variable="sslSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SSLSocket object are closed after use
+</violation>
+<violation beginline="223" endline="223" begincolumn="46" endcolumn="70" rule="ControlStatementBraces" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="connectTls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="245" endline="245" begincolumn="9" endcolumn="48" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="com.squareup.okhttp.internal.io" class="RealConnection" method="certificateAuthorityCouncil" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="278" endline="278" begincolumn="45" endcolumn="65" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="createTunnel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'TimeUnit.MILLISECONDS' due to existing static import 'java.util.concurrent.TimeUnit.MILLISECONDS'
+</violation>
+<violation beginline="295" endline="295" begincolumn="38" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="createTunnel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="332" endline="332" begincolumn="5" endcolumn="21" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="com.squareup.okhttp.internal.io" class="RealConnection" method="cancel" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'Util.closeQuietly' due to existing static import 'com.squareup.okhttp.internal.Util.closeQuietly'
+</violation>
+<violation beginline="361" endline="363" begincolumn="11" endcolumn="11" rule="SimplifyBooleanReturns" ruleset="Design" package="com.squareup.okhttp.internal.io" class="RealConnection" method="isHealthy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:27:00.576">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-19/bad$190d7c81b7e3ce767514e319630b1bbaf27e6817$9$HttpProducer.java">
+<violation beginline="131" endline="131" begincolumn="21" endcolumn="31" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.camel.component.http" class="HttpProducer" method="process" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="183" endline="183" begincolumn="17" endcolumn="57" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.camel.component.http" class="HttpProducer" method="populateResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="183" endline="183" begincolumn="17" endcolumn="57" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="populateResponse" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="257" endline="257" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="extractResponseHeaders" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="276" endline="276" begincolumn="21" endcolumn="22" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="extractResponseBody" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="319" endline="321" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="doExtractResponseBodyAsStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="407" endline="407" begincolumn="105" endcolumn="115" rule="UnusedNullCheckInEquals" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="createRequestEntity" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#unusednullcheckinequals" priority="3">
+Invoke equals() on the object you've already ensured is not null
+</violation>
+<violation beginline="432" endline="432" begincolumn="37" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="org.apache.camel.component.http" class="HttpProducer" method="createRequestEntity" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+</file>
+</pmd>

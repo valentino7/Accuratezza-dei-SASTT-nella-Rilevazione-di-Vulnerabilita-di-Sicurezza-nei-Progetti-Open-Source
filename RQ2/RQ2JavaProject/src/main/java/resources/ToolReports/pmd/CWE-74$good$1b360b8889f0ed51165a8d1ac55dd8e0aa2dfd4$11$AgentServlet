@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:15:41.284">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-74/good$1b360b8889f0ed51165a8d1ac55dd8e0aa2dfd4$11$AgentServlet.java">
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="23" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.servlet.*'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="28" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.servlet.http.*'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="28" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.config.*'
+</violation>
+<violation beginline="18" endline="18" begincolumn="1" endcolumn="32" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.restrictor.*'
+</violation>
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.util.*'
+</violation>
+<violation beginline="59" endline="59" begincolumn="13" endcolumn="66" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.jolokia.http" class="AgentServlet" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="137" endline="137" begincolumn="13" endcolumn="88" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.http" class="AgentServlet" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="194" endline="194" begincolumn="17" endcolumn="84" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.http" class="AgentServlet" method="initDiscoveryMulticast" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="447" endline="447" begincolumn="30" endcolumn="31" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.http" class="AgentServlet" method="handleRequest" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="528" endline="528" begincolumn="16" endcolumn="21" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.http" class="AgentServlet" method="sendStreamingResponse" variable="writer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this OutputStreamWriter object are closed after use
+</violation>
+<violation beginline="578" endline="578" begincolumn="9" endcolumn="61" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.jolokia.http" class="AgentServlet" method="setContentType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="579" endline="579" begincolumn="9" endcolumn="82" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.jolokia.http" class="AgentServlet" method="setContentType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'NoSuchMethodError' branch
+</violation>
+<violation beginline="579" endline="579" begincolumn="9" endcolumn="82" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.jolokia.http" class="AgentServlet" method="setContentType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

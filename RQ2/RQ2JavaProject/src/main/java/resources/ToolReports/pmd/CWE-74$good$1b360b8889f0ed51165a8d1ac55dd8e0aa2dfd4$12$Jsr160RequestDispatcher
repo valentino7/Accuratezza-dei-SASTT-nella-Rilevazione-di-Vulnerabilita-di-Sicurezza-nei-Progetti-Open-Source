@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:15:47.920">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-74/good$1b360b8889f0ed51165a8d1ac55dd8e0aa2dfd4$12$Jsr160RequestDispatcher.java">
+<violation beginline="99" endline="99" begincolumn="22" endcolumn="30" rule="CloseResource" ruleset="Error Prone" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="dispatchRequest" variable="connector" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this JMXConnector object are closed after use
+</violation>
+<violation beginline="146" endline="146" begincolumn="38" endcolumn="55" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="prepareEnv" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="147" endline="147" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="prepareEnv" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="213" endline="213" begincolumn="16" endcolumn="23" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="extractFrom" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="231" endline="231" begincolumn="13" endcolumn="97" rule="PreserveStackTrace" ruleset="Best Practices" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="readPatterns" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="233" endline="233" begincolumn="13" endcolumn="126" rule="PreserveStackTrace" ruleset="Best Practices" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="readPatterns" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="239" endline="241" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="readPatterns" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="245" endline="245" begincolumn="56" endcolumn="62" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.jolokia.jsr160" class="Jsr160RequestDispatcher" method="extractBlackList" variable="pConfig" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'pConfig'.
+</violation>
+</file>
+</pmd>

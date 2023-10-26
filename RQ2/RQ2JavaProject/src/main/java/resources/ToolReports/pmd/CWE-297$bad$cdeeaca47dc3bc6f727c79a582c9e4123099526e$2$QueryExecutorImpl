@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:08:14.249">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-297/bad$cdeeaca47dc3bc6f727c79a582c9e4123099526e$2$QueryExecutorImpl.java">
+<violation beginline="162" endline="162" begincolumn="9" endcolumn="29" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="lock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="178" endline="178" begincolumn="9" endcolumn="27" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="unlock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="183" endline="183" begincolumn="5" endcolumn="17" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="unlock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="208" endline="208" begincolumn="12" endcolumn="30" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="hasLock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="302" endline="305" begincolumn="67" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="execute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="475" endline="478" begincolumn="67" endcolumn="9" rule="EmptyIfStmt" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="execute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="535" endline="535" begincolumn="16" endcolumn="37" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="handleCommandStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="576" endline="576" begincolumn="18" endcolumn="39" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="handleCommandStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="728" endline="730" begincolumn="7" endcolumn="5" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="processNotifies" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="742" endline="742" begincolumn="14" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="setSocketTimeout" variable="s" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+<violation beginline="786" endline="786" begincolumn="15" endcolumn="20" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveFastpathResult" variable="msgLen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'msgLen'.
+</violation>
+<violation beginline="1287" endline="1294" begincolumn="12" endcolumn="5" rule="EmptyIfStmt" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="flushIfDeadlockRisk" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="1458" endline="1458" begincolumn="33" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendBind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1601" endline="1601" begincolumn="33" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendDescribePortal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1622" endline="1622" begincolumn="5" endcolumn="87" rule="GuardLogStatement" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendDescribeStatement" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1654" endline="1654" begincolumn="33" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendExecute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1655" endline="1655" begincolumn="24" endcolumn="79" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendExecute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1676" endline="1676" begincolumn="33" endcolumn="88" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendClosePortal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1677" endline="1677" begincolumn="24" endcolumn="79" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendClosePortal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1776" endline="1776" begincolumn="13" endcolumn="92" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="sendOneQuery" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1874" endline="1874" begincolumn="17" endcolumn="62" rule="LooseCoupling" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="1908" endline="1908" begincolumn="17" endcolumn="57" rule="LooseCoupling" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="1993" endline="1993" begincolumn="16" endcolumn="76" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="processResults" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1994" endline="1995" begincolumn="19" endcolumn="71" rule="UselessParentheses" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="processResults" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2094" endline="2096" begincolumn="18" endcolumn="11" rule="EmptyIfStmt" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="processResults" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="2344" endline="2344" begincolumn="9" endcolumn="13" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="skipMessage" variable="l_len" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'l_len' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2388" endline="2388" begincolumn="9" endcolumn="17" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveFields" variable="l_msgSize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'l_msgSize'.
+</violation>
+<violation beginline="2388" endline="2388" begincolumn="9" endcolumn="17" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveFields" variable="l_msgSize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'l_msgSize' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2415" endline="2415" begincolumn="9" endcolumn="14" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveAsyncNotify" variable="msglen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'msglen'.
+</violation>
+<violation beginline="2462" endline="2462" begincolumn="9" endcolumn="13" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveCommandStatus" variable="l_len" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'l_len' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2541" endline="2541" begincolumn="15" endcolumn="22" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="readStartupMessages" variable="l_msgLen" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'l_msgLen' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2586" endline="2586" begincolumn="9" endcolumn="13" rule="UnusedLocalVariable" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" variable="l_len" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'l_len'.
+</violation>
+<violation beginline="2586" endline="2586" begincolumn="9" endcolumn="13" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" variable="l_len" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'l_len' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2594" endline="2594" begincolumn="9" endcolumn="38" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2596" endline="2596" begincolumn="14" endcolumn="43" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2596" endline="2596" begincolumn="49" endcolumn="79" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2602" endline="2602" begincolumn="19" endcolumn="48" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2602" endline="2602" begincolumn="54" endcolumn="84" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2611" endline="2611" begincolumn="9" endcolumn="32" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2612" endline="2612" begincolumn="13" endcolumn="49" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2619" endline="2619" begincolumn="9" endcolumn="50" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2620" endline="2620" begincolumn="11" endcolumn="28" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="2622" endline="2622" begincolumn="18" endcolumn="36" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.postgresql.core.v3" class="QueryExecutorImpl" method="receiveParameterStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+</file>
+</pmd>

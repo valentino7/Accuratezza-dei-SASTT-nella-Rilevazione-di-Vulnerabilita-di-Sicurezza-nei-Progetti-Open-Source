@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T19:29:57.561">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-284/bad$675254b0f17b76f05e72cba2e3b8d3e548ae7a43$11$InstallHelper.java">
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="30" rule="UnnecessaryImport" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.sql.DriverManager'
+</violation>
+<violation beginline="39" endline="435" begincolumn="1" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="org.postgresql.pljava.internal" class="InstallHelper" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="43" endline="43" begincolumn="4" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="setPropertyIfNull" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="62" endline="62" begincolumn="4" endcolumn="61" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="hello" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="95" endline="95" begincolumn="4" endcolumn="36" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="hello" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="101" endline="101" begincolumn="10" endcolumn="24" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="groundwork" variable="module_pathname" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The method parameter name 'module_pathname' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="104" endline="104" begincolumn="14" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper" method="groundwork" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Connection object are closed after use
+</violation>
+<violation beginline="105" endline="105" begincolumn="13" endcolumn="13" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper" method="groundwork" variable="s" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Statement object are closed after use
+</violation>
+<violation beginline="116" endline="117" begincolumn="5" endcolumn="67" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="groundwork" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="119" endline="120" begincolumn="5" endcolumn="66" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="groundwork" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="152" endline="152" begincolumn="5" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="schema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="156" endline="156" begincolumn="43" endcolumn="43" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" variable="c" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'c'.
+</violation>
+<violation beginline="156" endline="156" begincolumn="66" endcolumn="76" rule="FormalParameterNamingConventions" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" variable="module_path" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The method parameter name 'module_path' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="166" endline="169" begincolumn="3" endcolumn="16" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="166" endline="169" begincolumn="3" endcolumn="16" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="166" endline="166" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="175" endline="178" begincolumn="4" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="196" endline="199" begincolumn="4" endcolumn="18" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="handlers" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="221" endline="221" begincolumn="5" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="languages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="239" endline="239" begincolumn="5" endcolumn="15" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="languages" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="253" endline="253" begincolumn="4" endcolumn="10" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="deployment" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="261" endline="261" begincolumn="15" endcolumn="16" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper" method="deployment" variable="is" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="3" endcolumn="69" rule="CheckResultSet" ruleset="Best Practices" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#checkresultset" priority="3">
+Always check the return of one of the navigation method (next,previous,first,last) of a ResultSet.
+</violation>
+<violation beginline="283" endline="283" begincolumn="13" endcolumn="14" rule="CloseResource" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" variable="rs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ResultSet object are closed after use
+</violation>
+<violation beginline="287" endline="287" begincolumn="4" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="293" endline="293" begincolumn="4" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="299" endline="299" begincolumn="4" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="305" endline="305" begincolumn="4" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="313" endline="313" begincolumn="5" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="322" endline="322" begincolumn="4" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="328" endline="328" begincolumn="4" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="334" endline="334" begincolumn="4" endcolumn="38" rule="ControlStatementBraces" ruleset="Code Style" package="org.postgresql.pljava.internal" class="InstallHelper" method="recognizeSchema" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="378" endline="408" begincolumn="5" endcolumn="5" rule="ImplicitSwitchFallThrough" ruleset="Error Prone" package="org.postgresql.pljava.internal" class="InstallHelper$SchemaVariant" method="migrateFrom" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#implicitswitchfallthrough" priority="3">
+A switch statement does not contain a break
+</violation>
+</file>
+</pmd>

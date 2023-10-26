@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671847133633" analysisTimestamp="1672073434757" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-264/bad_ebe5c16f_TagPluginManager.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-264/bad_ebe5c16f_TagPluginManager.java</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="12">
+    <MissingClass>javax.servlet.ServletContext</MissingClass>
+    <MissingClass>org.apache.jasper.Constants</MissingClass>
+    <MissingClass>org.apache.jasper.JasperException</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.ErrorDispatcher</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$CustomTag</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Nodes</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.TagPluginManager$NodeVisitor</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.TagPluginManager$TagPluginContextImpl</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.tagplugin.TagPlugin</MissingClass>
+    <MissingClass>org.apache.tomcat.util.descriptor.tagplugin.TagPluginParser</MissingClass>
+    <MissingClass>org.apache.tomcat.util.security.PrivilegedGetTccl</MissingClass>
+    <MissingClass>org.apache.tomcat.util.security.PrivilegedSetTccl</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 02:58:53 +0100" total_classes="1" referenced_classes="27" total_bugs="0" total_size="78" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="16.55" clock_seconds="4.98" peak_mbytes="141.37" alloc_mbytes="768.00" gc_seconds="0.07">
+    <PackageStats package="org.apache.jasper.compiler" total_bugs="0" total_types="1" total_size="78">
+      <ClassStats class="org.apache.jasper.compiler.TagPluginManager" sourceFile="TagPluginManager.java" interface="false" size="78" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="725" invocations="452" avgMicrosecondsPerInvocation="1605" maxMicrosecondsPerInvocation="12316" standardDeviationMicrosecondsPerInvocation="647"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="534" invocations="450" avgMicrosecondsPerInvocation="1187" maxMicrosecondsPerInvocation="58460" standardDeviationMicrosecondsPerInvocation="3513"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="192" invocations="5" avgMicrosecondsPerInvocation="38517" maxMicrosecondsPerInvocation="185732" standardDeviationMicrosecondsPerInvocation="73624"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="117" invocations="27" avgMicrosecondsPerInvocation="4343" maxMicrosecondsPerInvocation="35483" standardDeviationMicrosecondsPerInvocation="7286"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="92" invocations="78" avgMicrosecondsPerInvocation="1182" maxMicrosecondsPerInvocation="53882" standardDeviationMicrosecondsPerInvocation="6190"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="90" invocations="88" avgMicrosecondsPerInvocation="1026" maxMicrosecondsPerInvocation="11366" standardDeviationMicrosecondsPerInvocation="1373"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="69" invocations="27" avgMicrosecondsPerInvocation="2586" maxMicrosecondsPerInvocation="12209" standardDeviationMicrosecondsPerInvocation="3141"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="69" invocations="5" avgMicrosecondsPerInvocation="13833" maxMicrosecondsPerInvocation="36517" standardDeviationMicrosecondsPerInvocation="14194"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="69" invocations="5" avgMicrosecondsPerInvocation="13824" maxMicrosecondsPerInvocation="40981" standardDeviationMicrosecondsPerInvocation="14761"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="67" invocations="5" avgMicrosecondsPerInvocation="13571" maxMicrosecondsPerInvocation="34232" standardDeviationMicrosecondsPerInvocation="13947"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="63" invocations="5" avgMicrosecondsPerInvocation="12727" maxMicrosecondsPerInvocation="25194" standardDeviationMicrosecondsPerInvocation="10289"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="52" invocations="401" avgMicrosecondsPerInvocation="130" maxMicrosecondsPerInvocation="2033" standardDeviationMicrosecondsPerInvocation="250"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="48" invocations="5" avgMicrosecondsPerInvocation="9659" maxMicrosecondsPerInvocation="43544" standardDeviationMicrosecondsPerInvocation="16951"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

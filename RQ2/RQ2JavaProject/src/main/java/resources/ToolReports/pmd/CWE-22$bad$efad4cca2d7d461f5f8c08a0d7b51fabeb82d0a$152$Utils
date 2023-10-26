@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:44:46.276">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$efad4cca2d7d461f5f8c08a0d7b51fabeb82d0a$152$Utils.java">
+<violation beginline="108" endline="108" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.nio.file.Path'
+</violation>
+<violation beginline="246" endline="246" begincolumn="31" endcolumn="33" rule="CloseResource" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" variable="ois" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ObjectInputStream object are closed after use
+</violation>
+<violation beginline="258" endline="260" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="377" endline="377" begincolumn="21" endcolumn="112" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="findAndReadConfigFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="379" endline="379" begincolumn="21" endcolumn="98" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="findAndReadConfigFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="415" endline="415" begincolumn="13" endcolumn="64" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="getConfigFileInputStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="478" endline="478" begincolumn="27" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="normalizeConf" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="580" endline="580" begincolumn="19" endcolumn="36" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="downloadResourcesAsSupervisorImpl" variable="MAX_RETRY_ATTEMPTS" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'MAX_RETRY_ATTEMPTS' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="581" endline="581" begincolumn="19" endcolumn="40" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="downloadResourcesAsSupervisorImpl" variable="ATTEMPTS_INTERVAL_TIME" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'ATTEMPTS_INTERVAL_TIME' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="610" endline="610" begincolumn="26" endcolumn="53" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="downloadResourcesAsSupervisorAttempt" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="636" endline="639" begincolumn="19" endcolumn="5" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="CheckDirExists" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The static method name 'CheckDirExists' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="706" endline="708" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="loadClojureFn" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="733" endline="733" begincolumn="45" endcolumn="64" rule="DoubleBraceInitialization" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="getStrings" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#doublebraceinitialization" priority="3">
+Double-brace initialization should be avoided
+</violation>
+<violation beginline="906" endline="906" begincolumn="18" endcolumn="27" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="copyBytes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1027" endline="1027" begincolumn="30" endcolumn="41" rule="CloseResource" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="unpackEntries" variable="outputStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="1039" endline="1039" begincolumn="20" endcolumn="59" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="isOnWindows" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1049" endline="1049" begincolumn="27" endcolumn="59" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="unpack" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="1059" endline="1059" begincolumn="13" endcolumn="50" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="unpack" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1111" endline="1111" begincolumn="28" endcolumn="31" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="getAclForPath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="1175" endline="1175" begincolumn="19" endcolumn="43" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="integerDivided" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'TreeMap'; use the interface instead
+</violation>
+<violation beginline="1230" endline="1232" begincolumn="21" endcolumn="84" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="isZkAuthenticationConfiguredStormServer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1241" endline="1243" begincolumn="17" endcolumn="93" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="isZkAuthenticationConfiguredTopology" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1274" endline="1274" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="getWorkerACL" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="1291" endline="1291" begincolumn="13" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="getDU" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1297" endline="1307" begincolumn="17" endcolumn="17" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="getDU" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1300" endline="1300" begincolumn="37" endcolumn="77" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="getDU" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.commons.io.FileUtils.isSymlink' due to existing import 'org.apache.commons.io.FileUtils'
+</violation>
+<violation beginline="1319" endline="1319" begincolumn="65" endcolumn="118" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="threadDump" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'java.lang.management.ManagementFactory.getThreadMXBean' due to existing import 'java.lang.management.ManagementFactory'
+</violation>
+<violation beginline="1363" endline="1363" begincolumn="13" endcolumn="43" rule="SimplifyConditional" ruleset="Design" package="org.apache.storm.utils" class="Utils" method="handleUncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifyconditional" priority="3">
+No need to check for null before an instanceof
+</violation>
+<violation beginline="1367" endline="1369" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="handleUncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1367" endline="1369" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="handleUncaughtException" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1451" endline="1451" begincolumn="26" endcolumn="28" rule="CloseResource" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="zipFileSize" variable="raf" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this RandomAccessFile object are closed after use
+</violation>
+<violation beginline="1463" endline="1463" begincolumn="17" endcolumn="55" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="zeroIfNaNOrInf" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1482" endline="1482" begincolumn="37" endcolumn="70" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="parseJvmHeapMemByChildOpts" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="1484" endline="1496" begincolumn="21" endcolumn="21" rule="ImplicitSwitchFallThrough" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="parseJvmHeapMemByChildOpts" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#implicitswitchfallthrough" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="1498" endline="1498" begincolumn="21" endcolumn="57" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="parseJvmHeapMemByChildOpts" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="1498" endline="1498" begincolumn="29" endcolumn="40" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="parseJvmHeapMemByChildOpts" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1776" endline="1778" begincolumn="9" endcolumn="9" rule="NonThreadSafeSingleton" ruleset="Multithreading" package="org.apache.storm.utils" class="Utils" method="memoizedLocalHostname" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#nonthreadsafesingleton" priority="3">
+Singleton is not thread safe
+</violation>
+<violation beginline="1836" endline="1836" begincolumn="26" endcolumn="44" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="1861" endline="1861" begincolumn="19" endcolumn="25" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="reverseMap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="2007" endline="2007" begincolumn="17" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" method="nullToZero" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2120" endline="2122" begincolumn="19" endcolumn="5" rule="MethodNamingConventions" ruleset="Code Style" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The static method name 'OR' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2199" endline="2207" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2254" endline="2254" begincolumn="33" endcolumn="45" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="2258" endline="2258" begincolumn="37" endcolumn="45" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="2269" endline="2269" begincolumn="16" endcolumn="19" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.storm.utils" class="Utils" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="2317" endline="2317" begincolumn="9" endcolumn="91" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.storm.utils" class="Utils" method="addVersions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

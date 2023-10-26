@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:43:19.466">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$d10f537283d90eabd28af57ac97f860a3913bf9b$138$UnZipTransformer.java">
+<violation beginline="51" endline="51" begincolumn="23" endcolumn="77" rule="ProperLogger" ruleset="Error Prone" package="org.springframework.integration.zip.transformer" class="UnZipTransformer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="53" endline="53" begincolumn="19" endcolumn="53" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.springframework.integration.zip.transformer" class="UnZipTransformer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="83" endline="83" begincolumn="16" endcolumn="26" rule="CloseResource" ruleset="Error Prone" package="org.springframework.integration.zip.transformer" class="UnZipTransformer" method="doZipTransform" variable="inputStream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+</file>
+</pmd>

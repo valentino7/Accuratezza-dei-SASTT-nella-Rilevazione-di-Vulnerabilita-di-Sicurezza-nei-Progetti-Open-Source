@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671855767873" analysisTimestamp="1672073122742" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/good_abb0d479_JWTDecoder.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/good_abb0d479_JWTDecoder.java</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="11">
+    <MissingClass>apply</MissingClass>
+    <MissingClass>org.primeframework.jwt.Verifier</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.Algorithm</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.Header</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.InvalidJWTException</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.InvalidJWTSignatureException</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.JWT</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.JWTExpiredException</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.JWTUnavailableForProcessingException</MissingClass>
+    <MissingClass>org.primeframework.jwt.domain.MissingVerifierException</MissingClass>
+    <MissingClass>org.primeframework.jwt.json.Mapper</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 05:22:47 +0100" total_classes="1" referenced_classes="25" total_bugs="0" total_size="68" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="17.26" clock_seconds="5.21" peak_mbytes="141.90" alloc_mbytes="768.00" gc_seconds="0.07">
+    <PackageStats package="org.primeframework.jwt" total_bugs="0" total_types="1" total_size="68">
+      <ClassStats class="org.primeframework.jwt.JWTDecoder" sourceFile="JWTDecoder.java" interface="false" size="68" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="659" invocations="452" avgMicrosecondsPerInvocation="1459" maxMicrosecondsPerInvocation="7067" standardDeviationMicrosecondsPerInvocation="471"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="639" invocations="450" avgMicrosecondsPerInvocation="1420" maxMicrosecondsPerInvocation="57187" standardDeviationMicrosecondsPerInvocation="3620"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="180" invocations="9" avgMicrosecondsPerInvocation="20033" maxMicrosecondsPerInvocation="174372" standardDeviationMicrosecondsPerInvocation="54569"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="128" invocations="25" avgMicrosecondsPerInvocation="5157" maxMicrosecondsPerInvocation="30777" standardDeviationMicrosecondsPerInvocation="7476"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="91" invocations="9" avgMicrosecondsPerInvocation="10210" maxMicrosecondsPerInvocation="34624" standardDeviationMicrosecondsPerInvocation="11560"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="83" invocations="90" avgMicrosecondsPerInvocation="928" maxMicrosecondsPerInvocation="11159" standardDeviationMicrosecondsPerInvocation="1330"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="80" invocations="25" avgMicrosecondsPerInvocation="3202" maxMicrosecondsPerInvocation="12084" standardDeviationMicrosecondsPerInvocation="3713"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="77" invocations="9" avgMicrosecondsPerInvocation="8648" maxMicrosecondsPerInvocation="32369" standardDeviationMicrosecondsPerInvocation="9391"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="77" invocations="25" avgMicrosecondsPerInvocation="3083" maxMicrosecondsPerInvocation="25210" standardDeviationMicrosecondsPerInvocation="6286"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="74" invocations="65" avgMicrosecondsPerInvocation="1138" maxMicrosecondsPerInvocation="41451" standardDeviationMicrosecondsPerInvocation="5236"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="66" invocations="9" avgMicrosecondsPerInvocation="7342" maxMicrosecondsPerInvocation="27023" standardDeviationMicrosecondsPerInvocation="8633"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="58" invocations="9" avgMicrosecondsPerInvocation="6540" maxMicrosecondsPerInvocation="19482" standardDeviationMicrosecondsPerInvocation="6263"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="58" invocations="403" avgMicrosecondsPerInvocation="144" maxMicrosecondsPerInvocation="2762" standardDeviationMicrosecondsPerInvocation="267"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="57" invocations="9" avgMicrosecondsPerInvocation="6437" maxMicrosecondsPerInvocation="25195" standardDeviationMicrosecondsPerInvocation="7380"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="54" invocations="9" avgMicrosecondsPerInvocation="6079" maxMicrosecondsPerInvocation="31593" standardDeviationMicrosecondsPerInvocation="9260"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

@@ -1,0 +1,4497 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/InsecureCipherNoIntegrity/test",
+              "name": "InsecureCipherNoIntegrity/test",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/terracotta-bank/terracotta-bank/commit/a27453b52859d32ef25694869c1662a9493c621c?diff=split#diff-49444057459eecb4ff09662c3beab114L95",
+                    "lines": [
+                      {
+                        "line": "String ivHeader = request.getHeader(\"X-Encryption-Iv\");",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] iv = Base64.getDecoder().decode(ivHeader);",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 94,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new IvParameterSpec(iv));",
+                        "lineNumber": 95,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 95,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new GCMParameterSpec(128, iv));",
+                        "lineNumber": 96,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.updateAAD(version.getBytes(UTF_8));",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "InputStream plain = new CipherInputStream(new Base64InputStream(request.getInputStream()), cipher);",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\treturn new DecryptedWrapper(request, plain);",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/oracle/helidon/commit/bd7b527d900fc3c7c5204459f9bf6dabb5de9f3f?diff=split#diff-5ab21f1b0b5ca2653372fd39b4aa40b0L64",
+                    "lines": [
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 128);",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 256);",
+                        "lineNumber": 61,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new IvParameterSpec(salt));",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new GCMParameterSpec(128, nonce));",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " return cipher;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "added versioning and included salt in encrypted byte stream.",
+                  "Switch from CBC to GCM"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedPassword/test",
+              "name": "HardcodedPassword/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded Credentials"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nDevelopers may use hardcoded credentials for convenience when coding in order to simplify their workflow. While they are responsible for removing these before production, occasionally this task may fall through the cracks. This also becomes a maintenance challenge when credentials are re-used across multiple applications.\n\nOnce attackers gain access, they may take advantage of privilege level to remove or alter data, take down a site or app, or hold any of the above for ransom. The risk across multiple similar projects is even greater. If code containing the credentials is reused across multiple projects, they will all be compromised.\n\n### Best practices for prevention\n* Plan software architecture such that keys and passwords are always stored outside the code, wherever possible.\n* Plan encryption into software architecture for all credential information and ensure proper handling of keys, credentials, and passwords.\n* Prompt for a secure password on first login rather than hard-code a default password.\n* If a hardcoded password or credential must be used, limit its use, for example, to system console users rather than via the network.\n* Use strong hashes for inbound password authentication, ideally with randomly assigned salts to increase the difficulty level in case of brute-force attack.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/utluiz/spring-examples/commit/56e44932a3a004c3ac96ce1caa3e6d8817230f6e?diff=split#diff-19d771f687bc8ca37d378c39d20ed425L26",
+                    "lines": [
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost:3311/agenda\");",
+                        "lineNumber": 23,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setUrl(\"jdbc:mysql://localhost/agenda\");",
+                        "lineNumber": 20,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  ds.setUser(\"root\");",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"root\");",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  ds.setPassword(\"\");",
+                        "lineNumber": 22,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  return ds;",
+                        "lineNumber": 26,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Evolveum/midpoint/commit/9ce1d7ff1e78ca65d6b614c52035e1971d1187cd?diff=split#diff-0003b3a408395a5640011d7c8422d19bL43",
+                    "lines": [
+                      {
+                        "line": "      // set the password for our message.",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      pc.setPassword(\"5ecr3t\");",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "      pc.setPassword(Main.ADM_PASSWORD);",
+                        "lineNumber": 42,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/theonedev/onedev/commit/ee60c786981347fc5ab6685656f3de2ea67045f7?diff=split#diff-7f6f95fdc3f39c216b4bd099d0ca65b6L60",
+                    "lines": [
+                      {
+                        "line": "  System.exit(1);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "root.setPassword(\"12345\");",
+                        "lineNumber": 59,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = Bootstrap.command.getArgs()[0];",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "root.setPassword(password);",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "accountManager.save(root);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added user/password configuration from YML file.",
+                  "Added ability to configure databases to run tests against."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 383,
+                "cwe": [
+                  "CWE-798",
+                  "CWE-259"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureDefaultAesCipher",
+              "name": "InsecureDefaultAesCipher",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/jenkinsci/jenkins/commit/1ac357c2ea2cac85acc222aa5feb9a25c6b4346e?diff=split#diff-3f1937871076df5e4440785f2ac5ddd6L120",
+                    "lines": [
+                      {
+                        "line": "String base64 = req.getHeader(\"X-ConsoleAnnotator\");",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (base64!=null) {",
+                        "lineNumber": 118,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cipher sym = Cipher.getInstance(\"AES\");",
+                        "lineNumber": 119,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Cipher sym = Secret.getCipher(\"AES\");",
+                        "lineNumber": 117,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    sym.init(Cipher.DECRYPT_MODE, Hudson.getInstance().getSecretKeyAsAES128());",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/tasos-py/AES-Encryption-Classes/commit/b11039b5febf20bbe854fc6bb1d401191a4ee29f?diff=split#diff-bfedf423ceee7772f0ec16aa9392fa8dL310",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 307,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 309,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 310,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 311,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "   */ ",
+                        "lineNumber": 293,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 294,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 295,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 296,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      try {",
+                        "lineNumber": 297,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Made changes to support CBC mode encryption",
+                  "added all sha and AES tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 53,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/XSS/test",
+              "name": "XSS/test",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/lutece-platform/lutece-core/commit/5387450fe0f3cf1b705bda89d553a6f67bc342b6?diff=split#diff-015efa4f075bbbac52efd486f29f3ca5L80",
+                    "lines": [
+                      {
+                        "line": " *             the io exception",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 80,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void processRequest( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValue = request.getParameter( PARAMETER_DATA );",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strValue ) : \"\";",
+                        "lineNumber": 82,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    String strEscaped = StringEscapeUtils.escapeHtml( strValue );",
+                        "lineNumber": 84,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strEscaped ) : \"\";",
+                        "lineNumber": 85,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    OutputStream out = response.getOutputStream( );",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.write( strValueReturn.getBytes( AppPropertiesService.getProperty( PROPERTY_ENCODING ) ) );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.flush( );",
+                        "lineNumber": 88,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.close( );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/square/keywhiz/commit/b08aeb5d31e17cd3706f646c595884181813121b?diff=split#diff-37c8fdba6768ae3e9126a316519ae714L35",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override protected void doPost(HttpServletRequest req, HttpServletResponse resp)",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    throws ServletException, IOException {",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String path = req.getPathInfo();",
+                        "lineNumber": 36,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String path = StringEscapeUtils.escapeHtml4(req.getPathInfo());",
+                        "lineNumber": 37,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  if(path != null && path.equals(\"/enable\")){",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(true);",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else if(path != null && path.equals(\"/disable\")) {",
+                        "lineNumber": 40,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(false);",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    resp.sendError(HttpServletResponse.SC_NOT_FOUND,",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        \"Need to pass /status/enable or /status/disable, not /status\" + path);",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apereo/cas/commit/9d81e9ba85945b0d0caaab58b10bf0c3b2e0af73?diff=split#diff-d950cb17562422f18fa1b11dc72e57deL72",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public final boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object o) throws Exception {",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // we only care about post because that's the only instance where we can get anything useful besides IP address.",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!\"POST\".equals(request.getMethod())) {",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 75,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (exceedsThreshold(request)) {",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        recordThrottle(request);",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + request.getParameter(usernameParameter)",
+                        "lineNumber": 79,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        final String username = StringEscapeUtils.escapeHtml4(request.getParameter(usernameParameter));",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + username",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                            + \" from IP Address [\" + request.getRemoteAddr() + \"]\");",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return false;",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " * @param request the request",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void recordThrottle(final HttpServletRequest request) {",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.warn(\"Throttling submission from {}.  More than {} failed login attempts within {} seconds.\",",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            new Object[] {request.getRemoteAddr(), failureThreshold, failureRangeInSeconds});",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Also started a IT testing harness to test servlets with a live sling instance",
+                  "* using properties file so that spring boot can read it too"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 308,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureCipherNoIntegrity",
+              "name": "InsecureCipherNoIntegrity",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/terracotta-bank/terracotta-bank/commit/a27453b52859d32ef25694869c1662a9493c621c?diff=split#diff-49444057459eecb4ff09662c3beab114L95",
+                    "lines": [
+                      {
+                        "line": "String ivHeader = request.getHeader(\"X-Encryption-Iv\");",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] iv = Base64.getDecoder().decode(ivHeader);",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 94,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new IvParameterSpec(iv));",
+                        "lineNumber": 95,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 95,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(Cipher.DECRYPT_MODE, secretKey(), new GCMParameterSpec(128, iv));",
+                        "lineNumber": 96,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.updateAAD(version.getBytes(UTF_8));",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "InputStream plain = new CipherInputStream(new Base64InputStream(request.getInputStream()), cipher);",
+                        "lineNumber": 98,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\treturn new DecryptedWrapper(request, plain);",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/oracle/helidon/commit/bd7b527d900fc3c7c5204459f9bf6dabb5de9f3f?diff=split#diff-5ab21f1b0b5ca2653372fd39b4aa40b0L64",
+                    "lines": [
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 128);",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "KeySpec keySpec = new PBEKeySpec(masterPassword, salt, 10000, 256);",
+                        "lineNumber": 61,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec spec = new SecretKeySpec(secretKeyFactory.generateSecret(keySpec).getEncoded(), \"AES\");",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/CBC/PKCS5Padding\");",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new IvParameterSpec(salt));",
+                        "lineNumber": 64,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Cipher cipher = Cipher.getInstance(\"AES/GCM/NoPadding\");",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cipher.init(cipherMode, spec, new GCMParameterSpec(128, nonce));",
+                        "lineNumber": 64,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " return cipher;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "added versioning and included salt in encrypted byte stream.",
+                  "Switch from CBC to GCM"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureDefaultAesCipher/test",
+              "name": "InsecureDefaultAesCipher/test",
+              "shortDescription": {
+                "text": "Use of a Broken or Risky Cryptographic Algorithm"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen sensitive information is transmitted with weak encryption, attackers are potentially able to intercept the information and decrypt it, with a wide range of negative consequences. This includes accessing code or content they are not authorized to view and changing or taking down a site or app, often with a demand for ransom. Every developer is aware of the risks of transmitting sensitive information in plain text. Yet many still use outdated or inferior cryptographic methods to protect information under their control. As cryptographic methods grow stronger with time, code must be updated to incorporate more modern and secure cryptography.\n\n### Best practices for prevention\n* Avoid using DES, and use AES (in a secure mode, such as Galois/Counter Mode) or another strong encryption algorithm instead.\n* Be aware of outdated hashes, such as MD5 and SHA1 (along with many others); recognize and implement current cryptographic standards instead.\n* Never use custom or DIY security and cryptographic methods; instead, use methods that are part of an accepted library or framework.\n* Ensure that code dealing with cryptographic methods is highly modular and can be easily replaced as security standards change.\n* Increase developer awareness of proper encryption key management and protection to ensure best practices throughout the application.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/Esri/mapbook-android/commit/29dbb58917955ca69632a80cc189247f6398fdbb?diff=split#diff-9865f4effc693075a16c0a2b0657d46eL84",
+                    "lines": [
+                      {
+                        "line": "public class CredentialCryptographer {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String TAG = CredentialCryptographer.class.getSimpleName();",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String CIPHER_TYPE = \"AES/GCM/NoPadding\";",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String RSA_MODE =  \"RSA/ECB/PKCS1Padding\";",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AES_MODE = \"AES/ECB/PKCS7Padding\";",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String AndroidKeyStore = \"AndroidKeyStore\";",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String ALIAS = \"CRED_KEY\";",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final SecretKey key = (SecretKey) keyStore.getKey(ALIAS, null);",
+                        "lineNumber": 236,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cipher c = Cipher.getInstance(CIPHER_TYPE);",
+                        "lineNumber": 238,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final File file = new File(getFilePath(encryptedDataFileName));",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte [] decodedBytes = null;",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "try{",
+                        "lineNumber": 474,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  final Cipher c = Cipher.getInstance(AES_MODE, \"BC\");",
+                        "lineNumber": 475,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  c.init(Cipher.DECRYPT_MODE, getSecretKey(context));",
+                        "lineNumber": 476,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  decodedBytes = c.doFinal(encrypted);",
+                        "lineNumber": 477,
+                        "lineChange": "removed"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/jenkinsci/jenkins/commit/1ac357c2ea2cac85acc222aa5feb9a25c6b4346e?diff=split#diff-3f1937871076df5e4440785f2ac5ddd6L120",
+                    "lines": [
+                      {
+                        "line": "String base64 = req.getHeader(\"X-ConsoleAnnotator\");",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (base64!=null) {",
+                        "lineNumber": 118,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cipher sym = Cipher.getInstance(\"AES\");",
+                        "lineNumber": 119,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Cipher sym = Secret.getCipher(\"AES\");",
+                        "lineNumber": 117,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    sym.init(Cipher.DECRYPT_MODE, Hudson.getInstance().getSecretKeyAsAES128());",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/tasos-py/AES-Encryption-Classes/commit/b11039b5febf20bbe854fc6bb1d401191a4ee29f?diff=split#diff-bfedf423ceee7772f0ec16aa9392fa8dL310",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 307,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 309,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 310,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 311,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "   */ ",
+                        "lineNumber": 293,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  private Cipher cipher(int cipherMode, byte[] key, byte[] iv) {",
+                        "lineNumber": 294,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      SecretKeySpec keySpec = new SecretKeySpec(key, \"AES\");",
+                        "lineNumber": 295,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      IvParameterSpec ivSpec = new IvParameterSpec(iv);",
+                        "lineNumber": 296,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      try {",
+                        "lineNumber": 297,
+                        "lineChange": "added"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Made changes to support CBC mode encryption",
+                  "added all sha and AES tests"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 53,
+                "cwe": [
+                  "CWE-327"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/HardcodedSecret/test",
+              "name": "HardcodedSecret/test",
+              "shortDescription": {
+                "text": "Hardcoded Secret"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n- Never hard code security-related constants; use symbolic names or configuration lookup files.\n- As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n- Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/aberic/fabric-net-server/commit/963bb9fe026b454672fb83fd739f3d754b6844e1?diff=split#diff-759baf3d057123b5320b6a399e775967L67",
+                    "lines": [
+                      {
+                        "line": "app.setKey(MathUtil.getRandom8());",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "app.setPublicKey(\"pub1\");",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "app.setPrivateKey(\"pri1\");",
+                        "lineNumber": 66,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPublicKey(key.getPublicKey());",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    app.setPrivateKey(key.getPrivateKey());",
+                        "lineNumber": 83,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return appMapper.updateKey(app);",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/karutaproject/karuta-backend/commit/a05377ace2292896e3768e70aa2fde992ddaae62?diff=split#diff-a46279e5e2a97eaacfba9b55e2e3b9b0L104",
+                    "lines": [
+                      {
+                        "line": "{",
+                        "lineNumber": 108,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  rc4 = Cipher.getInstance(\"RC4\");",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(\"testkey\".getBytes(), \"RC4\");",
+                        "lineNumber": 103,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String secretkey = ConfigUtils.get(\"directkey\");",
+                        "lineNumber": 110,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  SecretKeySpec key = new SecretKeySpec(secretkey.getBytes(), \"RC4\");",
+                        "lineNumber": 111,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  rc4.init(Cipher.DECRYPT_MODE, key);",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/0653d6d7f6283752984ea181ef27559bed4b05af?diff=split#diff-af0be1b2a17efe3a3d4ae1941c2e946fL309",
+                    "lines": [
+                      {
+                        "line": "long ts = (new Date()).getTime();",
+                        "lineNumber": 306,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "long ts = normalizedHashTime.getTime();",
+                        "lineNumber": 310,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "ts = ts/60000;\t\t// round up to 1 minute",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String secretKey = \"cloud.com\";",
+                        "lineNumber": 308,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String secretKey = _ms.getHashKey();",
+                        "lineNumber": 312,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), \"HmacSHA1\");",
+                        "lineNumber": 314,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.init(keySpec);",
+                        "lineNumber": 315,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mac.update(params.getBytes());",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Api keys from json file",
+                  "Made security file and session key configurable"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 62,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash/test",
+              "name": "InsecureHash/test",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "The ECB mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[ECB](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 73,
+                  "endLine": 73,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7ac2a8aeee6330819cec3e641cb4db4236f5a5aed7d55e3507c29867bfd21432",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 40,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/api/impl/WxMaExpressServiceImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "endLine": 47,
+                  "startColumn": 45,
+                  "endColumn": 16
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ca69caf4ae504c02cafd305f39540e500f7329843066fe5df1e095ea120b6ac3",
+            "1": "e6f9ad0d.a0c38c38.ed91afcb.88b0c37f.b822660b.a0d9b345.ccf0d270.5cfc69fa.e6f9ad0d.a0c38c38.ed91afcb.88b0c37f.b822660b.a0d9b345.ccf0d270.5cfc69fa"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/api/impl/WxMaExpressServiceImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 47,
+                            "endLine": 47,
+                            "startColumn": 17,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedPassword/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Do not hardcode passwords in code. Found password string",
+            "markdown": "Do not hardcode passwords in code. Found password {0}",
+            "arguments": [
+              "[string](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/tp/service/impl/WxCpTpServiceApacheHttpClientImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 99,
+                  "endLine": 100,
+                  "startColumn": 5,
+                  "endColumn": 19
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e7508e45a18b9c375e78fe83b32415a43a1b92e1c065ed0148bff284ece3d020",
+            "1": "5387ee68.e8c02a15.fe96aac1.7f48b4db.a82f8bd3.935029da.77e1da87.fde7589e.5387ee68.e8c02a15.fe96aac1.7f48b4db.a82f8bd3.935029da.77e1da87.fde7589e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/tp/service/impl/WxCpTpServiceApacheHttpClientImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "endLine": 65,
+                            "startColumn": 45,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureDefaultAesCipher",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Default AES/ECB algorithm (AES/ECB/PKCS5Padding) used in javax.crypto.Cipher.getInstance may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "markdown": "Default AES/ECB algorithm ({0}) used in {1} may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "arguments": [
+              "[AES/ECB/PKCS5Padding](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "endLine": 58,
+                  "startColumn": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "520e5827882ef9f5753d5c07f7745223188203089b8ac46fa039d3b4186261a3",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 42,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 23,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureDefaultAesCipher",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Default AES/ECB algorithm (AES) used in java.security.AlgorithmParameters.getInstance may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "markdown": "Default AES/ECB algorithm ({0}) used in {1} may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "arguments": [
+              "[AES](0)",
+              "[java.security.AlgorithmParameters.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "endLine": 31,
+                  "startColumn": 36,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "635d80439aac94bd4361dd8705002780a128ae0a45db3b9f937f6bebb626549a",
+            "1": "38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.11e5f4bf.54d46e25.38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 68,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 36,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[println](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 53,
+                  "endLine": 53,
+                  "startColumn": 7,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9a9671852882011b173ee7ad278a43006ee678a34155b81f8ea57a2fd247c1dd",
+            "1": "19689298.83dbfe52.617aca62.758ac7ec.12e57bd8.2f4e1548.16062bba.54d46e25.d60b7186.49766a9f.bb993ef0.c811b525.83192735.95df3f17.300b0ef1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "endLine": 42,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "endLine": 42,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "endLine": 42,
+                            "startColumn": 12,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 51,
+                            "endLine": 51,
+                            "startColumn": 26,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 51,
+                            "endLine": 51,
+                            "startColumn": 14,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "endLine": 53,
+                            "startColumn": 36,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 53,
+                            "endLine": 53,
+                            "startColumn": 7,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[println](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 32,
+                  "endLine": 32,
+                  "startColumn": 7,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ff1789a07bdce9db803d29fee6d6662ef91ca0aa58fa9263d57a1a740acd8bdd",
+            "1": "19689298.83dbfe52.b95ad01e.ede9cf8e.d5deaf2a.2f4e1548.a62d0864.54d46e25.19689298.7f413d6f.e2ab4264.e22980a8.83192735.95df3f17.a62d0864.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 19,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 19,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 12,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 36,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 7,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[println](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 54,
+                  "endLine": 54,
+                  "startColumn": 7,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d663688bf5ba9d7a5a9d645bcb7c8dd57f25f3d93832dd94e62714ab9e9bd69b",
+            "1": "1c1c3043.d7e602a4.49a3b0f3.b958bcc9.660dafc7.2f4e1548.16062bba.3cf7c2ae.1c1c3043.d7e602a4.f55037bd.c811b525.83192735.95df3f17.300b0ef1.3cf7c2ae"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 51,
+                            "endLine": 51,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 51,
+                            "endLine": 51,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 51,
+                            "endLine": 51,
+                            "startColumn": 12,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 36,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/demo/WxMaPortalServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 54,
+                            "endLine": 54,
+                            "startColumn": 7,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 354,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[println](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "endLine": 31,
+                  "startColumn": 7,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "fb188dc816ded5ca4bebc34b24cffe93355bfe0fc53b7924108ef5e84431dfc0",
+            "1": "ed96b4ea.47bd9d23.f8760449.ede9cf8e.d5deaf2a.cd060f1f.a62d0864.54d46e25.ed96b4ea.7f413d6f.f8760449.e22980a8.83192735.95df3f17.a62d0864.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 19,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 19,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 12,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 36,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpOAuth2Servlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 7,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into println, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[println](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 52,
+                  "endLine": 52,
+                  "startColumn": 7,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ccb6ff2b15357e66611077b136338cf6f86503ed0120adb9c539e5a6ea8e70a1",
+            "1": "85f3d2c5.83dbfe52.49a3b0f3.b958bcc9.d5deaf2a.07925703.ca3b8508.54d46e25.4fc8619e.49766a9f.bb993ef0.c811b525.83192735.95df3f17.300b0ef1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 49,
+                            "endLine": 49,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 49,
+                            "endLine": 49,
+                            "startColumn": 22,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 49,
+                            "endLine": 49,
+                            "startColumn": 12,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 52,
+                            "endLine": 52,
+                            "startColumn": 36,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 52,
+                            "endLine": 52,
+                            "startColumn": 7,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the HTTP request body flows into write, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the HTTP request body](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[write](8)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 61,
+                  "endLine": 61,
+                  "startColumn": 7,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2bcf661c831d24e3616a1aefc2a888f8f225929ed5b4826953c267c27afd31a2",
+            "1": "af5086c5.49766a9f.5ef54930.8bdc56f8.390f960b.f2b18ec1.ec290f27.54d46e25.d60b7186.277c621c.bb993ef0.c811b525.83192735.7fda7c5e.300b0ef1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 25,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 25,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 57,
+                            "endLine": 58,
+                            "startColumn": 32,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 57,
+                            "endLine": 57,
+                            "startColumn": 20,
+                            "endColumn": 106
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 36,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 23,
+                            "endColumn": 75
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "endLine": 61,
+                            "startColumn": 34,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "endLine": 61,
+                            "startColumn": 34,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-cp/src/test/java/me/chanjar/weixin/cp/demo/WxCpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "endLine": 61,
+                            "startColumn": 7,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the HTTP request body flows into write, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the HTTP request body](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[write](8)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 75,
+                  "endLine": 75,
+                  "startColumn": 7,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d220ff75e92099148293f3079c5606a502d8eeca5827cdacfa41a6fd41e4c490",
+            "1": "19689298.49766a9f.32b2d95c.e1b362bb.390f960b.77da10ad.ec290f27.54d46e25.d60b7186.277c621c.32b2d95c.c811b525.83192735.7fda7c5e.300b0ef1.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 66,
+                            "endColumn": 88
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 66,
+                            "endColumn": 88
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 34,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 22,
+                            "endColumn": 147
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 38,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 25,
+                            "endColumn": 77
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 34,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 34,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-mp/src/test/java/me/chanjar/weixin/mp/demo/WxMpEndpointServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 7,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The ECB mode used in java.security.AlgorithmParameters.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[ECB](0)",
+              "[java.security.AlgorithmParameters.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "endLine": 31,
+                  "startColumn": 36,
+                  "endColumn": 67
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a8ee5a163c6a3bb00f6c92e0220738379f574cba987c44281844abc91a4ab47b",
+            "1": "38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.11e5f4bf.54d46e25.38f91434.1cbd3ff4.ba832df5.8a1ffb1c.999503c7.bf8c21d8.11e5f4bf.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 68,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 31,
+                            "endLine": 31,
+                            "startColumn": 36,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[CBC](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 34,
+                  "endLine": 34,
+                  "startColumn": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "391b507445458cb2b213b3b820f72c16d80292a4099d00fcd4375ba84aea8fc5",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 34,
+                            "endLine": 34,
+                            "startColumn": 42,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/util/crypt/WxMaCryptUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 34,
+                            "endLine": 34,
+                            "startColumn": 23,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[CBC](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 189,
+                  "endLine": 189,
+                  "startColumn": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "88006178f3bcd976f0ca951b1441413584cb18d34e47967ecd2b3702ccc444f7",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 42,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 189,
+                            "endLine": 189,
+                            "startColumn": 23,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The CBC mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[CBC](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 243,
+                  "endLine": 243,
+                  "startColumn": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5b6dc4af1c64a902c4c2e176fde9747fd21f48adcf3f5983a22ad49ae7ec17f5",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.dee4b315.3a890aa4.c4307f3b"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 243,
+                            "endLine": 243,
+                            "startColumn": 42,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/WxCryptUtil.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 243,
+                            "endLine": 243,
+                            "startColumn": 23,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureCipherNoIntegrity",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "The ECB mode used in javax.crypto.Cipher.getInstance does not provide integrity. Consided using Galois/Counter Mode.",
+            "markdown": "The {0} mode used in {1} does not provide integrity. Consided using Galois/Counter Mode.",
+            "arguments": [
+              "[ECB](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "endLine": 58,
+                  "startColumn": 23,
+                  "endColumn": 41
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "71e7e2bb88177ef5a537106aca783bbf353b9e4fb3a99ff9bc4642dc65226c53",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 42,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 58,
+                            "endLine": 58,
+                            "startColumn": 23,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureDefaultAesCipher/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Default AES/ECB algorithm (AES/ECB/PKCS5Padding) used in javax.crypto.Cipher.getInstance may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "markdown": "Default AES/ECB algorithm ({0}) used in {1} may be insecure, because equal messages get encrypted to equal data. Consider using Galois/Counter Mode (algorithm AES/GCM/NoPadding).",
+            "arguments": [
+              "[AES/ECB/PKCS5Padding](0)",
+              "[javax.crypto.Cipher.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 73,
+                  "endLine": 73,
+                  "startColumn": 21,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "211f38fc04d9c14b00f60c1d1a932ab34d8a538f4640bbff6a34abc7bb01be74",
+            "1": "f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.3a890aa4.54d46e25.f76884db.1cbd3ff4.fdf08d99.00928f07.74c2d841.ea02e269.df7e59ba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 40,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 73,
+                            "endLine": 73,
+                            "startColumn": 21,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.apache.commons.codec.digest.DigestUtils.sha1Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.sha1Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/api/impl/WxMaUserServiceImpl.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 75,
+                  "endLine": 75,
+                  "startColumn": 39,
+                  "endColumn": 58
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "cf4e3fce326fc58f791f15d4457a921ad8c60d02e2b6d4315666ee52168ae132",
+            "1": "19689298.7797192f.959648a2.b1d78af9.408180c7.31ccdec6.502db829.54d46e25.19689298.7797192f.959648a2.b1d78af9.408180c7.31ccdec6.502db829.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/api/impl/WxMaUserServiceImpl.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 75,
+                            "endLine": 75,
+                            "startColumn": 39,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.apache.commons.codec.digest.DigestUtils.sha1Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.sha1Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/bean/delivery/base/WxMaDeliveryBaseRequest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 116,
+                  "endLine": 116,
+                  "startColumn": 29,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "edf453a9d54f35a3ce3c27a89c88c9f646ae0dcc063077b8282b87f147b25354",
+            "1": "ca9876a9.1cbd3ff4.062b4c91.b1d78af9.c8e27239.7fda7c5e.af4657f9.54d46e25.ca9876a9.1cbd3ff4.062b4c91.b1d78af9.c8e27239.7fda7c5e.af4657f9.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/main/java/cn/binarywang/wx/miniapp/bean/delivery/base/WxMaDeliveryBaseRequest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 116,
+                            "endLine": 116,
+                            "startColumn": 29,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 504,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.apache.commons.codec.digest.DigestUtils.sha1Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.sha1Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/SHA1.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 26,
+                  "endLine": 26,
+                  "startColumn": 12,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "07bfac5e4f5705f6410a322a4d952c3e90705453be07312b60f9a580faf620e6",
+            "1": "63c12074.c8c8034f.bb280ba3.b1d78af9.879ca02d.f940a352.e1124db7.54d46e25.63c12074.c8c8034f.bb280ba3.b1d78af9.879ca02d.f940a352.e1124db7.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/SHA1.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 26,
+                            "endLine": 26,
+                            "startColumn": 12,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The SHA1 hash (used in org.apache.commons.codec.digest.DigestUtils.sha1Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The SHA1 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.sha1Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/SHA1.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "endLine": 46,
+                  "startColumn": 12,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4f5407161604533a2b577bc43b9ff002a47b88009ba98ff6243d2373272e08f7",
+            "1": "63c12074.c8c8034f.bb280ba3.b1d78af9.f1d9f854.f940a352.08fb414f.54d46e25.63c12074.c8c8034f.bb280ba3.b1d78af9.f1d9f854.f940a352.08fb414f.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-common/src/main/java/me/chanjar/weixin/common/util/crypto/SHA1.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 46,
+                            "endLine": 46,
+                            "startColumn": 12,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in org.apache.commons.codec.digest.DigestUtils.md5Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The MD5 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.md5Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startColumn": 35,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1c992e5be0782a1d44dfc2d64e06728d89ff2bb48cd1ed80db49e0681fc90fc9",
+            "1": "2708beb0.5bbb3faf.ddc99719.f2cb3bd7.51761a05.a0903ab5.78568270.87dfd8cc.2708beb0.5bbb3faf.ddc99719.f2cb3bd7.51761a05.a0903ab5.78568270.87dfd8cc"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResult.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 55,
+                            "endLine": 55,
+                            "startColumn": 35,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "The MD5 hash (used in org.apache.commons.codec.digest.DigestUtils.md5Hex) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The MD5 hash (used in {0}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[org.apache.commons.codec.digest.DigestUtils.md5Hex](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/util/SignUtils.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 101,
+                  "endLine": 101,
+                  "startColumn": 14,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c2c370883a7c79cd6542b5fdba1b79776e092a0d881a9e2258f9f71135054f07",
+            "1": "2708beb0.5382f8a5.34e814ab.e22980a8.48d55f23.43abc827.87525f6e.7082ae59.2708beb0.5382f8a5.34e814ab.e22980a8.48d55f23.43abc827.87525f6e.7082ae59"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/main/java/com/github/binarywang/wxpay/util/SignUtils.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 101,
+                            "endLine": 101,
+                            "startColumn": 14,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 504,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HardcodedSecret/test",
+          "ruleIndex": 7,
+          "level": "note",
+          "message": {
+            "text": "Hardcoded value string is used as a cipher key. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "markdown": "Hardcoded value {0} is used as a {1}. Generate the value with a cryptographically strong random number generator such as java.security.SecureRandom instead.",
+            "arguments": [
+              "[string](0)",
+              "[cipher key](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/api/impl/WxMaInternetServiceImplTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "endLine": 29,
+                  "startColumn": 36,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "99de42fc6bc2a207941863cd3758ceb5f0a04c6f0a01833cefc0116534ac7601",
+            "1": "19689298.83dbfe52.eaedf707.44ab356c.a69fb8f9.b7407fb8.b843b9af.41ec51de.ece8ac99.601f8825.eaedf707.44ab356c.431166af.3fe77750.0ac97cd8.41ec51de"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/api/impl/WxMaInternetServiceImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 42,
+                            "endLine": 42,
+                            "startColumn": 39,
+                            "endColumn": 65
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-miniapp/src/test/java/cn/binarywang/wx/miniapp/api/impl/WxMaInternetServiceImplTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 36,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 351,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "The MD5 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[MD5](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 74,
+                  "endLine": 74,
+                  "startColumn": 31,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "cf606c79e8cb30819960f1442800389dc85123c20abf0a38a70e9b93039f7301",
+            "1": "19689298.7797192f.06373764.82e76c82.408180c7.b70401ce.2fbf4a5c.54d46e25.19689298.7797192f.06373764.82e76c82.408180c7.b70401ce.2fbf4a5c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 57,
+                            "endColumn": 62
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "weixin-java-pay/src/test/java/com/github/binarywang/wxpay/bean/notify/WxPayRefundNotifyResultTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 74,
+                            "endLine": 74,
+                            "startColumn": 31,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 401,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 37,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 2353,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/SpringCSRF/test",
+              "name": "SpringCSRF/test",
+              "shortDescription": {
+                "text": "Spring Cross-Site Request Forgery (CSRF)"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nWhen a web server is designed to receive a request from a client without any mechanism for verifying that it was intentionally sent, then it might be possible for an attacker to trick a client into making an unintentional request to the web server which will be treated as an authentic request. This can be done via a URL, image load, XMLHttpRequest, etc. and can result in exposure of data or unintended code execution.\n\n### Best practices for prevention\n\n* Use a vetted library or framework which has anti-CSRF packages that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. Consider including Spring Security library within your application.\n\n\n## References\n\n* [Spring Security Docs](https://docs.spring.io/spring-security/site/docs/5.0.x/reference/html/csrf.html)\n* [A Guide to CSRF Protection in Spring Security](https://www.baeldung.com/spring-security-csrf)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/b2ihealthcare/snow-owl/commit/722fad49d7ddb54e7e02fd78f313430995d228e4?diff=split#diff-f59eb752a50c2ebcbabc353bc0277647L93",
+                    "lines": [
+                      {
+                        "line": "@RequestMapping(method=RequestMethod.POST)",
+                        "lineNumber": 90,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public String createCodeSystem(",
+                        "lineNumber": 91,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "@ResponseStatus(HttpStatus.CREATED)",
+                        "lineNumber": 97,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public ResponseEntity<Void> createCodeSystem(",
+                        "lineNumber": 98,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    @RequestBody",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final CodeSystem codeSystem,",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/springside/springside4/commit/278d7463104e5e821e23de70d2cce67fb5b7bb0c?diff=split#diff-b3cfef43efdea7e1ae259e0b21929407L53",
+                    "lines": [
+                      {
+                        "line": "@RequestMapping(value = \"/{id}\", method = RequestMethod.PUT)",
+                        "lineNumber": 50,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "@RequestMapping(value = \"/{id}\", method = RequestMethod.PUT, consumes = \"application/json\")",
+                        "lineNumber": 56,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "@ResponseStatus(HttpStatus.NO_CONTENT)",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void update(@RequestBody final Task task) {",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public void update(@RequestBody Task task) {",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  taskManager.saveTask(task);",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 60,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/archine/tools/commit/111f8b70df3e0c78c019297d7c69ad8d648ca6a8?diff=split#diff-8b23a19bee48482f83c87f72a1322c4bL44",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@RequestMapping(method = RequestMethod.POST)",
+                        "lineNumber": 42,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "@RequestMapping(method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)",
+                        "lineNumber": 43,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "String postBody(URI uri, @RequestBody Object queryBody);",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "/**",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "fix test for action api",
+                  "changed endpoint to /payout, support multipart.",
+                  "supporting JSON in the REST"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 368,
+                "cwe": [
+                  "CWE-352"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/SpringCSRF/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "(BETA Suggestion) The user parameter is vulnerable to Cross Site Request Forgery (CSRF) attacks due to not using Spring Security. This could allow an attacker to execute requests on a user's behalf. Consider including Spring Security's CSRF protection within your application.",
+            "markdown": "(BETA Suggestion) The {0} parameter is vulnerable to Cross Site Request Forgery (CSRF) attacks due to not using Spring Security. This could allow an attacker to execute requests on a user's behalf. Consider including Spring Security's CSRF protection within your application.",
+            "arguments": [
+              "[user](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/springframework/data/repository/support/DomainClassConverterUnitTests.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 207,
+                  "endLine": 207,
+                  "startColumn": 12,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c2103931a9ff6048c5a1beaa8b93608e2b99d547bede5ce3ca87de31a283501c",
+            "1": "cb724ed2.2538f896.b29a2e2c.3519ac88.f0e1baa5.58c3080a.fdce61d3.3ba42681.cb724ed2.2538f896.b29a2e2c.3519ac88.f0e1baa5.58c3080a.026eda45.3ba42681"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/springframework/data/repository/support/DomainClassConverterUnitTests.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 207,
+                            "endLine": 207,
+                            "startColumn": 12,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 20,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 895,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}

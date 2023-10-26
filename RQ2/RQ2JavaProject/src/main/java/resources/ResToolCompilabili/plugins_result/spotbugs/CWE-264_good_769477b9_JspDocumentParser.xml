@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671842052450" analysisTimestamp="1672073505901" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-264/good_769477b9_JspDocumentParser.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-264/good_769477b9_JspDocumentParser.java</SrcDir>
+  </Project>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="endElement" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="645" end="716" startBytecode="0" endBytecode="744" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="698" end="698" startBytecode="275" endBytecode="275" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="isTagDependent" signature="(Lorg/apache/jasper/compiler/Node;)Z" isStatic="false">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="1543" end="1548" startBytecode="0" endBytecode="115" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="1546" end="1546" startBytecode="19" endBytecode="19" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="startElement" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V" isStatic="false">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="300" end="464" startBytecode="0" endBytecode="1292" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="454" end="454" startBytecode="686" endBytecode="686" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="startElement" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/xml/sax/Attributes;)V" isStatic="false">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="300" end="464" startBytecode="0" endBytecode="1292" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="457" end="457" startBytecode="706" endBytecode="706" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+  </BugInstance>
+  <BugInstance type="XXE_SAXPARSER" priority="2" rank="12" abbrev="SECXXESAX" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="parse" signature="(Lorg/apache/jasper/compiler/ParserController;Ljava/lang/String;Lorg/apache/tomcat/util/scan/Jar;Lorg/apache/jasper/compiler/Node;ZZLjava/lang/String;Ljava/lang/String;ZZ)Lorg/apache/jasper/compiler/Node$Nodes;" isStatic="true">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="164" end="231" startBytecode="0" endBytecode="1169" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="192" end="192" startBytecode="125" endBytecode="125" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    <String value="SAXParser.parse(...)"/>
+  </BugInstance>
+  <BugInstance type="XXE_SAXPARSER" priority="2" rank="12" abbrev="SECXXESAX" category="SECURITY">
+    <Class classname="org.apache.jasper.compiler.JspDocumentParser">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="109" end="1548" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Class>
+    <Method classname="org.apache.jasper.compiler.JspDocumentParser" name="parse" signature="(Lorg/apache/jasper/compiler/ParserController;Ljava/lang/String;Lorg/apache/tomcat/util/scan/Jar;Lorg/apache/jasper/compiler/Node;ZZLjava/lang/String;Ljava/lang/String;ZZ)Lorg/apache/jasper/compiler/Node$Nodes;" isStatic="true">
+      <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="164" end="231" startBytecode="0" endBytecode="1169" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    </Method>
+    <SourceLine classname="org.apache.jasper.compiler.JspDocumentParser" start="202" end="202" startBytecode="191" endBytecode="191" sourcefile="JspDocumentParser.java" sourcepath="org/apache/jasper/compiler/JspDocumentParser.java"/>
+    <String value="SAXParser.parse(...)"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="57">
+    <MissingClass>javax.servlet.ServletContext</MissingClass>
+    <MissingClass>javax.servlet.jsp.tagext.TagFileInfo</MissingClass>
+    <MissingClass>javax.servlet.jsp.tagext.TagInfo</MissingClass>
+    <MissingClass>javax.servlet.jsp.tagext.TagLibraryInfo</MissingClass>
+    <MissingClass>org.apache.jasper.Constants</MissingClass>
+    <MissingClass>org.apache.jasper.JasperException</MissingClass>
+    <MissingClass>org.apache.jasper.JspCompilationContext</MissingClass>
+    <MissingClass>org.apache.jasper.Options</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Compiler</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.ErrorDispatcher</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.ImplicitTagLibraryInfo</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.JspDocumentParser$EnableDTDValidationException</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.JspUtil</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Localizer</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Mark</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$AttributeDirective</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Comment</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$CustomTag</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Declaration</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$DoBodyAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$ELExpression</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Expression</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$FallBackAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$ForwardAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$GetProperty</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$IncludeAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$IncludeDirective</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$InvokeAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$JspBody</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$JspElement</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$JspOutput</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$JspRoot</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$JspText</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$NamedAttribute</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Nodes</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$PageDirective</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$ParamAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$ParamsAction</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$PlugIn</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Root</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$ScriptingElement</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$Scriptlet</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$SetProperty</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$TagDirective</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$TemplateText</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$UninterpretedTag</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$UseBean</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.Node$VariableDirective</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.PageInfo</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.ParserController</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.TagConstants</MissingClass>
+    <MissingClass>org.apache.jasper.compiler.TagLibraryInfoImpl</MissingClass>
+    <MissingClass>org.apache.tomcat.util.descriptor.DigesterFactory</MissingClass>
+    <MissingClass>org.apache.tomcat.util.descriptor.LocalResolver</MissingClass>
+    <MissingClass>org.apache.tomcat.util.security.PrivilegedGetTccl</MissingClass>
+    <MissingClass>org.apache.tomcat.util.security.PrivilegedSetTccl</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 01:34:12 +0100" total_classes="1" referenced_classes="43" total_bugs="6" total_size="591" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="23.06" clock_seconds="6.19" peak_mbytes="154.87" alloc_mbytes="768.00" gc_seconds="0.09" priority_3="4" priority_2="2">
+    <PackageStats package="org.apache.jasper.compiler" total_bugs="6" total_types="1" total_size="591" priority_3="4" priority_2="2">
+      <ClassStats class="org.apache.jasper.compiler.JspDocumentParser" sourceFile="JspDocumentParser.java" interface="false" size="591" bugs="6" priority_3="4" priority_2="2"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="725" invocations="500" avgMicrosecondsPerInvocation="1451" maxMicrosecondsPerInvocation="9771" standardDeviationMicrosecondsPerInvocation="568"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="559" invocations="496" avgMicrosecondsPerInvocation="1128" maxMicrosecondsPerInvocation="63456" standardDeviationMicrosecondsPerInvocation="3609"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="202" invocations="33" avgMicrosecondsPerInvocation="6140" maxMicrosecondsPerInvocation="186445" standardDeviationMicrosecondsPerInvocation="31884"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="145" invocations="33" avgMicrosecondsPerInvocation="4421" maxMicrosecondsPerInvocation="39412" standardDeviationMicrosecondsPerInvocation="7721"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="144" invocations="33" avgMicrosecondsPerInvocation="4363" maxMicrosecondsPerInvocation="37026" standardDeviationMicrosecondsPerInvocation="8181"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="133" invocations="43" avgMicrosecondsPerInvocation="3110" maxMicrosecondsPerInvocation="29409" standardDeviationMicrosecondsPerInvocation="6009"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="117" invocations="35" avgMicrosecondsPerInvocation="3359" maxMicrosecondsPerInvocation="29079" standardDeviationMicrosecondsPerInvocation="6110"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="106" invocations="35" avgMicrosecondsPerInvocation="3040" maxMicrosecondsPerInvocation="23962" standardDeviationMicrosecondsPerInvocation="5201"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="105" invocations="117" avgMicrosecondsPerInvocation="905" maxMicrosecondsPerInvocation="9868" standardDeviationMicrosecondsPerInvocation="1423"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="92" invocations="33" avgMicrosecondsPerInvocation="2802" maxMicrosecondsPerInvocation="19261" standardDeviationMicrosecondsPerInvocation="4090"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="91" invocations="43" avgMicrosecondsPerInvocation="2125" maxMicrosecondsPerInvocation="13310" standardDeviationMicrosecondsPerInvocation="3101"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="80" invocations="142" avgMicrosecondsPerInvocation="567" maxMicrosecondsPerInvocation="45176" standardDeviationMicrosecondsPerInvocation="3868"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="77" invocations="33" avgMicrosecondsPerInvocation="2338" maxMicrosecondsPerInvocation="34323" standardDeviationMicrosecondsPerInvocation="6111"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="70" invocations="33" avgMicrosecondsPerInvocation="2133" maxMicrosecondsPerInvocation="12412" standardDeviationMicrosecondsPerInvocation="3159"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="59" invocations="27" avgMicrosecondsPerInvocation="2204" maxMicrosecondsPerInvocation="26186" standardDeviationMicrosecondsPerInvocation="4993"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="55" invocations="1" avgMicrosecondsPerInvocation="55279" maxMicrosecondsPerInvocation="55279" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="52" invocations="403" avgMicrosecondsPerInvocation="129" maxMicrosecondsPerInvocation="2761" standardDeviationMicrosecondsPerInvocation="266"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="47" invocations="43" avgMicrosecondsPerInvocation="1096" maxMicrosecondsPerInvocation="17128" standardDeviationMicrosecondsPerInvocation="2694"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="40" invocations="43" avgMicrosecondsPerInvocation="945" maxMicrosecondsPerInvocation="8582" standardDeviationMicrosecondsPerInvocation="2022"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="38" invocations="43" avgMicrosecondsPerInvocation="900" maxMicrosecondsPerInvocation="10331" standardDeviationMicrosecondsPerInvocation="2217"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="37" invocations="43" avgMicrosecondsPerInvocation="865" maxMicrosecondsPerInvocation="20512" standardDeviationMicrosecondsPerInvocation="3094"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueRangeAnalysisFactory" totalMilliseconds="35" invocations="33" avgMicrosecondsPerInvocation="1065" maxMicrosecondsPerInvocation="10284" standardDeviationMicrosecondsPerInvocation="2669"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="32" invocations="43" avgMicrosecondsPerInvocation="760" maxMicrosecondsPerInvocation="3858" standardDeviationMicrosecondsPerInvocation="1049"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="29" invocations="1483" avgMicrosecondsPerInvocation="19" maxMicrosecondsPerInvocation="6177" standardDeviationMicrosecondsPerInvocation="184"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="28" invocations="43" avgMicrosecondsPerInvocation="669" maxMicrosecondsPerInvocation="8704" standardDeviationMicrosecondsPerInvocation="1511"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="27" invocations="1" avgMicrosecondsPerInvocation="27584" maxMicrosecondsPerInvocation="27584" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="26" invocations="1" avgMicrosecondsPerInvocation="26756" maxMicrosecondsPerInvocation="26756" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.xpath.XPathInjectionDetector" totalMilliseconds="24" invocations="1" avgMicrosecondsPerInvocation="24869" maxMicrosecondsPerInvocation="24869" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="24" invocations="1" avgMicrosecondsPerInvocation="24047" maxMicrosecondsPerInvocation="24047" standardDeviationMicrosecondsPerInvocation="0"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

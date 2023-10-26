@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T19:17:17.383">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-264/good$f4d93230e58b969c506b4c9778e04482a059b08c$318$Importer.java">
+<violation beginline="268" endline="269" begincolumn="13" endcolumn="85" rule="PreserveStackTrace" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="loadExport" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="276" endline="280" begincolumn="9" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.candlepin.sync" class="Importer" method="loadExport" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ConstraintViolationException' branch
+</violation>
+<violation beginline="303" endline="305" begincolumn="17" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.candlepin.sync" class="Importer" method="loadExport" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="387" endline="387" begincolumn="17" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="importObjects" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="441" endline="444" begincolumn="13" endcolumn="68" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="importRules" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="445" endline="446" begincolumn="13" endcolumn="80" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="importRules" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="494" endline="494" begincolumn="17" endcolumn="65" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="importProducts" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="529" endline="529" begincolumn="17" endcolumn="73" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="importEntitlements" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="551" endline="551" begincolumn="9" endcolumn="71" rule="GuardLogStatement" ruleset="Best Practices" package="org.candlepin.sync" class="Importer" method="extractArchive" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="553" endline="553" begincolumn="24" endcolumn="37" rule="CloseResource" ruleset="Error Prone" package="org.candlepin.sync" class="Importer" method="extractArchive" variable="zipinputstream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileInputStream object are closed after use
+</violation>
+<violation beginline="567" endline="567" begincolumn="30" endcolumn="45" rule="CloseResource" ruleset="Error Prone" package="org.candlepin.sync" class="Importer" method="extractArchive" variable="fileoutputstream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileOutputStream object are closed after use
+</violation>
+<violation beginline="614" endline="616" begincolumn="17" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.candlepin.sync" class="Importer" method="loadSignature" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T18:09:22.731">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/good$e3236a9680709de7a95ffbc11b20e1bdc95a860$312$RunJar.java">
+<violation beginline="257" endline="257" begincolumn="13" endcolumn="19" rule="CloseResource" ruleset="Error Prone" package="org.apache.hadoop.util" class="RunJar" method="run" variable="jarFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this JarFile object are closed after use
+</violation>
+<violation beginline="261" endline="262" begincolumn="7" endcolumn="23" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.hadoop.util" class="RunJar" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="320" endline="321" begincolumn="24" endcolumn="51" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.hadoop.util" class="RunJar" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="373" endline="373" begincolumn="35" endcolumn="78" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.hadoop.util" class="RunJar" method="createClassLoader" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+</file>
+</pmd>

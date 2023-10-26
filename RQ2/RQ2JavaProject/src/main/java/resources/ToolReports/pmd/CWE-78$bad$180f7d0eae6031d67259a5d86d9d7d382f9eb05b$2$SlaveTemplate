@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:22:10.376">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-78/bad$180f7d0eae6031d67259a5d86d9d7d382f9eb05b$2$SlaveTemplate.java">
+<violation beginline="44" endline="44" begincolumn="1" endcolumn="42" rule="UnnecessaryImport" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'com.amazonaws.services.ec2.model.*'
+</violation>
+<violation beginline="48" endline="48" begincolumn="1" endcolumn="22" rule="UnnecessaryImport" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'hudson.model.*'
+</violation>
+<violation beginline="331" endline="331" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate" method="getTags" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="331" endline="331" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="getTags" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="369" endline="369" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="getSpotMaxBidPrice" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="396" endline="396" begincolumn="17" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="provision" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="466" endline="466" begincolumn="21" endcolumn="26" rule="CloseResource" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionOndemand" variable="logger" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PrintStream object are closed after use
+</violation>
+<violation beginline="587" endline="587" begincolumn="124" endcolumn="161" rule="UselessParentheses" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionOndemand" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="649" endline="649" begincolumn="40" endcolumn="83" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="setupRootDevice" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="657" endline="657" begincolumn="17" endcolumn="22" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate" method="setupRootDevice" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="697" endline="697" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="getNewEphemeralDeviceMapping" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="747" endline="747" begincolumn="21" endcolumn="26" rule="CloseResource" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" variable="logger" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PrintStream object are closed after use
+</violation>
+<violation beginline="752" endline="752" begincolumn="13" endcolumn="76" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="798" endline="798" begincolumn="41" endcolumn="48" rule="LocalVariableNamingConventions" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" variable="group_id" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'group_id' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="804" endline="804" begincolumn="33" endcolumn="81" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="883" endline="883" begincolumn="13" endcolumn="99" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="888" endline="888" begincolumn="13" endcolumn="39" rule="PreserveStackTrace" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="provisionSpot" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="943" endline="943" begincolumn="17" endcolumn="64" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="updateRemoteTags" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="994" endline="994" begincolumn="21" endcolumn="26" rule="CloseResource" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate" method="attach" variable="logger" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this PrintStream object are closed after use
+</violation>
+<violation beginline="999" endline="999" begincolumn="13" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="attach" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1005" endline="1005" begincolumn="13" endcolumn="39" rule="PreserveStackTrace" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate" method="attach" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1086" endline="1086" begincolumn="17" endcolumn="103" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="getHelpFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1088" endline="1088" begincolumn="17" endcolumn="99" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="getHelpFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1129" endline="1129" begincolumn="17" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doValidateAmi" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1143" endline="1143" begincolumn="17" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckIdleTerminationMinutes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1147" endline="1147" begincolumn="21" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckIdleTerminationMinutes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1148" endline="1149" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckIdleTerminationMinutes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1155" endline="1155" begincolumn="17" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckInstanceCapStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1159" endline="1159" begincolumn="21" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckInstanceCapStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1160" endline="1161" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckInstanceCapStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1167" endline="1167" begincolumn="17" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckLaunchTimeoutStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1171" endline="1171" begincolumn="21" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckLaunchTimeoutStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1172" endline="1173" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="doCheckLaunchTimeoutStr" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1196" endline="1196" begincolumn="17" endcolumn="33" rule="LooseCoupling" ruleset="Best Practices" package="hudson.plugins.ec2" class="SlaveTemplate$DescriptorImpl" method="getAvailabilityZones" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671852931787" analysisTimestamp="1672072661426" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/bad_6efaf900_PostbackResult.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/bad_6efaf900_PostbackResult.java</SrcDir>
+  </Project>
+  <BugInstance type="REDOS" priority="2" rank="12" abbrev="SECRD" category="SECURITY">
+    <String value="^([a-zA-z]+:)?//.*"/>
+    <Class classname="org.apache.struts2.result.PostbackResult">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="75" end="238" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.result.PostbackResult" name="makePostbackUri" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="131" end="161" startBytecode="0" endBytecode="461" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.result.PostbackResult" start="152" end="152" startBytecode="175" endBytecode="175" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+  </BugInstance>
+  <BugInstance type="SERVLET_PARAMETER" priority="3" rank="15" abbrev="SECSP" category="SECURITY">
+    <Class classname="org.apache.struts2.result.PostbackResult">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="75" end="238" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.result.PostbackResult" name="writeFormElements" signature="(Ljavax/servlet/http/HttpServletRequest;Ljava/io/PrintWriter;)V" isStatic="false">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="218" end="226" startBytecode="0" endBytecode="270" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.result.PostbackResult" start="218" end="218" startBytecode="1" endBytecode="1" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    <String value="getParameterMap"/>
+  </BugInstance>
+  <BugInstance type="XSS_SERVLET" priority="2" rank="12" abbrev="SECXSS2" category="SECURITY">
+    <Class classname="org.apache.struts2.result.PostbackResult">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="75" end="238" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.result.PostbackResult" name="doExecute" signature="(Ljava/lang/String;Lcom/opensymphony/xwork2/ActionInvocation;)V" isStatic="false">
+      <SourceLine classname="org.apache.struts2.result.PostbackResult" start="89" end="110" startBytecode="0" endBytecode="326" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.result.PostbackResult" start="105" end="105" startBytecode="119" endBytecode="119" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+    <String value="java/io/PrintWriter.write(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/result/PostbackResult.doExecute(Ljava/lang/String;Lcom/opensymphony/xwork2/ActionInvocation;)V parameter 1" role="Unknown source"/>
+    <String value="not detected" role="Method usage"/>
+    <SourceLine classname="org.apache.struts2.result.PostbackResult" start="105" end="105" startBytecode="108" endBytecode="108" sourcefile="PostbackResult.java" sourcepath="org/apache/struts2/result/PostbackResult.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="8">
+    <MissingClass>com.opensymphony.xwork2.ActionContext</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionInvocation</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionProxy</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.mapper.ActionMapper</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.mapper.ActionMapping</MissingClass>
+    <MissingClass>org.apache.struts2.result.StrutsResultSupport</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 04:35:31 +0100" total_classes="1" referenced_classes="13" total_bugs="3" total_size="92" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="15.19" clock_seconds="4.53" peak_mbytes="136.22" alloc_mbytes="768.00" gc_seconds="0.06" priority_3="1" priority_2="2">
+    <PackageStats package="org.apache.struts2.result" total_bugs="3" total_types="1" total_size="92" priority_3="1" priority_2="2">
+      <ClassStats class="org.apache.struts2.result.PostbackResult" sourceFile="PostbackResult.java" interface="false" size="92" bugs="3" priority_3="1" priority_2="2"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="477" invocations="290" avgMicrosecondsPerInvocation="1645" maxMicrosecondsPerInvocation="16091" standardDeviationMicrosecondsPerInvocation="1234"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="442" invocations="286" avgMicrosecondsPerInvocation="1545" maxMicrosecondsPerInvocation="62167" standardDeviationMicrosecondsPerInvocation="4586"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="223" invocations="14" avgMicrosecondsPerInvocation="15937" maxMicrosecondsPerInvocation="216327" standardDeviationMicrosecondsPerInvocation="55580"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="70" invocations="46" avgMicrosecondsPerInvocation="1538" maxMicrosecondsPerInvocation="45458" standardDeviationMicrosecondsPerInvocation="6746"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="67" invocations="13" avgMicrosecondsPerInvocation="5228" maxMicrosecondsPerInvocation="23846" standardDeviationMicrosecondsPerInvocation="6402"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="61" invocations="14" avgMicrosecondsPerInvocation="4389" maxMicrosecondsPerInvocation="23210" standardDeviationMicrosecondsPerInvocation="6442"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="57" invocations="14" avgMicrosecondsPerInvocation="4093" maxMicrosecondsPerInvocation="28714" standardDeviationMicrosecondsPerInvocation="7396"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="51" invocations="14" avgMicrosecondsPerInvocation="3713" maxMicrosecondsPerInvocation="34176" standardDeviationMicrosecondsPerInvocation="8706"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="51" invocations="14" avgMicrosecondsPerInvocation="3696" maxMicrosecondsPerInvocation="35405" standardDeviationMicrosecondsPerInvocation="8884"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="51" invocations="14" avgMicrosecondsPerInvocation="3645" maxMicrosecondsPerInvocation="35590" standardDeviationMicrosecondsPerInvocation="8993"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="43" invocations="245" avgMicrosecondsPerInvocation="177" maxMicrosecondsPerInvocation="2026" standardDeviationMicrosecondsPerInvocation="316"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="39" invocations="13" avgMicrosecondsPerInvocation="3071" maxMicrosecondsPerInvocation="6292" standardDeviationMicrosecondsPerInvocation="1814"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="36" invocations="13" avgMicrosecondsPerInvocation="2802" maxMicrosecondsPerInvocation="8963" standardDeviationMicrosecondsPerInvocation="3096"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="35" invocations="14" avgMicrosecondsPerInvocation="2549" maxMicrosecondsPerInvocation="14730" standardDeviationMicrosecondsPerInvocation="4245"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="34" invocations="1" avgMicrosecondsPerInvocation="34770" maxMicrosecondsPerInvocation="34770" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="32" invocations="13" avgMicrosecondsPerInvocation="2512" maxMicrosecondsPerInvocation="16142" standardDeviationMicrosecondsPerInvocation="4330"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="32" invocations="33" avgMicrosecondsPerInvocation="972" maxMicrosecondsPerInvocation="3681" standardDeviationMicrosecondsPerInvocation="953"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="29" invocations="1" avgMicrosecondsPerInvocation="29570" maxMicrosecondsPerInvocation="29570" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="26" invocations="14" avgMicrosecondsPerInvocation="1913" maxMicrosecondsPerInvocation="9487" standardDeviationMicrosecondsPerInvocation="2736"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="25" invocations="13" avgMicrosecondsPerInvocation="1982" maxMicrosecondsPerInvocation="10978" standardDeviationMicrosecondsPerInvocation="3081"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="21" invocations="13" avgMicrosecondsPerInvocation="1691" maxMicrosecondsPerInvocation="6518" standardDeviationMicrosecondsPerInvocation="1967"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

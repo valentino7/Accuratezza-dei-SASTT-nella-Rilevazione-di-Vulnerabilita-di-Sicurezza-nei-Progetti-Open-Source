@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671853255068" analysisTimestamp="1672072520973" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/bad_637ad1c3_FreemarkerManager.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/bad_637ad1c3_FreemarkerManager.java</SrcDir>
+  </Project>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.apache.struts2.views.freemarker.FreemarkerManager">
+      <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="99" end="544" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.views.freemarker.FreemarkerManager" name="addSetting" signature="(Ljava/lang/String;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="483" end="509" startBytecode="0" endBytecode="343" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="494" end="494" startBytecode="87" endBytecode="87" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+  </BugInstance>
+  <BugInstance type="PATH_TRAVERSAL_IN" priority="2" rank="12" abbrev="SECPTI" category="SECURITY">
+    <Class classname="org.apache.struts2.views.freemarker.FreemarkerManager">
+      <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="99" end="544" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.views.freemarker.FreemarkerManager" name="createTemplateLoader" signature="(Ljavax/servlet/ServletContext;Ljava/lang/String;)Lfreemarker/cache/TemplateLoader;" isStatic="false">
+      <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="416" end="433" startBytecode="0" endBytecode="329" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="424" end="424" startBytecode="61" endBytecode="61" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    <String value="java/io/File.&lt;init&gt;(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/views/freemarker/FreemarkerManager.createTemplateLoader(Ljavax/servlet/ServletContext;Ljava/lang/String;)Lfreemarker/cache/TemplateLoader; parameter 0" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="281" end="281" startBytecode="103" endBytecode="103" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+    <SourceLine classname="org.apache.struts2.views.freemarker.FreemarkerManager" start="424" end="424" startBytecode="58" endBytecode="58" sourcefile="FreemarkerManager.java" sourcepath="org/apache/struts2/views/freemarker/FreemarkerManager.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="33">
+    <MissingClass>com.opensymphony.xwork2.FileManager</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.FileManagerFactory</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.inject.Container</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.util.ClassLoaderUtil</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.util.ValueStack</MissingClass>
+    <MissingClass>freemarker.cache.ClassTemplateLoader</MissingClass>
+    <MissingClass>freemarker.cache.FileTemplateLoader</MissingClass>
+    <MissingClass>freemarker.cache.MultiTemplateLoader</MissingClass>
+    <MissingClass>freemarker.cache.TemplateLoader</MissingClass>
+    <MissingClass>freemarker.cache.WebappTemplateLoader</MissingClass>
+    <MissingClass>freemarker.core.TemplateClassResolver</MissingClass>
+    <MissingClass>freemarker.ext.jsp.TaglibFactory</MissingClass>
+    <MissingClass>freemarker.ext.servlet.HttpRequestHashModel</MissingClass>
+    <MissingClass>freemarker.ext.servlet.HttpRequestParametersHashModel</MissingClass>
+    <MissingClass>freemarker.ext.servlet.HttpSessionHashModel</MissingClass>
+    <MissingClass>freemarker.ext.servlet.ServletContextHashModel</MissingClass>
+    <MissingClass>freemarker.template.Configuration</MissingClass>
+    <MissingClass>freemarker.template.ObjectWrapper</MissingClass>
+    <MissingClass>freemarker.template.TemplateException</MissingClass>
+    <MissingClass>freemarker.template.TemplateExceptionHandler</MissingClass>
+    <MissingClass>freemarker.template.utility.StringUtil</MissingClass>
+    <MissingClass>javax.servlet.ServletContext</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletResponse</MissingClass>
+    <MissingClass>org.apache.logging.log4j.LogManager</MissingClass>
+    <MissingClass>org.apache.logging.log4j.Logger</MissingClass>
+    <MissingClass>org.apache.struts2.views.JspSupportServlet</MissingClass>
+    <MissingClass>org.apache.struts2.views.TagLibraryModelProvider</MissingClass>
+    <MissingClass>org.apache.struts2.views.freemarker.FreemarkerThemeTemplateLoader</MissingClass>
+    <MissingClass>org.apache.struts2.views.freemarker.ScopesHashModel</MissingClass>
+    <MissingClass>org.apache.struts2.views.freemarker.StrutsBeanWrapper</MissingClass>
+    <MissingClass>org.apache.struts2.views.freemarker.StrutsClassTemplateLoader</MissingClass>
+    <MissingClass>org.apache.struts2.views.util.ContextUtil</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 04:40:55 +0100" total_classes="1" referenced_classes="28" total_bugs="2" total_size="248" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="23.88" clock_seconds="6.69" peak_mbytes="146.01" alloc_mbytes="768.00" gc_seconds="0.07" priority_3="1" priority_2="1">
+    <PackageStats package="org.apache.struts2.views.freemarker" total_bugs="2" total_types="1" total_size="248" priority_3="1" priority_2="1">
+      <ClassStats class="org.apache.struts2.views.freemarker.FreemarkerManager" sourceFile="FreemarkerManager.java" interface="false" size="248" bugs="2" priority_3="1" priority_2="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="1029" invocations="597" avgMicrosecondsPerInvocation="1725" maxMicrosecondsPerInvocation="12132" standardDeviationMicrosecondsPerInvocation="926"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="689" invocations="595" avgMicrosecondsPerInvocation="1158" maxMicrosecondsPerInvocation="65076" standardDeviationMicrosecondsPerInvocation="3346"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="209" invocations="28" avgMicrosecondsPerInvocation="7488" maxMicrosecondsPerInvocation="40409" standardDeviationMicrosecondsPerInvocation="9232"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="202" invocations="28" avgMicrosecondsPerInvocation="7243" maxMicrosecondsPerInvocation="183052" standardDeviationMicrosecondsPerInvocation="33869"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="173" invocations="179" avgMicrosecondsPerInvocation="971" maxMicrosecondsPerInvocation="14118" standardDeviationMicrosecondsPerInvocation="1861"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="156" invocations="28" avgMicrosecondsPerInvocation="5587" maxMicrosecondsPerInvocation="35062" standardDeviationMicrosecondsPerInvocation="7104"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="97" invocations="28" avgMicrosecondsPerInvocation="3468" maxMicrosecondsPerInvocation="32269" standardDeviationMicrosecondsPerInvocation="6533"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="91" invocations="104" avgMicrosecondsPerInvocation="875" maxMicrosecondsPerInvocation="44761" standardDeviationMicrosecondsPerInvocation="4499"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="90" invocations="28" avgMicrosecondsPerInvocation="3249" maxMicrosecondsPerInvocation="34180" standardDeviationMicrosecondsPerInvocation="6749"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="86" invocations="523" avgMicrosecondsPerInvocation="166" maxMicrosecondsPerInvocation="23749" standardDeviationMicrosecondsPerInvocation="1056"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="83" invocations="29" avgMicrosecondsPerInvocation="2892" maxMicrosecondsPerInvocation="19260" standardDeviationMicrosecondsPerInvocation="4029"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="82" invocations="29" avgMicrosecondsPerInvocation="2854" maxMicrosecondsPerInvocation="26641" standardDeviationMicrosecondsPerInvocation="5048"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="72" invocations="28" avgMicrosecondsPerInvocation="2598" maxMicrosecondsPerInvocation="30599" standardDeviationMicrosecondsPerInvocation="5793"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="68" invocations="28" avgMicrosecondsPerInvocation="2443" maxMicrosecondsPerInvocation="18722" standardDeviationMicrosecondsPerInvocation="3546"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="66" invocations="28" avgMicrosecondsPerInvocation="2379" maxMicrosecondsPerInvocation="18080" standardDeviationMicrosecondsPerInvocation="3929"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="65" invocations="28" avgMicrosecondsPerInvocation="2330" maxMicrosecondsPerInvocation="19914" standardDeviationMicrosecondsPerInvocation="4099"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="62" invocations="28" avgMicrosecondsPerInvocation="2244" maxMicrosecondsPerInvocation="30321" standardDeviationMicrosecondsPerInvocation="5595"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.EqualsOperandShouldHaveClassCompatibleWithThis" totalMilliseconds="56" invocations="28" avgMicrosecondsPerInvocation="2004" maxMicrosecondsPerInvocation="36399" standardDeviationMicrosecondsPerInvocation="6668"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="54" invocations="28" avgMicrosecondsPerInvocation="1961" maxMicrosecondsPerInvocation="27208" standardDeviationMicrosecondsPerInvocation="4970"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

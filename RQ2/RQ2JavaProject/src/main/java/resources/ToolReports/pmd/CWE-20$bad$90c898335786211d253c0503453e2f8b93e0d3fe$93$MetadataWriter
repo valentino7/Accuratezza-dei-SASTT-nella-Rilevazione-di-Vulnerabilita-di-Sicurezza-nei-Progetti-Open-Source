@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:50:29.214">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-20/bad$90c898335786211d253c0503453e2f8b93e0d3fe$93$MetadataWriter.java">
+<violation beginline="130" endline="130" begincolumn="17" endcolumn="85" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cxf.fediz.core.metadata" class="MetadataWriter" method="getMetaData" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="146" endline="146" begincolumn="13" endcolumn="108" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.cxf.fediz.core.metadata" class="MetadataWriter" method="getMetaData" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="188" endline="188" begincolumn="31" endcolumn="41" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.cxf.fediz.core.metadata" class="MetadataWriter" method="writeFederationMetadata" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="286" endline="286" begincolumn="13" endcolumn="81" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.cxf.fediz.core.metadata" class="MetadataWriter" method="writeSAMLMetadata" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+</file>
+</pmd>

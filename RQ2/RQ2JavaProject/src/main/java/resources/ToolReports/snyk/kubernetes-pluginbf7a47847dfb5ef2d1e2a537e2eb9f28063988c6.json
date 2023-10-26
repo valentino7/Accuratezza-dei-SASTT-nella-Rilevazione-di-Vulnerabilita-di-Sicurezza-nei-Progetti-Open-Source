@@ -1,0 +1,457 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/NonCryptoHardcodedSecret/test",
+              "name": "NonCryptoHardcodedSecret/test",
+              "shortDescription": {
+                "text": "Use of Hardcoded, Security-relevant Constants"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nWhen constants are hardcoded into applications, this information could easily be reverse-engineered and become known to attackers. For example, if a breached authentication token is hardcoded in multiple places in the application, it may lead to components of the application remaining vulnerable if not all instances are changed.\nAnother negative effect of hard-coding constants is potential unpredictability in the application's performance if the development team fails to update every single instance of the hardcoded constant throughout the code. For these reasons, hard-coding security-relevant constants is considered bad coding practice and should be remedied if present and avoided in future.\n\n### Best practices for prevention\n* Never hard code security-related constants; use symbolic names or configuration lookup files.\n* As hard coding is often done by coders working alone on a small scale, examine all legacy code components and test carefully when scaling.\n* Adopt a \"future-proof code\" mindset: While use of constants may save a little time now and make development simpler in the short term, it could cost time and money adapting to scale or other unforeseen circumstances (such as new hardware) in the future.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/RocketChat/Rocket.Chat.Java.SDK/commit/6f17474770cd120650daa9945ed65273aaa5ec5c?diff=split#diff-fc51f9a049d8a8cd9df2a4226b87c214L19",
+                    "lines": [
+                      {
+                        "line": "String username = \"sachin.shinde\";",
+                        "lineNumber": 22,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "String password = \"sachin9924\";",
+                        "lineNumber": 18,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "String password = \"sachin123\";",
+                        "lineNumber": 23,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private static String serverurl = \"wss://demo.rocket.chat\";",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wso2-attic/ballerina-message-broker/commit/8d606a4838b057411b7226e4651f7ca59d9746ce?diff=split#diff-2d8482e5c13da266ce6e6196d45bdf1eL66",
+                    "lines": [
+                      {
+                        "line": "private String user = \"wso2carbon\";",
+                        "lineNumber": 63,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String user = \"ballerina\";",
+                        "lineNumber": 63,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "private String password = \"wso2carbon\";",
+                        "lineNumber": 65,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"ballerina\";",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public String getUrl() {",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/games647/FlexibleLogin/commit/9ea9726f145063f4436ca47ef864735e247c34c1?diff=split#diff-02a91e75dcc99d9c759ee4d9e0c88734L26",
+                    "lines": [
+                      {
+                        "line": "@Setting(comment = \"Password in order to login\")",
+                        "lineNumber": 24,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String password = \"password123456789\";",
+                        "lineNumber": 25,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "private String password = \"\";",
+                        "lineNumber": 25,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public SQLType getType() {",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Removed test keys",
+                  "Remove API keys",
+                  "Remove DropBox sync API libraries and dependencies"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 158,
+                "cwe": [
+                  "CWE-547"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/AbstractKubernetesPipelineTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 67,
+                  "endLine": 67,
+                  "startColumn": 73,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1f1d9657aa1e480e13894fe650e5c9623d6a5f41cb12f9ba5f71a1f2d43d709e",
+            "1": "416089e6.dd05ec30.c4eadfb6.de031890.8b2d3351.ce109560.a7f537c3.c1f78287.3626593c.dd05ec30.c4eadfb6.de031890.bb61bed7.ce109560.a7f537c3.c1f78287"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/AbstractKubernetesPipelineTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 67,
+                            "endLine": 67,
+                            "startColumn": 73,
+                            "endColumn": 93
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/AbstractKubernetesPipelineTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 68,
+                  "endLine": 68,
+                  "startColumn": 67,
+                  "endColumn": 81
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7e0fd282c30d7ccb1f977e1feb7e58b12a00a595ef5b95612b66351048454d15",
+            "1": "416089e6.dd05ec30.43704bbd.de031890.8b2d3351.ce109560.e4580e17.322453dc.3626593c.dd05ec30.b72090ba.de031890.bb61bed7.ce109560.7115c551.322453dc"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/AbstractKubernetesPipelineTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 68,
+                            "endLine": 68,
+                            "startColumn": 67,
+                            "endColumn": 81
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/RestartPipelineTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 71,
+                  "endLine": 71,
+                  "startColumn": 73,
+                  "endColumn": 93
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "bf77280582ae279144360f495c51a8b05b484a4287cd4068fa785cd39cb49a16",
+            "1": "416089e6.dd05ec30.c4eadfb6.de031890.8b2d3351.ce109560.a7f537c3.c1f78287.3626593c.dd05ec30.c4eadfb6.de031890.bb61bed7.ce109560.a7f537c3.c1f78287"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/RestartPipelineTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "endLine": 71,
+                            "startColumn": 73,
+                            "endColumn": 93
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/NonCryptoHardcodedSecret/test",
+          "ruleIndex": 0,
+          "level": "note",
+          "message": {
+            "text": "Avoid hardcoding values that are meant to be secret. Found hardcoded secret.",
+            "markdown": "Avoid hardcoding values that are meant to be secret. Found hardcoded {0}.",
+            "arguments": [
+              "[secret](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/RestartPipelineTest.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 72,
+                  "endLine": 72,
+                  "startColumn": 67,
+                  "endColumn": 81
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b908b2b1018a4e2fd97b0cffefa9151cd84e35074909f4d79e6e7f74c283f0df",
+            "1": "416089e6.dd05ec30.43704bbd.de031890.8b2d3351.ce109560.e4580e17.322453dc.3626593c.dd05ec30.6ffc4335.de031890.bb61bed7.ce109560.7115c551.322453dc"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/csanchez/jenkins/plugins/kubernetes/pipeline/RestartPipelineTest.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "endLine": 72,
+                            "startColumn": 67,
+                            "endColumn": 81
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 406,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 20,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 150,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 139,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

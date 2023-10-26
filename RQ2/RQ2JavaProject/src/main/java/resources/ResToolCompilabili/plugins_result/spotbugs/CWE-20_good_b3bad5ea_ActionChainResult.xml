@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671852452358" analysisTimestamp="1672073141702" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/good_b3bad5ea_ActionChainResult.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/good_b3bad5ea_ActionChainResult.java</SrcDir>
+  </Project>
+  <BugInstance type="OGNL_INJECTION" priority="2" rank="12" abbrev="SECOGNL" category="SECURITY">
+    <Class classname="com.opensymphony.xwork2.ActionChainResult">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="86" end="287" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Class>
+    <Method classname="com.opensymphony.xwork2.ActionChainResult" name="execute" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V" isStatic="false">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="204" end="232" startBytecode="0" endBytecode="511" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Method>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="206" end="206" startBytecode="19" endBytecode="19" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    <String value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="com/opensymphony/xwork2/ActionChainResult.namespace" role="Unknown source"/>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="206" end="206" startBytecode="15" endBytecode="15" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+  </BugInstance>
+  <BugInstance type="OGNL_INJECTION" priority="2" rank="12" abbrev="SECOGNL" category="SECURITY">
+    <Class classname="com.opensymphony.xwork2.ActionChainResult">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="86" end="287" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Class>
+    <Method classname="com.opensymphony.xwork2.ActionChainResult" name="execute" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V" isStatic="false">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="204" end="232" startBytecode="0" endBytecode="511" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Method>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="208" end="208" startBytecode="42" endBytecode="42" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    <String value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="com/opensymphony/xwork2/ActionChainResult.actionName" role="Unknown source"/>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="208" end="208" startBytecode="38" endBytecode="38" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+  </BugInstance>
+  <BugInstance type="OGNL_INJECTION" priority="2" rank="12" abbrev="SECOGNL" category="SECURITY">
+    <Class classname="com.opensymphony.xwork2.ActionChainResult">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="86" end="287" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Class>
+    <Method classname="com.opensymphony.xwork2.ActionChainResult" name="execute" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V" isStatic="false">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="204" end="232" startBytecode="0" endBytecode="511" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Method>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="210" end="210" startBytecode="59" endBytecode="59" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    <String value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="com/opensymphony/xwork2/ActionChainResult.methodName" role="Unknown source"/>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="210" end="210" startBytecode="55" endBytecode="55" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+  </BugInstance>
+  <BugInstance type="OGNL_INJECTION" priority="2" rank="12" abbrev="SECOGNL" category="SECURITY">
+    <Class classname="com.opensymphony.xwork2.ActionChainResult">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="86" end="287" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Class>
+    <Method classname="com.opensymphony.xwork2.ActionChainResult" name="isInChainHistory" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z" isStatic="false">
+      <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="256" end="273" startBytecode="0" endBytecode="296" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    </Method>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="265" end="265" startBytecode="52" endBytecode="52" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+    <String value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="com/opensymphony/xwork2/ActionChainResult.skipActions" role="Unknown source"/>
+    <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" start="265" end="265" startBytecode="47" endBytecode="47" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="9">
+    <MissingClass>com.opensymphony.xwork2.ActionContext</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionInvocation</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionProxy</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionProxyFactory</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.Result</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.XWorkException</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.util.TextParseUtil</MissingClass>
+    <MissingClass>org.apache.logging.log4j.LogManager</MissingClass>
+    <MissingClass>org.apache.logging.log4j.Logger</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 04:27:32 +0100" total_classes="1" referenced_classes="20" total_bugs="4" total_size="108" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="16.93" clock_seconds="5.06" peak_mbytes="136.08" alloc_mbytes="768.00" gc_seconds="0.05" priority_2="4">
+    <PackageStats package="com.opensymphony.xwork2" total_bugs="4" total_types="1" total_size="108" priority_2="4">
+      <ClassStats class="com.opensymphony.xwork2.ActionChainResult" sourceFile="ActionChainResult.java" interface="false" size="108" bugs="4" priority_2="4"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="635" invocations="389" avgMicrosecondsPerInvocation="1634" maxMicrosecondsPerInvocation="14167" standardDeviationMicrosecondsPerInvocation="871"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="513" invocations="387" avgMicrosecondsPerInvocation="1326" maxMicrosecondsPerInvocation="48219" standardDeviationMicrosecondsPerInvocation="3472"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="189" invocations="17" avgMicrosecondsPerInvocation="11147" maxMicrosecondsPerInvocation="183905" standardDeviationMicrosecondsPerInvocation="43190"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="99" invocations="20" avgMicrosecondsPerInvocation="4967" maxMicrosecondsPerInvocation="36016" standardDeviationMicrosecondsPerInvocation="8247"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="98" invocations="100" avgMicrosecondsPerInvocation="982" maxMicrosecondsPerInvocation="15860" standardDeviationMicrosecondsPerInvocation="1715"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="84" invocations="59" avgMicrosecondsPerInvocation="1434" maxMicrosecondsPerInvocation="47692" standardDeviationMicrosecondsPerInvocation="6369"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="67" invocations="17" avgMicrosecondsPerInvocation="3970" maxMicrosecondsPerInvocation="36666" standardDeviationMicrosecondsPerInvocation="8660"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="53" invocations="342" avgMicrosecondsPerInvocation="155" maxMicrosecondsPerInvocation="2758" standardDeviationMicrosecondsPerInvocation="291"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="52" invocations="17" avgMicrosecondsPerInvocation="3088" maxMicrosecondsPerInvocation="13206" standardDeviationMicrosecondsPerInvocation="3960"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="51" invocations="20" avgMicrosecondsPerInvocation="2562" maxMicrosecondsPerInvocation="22842" standardDeviationMicrosecondsPerInvocation="4962"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="50" invocations="17" avgMicrosecondsPerInvocation="2971" maxMicrosecondsPerInvocation="23780" standardDeviationMicrosecondsPerInvocation="5581"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="48" invocations="20" avgMicrosecondsPerInvocation="2447" maxMicrosecondsPerInvocation="10057" standardDeviationMicrosecondsPerInvocation="2848"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="48" invocations="20" avgMicrosecondsPerInvocation="2424" maxMicrosecondsPerInvocation="35149" standardDeviationMicrosecondsPerInvocation="7550"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="45" invocations="17" avgMicrosecondsPerInvocation="2659" maxMicrosecondsPerInvocation="23931" standardDeviationMicrosecondsPerInvocation="5624"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="45" invocations="17" avgMicrosecondsPerInvocation="2658" maxMicrosecondsPerInvocation="28650" standardDeviationMicrosecondsPerInvocation="6675"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="42" invocations="17" avgMicrosecondsPerInvocation="2472" maxMicrosecondsPerInvocation="18843" standardDeviationMicrosecondsPerInvocation="4758"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

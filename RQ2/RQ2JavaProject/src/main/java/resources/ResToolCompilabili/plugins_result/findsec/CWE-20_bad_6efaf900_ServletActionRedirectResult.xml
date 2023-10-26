@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671852931798" analysisTimestamp="1672072694016" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/bad_6efaf900_ServletActionRedirectResult.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/bad_6efaf900_ServletActionRedirectResult.java</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="6">
+    <MissingClass>com.opensymphony.xwork2.ActionInvocation</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionProxy</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.util.reflection.ReflectionExceptionHandler</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.mapper.ActionMapper</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.mapper.ActionMapping</MissingClass>
+    <MissingClass>org.apache.struts2.result.ServletRedirectResult</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 04:35:31 +0100" total_classes="1" referenced_classes="7" total_bugs="0" total_size="48" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="16.01" clock_seconds="5.02" peak_mbytes="132.89" alloc_mbytes="768.00" gc_seconds="0.05">
+    <PackageStats package="org.apache.struts2.result" total_bugs="0" total_types="1" total_size="48">
+      <ClassStats class="org.apache.struts2.result.ServletActionRedirectResult" sourceFile="ServletActionRedirectResult.java" interface="false" size="48" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="665" invocations="303" avgMicrosecondsPerInvocation="2197" maxMicrosecondsPerInvocation="15990" standardDeviationMicrosecondsPerInvocation="1933"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="638" invocations="299" avgMicrosecondsPerInvocation="2134" maxMicrosecondsPerInvocation="56853" standardDeviationMicrosecondsPerInvocation="5238"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="163" invocations="10" avgMicrosecondsPerInvocation="16392" maxMicrosecondsPerInvocation="159105" standardDeviationMicrosecondsPerInvocation="47572"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="104" invocations="7" avgMicrosecondsPerInvocation="14875" maxMicrosecondsPerInvocation="40462" standardDeviationMicrosecondsPerInvocation="12821"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="90" invocations="24" avgMicrosecondsPerInvocation="3783" maxMicrosecondsPerInvocation="58320" standardDeviationMicrosecondsPerInvocation="11924"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="84" invocations="91" avgMicrosecondsPerInvocation="925" maxMicrosecondsPerInvocation="9371" standardDeviationMicrosecondsPerInvocation="1556"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="72" invocations="262" avgMicrosecondsPerInvocation="277" maxMicrosecondsPerInvocation="14773" standardDeviationMicrosecondsPerInvocation="1027"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="59" invocations="10" avgMicrosecondsPerInvocation="5950" maxMicrosecondsPerInvocation="46197" standardDeviationMicrosecondsPerInvocation="13519"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="58" invocations="7" avgMicrosecondsPerInvocation="8407" maxMicrosecondsPerInvocation="24734" standardDeviationMicrosecondsPerInvocation="7506"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="56" invocations="7" avgMicrosecondsPerInvocation="8123" maxMicrosecondsPerInvocation="30995" standardDeviationMicrosecondsPerInvocation="9946"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="45" invocations="10" avgMicrosecondsPerInvocation="4545" maxMicrosecondsPerInvocation="25576" standardDeviationMicrosecondsPerInvocation="7693"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="42" invocations="10" avgMicrosecondsPerInvocation="4272" maxMicrosecondsPerInvocation="30543" standardDeviationMicrosecondsPerInvocation="8862"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T16:19:31.546">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-20/good$ae43073fbf38db8371ff4f8bf2a966ee3b5f7e92$331$OgnlRuntime.java">
+<violation beginline="59" endline="3035" begincolumn="26" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="256" endline="256" begincolumn="42" endcolumn="59" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Byte(...)`, prefer `Byte.valueOf(...)`
+</violation>
+<violation beginline="257" endline="257" begincolumn="43" endcolumn="62" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Short(...)`, prefer `Short.valueOf(...)`
+</violation>
+<violation beginline="258" endline="258" begincolumn="47" endcolumn="69" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Character(...)`, prefer `Character.valueOf(...)`
+</violation>
+<violation beginline="259" endline="259" begincolumn="45" endcolumn="58" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="260" endline="260" begincolumn="42" endcolumn="53" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Long(...)`, prefer `Long.valueOf(...)`
+</violation>
+<violation beginline="261" endline="261" begincolumn="43" endcolumn="57" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Float(...)`, prefer `Float.valueOf(...)`
+</violation>
+<violation beginline="262" endline="262" begincolumn="44" endcolumn="58" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Double(...)`, prefer `Double.valueOf(...)`
+</violation>
+<violation beginline="264" endline="264" begincolumn="48" endcolumn="66" rule="BigIntegerInstantiation" ruleset="Performance" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#bigintegerinstantiation" priority="3">
+Dont create instances of already existing BigInteger and BigDecimal (ZERO, ONE, TEN)
+</violation>
+<violation beginline="265" endline="265" begincolumn="48" endcolumn="66" rule="AvoidDecimalLiteralsInBigDecimalConstructor" ruleset="Error Prone" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoiddecimalliteralsinbigdecimalconstructor" priority="3">
+Avoid creating BigDecimal with a decimal (float/double) literal. Use a String literal
+</violation>
+<violation beginline="338" endline="338" begincolumn="43" endcolumn="60" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Byte(...)`, prefer `Byte.valueOf(...)`
+</violation>
+<violation beginline="339" endline="339" begincolumn="44" endcolumn="61" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Byte(...)`, prefer `Byte.valueOf(...)`
+</violation>
+<violation beginline="340" endline="340" begincolumn="44" endcolumn="63" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Short(...)`, prefer `Short.valueOf(...)`
+</violation>
+<violation beginline="341" endline="341" begincolumn="45" endcolumn="64" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Short(...)`, prefer `Short.valueOf(...)`
+</violation>
+<violation beginline="342" endline="342" begincolumn="48" endcolumn="70" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Character(...)`, prefer `Character.valueOf(...)`
+</violation>
+<violation beginline="343" endline="343" begincolumn="46" endcolumn="59" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="344" endline="344" begincolumn="43" endcolumn="54" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Long(...)`, prefer `Long.valueOf(...)`
+</violation>
+<violation beginline="345" endline="345" begincolumn="44" endcolumn="58" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Float(...)`, prefer `Float.valueOf(...)`
+</violation>
+<violation beginline="346" endline="346" begincolumn="45" endcolumn="59" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Double(...)`, prefer `Double.valueOf(...)`
+</violation>
+<violation beginline="348" endline="348" begincolumn="50" endcolumn="68" rule="BigIntegerInstantiation" ruleset="Performance" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#bigintegerinstantiation" priority="3">
+Dont create instances of already existing BigInteger and BigDecimal (ZERO, ONE, TEN)
+</violation>
+<violation beginline="349" endline="349" begincolumn="50" endcolumn="68" rule="AvoidDecimalLiteralsInBigDecimalConstructor" ruleset="Error Prone" package="ognl" class="OgnlRuntime" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoiddecimalliteralsinbigdecimalconstructor" priority="3">
+Avoid creating BigDecimal with a decimal (float/double) literal. Use a String literal
+</violation>
+<violation beginline="387" endline="387" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isJdk15" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="393" endline="393" begincolumn="11" endcolumn="46" rule="EmptyCatchBlock" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="isJdk15" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="443" endline="443" begincolumn="38" endcolumn="84" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getTargetClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="443" endline="443" begincolumn="39" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getTargetClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="496" endline="496" begincolumn="17" endcolumn="21" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getClassPackageName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="505" endline="505" begincolumn="9" endcolumn="50" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getPointerString" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="506" endline="506" begincolumn="21" endcolumn="45" rule="PrimitiveWrapperInstantiation" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getPointerString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#primitivewrapperinstantiation" priority="3">
+Do not use `new Integer(...)`, prefer `Integer.valueOf(...)`
+</violation>
+<violation beginline="509" endline="509" begincolumn="13" endcolumn="55" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPointerString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="597" endline="597" begincolumn="17" endcolumn="78" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="617" endline="617" begincolumn="52" endcolumn="52" rule="EmptyStatementNotInLoop" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="findParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptystatementnotinloop" priority="3">
+An empty statement (semicolon) not part of a loop
+</violation>
+<violation beginline="627" endline="627" begincolumn="13" endcolumn="18" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="findParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="647" endline="647" begincolumn="13" endcolumn="80" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="findParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="708" endline="708" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="resolveType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="750" endline="754" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="753" endline="753" begincolumn="17" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findType" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="765" endline="765" begincolumn="13" endcolumn="72" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="767" endline="767" begincolumn="21" endcolumn="80" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getParameterTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="809" endline="809" begincolumn="17" endcolumn="81" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPermission" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="828" endline="828" begincolumn="20" endcolumn="64" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="invokeMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="833" endline="833" begincolumn="20" endcolumn="63" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="invokeMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="853" endline="853" begincolumn="25" endcolumn="104" rule="PreserveStackTrace" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="invokeMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="859" endline="859" begincolumn="25" endcolumn="85" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="invokeMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="889" endline="889" begincolumn="21" endcolumn="100" rule="PreserveStackTrace" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="invokeMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="910" endline="910" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="913" endline="913" begincolumn="13" endcolumn="32" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="916" endline="916" begincolumn="17" endcolumn="36" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="918" endline="918" begincolumn="17" endcolumn="35" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="920" endline="920" begincolumn="17" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="922" endline="922" begincolumn="17" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="924" endline="924" begincolumn="17" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="926" endline="926" begincolumn="17" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="928" endline="928" begincolumn="13" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getArgClass" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="972" endline="972" begincolumn="65" endcolumn="77" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="areArgsCompatible" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="984" endline="984" begincolumn="65" endcolumn="77" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="areArgsCompatible" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="998" endline="998" begincolumn="13" endcolumn="60" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="isMoreSpecific" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1000" endline="1000" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMoreSpecific" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1002" endline="1002" begincolumn="17" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMoreSpecific" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1004" endline="1004" begincolumn="17" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMoreSpecific" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1006" endline="1006" begincolumn="17" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMoreSpecific" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1018" endline="1018" begincolumn="13" endcolumn="30" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1020" endline="1020" begincolumn="13" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1022" endline="1022" begincolumn="13" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1024" endline="1024" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1026" endline="1026" begincolumn="13" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1028" endline="1028" begincolumn="13" endcolumn="39" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1030" endline="1030" begincolumn="13" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1032" endline="1032" begincolumn="13" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1034" endline="1034" begincolumn="13" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getModifierString" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1046" endline="1046" begincolumn="17" endcolumn="86" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="classForName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1046" endline="1046" begincolumn="18" endcolumn="32" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="classForName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1046" endline="1046" begincolumn="39" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="classForName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1053" endline="1053" begincolumn="13" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="classForName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1092" endline="1092" begincolumn="75" endcolumn="84" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1101" endline="1101" begincolumn="25" endcolumn="61" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getConvertedTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1118" endline="1118" begincolumn="14" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedMethodAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1118" endline="1118" begincolumn="37" endcolumn="51" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedMethodAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1120" endline="1120" begincolumn="55" endcolumn="68" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedMethodAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1120" endline="1120" begincolumn="75" endcolumn="84" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedMethodAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1140" endline="1140" begincolumn="14" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedConstructorAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1140" endline="1140" begincolumn="37" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedConstructorAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1141" endline="1141" begincolumn="60" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedConstructorAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1141" endline="1141" begincolumn="80" endcolumn="89" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getConvertedConstructorAndArgs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1190" endline="1190" begincolumn="26" endcolumn="39" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getAppropriateMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1200" endline="1200" begincolumn="52" endcolumn="72" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getAppropriateMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1227" endline="1227" begincolumn="18" endcolumn="31" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callAppropriateMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1299" endline="1301" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callAppropriateMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'NoSuchMethodException' branch
+</violation>
+<violation beginline="1316" endline="1316" begincolumn="17" endcolumn="99" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callStaticMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1369" endline="1369" begincolumn="13" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1398" endline="1398" begincolumn="21" endcolumn="116" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="callConstructor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1409" endline="1411" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callConstructor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1411" endline="1413" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callConstructor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1415" endline="1417" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="callConstructor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1418" endline="1418" begincolumn="17" endcolumn="34" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="callConstructor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1448" endline="1448" begincolumn="13" endcolumn="92" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethodValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1452" endline="1452" begincolumn="18" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethodValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1462" endline="1462" begincolumn="21" endcolumn="83" rule="PreserveStackTrace" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getMethodValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1490" endline="1490" begincolumn="18" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="setMethodValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1522" endline="1522" begincolumn="13" endcolumn="72" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getConstructors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1524" endline="1524" begincolumn="21" endcolumn="80" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getConstructors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1534" endline="1534" begincolumn="29" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1537" endline="1537" begincolumn="13" endcolumn="59" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1540" endline="1540" begincolumn="21" endcolumn="67" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1553" endline="1553" begincolumn="33" endcolumn="41" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1560" endline="1560" begincolumn="37" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1575" endline="1575" begincolumn="29" endcolumn="85" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getAllMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1578" endline="1578" begincolumn="13" endcolumn="59" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getAllMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1581" endline="1581" begincolumn="21" endcolumn="67" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getAllMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1594" endline="1594" begincolumn="33" endcolumn="41" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getAllMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1601" endline="1601" begincolumn="37" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getAllMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1628" endline="1628" begincolumn="13" endcolumn="65" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getFields" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1630" endline="1630" begincolumn="21" endcolumn="73" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getFields" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1635" endline="1637" begincolumn="21" endcolumn="21" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getFields" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1656" endline="1656" begincolumn="47" endcolumn="56" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1657" endline="1657" begincolumn="29" endcolumn="69" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1657" endline="1657" begincolumn="29" endcolumn="69" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1658" endline="1658" begincolumn="29" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1662" endline="1662" begincolumn="29" endcolumn="56" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1663" endline="1663" begincolumn="29" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1676" endline="1676" begincolumn="29" endcolumn="46" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1677" endline="1677" begincolumn="29" endcolumn="42" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1686" endline="1686" begincolumn="21" endcolumn="38" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1687" endline="1687" begincolumn="21" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1711" endline="1711" begincolumn="18" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1727" endline="1727" begincolumn="25" endcolumn="69" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1730" endline="1730" begincolumn="21" endcolumn="65" rule="PreserveStackTrace" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1746" endline="1746" begincolumn="18" endcolumn="26" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="setFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1749" endline="1750" begincolumn="25" endcolumn="117" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="setFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1750" endline="1750" begincolumn="29" endcolumn="116" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="setFieldValue" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1778" endline="1778" begincolumn="17" endcolumn="25" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="hasField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1789" endline="1789" begincolumn="17" endcolumn="124" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1795" endline="1795" begincolumn="17" endcolumn="41" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="1805" endline="1805" begincolumn="21" endcolumn="112" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1811" endline="1813" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1813" endline="1815" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1815" endline="1817" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getStaticField" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'ClassNotFoundException' branch
+</violation>
+<violation beginline="1824" endline="1824" begincolumn="20" endcolumn="45" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="capitalizeBeanPropertyName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="1859" endline="1859" begincolumn="13" endcolumn="98" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1859" endline="1859" begincolumn="14" endcolumn="34" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1859" endline="1859" begincolumn="41" endcolumn="97" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1863" endline="1863" begincolumn="21" endcolumn="106" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1863" endline="1863" begincolumn="22" endcolumn="42" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1863" endline="1863" begincolumn="49" endcolumn="105" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1870" endline="1894" begincolumn="25" endcolumn="25" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1873" endline="1873" begincolumn="33" endcolumn="41" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1878" endline="1878" begincolumn="33" endcolumn="67" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1880" endline="1881" begincolumn="37" endcolumn="72" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1882" endline="1882" begincolumn="57" endcolumn="68" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1885" endline="1885" begincolumn="67" endcolumn="92" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1904" endline="1904" begincolumn="17" endcolumn="38" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getDeclaredMethods" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="1916" endline="1917" begincolumn="9" endcolumn="25" rule="SimplifyBooleanReturns" ruleset="Design" package="ognl" class="OgnlRuntime" method="isMethodCallable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="1916" endline="1916" begincolumn="14" endcolumn="41" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMethodCallable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1917" endline="1917" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMethodCallable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1931" endline="1931" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getGetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1935" endline="1935" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getGetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1943" endline="1943" begincolumn="53" endcolumn="59" rule="UnusedFormalParameter" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="_getGetMethod" variable="context" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'context'.
+</violation>
+<violation beginline="1943" endline="1967" begincolumn="20" endcolumn="5" rule="MethodNamingConventions" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="_getGetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The static method name '_getGetMethod' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="1971" endline="1971" begincolumn="17" endcolumn="30" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isMethodAccessible" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1989" endline="1989" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getSetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1993" endline="1993" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getSetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2001" endline="2001" begincolumn="53" endcolumn="59" rule="UnusedFormalParameter" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="_getSetMethod" variable="context" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'context'.
+</violation>
+<violation beginline="2001" endline="2023" begincolumn="20" endcolumn="5" rule="MethodNamingConventions" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="_getSetMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#methodnamingconventions" priority="1">
+The static method name '_getSetMethod' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="2049" endline="2085" begincolumn="26" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="indexMethodCheck" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'indexMethodCheck': private methods cannot be overridden
+</violation>
+<violation beginline="2053" endline="2053" begincolumn="13" endcolumn="24" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="indexMethodCheck" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="2060" endline="2060" begincolumn="40" endcolumn="57" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="indexMethodCheck" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2093" endline="2129" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2102" endline="2102" begincolumn="17" endcolumn="52" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="2105" endline="2106" begincolumn="21" endcolumn="48" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2106" endline="2106" begincolumn="25" endcolumn="47" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2111" endline="2111" begincolumn="35" endcolumn="53" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2111" endline="2111" begincolumn="60" endcolumn="89" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2119" endline="2119" begincolumn="35" endcolumn="53" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2119" endline="2119" begincolumn="60" endcolumn="89" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2131" endline="2157" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2136" endline="2138" begincolumn="17" endcolumn="33" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="2137" endline="2137" begincolumn="93" endcolumn="112" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="2139" endline="2139" begincolumn="17" endcolumn="106" rule="OneDeclarationPerLine" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="findObjectIndexedPropertyDescriptors" variable="VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="2174" endline="2174" begincolumn="13" endcolumn="78" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2177" endline="2177" begincolumn="21" endcolumn="86" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPropertyDescriptors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2215" endline="2215" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getPropertyDescriptor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2248" endline="2248" begincolumn="17" endcolumn="99" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPropertyDescriptorsArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2250" endline="2250" begincolumn="25" endcolumn="107" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getPropertyDescriptorsArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2274" endline="2274" begincolumn="47" endcolumn="60" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getPropertyDescriptorFromArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2274" endline="2274" begincolumn="67" endcolumn="76" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getPropertyDescriptorFromArray" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2294" endline="2294" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethodAccessor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2310" endline="2310" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getPropertyAccessor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2320" endline="2320" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getElementsAccessor" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2336" endline="2336" begincolumn="13" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getNullHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2351" endline="2351" begincolumn="13" endcolumn="53" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2353" endline="2353" begincolumn="21" endcolumn="61" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getHandler" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2405" endline="2405" begincolumn="13" endcolumn="76" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2421" endline="2421" begincolumn="13" endcolumn="76" rule="AssignmentInOperand" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="setProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="2586" endline="2586" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2588" endline="2627" begincolumn="9" endcolumn="9" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2594" endline="2594" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2611" endline="2611" begincolumn="21" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2622" endline="2622" begincolumn="17" endcolumn="22" rule="AvoidBranchingStatementAsLastInLoop" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidbranchingstatementaslastinloop" priority="2">
+Avoid using a branching statement as the last in a loop.
+</violation>
+<violation beginline="2626" endline="2626" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2655" endline="2655" begincolumn="17" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2657" endline="2657" begincolumn="20" endcolumn="37" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2666" endline="2694" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2669" endline="2669" begincolumn="21" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2672" endline="2672" begincolumn="25" endcolumn="71" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2673" endline="2673" begincolumn="25" endcolumn="79" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2674" endline="2674" begincolumn="25" endcolumn="79" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2675" endline="2675" begincolumn="25" endcolumn="78" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2679" endline="2679" begincolumn="25" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2686" endline="2687" begincolumn="37" endcolumn="112" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2697" endline="2697" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2699" endline="2719" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2702" endline="2702" begincolumn="21" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2704" endline="2704" begincolumn="21" endcolumn="69" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2709" endline="2709" begincolumn="25" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2712" endline="2712" begincolumn="30" endcolumn="122" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="2722" endline="2722" begincolumn="17" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2727" endline="2727" begincolumn="17" endcolumn="81" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2729" endline="2732" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getReadMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2746" endline="2746" begincolumn="17" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2751" endline="2765" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2753" endline="2753" begincolumn="21" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2756" endline="2756" begincolumn="25" endcolumn="85" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2756" endline="2756" begincolumn="67" endcolumn="84" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2757" endline="2757" begincolumn="25" endcolumn="93" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2757" endline="2757" begincolumn="75" endcolumn="92" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2761" endline="2761" begincolumn="25" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2763" endline="2763" begincolumn="25" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2770" endline="2784" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2772" endline="2772" begincolumn="21" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2775" endline="2775" begincolumn="25" endcolumn="86" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2775" endline="2775" begincolumn="68" endcolumn="85" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2776" endline="2776" begincolumn="25" endcolumn="94" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2776" endline="2776" begincolumn="76" endcolumn="93" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2780" endline="2780" begincolumn="25" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2782" endline="2782" begincolumn="25" endcolumn="43" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2792" endline="2795" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getWriteMethod" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2807" endline="2813" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="2810" endline="2810" begincolumn="24" endcolumn="80" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2810" endline="2810" begincolumn="62" endcolumn="79" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2811" endline="2811" begincolumn="24" endcolumn="82" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2811" endline="2811" begincolumn="64" endcolumn="81" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2812" endline="2812" begincolumn="21" endcolumn="34" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2815" endline="2818" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2826" endline="2826" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isBoolean" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2828" endline="2835" begincolumn="9" endcolumn="24" rule="SimplifyBooleanReturns" ruleset="Design" package="ognl" class="OgnlRuntime" method="isBoolean" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="2835" endline="2835" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="isBoolean" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2855" endline="2855" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="shouldConvertNumericTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2859" endline="2859" begincolumn="13" endcolumn="25" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="shouldConvertNumericTypes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2899" endline="2899" begincolumn="13" endcolumn="21" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2904" endline="2907" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="2911" endline="2914" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2922" endline="2925" begincolumn="9" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="2945" endline="2945" begincolumn="17" endcolumn="26" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="2951" endline="2951" begincolumn="13" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime" method="getChildSource" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3008" endline="3008" begincolumn="17" endcolumn="28" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime$ClassPropertyMethodCache" method="get" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="3020" endline="3020" begincolumn="54" endcolumn="94" rule="UselessParentheses" ruleset="Code Style" package="ognl" class="OgnlRuntime$ClassPropertyMethodCache" method="put" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="3027" endline="3027" begincolumn="17" endcolumn="29" rule="ControlStatementBraces" ruleset="Code Style" package="ognl" class="OgnlRuntime$ClassPropertyMethodCache" method="containsKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+</file>
+</pmd>

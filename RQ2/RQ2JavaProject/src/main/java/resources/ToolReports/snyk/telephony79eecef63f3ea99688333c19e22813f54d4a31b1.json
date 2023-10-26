@@ -1,0 +1,4564 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            },
+            {
+              "id": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+              "name": "SetBroadcastPermissionsOnRegisterNoArg3",
+              "shortDescription": {
+                "text": "Improper Handling of Insufficient Permissions or Privileges"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nCall to `registerReceiver` misses the broadcastPermission argument. As such, no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.\n\n## References\n* [Android Developer Guide](https://developer.android.com/guide/topics/manifest/receiver-element)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/irccloud/android/commit/857287d6d9da443b0ff667505d5bf4a383922784?diff=split#diff-f06bf5e27b9130d322139330f7f31997L40",
+                    "lines": [
+                      {
+                        "line": "RefreshReceiver receiver;",
+                        "lineNumber": 37,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "class RefreshReceiver extends BroadcastReceiver {",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        onUpdateData(0);",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        }",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    IntentFilter intentFilter = new IntentFilter(REFRESH_INTENT);",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    receiver = new RefreshReceiver();",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    registerReceiver(receiver, intentFilter);",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    registerReceiver(receiver, intentFilter, BuildConfig.APPLICATION_ID + \".permission.BROADCAST\", null);",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/alvinhkh/buseta/commit/6b791de8e3622ef157b065f9c82fcfd5a0e2302a?diff=split#diff-a75527f97c6732197964c1dbf30fd385L66",
+                    "lines": [
+                      {
+                        "line": "private static final String KEY_LIST_VIEW_STATE = \"KEY_LIST_VIEW_STATE_ROUTE_STOP\";",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Context mContext = super.getActivity();",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private ActionBar mActionBar = null;",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private SwipeRefreshLayout mSwipeRefreshLayout;",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Runnable to get all stops eta",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "int iEta = 0;",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Handler mEtaHandler = new Handler();",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Runnable mEtaRunnable = new Runnable() {",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public View onCreateView(LayoutInflater inflater, ViewGroup container,",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                         final Bundle savedInstanceState) {",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    View view = inflater.inflate(R.layout.fragment_routestop, container, false);",
+                        "lineNumber": 129,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mContext = super.getActivity();",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Broadcast Receiver",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (null != mContext) {",
+                        "lineNumber": 171,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Looper looper = handlerThread.getLooper();",
+                        "lineNumber": 174,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Handler handler = new Handler(looper);",
+                        "lineNumber": 175,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "mReceiver_view = new UpdateViewReceiver();",
+                        "lineNumber": 176,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "IntentFilter mFilter_view = new IntentFilter(Constants.MESSAGE.STOPS_UPDATED);",
+                        "lineNumber": 177,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mFilter_view.addAction(Constants.MESSAGE.STOPS_UPDATED);",
+                        "lineNumber": 178,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mContext.registerReceiver(mReceiver_view, mFilter_view);",
+                        "lineNumber": 173,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "mContext.registerReceiver(mReceiver_view, mFilter_view, null, handler);",
+                        "lineNumber": 179,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "mReceiver_item = new UpdateItemReceiver();",
+                        "lineNumber": 180,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "IntentFilter mFilter_item = new IntentFilter(Constants.MESSAGE.FOLLOW_UPDATED);",
+                        "lineNumber": 181,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 310,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    requestEta(position);",
+                        "lineNumber": 312,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 313,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 591,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "class UpdateViewReceiver extends BroadcastReceiver {",
+                        "lineNumber": 593,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 594,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 595,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        final Bundle bundle = intent.getExtras();",
+                        "lineNumber": 596,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Thread thread = new Thread() {",
+                        "lineNumber": 597,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/serso/android-messengerpp/commit/1528fdc2d3561bab192dfde9a84a737a26a19fce?diff=split#diff-7ff52f2abe79bd0a68d54916fe71aef2L92",
+                    "lines": [
+                      {
+                        "line": "private final CallListener callListener;",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "SmsAccountConnection(@Nonnull SmsAccount account, @Nonnull Context context) {",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  super(account, context);",
+                        "lineNumber": 92,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  callListener = new CallListener(context);",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void start0() throws AccountConnectionException {",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (receiver == null) {",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    receiver = new ReportsBroadcastReceiver();",
+                        "lineNumber": 103,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final Application application = getApplication();",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final IntentFilter intentReceivedFilter = new IntentFilter(INTENT_RECEIVED);",
+                        "lineNumber": 106,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    intentReceivedFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);",
+                        "lineNumber": 107,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    application.registerReceiver(receiver, intentReceivedFilter);",
+                        "lineNumber": 108,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  intentFilter.addAction(INTENT_SMS_DELIVER);",
+                        "lineNumber": 108,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  intentFilter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);",
+                        "lineNumber": 109,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  application.registerReceiver(receiver, intentFilter, android.Manifest.permission.BROADCAST_SMS, null);",
+                        "lineNumber": 110,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private class ReportsBroadcastReceiver extends BroadcastReceiver {",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      final String action = intent.getAction();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 171,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private void onSmsReceived(@Nonnull BroadcastReceiver broadcastReceiver, @Nonnull Intent intent) throws AccountException {",
+                        "lineNumber": 173,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final SmsAccount account = getAccount();",
+                        "lineNumber": 174,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final Multimap<String, SmsData> messagesByPhoneNumber = getMessagesByPhoneNumber(intent);",
+                        "lineNumber": 175,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Multimap<String, SmsData> smss = ArrayListMultimap.create();",
+                        "lineNumber": 207,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Bundle extras = intent.getExtras();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (extras != null) {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final Object[] smsExtras = (Object[]) extras.get(SmsRealm.INTENT_EXTRA_PDUS);",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Using callback instead of broadcast for sync status updates\n(testing in progress)",
+                  "Add support for default SMS app",
+                  "Move receiver registration to App class"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 263,
+                "cwe": [
+                  "CWE-280"
+                ]
+              }
+            },
+            {
+              "id": "java/SetReceiverPermissionsForIntentsNoArg2",
+              "name": "SetReceiverPermissionsForIntentsNoArg2",
+              "shortDescription": {
+                "text": "Unrestricted Android Broadcast"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nAn Android broadcast was found that did not restrict the receiver of the broadcast via a required permission. If an implicit Intent was sent with the broadcast, it may be possible for malicious applications on the device to intercept the broadcast and gain unauthorised access to the data contained within the Intent. This could lead to sensitive information leakage and/or access to unauthorised functionality within the application.\n\n### Best practices for prevention\n* Always use explicit Intents when sending data via Android broadcast receivers\n* Define appropriate permissions for sensitive Android components, and ensure these are enforced by passing a second (non-null) parameter to `sendBroadcast()`",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0,
+                "cwe": [
+                  "CWE-862"
+                ]
+              }
+            },
+            {
+              "id": "java/IntentForwarding",
+              "name": "IntentForwarding",
+              "shortDescription": {
+                "text": "Android Intent Forwarding"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nAn exported Android component that obtains a user-provided Intent and uses it to launch another component can be exploited to obtain access to private, unexported components of the same app or to launch other apps' components on behalf of the victim app.\n\nExample:\n\n```\noverride fun onNewIntent(myIntent: Intent?) {\n    super.onNewIntent(myIntent)\n\n    val extras: Bundle? = myIntent?.getExtras()\n    if (extras != null) {\n        val cliIntent: Intent? = extras.getParcelable(\"client_intent\")\n        startActivity(cliIntent)\n    }\n}\n```\n\n\n## Remediation\n\nDo not export components that start other components from a user-provided Intent. They can be made private by setting the `android:exported` property to `false` in the app's Android Manifest. If this is not possible, restrict either which apps can send Intents to the affected component, or which components can be started from it.\n\n## References\n\n* [Google - Remediation for Intent Redirection Vulnerability](https://support.google.com/faqs/answer/9267555?hl=en)\n* [OWASP - Intents](https://mobile-security.gitbook.io/mobile-security-testing-guide/android-testing-guide/0x05a-platform-overview#intents)\n* [Android - The android:exported attribute](https://developer.android.com/guide/topics/manifest/activity-element#exported)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/loganj/foursquared/commit/fbe6027ec4069b358b22d778b81874d13d4dc9a4?diff=split#diff-4a0b81e7b01838f1527175a0640a8de4L35",
+                    "lines": [
+                      {
+                        "line": " * @author Joe LaPenna (joe@joelapenna.com)",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class PreferenceActivity extends android.preference.PreferenceActivity implements",
+                        "lineNumber": 34,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        OnSharedPreferenceChangeListener {",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    static final String TAG = \"PreferenceActivity\";",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 97,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public boolean onOptionsItemSelected(MenuItem item) {",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    switch (item.getItemId()) {",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "         case MENU_CLEAR:",
+                        "lineNumber": 102,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "         Foursquared.getFoursquare().setCredentials(null, null);",
+                        "lineNumber": 106,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "         Foursquared.getFoursquare().setOAuthToken(null, null);",
+                        "lineNumber": 107,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        // Lame-o hack to force update all the preference views.",
+                        "lineNumber": 108,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        startActivity(new Intent(this, MainActivity.class));",
+                        "lineNumber": 101,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        finish();",
+                        "lineNumber": 109,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        startActivity(getIntent());",
+                        "lineNumber": 110,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LineageOS/android_packages_apps_Dialer/commit/d3f1c959270bfdd3df5253550f90aaf30b4b948c?diff=split#diff-300f07d310998e7e5178f75553421ca3L144",
+                    "lines": [
+                      {
+                        "line": " * <p>TODO(calderwoodra): Deprecate this class when we launch NewmainActivityPeer.",
+                        "lineNumber": 141,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 142,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class OldMainActivityPeer implements MainActivityPeer, FragmentUtilListener {",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  private static final String KEY_SAVED_LANGUAGE_CODE = \"saved_language_code\";",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 604,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 606,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void onActivityResult(int requestCode, int resultCode, Intent data) {",
+                        "lineNumber": 607,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  LogUtil.i(",
+                        "lineNumber": 608,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    R.string.view_conversation,",
+                        "lineNumber": 639,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    v ->",
+                        "lineNumber": 640,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        activity.startActivity(",
+                        "lineNumber": 641,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            IntentProvider.getSendSmsIntentProvider(number).getIntent(activity)))",
+                        "lineNumber": 642,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "            IntentProvider.getSendSmsIntentProvider(number).getClickIntent(activity)))",
+                        "lineNumber": 642,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": ".setActionTextColor(",
+                        "lineNumber": 643,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ContextCompat.getColor(activity, R.color.dialer_snackbar_action_text_color))",
+                        "lineNumber": 644,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/muzei/muzei/commit/e529acb16a0f5eafcdefa1446aa32caab003f5f6?diff=split#diff-dfb63e6aa74ab420c83cd7bd177249b4L31",
+                    "lines": [
+                      {
+                        "line": "import com.google.firebase.analytics.FirebaseAnalytics;",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public class PhotoSetAsTargetActivity extends Activity {",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 31,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    protected void onCreate(Bundle savedInstanceState) {",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        super.onCreate(savedInstanceState);",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 37,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Uri photoUri = getIntent().getData();",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Select the gallery source",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// Add and publish the chosen photo",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "ContentValues values = new ContentValues();",
+                        "lineNumber": 50,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "values.put(GalleryContract.ChosenPhotos.COLUMN_NAME_URI, photoUri.toString());",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "getContentResolver().insert(GalleryContract.ChosenPhotos.CONTENT_URI, values);",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "Uri uri = getContentResolver().insert(GalleryContract.ChosenPhotos.CONTENT_URI, values);",
+                        "lineNumber": 52,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "startService(new Intent(this, GalleryArtSource.class)",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .setAction(GalleryArtSource.ACTION_PUBLISH_NEXT_GALLERY_ITEM)",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .putExtra(GalleryArtSource.EXTRA_FORCE_URI, photoUri));",
+                        "lineNumber": 55,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        .putExtra(GalleryArtSource.EXTRA_FORCE_URI, uri));",
+                        "lineNumber": 55,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "// Launch main activity",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "* Light and dark theme support",
+                  "all activity for support multiple language should be extend it.",
+                  "Updated \"new episodes list\" layout"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 105,
+                "cwe": [
+                  "CWE-940"
+                ]
+              }
+            },
+            {
+              "id": "java/PT",
+              "name": "PT",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/Sqli",
+              "name": "Sqli",
+              "shortDescription": {
+                "text": "SQL Injection"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nIn an SQL injection attack, the user can submit an SQL query directly to the database, gaining access without providing appropriate credentials. Attackers can then view, export, modify, and delete confidential information; change passwords and other authentication information; and possibly gain access to other systems within the network. This is one of the most commonly exploited categories of vulnerability, but can largely be avoided through good coding practices.\n\n### Best practices for prevention\n* Avoid passing user-entered parameters directly to the SQL server.\n* Avoid using string concatenation to build SQL queries from user-entered parameters.\n* When coding, define SQL code first, then pass in parameters. Use prepared statements with parameterized queries. Examples include `SqlCommand()` in .NET and `bindParam()` in PHP.\n* Use strong typing for all parameters so unexpected user data will be rejected.\n* Where direct user input cannot be avoided for performance reasons, validate input against a very strict allowlist of permitted characters, avoiding special characters such as `? & / < > ; - ' \" \\` and spaces. Use a vendor-supplied escaping routine if possible.\n* Develop your application in an environment and/or using libraries that provide protection against SQL injection.\n* Harden your entire environment around a least-privilege model, ideally with isolated accounts with privileges only for particular tasks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/jeffdcamp/dbtools-android/commit/2643c30c302955a03233847c154350e424cca1d9?diff=split#diff-e2f0ab1619799e644c57ba98ebe6f39aL474",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 471,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public int delete(@Nonnull SQLiteDatabase db, @Nullable String where, @Nullable String[] whereArgs) {",
+                        "lineNumber": 473,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public int delete(@Nonnull DatabaseWrapper db, @Nullable String where, @Nullable String[] whereArgs) {",
+                        "lineNumber": 412,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    checkDB(db);",
+                        "lineNumber": 474,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int rowsAffected = 0;",
+                        "lineNumber": 475,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "for (int tryCount = 0; tryCount < MAX_TRY_COUNT && !success; tryCount++) {",
+                        "lineNumber": 479,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 480,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        rowsAffected = db.delete(getTableName(), where, whereArgs);",
+                        "lineNumber": 481,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        postDeleteEvent(db, getTableName(), rowsAffected);",
+                        "lineNumber": 482,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        success = true;",
+                        "lineNumber": 483,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/keycloak/keycloak/commit/c8c86d2badb5ed97f9fbfe2c98e190c5a73cdb66?diff=split#diff-df89d441bd8b2c3dd63c28b12e23245dL47",
+                    "lines": [
+                      {
+                        "line": "@Inject",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private EntityManager entityManager;",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Context",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Path(\"{id}\")",
+                        "lineNumber": 99,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Produces(\"application/json\")",
+                        "lineNumber": 100,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Response findById(@PathParam(\"id\") String id) {",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    List result = this.entityManager.createQuery(\"from Album where id = \" + id).getResultList();",
+                        "lineNumber": 102,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    List result = this.entityManager.createQuery(\"from Album where id = \" + Long.valueOf(id)).getResultList();",
+                        "lineNumber": 102,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (result.isEmpty()) {",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/nuls-io/nuls/commit/7ff6aaf43ba54ec5cce6d03f7243e5a941fb3e4a?diff=split#diff-0444fba3b07c567a52ceed78978dc18bR532",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 536,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " * @return",
+                        "lineNumber": 529,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 530,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "@Deprecated",
+                        "lineNumber": 531,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public static Result delete(String area, String key) {",
+                        "lineNumber": 538,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!baseCheckArea(area)) {",
+                        "lineNumber": 539,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return new Result(true, \"KV_AREA_NOT_EXISTS\");",
+                        "lineNumber": 540,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 541,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (StringUtils.isBlank(key)) {",
+                        "lineNumber": 542,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return Result.getFailed(KernelErrorCode.NULL_PARAMETER);",
+                        "lineNumber": 543,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 544,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 545,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        DB db = AREAS.get(area);",
+                        "lineNumber": 546,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        db.delete(bytes(key));",
+                        "lineNumber": 547,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return Result.getSuccess();",
+                        "lineNumber": 548,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } catch (Exception e) {",
+                        "lineNumber": 549,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "- Support hive user impersonation on hive tables page",
+                  "* Moves converter pattern to Java 11",
+                  "Add query logging."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 197,
+                "cwe": [
+                  "CWE-89"
+                ]
+              }
+            },
+            {
+              "id": "java/UsageOfUnencryptedSocket",
+              "name": "UsageOfUnencryptedSocket",
+              "shortDescription": {
+                "text": "Cleartext Transmission of Sensitive Information"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nThis weakness occurs when software transmits sensitive information, such as passwords or credit card numbers, in unencrypted form. This information may then be intercepted by threat actors using sniffer tools or interception techniques such as man-in-the-middle (MITM) attacks (often involving social engineering). Attackers can then use information gleaned to perform a variety of actions, depending on the information type. Possible actions include gaining unauthorized access, impersonating a user, moving laterally within the organization's network, or retrieving and potentially modifying files. This weakness is almost completely avoidable through intelligent architecture and design.\n\n### Best practices for prevention\n* Build web applications around a security mindset and the awareness that sniffers may be present at any time.\n* Ensure that all sensitive data transmission uses reliable encryption.\n* Implement security measures so that sensitive results are never returned in plain text.\n* Implement multiple-factor authentication methods to validate remote instances.\n* Use SSL not only at logon but throughout communications.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/ME1312/SubServers-2/commit/9a219a7d0fd259870a94d1f875f3cbb3c942ec1e?diff=split#diff-4a76c605749ad18708be15720e8fac67L57",
+                    "lines": [
+                      {
+                        "line": "public SubDataClient(SubPlugin plugin, InetAddress address, int port, Encryption encryption) throws IOException {",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (Util.isNull(plugin, address, port)) throw new NullPointerException();",
+                        "lineNumber": 59,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket = new Socket(address, port);",
+                        "lineNumber": 56,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    socket = new NamedContainer<>(false, new Socket(address, port));",
+                        "lineNumber": 60,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    this.plugin = plugin;",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    this.writer = new PrintWriter(socket.getOutputStream(), true);",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    this.writer = new PrintWriter(socket.get().getOutputStream(), true);",
+                        "lineNumber": 62,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    this.encryption = encryption;",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    this.queue = new LinkedList<NamedContainer<String, PacketOut>>();",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dddpaul/android-SimpleNetCat/commit/3235f85ae26fa31e1e36739c608668e15c53a04c?diff=split#diff-6689eedf89cc41d9c93933ea7ff5ebf4L62",
+                    "lines": [
+                      {
+                        "line": "    int port = Integer.parseInt( params[2] );",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Log.d( CLASS_NAME, String.format( \"Connecting to %s:%d\", host, port ) );",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket = new Socket( host, port );",
+                        "lineNumber": 61,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    result.object = new Socket( host, port );",
+                        "lineNumber": 65,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    break;",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "case RECEIVE:",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 110,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    BufferedReader reader = new BufferedReader( new InputStreamReader( input ) );",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    PrintWriter writer = new PrintWriter( socket.getOutputStream() );",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    transferStreams( reader, writer );",
+                        "lineNumber": 113,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 114,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/rancher/cattle/commit/b06df6f37fdfe906b7804fbba41d2c02d472f8ab?diff=split#diff-125505ce5e24cbf259a0267dd1d3af77L314",
+                    "lines": [
+                      {
+                        "line": "String[] parts = master.getConfig().getAdvertiseAddress().split(\":\");",
+                        "lineNumber": 311,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try (",
+                        "lineNumber": 312,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Socket socket = new Socket(parts[0], Integer.parseInt(parts[1]));",
+                        "lineNumber": 313,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    OutputStream os = socket.getOutputStream();",
+                        "lineNumber": 314,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Socket socket = new Socket();",
+                        "lineNumber": 313,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": ") {",
+                        "lineNumber": 315,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    socket.connect(new InetSocketAddress(parts[0], Integer.parseInt(parts[1])), 5000);",
+                        "lineNumber": 315,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    log.info(\"Connection test to master\");",
+                        "lineNumber": 316,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " } catch (IOException e) {",
+                        "lineNumber": 317,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Use thread local sockets for everything except IDLE and STATUS.",
+                  "- Adding a test that a locator can shut itself down\nwith SSL.",
+                  "Added support for SSL secured Manager connections"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 108,
+                "cwe": [
+                  "CWE-319"
+                ]
+              }
+            },
+            {
+              "id": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+              "name": "SetBroadcastPermissionsOnRegisterArg3Null",
+              "shortDescription": {
+                "text": "Improper Handling of Insufficient Permissions or Privileges"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nCall to `registerReceiver` has the receiverPermission argument set to Null. As such, no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.\n\n## References\n* [Android Developer Guide](https://developer.android.com/guide/topics/manifest/receiver-element)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/StepicOrg/stepik-android/commit/13b0eb0fd862d4f063f570b5c8b1a7997c3d80c0?diff=split#diff-2b844c0828eae550330e093c7245d7e7L51",
+                    "lines": [
+                      {
+                        "line": "DownloadManager mSystemDownloadManager;",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "UserPreferences mUserPrefs;",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Context mContext;",
+                        "lineNumber": 50,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Bus mBus;",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "IVideoResolver mResolver;",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "DbOperationsCachedVideo mDb;",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private BroadcastReceiver mDownloadReceiver;",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private HashMap<Long, Long> mDmIdToVideoId;",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "mDownloadReceiver = new BroadcastReceiver() {",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    @Override",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 75,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        long referenceId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        if (mDmIdToVideoId.keySet().contains(referenceId)) {",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 92,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "};",
+                        "lineNumber": 93,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    handlerThread.start();",
+                        "lineNumber": 87,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Looper looper = handlerThread.getLooper();",
+                        "lineNumber": 88,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Handler handler = new Handler(looper);",
+                        "lineNumber": 89,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    context.registerReceiver(mDownloadReceiver, filter, null, handler);",
+                        "lineNumber": 90,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    context.registerReceiver(mDownloadReceiver, filter);",
+                        "lineNumber": 94,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/shakalaca/BeautyClockLiveWallpaper/commit/547f09929ed9e89172e69ea066b361f400188f13?diff=split#diff-8648f0234242534920f4540001a407c1L151",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 154,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private class FetchNextBeautyPictureTask extends AsyncTask<Void, Void, Integer> {",
+                        "lineNumber": 156,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 158,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 528,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private final BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {",
+                        "lineNumber": 530,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 531,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 532,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Log.w(TAG, \"onReceive\");",
+                        "lineNumber": 533,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      \tif (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {",
+                        "lineNumber": 534,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "filter.addAction(Intent.ACTION_SCREEN_ON);",
+                        "lineNumber": 615,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "filter.addAction(Intent.ACTION_SCREEN_OFF);",
+                        "lineNumber": 616,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "this.registerReceiver(mBroadcastReceiver, filter, null, null);",
+                        "lineNumber": 608,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "this.registerReceiver(mBroadcastReceiver, filter);",
+                        "lineNumber": 617,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "// get connection manager for checking network status",
+                        "lineNumber": 619,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 629,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void onStart(Intent intent, int startId) {",
+                        "lineNumber": 630,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Log.w(TAG, \"onStart\");",
+                        "lineNumber": 631,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  onStartCommand(intent, 0, startId);",
+                        "lineNumber": 632,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/projectbuendia/client/commit/8ea065dd36bbbb53de0bcec12f2a192a0ba282ab?diff=split#diff-07af77c5d48bb52bc5243516cfa0fd93L70",
+                    "lines": [
+                      {
+                        "line": "mScheduler = scheduler;",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    receiverThread.start();",
+                        "lineNumber": 67,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    App.getInstance().getApplicationContext()",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        .registerReceiver(new StatusReceiver(),",
+                        "lineNumber": 69,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "            new IntentFilter(STATUS_ACTION), null, new Handler(receiverThread.getLooper())",
+                        "lineNumber": 70,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        );",
+                        "lineNumber": 71,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        .registerReceiver(new StatusReceiver(), new IntentFilter(STATUS_ACTION));",
+                        "lineNumber": 71,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 134,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Bundle buildOptions(Phase... phases) {",
+                        "lineNumber": 136,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return BuendiaSyncEngine.buildOptions(phases);",
+                        "lineNumber": 137,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 138,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "/** Listens for sync status events that are broadcast by the BuendiaSyncEngine. */",
+                        "lineNumber": 140,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static class StatusReceiver extends BroadcastReceiver {",
+                        "lineNumber": 138,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public class StatusReceiver extends BroadcastReceiver {",
+                        "lineNumber": 141,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    @Override public void onReceive(Context context, Intent intent) {",
+                        "lineNumber": 142,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        SyncStatus status = (SyncStatus) intent.getSerializableExtra(SYNC_STATUS);",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "resolving merge conflicts and merge from release/1.11.0",
+                  "Fix alarm not firing in memory-pressure situations",
+                  "yes I hate this"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 32,
+                "cwe": [
+                  "CWE-280"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "The SHA-1 hash (used in java.security.MessageDigest.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[SHA-1](0)",
+              "[java.security.MessageDigest.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/uicc/UiccCarrierPrivilegeRules.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 533,
+                  "endLine": 533,
+                  "startColumn": 32,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "04856fdb1edf1c2fc9d4d444ac1ec10044d8902c71ab001598e9fd122075de67",
+            "1": "19689298.1cbd3ff4.09fc77c2.f95d027d.98fa8f9f.c80ba7fb.0a026dee.54d46e25.7ca2a0c1.7f413d6f.89593948.f95d027d.f0e1baa5.c80ba7fb.c1f8cc87.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/uicc/UiccCarrierPrivilegeRules.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 252,
+                            "endLine": 252,
+                            "startColumn": 50,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/uicc/UiccCarrierPrivilegeRules.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 533,
+                            "endLine": 533,
+                            "startColumn": 32,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/SubscriptionInfoUpdater.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 103,
+                  "endLine": 103,
+                  "startColumn": 9,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "042b4758c8dc9002f0013153e3a3ccc12c9fe1a932601141072a554e4be6350a",
+            "1": "bbed23de.eebd28b2.33fa5dbe.e22980a8.435fad45.7fda7c5e.9ebdfc6f.54d46e25.fd3b417b.bece668b.33fa5dbe.e22980a8.435fad45.7fda7c5e.9ebdfc6f.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/SubscriptionInfoUpdater.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 103,
+                            "endLine": 103,
+                            "startColumn": 9,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/SubscriptionInfoUpdater.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 105,
+                  "endLine": 105,
+                  "startColumn": 9,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ed8af4d9da3965d089a1dfc505394c3233a58e2a876fccd2b80aa6f1fd43e823",
+            "1": "bbed23de.33bd7f18.33fa5dbe.e22980a8.435fad45.7fda7c5e.7c2bdb22.54d46e25.fd3b417b.bece668b.33fa5dbe.e22980a8.435fad45.7fda7c5e.7c2bdb22.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/SubscriptionInfoUpdater.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 105,
+                            "endLine": 105,
+                            "startColumn": 9,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/gsm/GsmServiceStateTracker.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 258,
+                  "endLine": 258,
+                  "startColumn": 9,
+                  "endColumn": 44
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "15bc085e41c00c3e58689017040eca2bc4c872da74a2bf6b5d4360d0560b13bc",
+            "1": "70eb157e.33bd7f18.34d94eb1.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25.fd3b417b.bece668b.34d94eb1.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/gsm/GsmServiceStateTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 258,
+                            "endLine": 258,
+                            "startColumn": 9,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/gsm/GsmServiceStateTracker.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 264,
+                  "endLine": 264,
+                  "startColumn": 9,
+                  "endColumn": 33
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b7f767211758fd10dd136c5e5798e6c08ef30a056d7933bfb5eb0e61b5ce63c4",
+            "1": "fd3b417b.33bd7f18.34d94eb1.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25.fd3b417b.bece668b.34d94eb1.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/gsm/GsmServiceStateTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 264,
+                            "endLine": 264,
+                            "startColumn": 9,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcTracker.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1938,
+                  "endLine": 1938,
+                  "startColumn": 21,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "90fd71f0b8449b5b575ba3d9eb32ae5a65eb6c6afa08124cc0218bc8486125bd",
+            "1": "9cf53582.33bd7f18.3c8f7349.e22980a8.68fa0c17.7fda7c5e.ab3240cb.54d46e25.fd3b417b.33bd7f18.3c8f7349.de031890.8b2d3351.7fda7c5e.97d83d44.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 1938,
+                            "endLine": 1938,
+                            "startColumn": 21,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/PhoneBase.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 438,
+                  "endLine": 438,
+                  "startColumn": 9,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a14f82c8fa5906e649da4be15ade1ee1af3ed058f21e0bddf524f94f1492db2e",
+            "1": "72d339ef.bece668b.8c55f08f.98047d31.245a1bd9.41c8b8b8.328c41bf.1dec9987.d6deb347.bece668b.a224ef38.58a2ef45.245a1bd9.0d476878.82bd02e5.5d5e7d72"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/PhoneBase.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 438,
+                            "endLine": 438,
+                            "startColumn": 9,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/SmsStorageMonitor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 89,
+                  "endLine": 89,
+                  "startColumn": 9,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "82db1f993108250bfd638d6cc2731bb805ccddba56b59e320e1e42e446b2ad86",
+            "1": "72d339ef.bece668b.2bb969dd.98047d31.245a1bd9.41c8b8b8.ab3240cb.1dec9987.72d339ef.bece668b.2bb969dd.98047d31.245a1bd9.41c8b8b8.ab3240cb.1dec9987"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/SmsStorageMonitor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 9,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 504,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/PhoneStateIntentReceiver.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 154,
+                  "endLine": 154,
+                  "startColumn": 9,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "52334bb55475237e4287821f240aa642b53028e90f556562655072e267ece26f",
+            "1": "fd3b417b.33bd7f18.33fa5dbe.de031890.f86fa2a1.7fda7c5e.3dd49bba.54d46e25.fd3b417b.33bd7f18.33fa5dbe.de031890.2cb34737.7fda7c5e.3dd49bba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/PhoneStateIntentReceiver.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 154,
+                            "endLine": 154,
+                            "startColumn": 9,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterNoArg3",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} misses the broadcastPermission argument - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/imsphone/ImsPhoneCallTracker.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 192,
+                  "endLine": 192,
+                  "startColumn": 9,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "53e2f782fe8e4b755719dc496b4b983c08ebff00579fa8bee74b1e9c4d89f3ee",
+            "1": "7480c51d.33bd7f18.3c8f7349.e22980a8.ddf385f0.7fda7c5e.7a6bff05.54d46e25.7480c51d.bece668b.3c8f7349.e22980a8.245a1bd9.7fda7c5e.7a6bff05.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/imsphone/ImsPhoneCallTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 192,
+                            "endLine": 192,
+                            "startColumn": 9,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetReceiverPermissionsForIntentsNoArg2",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Call to sendBroadcast misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "markdown": "Call to {0} misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "arguments": [
+              "[sendBroadcast](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/SubscriptionController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 208,
+                  "endLine": 208,
+                  "startColumn": 9,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4edbe57e841daf4cf15128be33cb296236320dd0f36d366887ae0d040c8858c8",
+            "1": "2b21a8d8.2d356019.33fa5dbe.e22980a8.f86fa2a1.7fda7c5e.a5454be4.54d46e25.2d33d165.31d45a9b.33fa5dbe.e22980a8.f86fa2a1.7fda7c5e.a5454be4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/SubscriptionController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 208,
+                            "endLine": 208,
+                            "startColumn": 9,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetReceiverPermissionsForIntentsNoArg2",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Call to sendBroadcast misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "markdown": "Call to {0} misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "arguments": [
+              "[sendBroadcast](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/SubscriptionController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 210,
+                  "endLine": 210,
+                  "startColumn": 9,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "0b5ae828286c2d541b9e3383bd775b628ddf648e1a832b8785532f7af6c19dcd",
+            "1": "2b21a8d8.46b316e0.33fa5dbe.e22980a8.75e62e70.7fda7c5e.a5454be4.54d46e25.2d33d165.46b316e0.33fa5dbe.e22980a8.75e62e70.7fda7c5e.a5454be4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/SubscriptionController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 210,
+                            "endLine": 210,
+                            "startColumn": 9,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetReceiverPermissionsForIntentsNoArg2",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Call to sendBroadcast misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "markdown": "Call to {0} misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "arguments": [
+              "[sendBroadcast](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/ProxyController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 515,
+                  "endLine": 515,
+                  "startColumn": 9,
+                  "endColumn": 31
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d53cfa774cd74b0da8f8e83cf6e99c3cedad38ecca501a50f8e12254222b2677",
+            "1": "fd3b417b.3dfdbb2f.33fa5dbe.de031890.8afeca56.7fda7c5e.a5454be4.54d46e25.fd3b417b.3dfdbb2f.33fa5dbe.de031890.8afeca56.7fda7c5e.a5454be4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/ProxyController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 515,
+                            "endLine": 515,
+                            "startColumn": 9,
+                            "endColumn": 31
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetReceiverPermissionsForIntentsNoArg2",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Call to sendBroadcast misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "markdown": "Call to {0} misses the receiverPermission argument - no permissions will be checked for the receiver, which allows a malicious application to intercept this broadcast.",
+            "arguments": [
+              "[sendBroadcast](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/uicc/IsimUiccRecords.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 127,
+                  "endLine": 127,
+                  "startColumn": 25,
+                  "endColumn": 47
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3311934669939fcd7465b62c79ea54e1647a3c61e80e5d7f24b616972f05942e",
+            "1": "9cf53582.c8c8034f.5b7021ab.e22980a8.f86fa2a1.b3a19f7e.a5454be4.54d46e25.991e1752.c8c8034f.5b7021ab.e22980a8.f86fa2a1.90a77e09.a5454be4.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/uicc/IsimUiccRecords.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 127,
+                            "endLine": 127,
+                            "startColumn": 25,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 352,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/IntentForwarding",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "(BETA suggestion) Unsanitized input from a third-party Intent flows into sendOrderedBroadcastAsUser where it is used to send an Intent to a Broadcast Receiver. If the Android component where the Intent was acquired is exported and the Intent originates from a third-party application, this could provide the third-party application access to unauthorised functionality or data within the target application.",
+            "markdown": "(BETA suggestion) Unsanitized input from a third-party Intent {0} into {1} where it is used to send an Intent to a Broadcast Receiver. If the Android component where the Intent was acquired is exported and the Intent originates from a third-party application, this could provide the third-party application access to unauthorised functionality or data within the target application.",
+            "arguments": [
+              "[flows](0),(1)",
+              "[sendOrderedBroadcastAsUser](2)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 846,
+                  "endLine": 846,
+                  "startColumn": 17,
+                  "endColumn": 52
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "98beee3667f6e56a96f490e73ebbd485ecaa63c89b3706d5f97a4ad27742e461",
+            "1": "4a936e2c.4943cca9.5b7021ab.87cd6f48.45e5e0c8.235d7d45.a5454be4.54d46e25.8791ce88.2106f966.3c8f7349.de031890.f0e1baa5.625ef176.de561594.039fc9eb"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 818,
+                            "endLine": 818,
+                            "startColumn": 9,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 846,
+                            "endLine": 846,
+                            "startColumn": 53,
+                            "endColumn": 59
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 846,
+                            "endLine": 846,
+                            "startColumn": 17,
+                            "endColumn": 52
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/IntentForwarding",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "(BETA suggestion) Unsanitized input from a third-party Intent flows into sendOrderedBroadcastAsUser where it is used to send an Intent to a Broadcast Receiver. If the Android component where the Intent was acquired is exported and the Intent originates from a third-party application, this could provide the third-party application access to unauthorised functionality or data within the target application.",
+            "markdown": "(BETA suggestion) Unsanitized input from a third-party Intent {0} into {1} where it is used to send an Intent to a Broadcast Receiver. If the Android component where the Intent was acquired is exported and the Intent originates from a third-party application, this could provide the third-party application access to unauthorised functionality or data within the target application.",
+            "arguments": [
+              "[flows](0),(1)",
+              "[sendOrderedBroadcastAsUser](2)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 851,
+                  "endLine": 851,
+                  "startColumn": 13,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d0f24b83f89dded50372fdb860e2071033396b9bb78aebe37cafe966b8f2aa0b",
+            "1": "4a936e2c.4943cca9.5b7021ab.1863b37f.0bf67f0b.235d7d45.a5454be4.54d46e25.8791ce88.2106f966.3c8f7349.de031890.f0e1baa5.625ef176.de561594.039fc9eb"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 818,
+                            "endLine": 818,
+                            "startColumn": 9,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 851,
+                            "endLine": 851,
+                            "startColumn": 49,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/InboundSmsHandler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 851,
+                            "endLine": 851,
+                            "startColumn": 13,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the database flows into java.io.RandomAccessFile, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to write to arbitrary files.",
+            "arguments": [
+              "[the database](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7)",
+              "[java.io.RandomAccessFile](8)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 909,
+                  "endLine": 909,
+                  "startColumn": 17,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a103ed2e9ce790c65204f57becc55da6ced9dd94cfc2de19831987f525a5638a",
+            "1": "19689298.83dbfe52.33fa5dbe.5f9c4f6c.c41fd899.7fda7c5e.df7e59ba.54d46e25.bbbd7c96.9edd76c9.5eb9010a.9998adc9.c41fd899.e4d7b7ac.52414d6b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 28,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 28,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 21,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 966,
+                            "endLine": 966,
+                            "startColumn": 16,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 810,
+                            "endLine": 810,
+                            "startColumn": 29,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 909,
+                            "endLine": 909,
+                            "startColumn": 41,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/DrmConvertSession.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 124,
+                            "endLine": 124,
+                            "startColumn": 22,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/DrmConvertSession.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "endLine": 137,
+                            "startColumn": 62,
+                            "endColumn": 70
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/DrmConvertSession.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "endLine": 137,
+                            "startColumn": 45,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from Intent.getStringExtra() flows into java.io.FileInputStream, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "markdown": "Unsanitized input from Intent.getStringExtra() {0} into {1}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "arguments": [
+              "[flows](0),(1),(2),(3),(4)",
+              "[java.io.FileInputStream](5)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 137,
+                  "endLine": 137,
+                  "startColumn": 22,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b59d86c9c90b555d6e84cdbd59c344460aea40e2e30b9672f499198102f01747",
+            "1": "19689298.69fff9ea.33fa5dbe.7a864934.f07456d8.7fda7c5e.55c6f621.54d46e25.fd3b417b.fd2055ee.5d3b0445.e22980a8.544c7208.625ef176.52d5e8a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 72,
+                            "endLine": 72,
+                            "startColumn": 59,
+                            "endColumn": 80
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 117,
+                            "endLine": 117,
+                            "startColumn": 68,
+                            "endColumn": 83
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "endLine": 134,
+                            "startColumn": 32,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "endLine": 134,
+                            "startColumn": 14,
+                            "endColumn": 69
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "endLine": 137,
+                            "startColumn": 38,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "endLine": 137,
+                            "startColumn": 22,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 801,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/Sqli",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "Unsanitized input from the database flows into update, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in an SQL query. This may result in an SQL Injection vulnerability.",
+            "arguments": [
+              "[the database](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12)",
+              "[update](13)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 915,
+                  "endLine": 915,
+                  "startColumn": 17,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7a70c40521666fc1621aeba54edec0176c12bd48d6a177a985d5897f290f5da3",
+            "1": "8cd2d86e.277c621c.59a0b750.cbbe8f9c.5ef953d3.9bc334b2.7c2bdb22.54d46e25.8cd2d86e.9edd76c9.59a0b750.9998adc9.c41fd899.e4d7b7ac.52414d6b.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 28,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 28,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 953,
+                            "endLine": 953,
+                            "startColumn": 21,
+                            "endColumn": 55
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 966,
+                            "endLine": 966,
+                            "startColumn": 16,
+                            "endColumn": 20
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 810,
+                            "endLine": 810,
+                            "startColumn": 29,
+                            "endColumn": 67
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 913,
+                            "endLine": 913,
+                            "startColumn": 30,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 913,
+                            "endLine": 913,
+                            "startColumn": 22,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 916,
+                            "endLine": 916,
+                            "startColumn": 81,
+                            "endColumn": 82
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 916,
+                            "endLine": 916,
+                            "startColumn": 81,
+                            "endColumn": 90
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 916,
+                            "endLine": 916,
+                            "startColumn": 48,
+                            "endColumn": 92
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/pdu/PduPersister.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 916,
+                            "endLine": 916,
+                            "startColumn": 38,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/SqliteWrapper.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 88,
+                            "endLine": 88,
+                            "startColumn": 73,
+                            "endColumn": 80
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/SqliteWrapper.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 36,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/google/android/mms/util/SqliteWrapper.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 20,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/UsageOfUnencryptedSocket",
+          "ruleIndex": 6,
+          "level": "warning",
+          "message": {
+            "text": "Reading from an unencrypted socket is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "markdown": "{0} an unencrypted {1} is insecure - a man-in-the-middle attacker can tamper the messages. Consider using SSL sockets.",
+            "arguments": [
+              "[Reading from](0)",
+              "[socket](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/RIL.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 542,
+                  "endLine": 542,
+                  "startColumn": 38,
+                  "endColumn": 60
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c8e28a33640091327d81edf9b5fc111a1d2e6af9db1f01db6ea478ca9838b993",
+            "1": "19689298.c7f8fca7.bb993ef0.857e8281.c41fd899.7fda7c5e.6d74a0f2.54d46e25.19689298.c7f8fca7.bb993ef0.2e52e520.c41fd899.7fda7c5e.6d74a0f2.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/RIL.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 542,
+                            "endLine": 542,
+                            "startColumn": 38,
+                            "endColumn": 60
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/RIL.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 542,
+                            "endLine": 542,
+                            "startColumn": 38,
+                            "endColumn": 60
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 551,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcTracker.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 173,
+                  "endLine": 173,
+                  "startColumn": 13,
+                  "endColumn": 49
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9b0521af1ac1c9aa12fc9f156f8acd4cef18028071b2b3e4026592974aa23c5d",
+            "1": "2711ed52.33bd7f18.3c8f7349.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25.fd3b417b.33bd7f18.3c8f7349.de031890.b4c8f216.28d7d35e.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 173,
+                            "endLine": 173,
+                            "startColumn": 13,
+                            "endColumn": 49
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTracker.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 173,
+                            "endLine": 173,
+                            "startColumn": 75,
+                            "endColumn": 79
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcTrackerBase.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 606,
+                  "endLine": 606,
+                  "startColumn": 9,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "52cb8f4ec0bb784b98f0f90a1769da499cf01484b7956915b93d58a3ecf0ff58",
+            "1": "23d4d52d.323b834b.3c8f7349.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25.23d4d52d.74633c09.de1f683a.de031890.b4c8f216.ce109560.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTrackerBase.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 606,
+                            "endLine": 606,
+                            "startColumn": 9,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTrackerBase.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 606,
+                            "endLine": 606,
+                            "startColumn": 71,
+                            "endColumn": 75
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 96,
+                  "endLine": 96,
+                  "startColumn": 13,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b8c3205f81752009f5fe23116853984bb2371b4c9a8aa6b87cbe0d0bbc19e796",
+            "1": "9cf53582.33bd7f18.33fa5dbe.e22980a8.b4c8f216.7fda7c5e.381e7863.54d46e25.fd3b417b.33bd7f18.33fa5dbe.de031890.b4c8f216.625ef176.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 96,
+                            "endLine": 96,
+                            "startColumn": 13,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/TelephonyTester.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 96,
+                            "endLine": 96,
+                            "startColumn": 74,
+                            "endColumn": 78
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 553,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterDeactivateAll.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 81,
+                  "endLine": 81,
+                  "startColumn": 13,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "e26defd7b03fb4a03e90d1ada59ed9cdfb399920753f689be63f160ff8d4c205",
+            "1": "d1a6ae6a.33bd7f18.33fa5dbe.e22980a8.b4c8f216.7fda7c5e.381e7863.54d46e25.d1a6ae6a.33bd7f18.33fa5dbe.de031890.b4c8f216.625ef176.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterDeactivateAll.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "endLine": 81,
+                            "startColumn": 13,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterDeactivateAll.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 81,
+                            "endLine": 81,
+                            "startColumn": 74,
+                            "endColumn": 78
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 503,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcRetryAlarmController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 89,
+                  "endLine": 89,
+                  "startColumn": 9,
+                  "endColumn": 45
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d4510f514bc013c0e448c8555751ac2da507929450dfc4173ba00356424cbbaa",
+            "1": "70eb157e.33bd7f18.3c8f7349.e22980a8.b4c8f216.41c8b8b8.381e7863.54d46e25.fd3b417b.33bd7f18.3c8f7349.de031890.b4c8f216.ce109560.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcRetryAlarmController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 9,
+                            "endColumn": 45
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcRetryAlarmController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 89,
+                            "endLine": 89,
+                            "startColumn": 71,
+                            "endColumn": 75
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 503,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetBroadcastPermissionsOnRegisterArg3Null",
+          "ruleIndex": 7,
+          "level": "warning",
+          "message": {
+            "text": "Call to registerReceiver has the receiverPermission argument set to null - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "markdown": "Call to {0} has the receiverPermission argument set to {1} - no permissions will be checked for the broadcaster, which allows a malicious application to communicate with the broadcast receiver.",
+            "arguments": [
+              "[registerReceiver](0)",
+              "[null](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterFailBringUpAll.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 91,
+                  "endLine": 91,
+                  "startColumn": 13,
+                  "endColumn": 48
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2b60a31f5f558e0eb1ee19e060f993537114803d81ad57c91f67431a2c992db1",
+            "1": "9cf53582.33bd7f18.33fa5dbe.e22980a8.b4c8f216.7fda7c5e.381e7863.54d46e25.fd3b417b.33bd7f18.3b87119f.de031890.b4c8f216.625ef176.381e7863.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterFailBringUpAll.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 13,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/java/com/android/internal/telephony/dataconnection/DcTesterFailBringUpAll.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 74,
+                            "endColumn": 78
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 503,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 290,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "XML"
+          }
+        ]
+      }
+    }
+  ]
+}

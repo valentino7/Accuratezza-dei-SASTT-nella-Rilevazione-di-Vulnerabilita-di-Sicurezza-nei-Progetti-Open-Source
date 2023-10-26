@@ -1,0 +1,506 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/RegexInjection",
+              "name": "RegexInjection",
+              "shortDescription": {
+                "text": "Regular expression injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIf user input is used to build a regular expression it is possible to alter the original regex leading to unexpected results. For example, an attacker can cause the execution of a regex that takes a long time to execute, resulting in performance degradation and possibly Denial of Service (DoS).\nRegular expressions are incredibly powerful, but they aren't very intuitive and can ultimately end up making it easy for attackers to take your site down.\n\n### Best practices for prevention\n* Avoid building dynamic regular expression that rely on user data\n* Escape regular expressions that are built from user data\n\n\n## References\n* [Regular expression Denial of Service](https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS)",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/BaseXdb/basex/commit/a1ecd592e626169ab12033042a337627a7e35769?diff=split#diff-476207d3b0e544152c1f0d08af6943e5L33",
+                    "lines": [
+                      {
+                        "line": "public Uri baseUri() throws QueryException {",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final HTTPContext http = http();",
+                        "lineNumber": 31,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  return Uri.uri(http.req.getRequestURI().replaceAll(http.req.getPathInfo(), \"\"));",
+                        "lineNumber": 32,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  return Uri.uri(http.req.getRequestURI().replace(http.req.getPathInfo(), \"\"));",
+                        "lineNumber": 32,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LineageOS/android_packages_apps_Dialer/commit/f976beb4b56b9b0b1ea17c6466d79b16a4eb7477?diff=split#diff-2fcec35c6424c22dba00f5f15a205e43L73",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void setHighlight(ContactListItemView view, Cursor cursor) {",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  view.clearHighlightSequences();",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (mNameMatcher.matches(cursor.getString(PhoneQuery.DISPLAY_NAME))) {",
+                        "lineNumber": 75,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (mNameMatcher.matches(mContext, cursor.getString(PhoneQuery.DISPLAY_NAME))) {",
+                        "lineNumber": 76,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    final ArrayList<SmartDialMatchPosition> nameMatches = mNameMatcher.getMatchPositions();",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    for (SmartDialMatchPosition match : nameMatches) {",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/magicgis/pig/commit/73379652c9496c4ae9611ee29a5f4954909a6dbf?diff=split#diff-10891392bd362181c06fadc7105fadb0L26",
+                    "lines": [
+                      {
+                        "line": "private MenuService menuService;",
+                        "lineNumber": 23,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private AntPathMatcher antPathMatcher = new AntPathMatcher();",
+                        "lineNumber": 25,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 27,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "Set<String> urls = menuService.findMenuByRole(grantedAuthorityList.get(0).getAuthority());",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "for (String url : urls) {",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (antPathMatcher.match(request.getRequestURI(), url)) {",
+                        "lineNumber": 40,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    if (antPathMatcher.match(url,request.getRequestURI())) {",
+                        "lineNumber": 40,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        hasPermission = true;",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        break;",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Custom timemap support using CDX server with full cdx server query support",
+                  "close connection on count query fail or throws exception"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 108,
+                "cwe": [
+                  "CWE-400",
+                  "CWE-730"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/RegexInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into java.util.regex.Pattern.compile, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[java.util.regex.Pattern.compile](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 85,
+                  "endLine": 85,
+                  "startColumn": 13,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "d72117a8eeed419d98ada4173388f4da3386d85792cdc7ba03a0db53da0f52ee",
+            "1": "19689298.7797192f.fdbc0497.82e76c82.408180c7.a13babf9.e722589b.54d46e25.19689298.7f413d6f.fdbc0497.e22980a8.408180c7.a13babf9.bae646e8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 83,
+                            "endLine": 83,
+                            "startColumn": 30,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 83,
+                            "endLine": 83,
+                            "startColumn": 30,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 83,
+                            "endLine": 83,
+                            "startColumn": 22,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 85,
+                            "endLine": 85,
+                            "startColumn": 29,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/PermissionsForOwnerReportBuilder.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 85,
+                            "endLine": 85,
+                            "startColumn": 13,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 769,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/RegexInjection",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into java.util.regex.Pattern.compile, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used in a regular expression. This may result in a Regular Expression Injection vulnerability which could lead to a Denial of Service attack.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4)",
+              "[java.util.regex.Pattern.compile](5)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 91,
+                  "endLine": 91,
+                  "startColumn": 38,
+                  "endColumn": 53
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2dfcc5496ae4f7e7c7f7ab7021c559f5b295df05637f02ad74a9362ca2d09c62",
+            "1": "95472e09.c8c8034f.33fa5dbe.e22980a8.f6d438cc.7fda7c5e.3f6a65a8.54d46e25.95472e09.7f413d6f.fdbc0497.e22980a8.f0e1baa5.7fda7c5e.3f6a65a8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 86,
+                            "endLine": 86,
+                            "startColumn": 41,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 86,
+                            "endLine": 86,
+                            "startColumn": 41,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 86,
+                            "endLine": 86,
+                            "startColumn": 28,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 86,
+                            "endLine": 86,
+                            "startColumn": 13,
+                            "endColumn": 76
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 54,
+                            "endColumn": 66
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jenkinsci/plugins/ownership/integrations/securityinspector/OwnerFilter.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 91,
+                            "endLine": 91,
+                            "startColumn": 38,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 769,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 2,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 101,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 23,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

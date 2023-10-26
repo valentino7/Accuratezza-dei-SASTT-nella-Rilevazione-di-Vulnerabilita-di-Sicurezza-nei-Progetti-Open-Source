@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671855769544" analysisTimestamp="1672073889287" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-399/bad_c9cd1e52_ConnectionManagerImpl.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-399/bad_c9cd1e52_ConnectionManagerImpl.java</SrcDir>
+  </Project>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="processPropertyValueChange" signature="(Ljava/lang/String;Ljava/util/Map;)V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="656" end="662" startBytecode="0" endBytecode="155" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="656" end="656" startBytecode="33" endBytecode="33" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <String value="org/slf4j/Logger.debug(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.processPropertyValueChange(Ljava/lang/String;Ljava/util/Map;)V parameter 1" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.processPropertyValueChange(Ljava/lang/String;Ljava/util/Map;)V parameter 0" role="Unknown source"/>
+    <String value="not detected" role="Method usage"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="637" end="637" startBytecode="3" endBytecode="3" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="642" end="642" startBytecode="3" endBytecode="3" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="647" end="647" startBytecode="3" endBytecode="3" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="652" end="652" startBytecode="3" endBytecode="3" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="656" end="656" startBytecode="23" endBytecode="23" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="startListeners" signature="()V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="294" end="337" startBytecode="0" endBytecode="413" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="319" end="319" startBytecode="110" endBytecode="110" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <String value="org/slf4j/Logger.debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionListener.getType()Lorg/jivesoftware/openfire/spi/ConnectionType;" role="Unknown source"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="startListeners" signature="()V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="294" end="337" startBytecode="0" endBytecode="413" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="323" end="323" startBytecode="145" endBytecode="145" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <String value="org/slf4j/Logger.error(Ljava/lang/String;Ljava/lang/Throwable;)V" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentSslListener" role="Unknown source"/>
+    <String value="java/util/Iterator.next()Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.getListeners()Ljava/util/Set;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverSslListener" role="Unknown source"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="314" end="314" startBytecode="61" endBytecode="61" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="323" end="323" startBytecode="137" endBytecode="137" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="414" end="414" startBytecode="13" endBytecode="13" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="415" end="415" startBytecode="24" endBytecode="24" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="416" end="416" startBytecode="35" endBytecode="35" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="417" end="417" startBytecode="43" endBytecode="43" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="418" end="418" startBytecode="54" endBytecode="54" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="419" end="419" startBytecode="65" endBytecode="65" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="420" end="420" startBytecode="76" endBytecode="76" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="421" end="421" startBytecode="87" endBytecode="87" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="422" end="422" startBytecode="101" endBytecode="101" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="423" end="423" startBytecode="112" endBytecode="112" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="424" end="424" startBytecode="123" endBytecode="123" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="425" end="425" startBytecode="134" endBytecode="134" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="stopListeners" signature="()V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="344" end="366" startBytecode="0" endBytecode="263" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="353" end="353" startBytecode="61" endBytecode="61" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <String value="org/slf4j/Logger.error(Ljava/lang/String;Ljava/lang/Throwable;)V" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentSslListener" role="Unknown source"/>
+    <String value="java/util/Iterator.next()Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.getListeners()Ljava/util/Set;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverSslListener" role="Unknown source"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="344" end="344" startBytecode="1" endBytecode="1" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="353" end="353" startBytecode="54" endBytecode="54" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="414" end="414" startBytecode="13" endBytecode="13" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="415" end="415" startBytecode="24" endBytecode="24" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="416" end="416" startBytecode="35" endBytecode="35" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="417" end="417" startBytecode="43" endBytecode="43" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="418" end="418" startBytecode="54" endBytecode="54" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="419" end="419" startBytecode="65" endBytecode="65" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="420" end="420" startBytecode="76" endBytecode="76" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="421" end="421" startBytecode="87" endBytecode="87" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="422" end="422" startBytecode="101" endBytecode="101" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="423" end="423" startBytecode="112" endBytecode="112" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="424" end="424" startBytecode="123" endBytecode="123" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="425" end="425" startBytecode="134" endBytecode="134" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="storeContentChanged" signature="(Lorg/jivesoftware/openfire/keystore/CertificateStore;)V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="616" end="630" startBytecode="0" endBytecode="243" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="626" end="626" startBytecode="97" endBytecode="97" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <String value="org/slf4j/Logger.error(Ljava/lang/String;Ljava/lang/Throwable;)V" role="Sink method"/>
+    <String value="1" role="Sink parameter"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.componentSslListener" role="Unknown source"/>
+    <String value="java/util/Iterator.next()Ljava/lang/Object;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.webAdminSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.boshSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.clientListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.getListeners()Ljava/util/Set;" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.connectionManagerSslListener" role="Unknown source"/>
+    <String value="org/jivesoftware/openfire/spi/ConnectionManagerImpl.serverSslListener" role="Unknown source"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="414" end="414" startBytecode="13" endBytecode="13" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="415" end="415" startBytecode="24" endBytecode="24" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="416" end="416" startBytecode="35" endBytecode="35" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="417" end="417" startBytecode="43" endBytecode="43" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="418" end="418" startBytecode="54" endBytecode="54" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="419" end="419" startBytecode="65" endBytecode="65" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="420" end="420" startBytecode="76" endBytecode="76" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="421" end="421" startBytecode="87" endBytecode="87" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="422" end="422" startBytecode="101" endBytecode="101" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="423" end="423" startBytecode="112" endBytecode="112" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="424" end="424" startBytecode="123" endBytecode="123" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="425" end="425" startBytecode="134" endBytecode="134" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="616" end="616" startBytecode="1" endBytecode="1" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="626" end="626" startBytecode="89" endBytecode="89" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+  </BugInstance>
+  <BugInstance type="IMPROPER_UNICODE" priority="3" rank="15" abbrev="SECUNI" category="SECURITY">
+    <Class classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="48" end="694" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Class>
+    <Method classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" name="processPropertyValueChange" signature="(Ljava/lang/String;Ljava/util/Map;)V" isStatic="false">
+      <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="656" end="662" startBytecode="0" endBytecode="155" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+    </Method>
+    <SourceLine classname="org.jivesoftware.openfire.spi.ConnectionManagerImpl" start="659" end="659" startBytecode="41" endBytecode="41" sourcefile="ConnectionManagerImpl.java" sourcepath="org/jivesoftware/openfire/spi/ConnectionManagerImpl.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="23">
+    <MissingClass>org.apache.mina.core.buffer.IoBuffer</MissingClass>
+    <MissingClass>org.apache.mina.core.buffer.SimpleBufferAllocator</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.Connection$TLSPolicy</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.ConnectionManager</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.XMPPServer</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.container.BasicModule</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.container.PluginManager</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.http.HttpBindManager</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.keystore.CertificateStore</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.keystore.CertificateStoreConfiguration</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.keystore.CertificateStoreManager</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.net.SocketSendingTracker</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.session.ConnectionSettings$Client</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.session.ConnectionSettings$Component</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.spi.ConnectionListener</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.spi.ConnectionManagerImpl$1</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.spi.ConnectionManagerImpl$2</MissingClass>
+    <MissingClass>org.jivesoftware.openfire.spi.ConnectionType</MissingClass>
+    <MissingClass>org.jivesoftware.util.CertificateManager</MissingClass>
+    <MissingClass>org.jivesoftware.util.JiveGlobals</MissingClass>
+    <MissingClass>org.jivesoftware.util.SystemProperty</MissingClass>
+    <MissingClass>org.slf4j.Logger</MissingClass>
+    <MissingClass>org.slf4j.LoggerFactory</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 05:22:49 +0100" total_classes="1" referenced_classes="17" total_bugs="6" total_size="259" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="17.82" clock_seconds="4.94" peak_mbytes="139.42" alloc_mbytes="768.00" gc_seconds="0.07" priority_3="6">
+    <PackageStats package="org.jivesoftware.openfire.spi" total_bugs="6" total_types="1" total_size="259" priority_3="6">
+      <ClassStats class="org.jivesoftware.openfire.spi.ConnectionManagerImpl" sourceFile="ConnectionManagerImpl.java" interface="false" size="259" bugs="6" priority_3="6"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="598" invocations="416" avgMicrosecondsPerInvocation="1437" maxMicrosecondsPerInvocation="10058" standardDeviationMicrosecondsPerInvocation="591"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="442" invocations="413" avgMicrosecondsPerInvocation="1071" maxMicrosecondsPerInvocation="60259" standardDeviationMicrosecondsPerInvocation="3476"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="186" invocations="25" avgMicrosecondsPerInvocation="7466" maxMicrosecondsPerInvocation="180880" standardDeviationMicrosecondsPerInvocation="35398"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="92" invocations="17" avgMicrosecondsPerInvocation="5419" maxMicrosecondsPerInvocation="25197" standardDeviationMicrosecondsPerInvocation="6938"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="87" invocations="25" avgMicrosecondsPerInvocation="3483" maxMicrosecondsPerInvocation="24638" standardDeviationMicrosecondsPerInvocation="5642"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="77" invocations="25" avgMicrosecondsPerInvocation="3113" maxMicrosecondsPerInvocation="23727" standardDeviationMicrosecondsPerInvocation="5279"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="76" invocations="72" avgMicrosecondsPerInvocation="1061" maxMicrosecondsPerInvocation="45810" standardDeviationMicrosecondsPerInvocation="5490"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="73" invocations="28" avgMicrosecondsPerInvocation="2627" maxMicrosecondsPerInvocation="23408" standardDeviationMicrosecondsPerInvocation="4582"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="66" invocations="85" avgMicrosecondsPerInvocation="778" maxMicrosecondsPerInvocation="9680" standardDeviationMicrosecondsPerInvocation="1176"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="62" invocations="25" avgMicrosecondsPerInvocation="2507" maxMicrosecondsPerInvocation="19591" standardDeviationMicrosecondsPerInvocation="4132"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="60" invocations="25" avgMicrosecondsPerInvocation="2414" maxMicrosecondsPerInvocation="12532" standardDeviationMicrosecondsPerInvocation="3272"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="59" invocations="25" avgMicrosecondsPerInvocation="2377" maxMicrosecondsPerInvocation="30581" standardDeviationMicrosecondsPerInvocation="5955"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="58" invocations="17" avgMicrosecondsPerInvocation="3455" maxMicrosecondsPerInvocation="13037" standardDeviationMicrosecondsPerInvocation="4087"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="55" invocations="25" avgMicrosecondsPerInvocation="2203" maxMicrosecondsPerInvocation="29250" standardDeviationMicrosecondsPerInvocation="5647"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="55" invocations="17" avgMicrosecondsPerInvocation="3236" maxMicrosecondsPerInvocation="33104" standardDeviationMicrosecondsPerInvocation="7605"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="49" invocations="1" avgMicrosecondsPerInvocation="49104" maxMicrosecondsPerInvocation="49104" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="44" invocations="346" avgMicrosecondsPerInvocation="128" maxMicrosecondsPerInvocation="2353" standardDeviationMicrosecondsPerInvocation="233"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="33" invocations="17" avgMicrosecondsPerInvocation="1944" maxMicrosecondsPerInvocation="20930" standardDeviationMicrosecondsPerInvocation="4830"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="32" invocations="17" avgMicrosecondsPerInvocation="1915" maxMicrosecondsPerInvocation="10085" standardDeviationMicrosecondsPerInvocation="2611"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="27" invocations="1" avgMicrosecondsPerInvocation="27635" maxMicrosecondsPerInvocation="27635" standardDeviationMicrosecondsPerInvocation="0"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="26" invocations="712" avgMicrosecondsPerInvocation="36" maxMicrosecondsPerInvocation="7117" standardDeviationMicrosecondsPerInvocation="320"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="24" invocations="17" avgMicrosecondsPerInvocation="1443" maxMicrosecondsPerInvocation="5548" standardDeviationMicrosecondsPerInvocation="1772"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="22" invocations="17" avgMicrosecondsPerInvocation="1296" maxMicrosecondsPerInvocation="7356" standardDeviationMicrosecondsPerInvocation="1906"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="19" invocations="24" avgMicrosecondsPerInvocation="811" maxMicrosecondsPerInvocation="4045" standardDeviationMicrosecondsPerInvocation="1185"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

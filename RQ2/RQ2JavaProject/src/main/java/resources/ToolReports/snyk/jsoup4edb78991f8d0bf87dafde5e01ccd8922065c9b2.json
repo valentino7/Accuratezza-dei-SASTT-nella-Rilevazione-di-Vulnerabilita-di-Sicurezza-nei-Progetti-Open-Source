@@ -1,0 +1,3855 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/TooPermissiveHostnameVerifier",
+              "name": "TooPermissiveHostnameVerifier",
+              "shortDescription": {
+                "text": "Improper Certificate Validation"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCommunication through encrypted TLS/SSL protocols can only take place when the server bears a valid certificate associating that server with a valid public-key identity issued by a third-party authority. If certificate validation is cursory or incomplete, this creates a weakness whereby an attacker can spoof one or more certificate details (e.g., expiration date), gaining unauthorized access to confidential data and privileged actions.\n\n### Best practices for prevention\n* Verify all aspects of any certificate provided, particularly chain of trust (issuing authority), host identity, and expiration.\n* Limit the validity period for certificates.\n* Avoid using self-signed certificates, certificate pinning, and wildcard certificates, as these all add levels of convenience but can also lead to loss of control over site/app security.\n* Disable older and insecure protocols (for example, SSL 2.0/3.0, MD5, and 3DES).\n* Ensure that all team members are familiar with current best practices and approaches, such as current TLS protocols.\n* Implement automated and manual testing using current tools and techniques designed to reveal this and related SSL weaknesses (for example, web application scanners).",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/bonigarcia/webdrivermanager/commit/90dedd67b71d59a9a15a9b11892be3cd0a1c2e4e?diff=split#diff-5fd27e182b6d09ea7f5901daab03449dL114",
+                    "lines": [
+                      {
+                        "line": "HostnameVerifier allHostsValid = new HostnameVerifier() {",
+                        "lineNumber": 112,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 113,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 114,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        return hostname.equalsIgnoreCase(session.getPeerHost());",
+                        "lineNumber": 114,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 115,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "};",
+                        "lineNumber": 116,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/wso2-attic/product-private-paas/commit/a42df7abce437ad996fad1097a74ca7bf83da0c0?diff=split#diff-7568b7c1be7d23d9a86361e05ff18598L47",
+                    "lines": [
+                      {
+                        "line": "if (Constants.ENABLE_SELF_CERTIFIED) {",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        @Override public boolean verify(String s, SSLSession sslSession) {",
+                        "lineNumber": 46,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "            return true;",
+                        "lineNumber": 47,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 40,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "            return hostname.equals(System.getProperty(Constants.HOSTNAME));",
+                        "lineNumber": 41,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        }",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    });",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Liberuman/SimpleProject/commit/f7afc6477bcfb9b2f78f742df913aa9a86d251d1?diff=split#diff-68c680467370001ab531d6c88431244dL95",
+                    "lines": [
+                      {
+                        "line": ".sslSocketFactory(sslContext.getSocketFactory(), trustManager)",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": ".hostnameVerifier(new HostnameVerifier() {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 96,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public boolean verify(String hostname, SSLSession session) {",
+                        "lineNumber": 97,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return true;",
+                        "lineNumber": 96,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    if (!TextUtils.isEmpty(baseUrl) && baseUrl.contains(hostname)) {",
+                        "lineNumber": 98,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      return true;",
+                        "lineNumber": 99,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 100,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 104,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "})",
+                        "lineNumber": 105,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "merged the rest client and test cases according to the new folder structure",
+                  "workaround for SSL verify",
+                  "Smarter hostname verifier"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 53,
+                "cwe": [
+                  "CWE-295"
+                ]
+              }
+            },
+            {
+              "id": "java/OR/test",
+              "name": "OR/test",
+              "shortDescription": {
+                "text": "Open Redirect"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\nAn open redirect attack takes place when a web application redirects the user to an unauthorized and untrusted site. In general, URL redirection refers to the ability of a website or application to redirect users to another site. This is often a benign and useful feature. For example, if a resource has moved to a new location, URL redirection can transfer the user to that location rather than displaying an error message.\nHowever, this ability can be exploited through social engineering, tricking the user into believing they are accessing one site when, in reality, they are being redirected to a dangerous site, such as a phishing site. Once there, the user may be further tricked into entering credentials or personally identifiable information (PII), believing they are still within the original, trusted domain. Attackers can then use these credentials to gain unauthorized access or leverage the user's PII for sale or ransom.\n\n### Best practices for prevention\n* When developing a site or web app, consider implementing a disclaimer page to remind users that they are leaving a secure site.\n* Adopt a zero-trust approach in which all input is treated with suspicion.\n* Validate all input against deny-lists to ensure it does not contain code to redirect the user. This method is good but inherently incomplete.\n* Be aware of all sources of untrusted input being sent to the server that could be used to redirect the user, such as cookies, URL components, filenames, query results, request headers, and more.\n* In particular, be aware of potential API calls that could send input indirectly to redirect the user.\n* To protect end users, use a firewall to block known malicious sites, train users to recognize basic signs of a phishing attack, and ensure that all network endpoints are patched with the most current updates.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/otto-de/edison-microservice/commit/582f8f65f5d2e68cb7ef9f0b0eba3b5cb5f81a6c?diff=split#diff-ead42f7bee67adeefd20bf881888897aL77",
+                    "lines": [
+                      {
+                        "line": "        value = \"/internal/jobs/{jobType}\",",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        method = POST)",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void startJob(final @PathVariable String jobType,",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                     final HttpServletRequest request,",
+                        "lineNumber": 80,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                     final HttpServletResponse response) throws IOException {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final URI jobUri = jobService.startAsyncJob(jobType);",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    response.setHeader(\"Location\", jobUri.toString());",
+                        "lineNumber": 79,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    response.setHeader(\"Location\", baseUriOf(request) + jobUri.toString());",
+                        "lineNumber": 83,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.setStatus(SC_NO_CONTENT);",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/sakaiproject/sakai/commit/aada0a93ad5b4b1a2d0c34d6578c0ebc5fc405e2?diff=split#diff-4b464d789bfe9e583cdf0c6057df69ddL60",
+                    "lines": [
+                      {
+                        "line": "public void handleAccess(HttpServletRequest req, HttpServletResponse res, EntityReference ref) {    ",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public void handleAccess(EntityView view, HttpServletRequest req, HttpServletResponse res) {",
+                        "lineNumber": 66,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  M_log.debug(\"handleAccess()\");",
+                        "lineNumber": 67,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  Map<String, String> props = entityBroker.getProperties(req.getPathInfo());",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String target = props.get(\"url\");",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  M_log.debug(\"handleAccess() -> \" + target);",
+                        "lineNumber": 70,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  String user = props.get(\"security.user\");",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String site_function = props.get(\"security.site.function\");",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try {",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  setNoCacheHeaders(res);",
+                        "lineNumber": 118,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  res.sendRedirect(target);\t\t  ",
+                        "lineNumber": 119,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "catch (IOException e) {",
+                        "lineNumber": 121,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/ModeShape/modeshape/commit/f6eb1262d007c5c892e99ae96b2acb8c8c30e6c9?diff=split#diff-0a0e48d9f362849b7a26faca19b1b35bL42",
+                    "lines": [
+                      {
+                        "line": "protected void processRequest( HttpServletRequest request,",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                               HttpServletResponse response ) throws ServletException, IOException {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String url = request.getRequestURI();",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String servletPath = request.getServletPath();",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    request.getSession(true).setAttribute(\"initial.uri\", url);",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.debug(\"Store requested uri \" + url);",
+                        "lineNumber": 47,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    ",
+                        "lineNumber": 48,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String dest = url.substring(0, url.indexOf(servletPath));",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    response.sendRedirect(dest);",
+                        "lineNumber": 50,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Get better control of redirection after logging in.",
+                  "Add Bitbucket Server pull requests ()"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 85,
+                "cwe": [
+                  "CWE-601"
+                ]
+              }
+            },
+            {
+              "id": "java/TLS",
+              "name": "TLS",
+              "shortDescription": {
+                "text": "Inadequate Encryption Strength"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nImplementing encryption for the transmission and storage of sensitive information is essential. But encryption standards are constantly changing since attackers have more and more powerful resources at their disposal-along with more sophisticated attack algorithms. This means that encryption is only useful if it meets current standards appropriate for the type of data being transmitted or stored.\nWhen organizations use weakly encoded passwords or weak hashes (especially when they also utilize single-factor authentication, which places too much emphasis on passwords), attackers can potentially gain unauthorized access through a brute-force attack.\n\n### Best practices for prevention\n* Understand best practices of contemporary encryption algorithms and techniques.\n* Avoid encryption algorithms and techniques that are widely known to be outdated (for example, DES).\n* Implement multi-factor authentication to minimize reliance on a single factor, such as a password, that is too susceptible to brute-force attacks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cloudstack/commit/91f7012b015249d9d74dace8874ee8f38b54bfc2?diff=split#diff-5604a4e589dc38cc8d80f2f4020c2a23L53",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 52,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 69,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/MissionCriticalCloud/cosmic/commit/3a4004a34b42e30a49a1c48f1ff57e5f3ca26913?diff=split#diff-49bfef0c8d16a2c34d787d4fca65e2e7L35",
+                    "lines": [
+                      {
+                        "line": "public static SSLContext getSSLContext() throws NoSuchAlgorithmException {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1\");",
+                        "lineNumber": 34,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/hypercube1024/firefly/commit/e2e4d7810c9bb202bbef3d5022e3b13447f102dd?diff=split#diff-fb5cd0d3953731ed2bdb241178f1ce05L32",
+                    "lines": [
+                      {
+                        "line": "  tmf.init(ks);",
+                        "lineNumber": 29,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLS\");",
+                        "lineNumber": 31,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  sslContext = SSLContext.getInstance(\"TLSv1.2\");",
+                        "lineNumber": 31,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "return sslContext;",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Configuring TSL/SSL now supports property placeholders.",
+                  "support for TLS config tweaks",
+                  "Temporarily peg SSL version to TLSv1.2."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 78,
+                "cwe": [
+                  "CWE-326"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetHttpOnly/test",
+              "name": "WebCookieMissesCallToSetHttpOnly/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie Without 'HttpOnly' Flag"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nThe `HttpOnly` flag is a simple parameter used when setting a user cookie to ensure that cookies with sensitive session data are visible only to the browser rather than to scripts. This helps prevent cross-site scripting attacks, in which an attacker gains access to sensitive session information and uses this information to trick legitimate web-based applications into disclosing confidential information or accepting illegitimate requests. When developers use the `HttpOnly` flag to set the cookie, they ensure that this sensitive session information is not readable or writable except by the browser (read) and server (write), respectively. While most modern browsers and versions now recognize the HttpOnly flag, some legacy and custom browsers still do not.\n\n### Best practices for prevention\n* Include the `HttpOnly` attribute in the response header when setting cookies on the client side. Be aware, however, that this crucial step provides only partial remediation.\n* Integrate client-side scripts to determine browser version; require browser compatibility or avoid transmitting sensitive data to browsers that do not support `HttpOnly`.\n* Understand and evaluate risks of third-party components or plugins, which may expose cookies.\n* Educate developers in a zero-trust approach, understanding the risks and best practices to prevent cross-site scripting, such as sanitizing all user input for code and special characters.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/417511458/jbone/commit/af32abbc24e2e27aad90f60f96cb9de5d1794a6b?diff=split#diff-a896741011f3ab283be812e19dc1cdb1L167",
+                    "lines": [
+                      {
+                        "line": "@Bean",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public SimpleCookie getCookie(){",
+                        "lineNumber": 165,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    SimpleCookie cookie = new SimpleCookie();",
+                        "lineNumber": 166,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setName(\"jbone.session.id\");",
+                        "lineNumber": 167,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(false);",
+                        "lineNumber": 168,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 169,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 170,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/Dreampie/Resty/commit/2808658b3e7d46ebac839fa9620b84bc7eb38e55?diff=split#diff-6c1831bb7349c574c1ec5a92f5ca0072L60",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 64,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  Cookie c = new Cookie(cookie, value);",
+                        "lineNumber": 65,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setPath(\"/\");",
+                        "lineNumber": 66,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setMaxAge(expiration);",
+                        "lineNumber": 67,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  c.setHttpOnly(httpOnly);",
+                        "lineNumber": 68,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  response.addCookie(c);",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 70,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/igniterealtime/Openfire/commit/db32bf15648e53d810be358f6fe8bb914544dad9?diff=split#diff-ccf715fb4529c9f89d175d29aef63cf5L127",
+                    "lines": [
+                      {
+                        "line": "        path = \"/\";",
+                        "lineNumber": 124,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 125,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(name, value);",
+                        "lineNumber": 126,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(maxAge);",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setPath(path);",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(true);",
+                        "lineNumber": 129,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 131,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Implemented Cookie HttpOnly support."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 103,
+                "cwe": [
+                  "CWE-1004"
+                ]
+              }
+            },
+            {
+              "id": "java/TooPermissiveTrustManager",
+              "name": "TooPermissiveTrustManager",
+              "shortDescription": {
+                "text": "Improper Certificate Validation"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCommunication through encrypted TLS/SSL protocols can only take place when the server bears a valid certificate associating that server with a valid public-key identity issued by a third-party authority. If certificate validation is cursory or incomplete, this creates a weakness whereby an attacker can spoof one or more certificate details (e.g., expiration date), gaining unauthorized access to confidential data and privileged actions.\n\n### Best practices for prevention\n* Verify all aspects of any certificate provided, particularly chain of trust (issuing authority), host identity, and expiration.\n* Limit the validity period for certificates.\n* Avoid using self-signed certificates, certificate pinning, and wildcard certificates, as these all add levels of convenience but can also lead to loss of control over site/app security.\n* Disable older and insecure protocols (for example, SSL 2.0/3.0, MD5, and 3DES).\n* Ensure that all team members are familiar with current best practices and approaches, such as current TLS protocols.\n* Implement automated and manual testing using current tools and techniques designed to reveal this and related SSL weaknesses (for example, web application scanners).",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pentaho/pentaho-kettle/commit/5a4014d3e4e7307198635a1d9d1cbe7e868fb889?diff=split#diff-b711fa3a1339a77fb1b62ea5a608f827L143",
+                    "lines": [
+                      {
+                        "line": "  }",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  @Override",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  public X509Certificate[] getAcceptedIssuers() {",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return null;",
+                        "lineNumber": 144,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return new X509Certificate[0];",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "};",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/guardianproject/NetCipher/commit/3b971438ed74870685f404c43feae65fc413d703?diff=split#diff-6f4869070d4eee5c76931a7bf27ed055L179",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 181,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void checkClientTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {",
+                        "lineNumber": 183,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    //not yet implemented",
+                        "lineNumber": 179,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    ",
+                        "lineNumber": 184,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "\tdebug (\"WARNING: Client Cert Trust NOT YET IMPLEMENTED\");",
+                        "lineNumber": 185,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 186,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 671,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\tif (SHOW_DEBUG_OUTPUT)",
+                        "lineNumber": 672,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "\t\tLog.d(TAG, msg);",
+                        "lineNumber": 673,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 674,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/HtmlUnit/htmlunit/commit/2ab74fb459fa25764fa3c6f56d00cf076fadf69d?diff=split#diff-3070dfb96ed2fae966d731bf849982d1L125",
+                    "lines": [
+                      {
+                        "line": " * {@inheritDoc}",
+                        "lineNumber": 127,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 128,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void checkClientTrusted(final X509Certificate[] chain, final String authType) throws CertificateException {",
+                        "lineNumber": 129,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // Everyone is trusted!",
+                        "lineNumber": 130,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    acceptedIssuers_.addAll(Arrays.asList(chain));",
+                        "lineNumber": 131,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 132,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Finalize tests for HTTP libraries",
+                  "Relates elastic/elasticsearch",
+                  "* Allow possibility for pushing trust issue to user"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 54,
+                "cwe": [
+                  "CWE-295"
+                ]
+              }
+            },
+            {
+              "id": "java/HttpResponseSplitting/test",
+              "name": "HttpResponseSplitting/test",
+              "shortDescription": {
+                "text": "Improper Neutralization of CRLF Sequences in HTTP Headers"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nCRLF is an abbreviation for the terms \"carriage return\" and \"line feed.\" These two special characters are a legacy of old-fashioned printing terminals used in the early days of computing. However, today both are still often used as delimiters between data. When this weakness exists, CR and LF characters (represented respectively in code as `\\r` and `\\n`) are permitted to be present in HTTP headers, usually due to poor planning for data handling during development.\n\nCRLF sequences in HTTP headers are known as \"response splitting\" because these characters effectively split the response from the browser, causing the single line to be accepted as multiple lines by the server (for example, the single line First Line\\r\\nSecond Line would be accepted by the server as two lines of input).\n\nWhile response splitting in itself is not an attack, and can be completely harmless unless exploited, its presence could lead to an injection attack (known as CRLF injection) and a variety of unpredictable and potentially dangerous behavior. This weakness can be exploited in a number of ways, such as page hijacking or cross-user defacement, in which an attacker displays false site content and/or captures confidential information such as credentials. It can even lead to cross-site scripting attacks, in which attackers can cause malicious code to execute in the user's browser.\n\nFor example, the following code is vulnerable:\n\n```\nprotected void doGet(HttpServletRequest request, HttpServletResponse response) {\n  Cookie cookie = new Cookie(\"name\", request.getParameter(\"name\"));\n  response.addCookie(cookie);\n}\n```\n\nbecause the user may provide a name parameter with a value like `XYZ\\r\\nHTTP/1.1 200 OK\\nATTACKER CONTROLLED`. In this case, they will produce a second HTTP response:\n\n```\nHTTP/1.1 200 OK\nATTACKER CONTROLLED\n```\n\nA possible fix is to remove all non-alphanumerical characters:\n\n```\nprotected void doGet(HttpServletRequest request, HttpServletResponse response) {\n  String name = request.getParameter(\"name\")\n      .replaceAll(\"[^a-zA-Z ]\", \"\");\n  Cookie cookie = new Cookie(\"name\", name);\n  response.addCookie(cookie);\n}\n```\n\nIn this case, the attacker would be unable to produce a second HTTP response.\n\n\n### Best practices for prevention\n* Assume all input is potentially malicious. Define acceptable responses wherever possible, and if not possible, encode CR and LF characters to prevent header splitting.\n* Replace both `\\r` (carriage return) and `\\n` (line feed) with \"\" (empty string)-many platforms handle these characters interchangeably so the weakness may still exist if one of the two is permitted.\nFollow best practices and strip all other special characters (\", /, \\, ;, etc., as well as spaces) wherever possible.\nBe sure to sanitize special characters in both directions-from the browser to the server and also in data sent back to the browser.\nIdeally, adopt current development resources, such as languages and libraries, that block CR and LF injection in headers.\nBe vigilant with all input types that could potentially be tampered with or modified at the user end (intentionally or unintentionally), which could lead to injection attacks. These include GET, POST, cookies, and other HTTP headers.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/gzsll/TLint/commit/26407f9d7fc2fcc917cca4228addd34d7b7a0339?diff=split#diff-ee1b33b10d96e72dd93d67632f828d50L34",
+                    "lines": [
+                      {
+                        "line": "Request original = chain.request();",
+                        "lineNumber": 32,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (!TextUtils.isEmpty(mUserStorage.getCookie())) {",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Request request = original.newBuilder().addHeader(\"Cookie\", \"u=\" + mUserStorage.getCookie() + \";\").build();",
+                        "lineNumber": 33,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    Request request = original.newBuilder().addHeader(\"Cookie\", \"u=\" + URLEncoder.encode(mUserStorage.getCookie()) + \";\").build();",
+                        "lineNumber": 34,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return chain.proceed(request);",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/http-builder-ng/http-builder-ng/commit/d533d480a249d279d5d281c07304150e300ce4ce?diff=split#diff-6becea663e2a2b1de3ad29a739f25bb5L260",
+                    "lines": [
+                      {
+                        "line": "//technically cookies are headers, so add them here",
+                        "lineNumber": 258,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "List<Cookie> cookies = e.cookies(new ArrayList());",
+                        "lineNumber": 259,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "List<Cookie> cookies = cr.actualCookies(new ArrayList());",
+                        "lineNumber": 259,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "for(Cookie cookie : cookies) {",
+                        "lineNumber": 260,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookieStore.addCookie(cookie);",
+                        "lineNumber": 261,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 262,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/commons-vfs/commit/e07f9edd339973fb532ecfa88928884c75794957?diff=split#diff-c81d6f105c7fe7ff1f4734a6c1a3cbf6L344",
+                    "lines": [
+                      {
+                        "line": "    final FileSystemOptions fileSystemOptions) {",
+                        "lineNumber": 341,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final CookieStore cookieStore = new BasicCookieStore();",
+                        "lineNumber": 342,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "final Cookie[] cookies = builder.getCookies(fileSystemOptions);",
+                        "lineNumber": 343,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (cookies != null) {",
+                        "lineNumber": 345,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    for (Cookie cookie : cookies) {",
+                        "lineNumber": 346,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    for (final Cookie cookie : cookies) {",
+                        "lineNumber": 346,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        cookieStore.addCookie(cookie);",
+                        "lineNumber": 347,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 348,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 349,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support HTTP Range requests for resuming interrupted file downloads.",
+                  "* integration test server post response and logging",
+                  "Added usage of java Cookies and other changes"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 232,
+                "cwe": [
+                  "CWE-113"
+                ]
+              }
+            },
+            {
+              "id": "java/PT/test",
+              "name": "PT/test",
+              "shortDescription": {
+                "text": "Path Traversal"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "## Details\n\nA Directory Traversal attack (also known as path traversal) aims to access files and directories that are stored outside the intended folder. By manipulating files with \"dot-dot-slash (../)\" sequences and its variations, or by using absolute file paths, it may be possible to access arbitrary files and directories stored on file system, including application source code, configuration, and other critical system files.\n\nBeing able to access and manipulate an arbitrary path leads to vulnerabilities when a program is being run with privileges that the user providing the path should not have. A website with a path traversal vulnerability would allow users access to sensitive files on the server hosting it. CLI programs may also be vulnerable to path traversal if they are being ran with elevated privileges (such as with the setuid or setgid flags in Unix systems).\n\nDirectory Traversal vulnerabilities can be generally divided into two types:\n\n- **Information Disclosure**: Allows the attacker to gain information about the folder structure or read the contents of sensitive files on the system.\n\n`st` is a module for serving static files on web pages, and contains a [vulnerability of this type](https://snyk.io/vuln/npm:st:20140206). In our example, we will serve files from the `public` route.\n\nIf an attacker requests the following URL from our server, it will in turn leak the sensitive private key of the root user.\n\n```\ncurl http://localhost:8080/public/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/root/.ssh/id_rsa\n```\n**Note** `%2e` is the URL encoded version of `.` (dot).\n\n- **Writing arbitrary files**: Allows the attacker to create or replace existing files. This type of vulnerability is also known as `Zip-Slip`.\n\nOne way to achieve this is by using a malicious `zip` archive that holds path traversal filenames. When each filename in the zip archive gets concatenated to the target extraction folder, without validation, the final path ends up outside of the target folder. If an executable or a configuration file is overwritten with a file containing malicious code, the problem can turn into an arbitrary code execution issue quite easily.\n\nThe following is an example of a `zip` archive with one benign file and one malicious file. Extracting the malicious file will result in traversing out of the target folder, ending up in `/root/.ssh/` overwriting the `authorized_keys` file:\n\n```\n2018-04-15 22:04:29 .....           19           19  good.txt\n2018-04-15 22:04:42 .....           20           20  ../../../../../../root/.ssh/authorized_keys\n```",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/google/j2objc/commit/1b271d8b25c99a91547a19f16f71c048c3164156?diff=split#diff-33b6b27033cb88022415e8cd32b1807cL244",
+                    "lines": [
+                      {
+                        "line": " * Extract a ZipEntry to the specified directory.",
+                        "lineNumber": 241,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 242,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public File extractZipEntry(File dir, ZipFile zipFile, ZipEntry entry) throws IOException {",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File outputFile = new File(dir, entry.getName());",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  File parentFile = outputFile.getParentFile();",
+                        "lineNumber": 245,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!parentFile.isDirectory() && !parentFile.mkdirs()) {",
+                        "lineNumber": 246,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract file to \" + dir.getPath());",
+                        "lineNumber": 247,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  if (!outputFile.getCanonicalPath().startsWith(dir.getCanonicalPath() + File.separator)",
+                        "lineNumber": 246,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "      || (!parentFile.isDirectory() && !parentFile.mkdirs())) {",
+                        "lineNumber": 247,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(\"Could not extract \" + entry.getName() + \" to \" + dir.getPath());",
+                        "lineNumber": 248,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 249,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try (InputStream inputStream = zipFile.getInputStream(entry);",
+                        "lineNumber": 250,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      FileOutputStream outputStream = new FileOutputStream(outputFile)) {",
+                        "lineNumber": 251,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    byte[] buf = new byte[1024];",
+                        "lineNumber": 252,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    int n;",
+                        "lineNumber": 253,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/blackducksoftware/synopsys-detect/commit/36555b9322986e9560f241d05f2262c29a17663b?diff=split#diff-bc0b5be9b9918488d8fe1dc64584df62L48",
+                    "lines": [
+                      {
+                        "line": "Enumeration<? extends ZipEntry> entries = zipFile.entries();",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    ZipEntry entry = entries.nextElement();",
+                        "lineNumber": 47,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Path entryPath = destPath.resolve(entry.getName());",
+                        "lineNumber": 48,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!entryPath.normalize().startsWith(dest.toPath()))",
+                        "lineNumber": 49,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        throw new IOException(\"Zip entry contained path traversal\");",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    if (entry.isDirectory()) {",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath);",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    } else {",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Files.createDirectories(entryPath.getParent());",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        try (InputStream in = zipFile.getInputStream(entry)) {",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            try (OutputStream out = new FileOutputStream(entryPath.toFile())) {",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                IOUtils.copy(in, out);",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            }",
+                        "lineNumber": 58,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/azkaban/azkaban/commit/3b74a4127c9086cd525252edabc3621febab0428?diff=split#diff-c892cca6401b1e0be4cbca3261b47098L201",
+                    "lines": [
+                      {
+                        "line": "final Enumeration<?> entries = source.entries();",
+                        "lineNumber": 198,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "while (entries.hasMoreElements()) {",
+                        "lineNumber": 199,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final ZipEntry entry = (ZipEntry) entries.nextElement();",
+                        "lineNumber": 200,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final File newFile = new File(dest, entry.getName());",
+                        "lineNumber": 201,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  if (!newFile.getCanonicalPath().startsWith(dest.getCanonicalPath())) {",
+                        "lineNumber": 202,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    throw new IOException(",
+                        "lineNumber": 203,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        \"Extracting zip entry would have resulted in a file outside the specified destination\"",
+                        "lineNumber": 204,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "if (entry.isDirectory()) {",
+                        "lineNumber": 208,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.mkdirs();",
+                        "lineNumber": 209,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "} else {",
+                        "lineNumber": 210,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  newFile.getParentFile().mkdirs();",
+                        "lineNumber": 211,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  final InputStream src = source.getInputStream(entry);",
+                        "lineNumber": 212,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  try {",
+                        "lineNumber": 213,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final OutputStream output =",
+                        "lineNumber": 214,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        new BufferedOutputStream(new FileOutputStream(newFile));",
+                        "lineNumber": 215,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 216,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "      IOUtils.copy(src, output);",
+                        "lineNumber": 217,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Test changed key to file.",
+                  "* more code cleanup, some tests",
+                  "Add option --xcode for Xcode translation testing"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 948,
+                "cwe": [
+                  "CWE-23"
+                ]
+              }
+            },
+            {
+              "id": "java/Ssrf",
+              "name": "Ssrf",
+              "shortDescription": {
+                "text": "Server-Side Request Forgery (SSRF)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\nIn a server-side request forgery attack, a malicious user supplies a URL (an external URL or a network IP address such as 127.0.0.1) to the application's back end. The server then accesses the URL and shares its results, which may include sensitive information such as AWS metadata, internal configuration information, or database contents with the attacker. Because the request comes from the back end, it bypasses access controls, potentially exposing information the user does not have sufficient privileges to receive. The attacker can then exploit this information to gain access, modify the web application, or demand a ransom payment.\n\n### Best practices for prevention\n* Blacklists are problematic and attackers have numerous ways to bypass them; ideally, use a whitelist of all permitted domains and IP addresses.\n* Use authentication even within your own network to prevent exploitation of server-side requests.\n* Implement zero trust and sanitize and validate all URL and header data returning to the server from the user. Strip invalid or suspect characters, then inspect to be certain it contains a valid and expected value.\n* Ideally, avoid sending server requests based on user-provided data altogether.\n* Ensure that you are not sending raw response bodies from the server directly to the client. Only deliver expected responses.\n* Disable suspect and exploitable URL schemas. Common culprits include obscure and little-used schemas such as `file://`, `dict://`, `ftp://`, and `gopher://`.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/httpcache4j/httpcache4j/commit/81f9db7ad6e7e18227b8b5de717c580da15ed7ae?diff=split#diff-99799647d646d0fff0a1b4b465dd5de0L49",
+                    "lines": [
+                      {
+                        "line": "public HTTPResponse resolve(HTTPRequest request) throws IOException {",
+                        "lineNumber": 47,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    req = getAuthenticator().preparePreemptiveAuthentication(req);",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 51,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "URL url = request.getRequestURI().toURL();",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "URLConnection openConnection = url.openConnection();",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (openConnection instanceof HttpURLConnection) {",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpURLConnection connection = (HttpURLConnection) openConnection;",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LearnLib/alex/commit/cb22c1446dfa65bb405f50baa79ba77866c4c706?diff=split#diff-1723d8f955b61289dccacfea34e7737dL58",
+                    "lines": [
+                      {
+                        "line": "@GET",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Produces(MediaType.TEXT_HTML)",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Response doGetProxy(@QueryParam(\"url\") String url, @HeaderParam(\"Cookie\") String cookies) {",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    LOGGER.trace(\"IFrameProxyResource.doGetProxy(\" + url + \", \" + cookies + \").\");",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 60,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Connection connection = Jsoup.connect(url);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = parseAndProcessCookies(connection, cookies);",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = connection.method(Connection.Method.GET);",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dotnet/aspnetcore/commit/e089cfc11cb86d6da786d82ee92aeef1c903f0f5?diff=split#diff-f69c44e82917810b055809e4c47c7e7dL84",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest) {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 99,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest, String bodyContent) {",
+                        "lineNumber": 100,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    Request.Builder requestBuilder = new Request.Builder().url(httpRequest.getUrl());",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    switch (httpRequest.getMethod()) {",
+                        "lineNumber": 103,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support Java 8 class files",
+                  "- app requests work in tests",
+                  "* Add logic to catch unranked hiscores and display them properly."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 233,
+                "cwe": [
+                  "CWE-918"
+                ]
+              }
+            },
+            {
+              "id": "java/WebCookieMissesCallToSetSecure/test",
+              "name": "WebCookieMissesCallToSetSecure/test",
+              "shortDescription": {
+                "text": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute"
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nIn a session hijacking attack, if a cookie containing sensitive data is set without the `secure` attribute, an attacker might be able to intercept that cookie. Once the attacker has this information, they can potentially impersonate a user, accessing confidential data and performing actions that they would not normally be authorized to do. Attackers often gain access to this sensitive cookie data when it is transmitted insecurely in plain text over a standard HTTP session, rather than being encrypted and sent over an HTTPS session. This type of attack is highly preventable by following best practices when setting sensitive session cookies.\n\n### Best practices for prevention\n* Set the `secure` attribute in the response header when setting cookies on the client side, and use a test tool to verify that secure cookie transmission is in place.\n* Always use HTTPS for all login pages and never redirect from HTTP to HTTPS, which leaves secure session data open to interception.\n* Follow other best practices when it comes to session cookies, such as setting the HttpOnly flag and maintaining highly time-limited sessions.\n* Consider implementing browser checks and providing secure data only within a browser that supports tight cookie security.\n* Generate session IDs in a way that is not easily predictable, invalidate sessions upon logout, and never reuse session IDs.\n* Educate developers to use built-in secure session-management functionality within the development environment instead of taking a DIY approach.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security",
+                  "InTest"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/pippo-java/pippo/commit/baa786cf11e875461090175df964a88ac7d4ecd5?diff=split#diff-8aed5e116d7d7ad41bf04c851e1d5dc7L269",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 266,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private Cookie generateLanguageCookie(String language) {",
+                        "lineNumber": 267,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(applicationCookiePrefix + \"_LANG\", language);",
+                        "lineNumber": 268,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(true);",
+                        "lineNumber": 269,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(TEN_YEARS);",
+                        "lineNumber": 270,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return cookie;",
+                        "lineNumber": 271,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 272,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/eclipse/rap/commit/bec1d767c1435f13c923c90a578473e02aa24996?diff=split#diff-a8821336a5cc73da073db6bbfff0ae4eL87",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC  ",
+                        "lineNumber": 85,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "// (2+3) do refresh cookie, to ensure it expires in COOKIE_MAX_AGE_SEC",
+                        "lineNumber": 86,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "Cookie cookie = new Cookie( COOKIE_NAME, result );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "cookie.setSecure( RWT.getRequest().isSecure() );",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "cookie.setMaxAge( COOKIE_MAX_AGE_SEC );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "ContextProvider.getResponse().addCookie( cookie );",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "// (2+3) update storeId stored in session",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/InnovateUKGitHub/innovation-funding-service/commit/a770f11236a0a40bfdd1e6b181d5a80e0da970ea?diff=split#diff-e27b77e438734a64c56eb279998f82b3L80",
+                    "lines": [
+                      {
+                        "line": "public void removeAuthentication(HttpServletResponse response) {",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Cookie cookie = new Cookie(AUTH_TOKEN, null);",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setMaxAge(0);",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    cookie.setSecure(cookieSecure);",
+                        "lineNumber": 88,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    cookie.setHttpOnly(cookieHttpOnly);",
+                        "lineNumber": 89,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.addCookie(cookie);",
+                        "lineNumber": 90,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 91,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added cookie support in HttpRequest/Response",
+                  "Set secure user cookies and only for HTTP."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 88,
+                "cwe": [
+                  "CWE-614"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/TooPermissiveHostnameVerifier",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "The verify method always returns true, which means that any hostname is accepted. Such behaviour is insecure.",
+            "markdown": "The {0} method always returns {1}, which means that any hostname is accepted. Such behaviour is insecure.",
+            "arguments": [
+              "[verify](0)",
+              "[true](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 655,
+                  "endLine": 655,
+                  "startColumn": 32,
+                  "endColumn": 38
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "4e9daf65ec25aae96dc50499cf058587fcf9f74107fce73eb1c85c66c614541a",
+            "1": "3577ba7a.d85b1a8b.85365f17.e22980a8.0681ed2b.eacd09e2.2299c74c.9c4228d3.3577ba7a.d85b1a8b.85365f17.e22980a8.0681ed2b.eacd09e2.2299c74c.9c4228d3"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 655,
+                            "endLine": 655,
+                            "startColumn": 32,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 656,
+                            "endLine": 656,
+                            "startColumn": 28,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 552,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/OR/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into sendRedirect, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[sendRedirect](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 41,
+                  "endLine": 41,
+                  "startColumn": 13,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3b8cdfecbc6e28cbe2245b3b00c44edc3baeb47041415c56dce2ffd680bd7710",
+            "1": "b98c40f6.c8c8034f.402dee5d.534ed91d.5856db5d.2f4e1548.30a34c88.54d46e25.b98c40f6.7f413d6f.fdbc0497.e22980a8.f0e1baa5.95df3f17.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 22,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 22,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 39,
+                            "endLine": 39,
+                            "startColumn": 16,
+                            "endColumn": 53
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 41,
+                            "endLine": 41,
+                            "startColumn": 30,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 41,
+                            "endLine": 41,
+                            "startColumn": 13,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/OR/test",
+          "ruleIndex": 1,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into setHeader, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[setHeader](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 32,
+                  "endLine": 32,
+                  "startColumn": 9,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2da89f6f25339231afee2e965be57eb8819d05142e6fabc318e14e1bb779a28f",
+            "1": "c9f51d48.c8c8034f.33fa5dbe.01d9a3ef.b514f8e2.7fda7c5e.0ac97cd8.54d46e25.c9f51d48.7f413d6f.fdbc0497.e22980a8.83192735.7fda7c5e.0ac97cd8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 27,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 27,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 16,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 35,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 9,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TLS",
+          "ruleIndex": 2,
+          "level": "error",
+          "message": {
+            "text": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of javax.net.ssl.SSLContext.getInstance.",
+            "markdown": "Implement secure HTTPS communication. Consider using latest TLSv1.2 instead of {0}.",
+            "arguments": [
+              "[javax.net.ssl.SSLContext.getInstance](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 689,
+                  "endLine": 689,
+                  "startColumn": 34,
+                  "endColumn": 56
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8d7f581fe24117285a2e965891f1468bc0bfc36dcbef4ff49ee70eea050d6e06",
+            "1": "040f5618.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.3d39ca0c.54d46e25.040f5618.1cbd3ff4.33fa5dbe.e22980a8.178caa9c.7fda7c5e.3d39ca0c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 689,
+                            "endLine": 689,
+                            "startColumn": 34,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 802,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 61,
+                  "endLine": 61,
+                  "startColumn": 26,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5220fe21742e91f73cdadde05c8b3ec36ddee00b17f141f49a70bb3c36abf513",
+            "1": "19689298.84740ba2.1b11e1e7.cf423b5c.70276143.d5a7922f.61db75a1.4a86081e.19689298.c9e261a9.fc7d5400.cf423b5c.70276143.d5a7922f.dc0c5202.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "endLine": 61,
+                            "startColumn": 26,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 407,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 71,
+                  "endLine": 71,
+                  "startColumn": 28,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "885779c608abb5762ecc563d2d4b44807a733e8568a4f549dd285ddbebdcccaf",
+            "1": "19689298.83dbfe52.f0130bb6.8fb8b3a9.2acbc8c1.877d2b43.b97ab2e9.4a86081e.19689298.c9e261a9.fc7d5400.8fb8b3a9.2acbc8c1.877d2b43.dc0c5202.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "endLine": 71,
+                            "startColumn": 28,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 407,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 28,
+                  "endLine": 28,
+                  "startColumn": 31,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1c7abe03b85d295c484aba7f5eda6fe0cac1b743654be8e305b41683889c45f3",
+            "1": "ac4e7c8b.c4c6285f.d5c76777.6c52ae28.f7d5c8bb.5b2389bd.47ef669e.4a86081e.c9e06c88.7f413d6f.fdbc0497.e22980a8.83192735.95df3f17.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 31,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 407,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetHttpOnly/test",
+          "ruleIndex": 3,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "markdown": "Cookie misses a call to setHttpOnly. Set the HttpOnly flag to true to protect the cookie from possible malicious code on client side.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "endLine": 29,
+                  "startColumn": 31,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "97a33e71821a50c82e637c2fa4c11754bee1912066df9d22a2f8916abb733e4f",
+            "1": "ae0b3138.c4c6285f.6d84d16b.6c52ae28.b5c867ae.5b2389bd.b1c5b28a.4a86081e.c9e06c88.7f413d6f.fdbc0497.e22980a8.83192735.95df3f17.b1c5b28a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 31,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 407,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all clients are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all clients are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 675,
+                  "endLine": 675,
+                  "startColumn": 33,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "51d3b0da127af01b606403e43017cf4600b18d642890fa6e1e0397a30c7fb975",
+            "1": "d3279c65.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.7011a60a.d9e01f64.d3279c65.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.7011a60a.d9e01f64"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 675,
+                            "endLine": 675,
+                            "startColumn": 33,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all servers are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all servers are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 678,
+                  "endLine": 678,
+                  "startColumn": 33,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "05b64f73c3811728ddb56be835f1cac414b47d6a544073d3ff0b7c6d44c64b32",
+            "1": "d3279c65.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.7011a60a.d9e01f64.d3279c65.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.7011a60a.d9e01f64"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 678,
+                            "endLine": 678,
+                            "startColumn": 33,
+                            "endColumn": 51
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/TooPermissiveTrustManager",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "TrustManager might be too permissive: all Certificate Authorities are trusted.",
+            "markdown": "TrustManager might be too permissive: {0}.",
+            "arguments": [
+              "[all Certificate Authorities are trusted](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 681,
+                  "endLine": 681,
+                  "startColumn": 46,
+                  "endColumn": 64
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9baf4bab5db62f118644a349f2c175b8ce2ca7491c0838644a4af765e7f9f9ed",
+            "1": "8df8fa68.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.f1ccdb3e.d9e01f64.8df8fa68.528e35bc.bf05a696.e22980a8.f0e1baa5.eacd09e2.f1ccdb3e.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/helper/HttpConnection.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 682,
+                            "endLine": 682,
+                            "startColumn": 32,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 555,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/HttpResponseSplitting/test",
+          "ruleIndex": 5,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into setHeader and reaches an HTTP header returned to the user. This may allow a malicious input that contain CR/LF to split the http response into two responses and the second response to be controlled by the attacker. This may be used to mount a range of attacks such as cross-site scripting or cache poisoning.",
+            "markdown": "Unsanitized input from {0} {1} into {2} and reaches an HTTP header returned to the user. This may allow a malicious input that contain CR/LF to split the http response into two responses and the second response to be controlled by the attacker. This may be used to mount a range of attacks such as cross-site scripting or cache poisoning.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3)",
+              "[setHeader](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 32,
+                  "endLine": 32,
+                  "startColumn": 9,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c5522075fc4e085a9dac691f797eaa9df691a592896a22ef708e40fd01956e40",
+            "1": "c9f51d48.c8c8034f.33fa5dbe.01d9a3ef.b514f8e2.7fda7c5e.0ac97cd8.54d46e25.c9f51d48.7f413d6f.fdbc0497.e22980a8.83192735.7fda7c5e.0ac97cd8.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 27,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 27,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 16,
+                            "endColumn": 58
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 35,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 32,
+                            "endLine": 32,
+                            "startColumn": 9,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 402,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into exists, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the conditional expression.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to bypass the logic of the application in the {3}.",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[exists](6)",
+              "[conditional expression](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 26,
+                  "endLine": 26,
+                  "startColumn": 13,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b8ae91941a32e65865ed7048a2adccaf1795994dfda53b800940884cac3295a7",
+            "1": "19689298.113fdd9c.fc7d5400.f9bdd8eb.75248ddf.f940a352.83520734.54d46e25.bbbd7c96.113fdd9c.fdbc0497.f9bdd8eb.83192735.30ca56b1.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 27,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 27,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 16,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 21,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 14,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 26,
+                            "endLine": 26,
+                            "startColumn": 13,
+                            "endColumn": 17
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 26,
+                            "endLine": 26,
+                            "startColumn": 13,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 26,
+                            "endLine": 26,
+                            "startColumn": 9,
+                            "endColumn": 26
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/PT/test",
+          "ruleIndex": 6,
+          "level": "note",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into java.nio.file.Files.copy, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as a path. This may result in a Path Traversal vulnerability and allow an attacker to read arbitrary files.",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8)",
+              "[java.nio.file.Files.copy](9)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 33,
+                  "endLine": 33,
+                  "startColumn": 13,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c804b0eafebbbe6d3142976ad57870f4e106765ead0e8f525ebdd36e5132a24d",
+            "1": "f9545bfc.c6270086.3a9a8229.f9bdd8eb.75248ddf.f940a352.36de4586.54d46e25.f9545bfc.113fdd9c.fdbc0497.f9bdd8eb.75248ddf.f940a352.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 27,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 27,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 23,
+                            "endLine": 23,
+                            "startColumn": 16,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 21,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 14,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 26,
+                            "endLine": 26,
+                            "startColumn": 13,
+                            "endColumn": 17
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 17,
+                            "endColumn": 21
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 33,
+                            "endLine": 33,
+                            "startColumn": 24,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 33,
+                            "endLine": 33,
+                            "startColumn": 24,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/FileServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 33,
+                            "endLine": 33,
+                            "startColumn": 13,
+                            "endColumn": 23
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 404,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/Ssrf",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into org.jsoup.Jsoup.connect, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1),(2),(3),(4),(5)",
+              "[org.jsoup.Jsoup.connect](6)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 20,
+                  "endLine": 20,
+                  "startColumn": 24,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "be69cef19dd8783d9e436b480f0eac298f8e77ef2ea081a9f7729081d50dc2a2",
+            "1": "6d351a63.35a407d6.62b4f29c.15b576a2.f535d2c6.0d476878.79c95c18.bed3cb20.8df8fa68.009dfd99.62b4f29c.191a3ef1.1672ff53.b6985366.377b98a3.5a9c3f99"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 22,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 22,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 17,
+                            "endLine": 17,
+                            "startColumn": 16,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 18,
+                            "endLine": 18,
+                            "startColumn": 33,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 46,
+                            "endLine": 46,
+                            "startColumn": 43,
+                            "endColumn": 57
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 20,
+                            "endLine": 20,
+                            "startColumn": 38,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/ListLinks.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 20,
+                            "endLine": 20,
+                            "startColumn": 24,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 754,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/Ssrf",
+          "ruleIndex": 7,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into org.jsoup.Jsoup.connect, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1),(2),(3)",
+              "[org.jsoup.Jsoup.connect](4)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 40,
+                  "endLine": 40,
+                  "startColumn": 24,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2537ec15eee5fa4a155285ac0b58e8ef1de9d6d8e62615c491e0ab9ea48b6e9a",
+            "1": "19689298.7797192f.c4d2006b.38914546.408180c7.117e971f.ce789963.54d46e25.6d351a63.dd05ec30.f65f8853.191a3ef1.408180c7.ce109560.377b98a3.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 36,
+                            "endLine": 36,
+                            "startColumn": 28,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 36,
+                            "endLine": 36,
+                            "startColumn": 28,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 36,
+                            "endLine": 36,
+                            "startColumn": 22,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 40,
+                            "endLine": 40,
+                            "startColumn": 38,
+                            "endColumn": 41
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 40,
+                            "endLine": 40,
+                            "startColumn": 24,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 754,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 61,
+                  "endLine": 61,
+                  "startColumn": 26,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2668adf822d55501fb3afa379d733d1847bd4d09912b17c0bd7b82a91aea35ab",
+            "1": "19689298.84740ba2.1b11e1e7.cf423b5c.70276143.d5a7922f.61db75a1.4a86081e.19689298.c9e261a9.fc7d5400.cf423b5c.70276143.d5a7922f.dc0c5202.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 61,
+                            "endLine": 61,
+                            "startColumn": 26,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 408,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 65,
+                  "endLine": 65,
+                  "startColumn": 26,
+                  "endColumn": 32
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "c8a1fc9403450105bdeab273a0218ecc69cff2fb8fb2f90e6f54260afc65170e",
+            "1": "19689298.83dbfe52.119f5d8c.cf423b5c.c4a98776.1b8a94a3.b97ab2e9.4a86081e.f50ffac7.b1cf00e1.fc7d5400.5967ef13.0681ed2b.1b8a94a3.dc0c5202.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 65,
+                            "endLine": 65,
+                            "startColumn": 26,
+                            "endColumn": 32
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 408,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 71,
+                  "endLine": 71,
+                  "startColumn": 28,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "be60a3ab13fa7a2db82c3b9ccef3eb390fa27856af5ef969b5d22f572b929c3b",
+            "1": "19689298.83dbfe52.f0130bb6.8fb8b3a9.2acbc8c1.877d2b43.b97ab2e9.4a86081e.19689298.c9e261a9.fc7d5400.8fb8b3a9.2acbc8c1.877d2b43.dc0c5202.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/CookieServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 71,
+                            "endLine": 71,
+                            "startColumn": 28,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 408,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 28,
+                  "endLine": 28,
+                  "startColumn": 31,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "810bac5f11af347412199f5f20bb254bebecf35c445cecaca37cf8c437c2b211",
+            "1": "ac4e7c8b.c4c6285f.d5c76777.6c52ae28.f7d5c8bb.5b2389bd.47ef669e.4a86081e.c9e06c88.7f413d6f.fdbc0497.e22980a8.83192735.95df3f17.5ac02bbc.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 28,
+                            "endLine": 28,
+                            "startColumn": 31,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 408,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/WebCookieMissesCallToSetSecure/test",
+          "ruleIndex": 8,
+          "level": "note",
+          "message": {
+            "text": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "markdown": "Cookie misses a call to setSecure. Set the Secure flag to true to protect the cookie from man-in-the-middle attacks.",
+            "arguments": []
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "endLine": 29,
+                  "startColumn": 31,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "11b2ce0696a40859977bd29b57c347a0985dea03a4a9fc53a63472ed517adbb6",
+            "1": "ae0b3138.c4c6285f.6d84d16b.6c52ae28.b5c867ae.5b2389bd.b1c5b28a.4a86081e.c9e06c88.7f413d6f.fdbc0497.e22980a8.83192735.95df3f17.b1c5b28a.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src/test/java/org/jsoup/integration/servlets/RedirectServlet.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 29,
+                            "endLine": 29,
+                            "startColumn": 31,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 408,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 4,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 141,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 27,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}

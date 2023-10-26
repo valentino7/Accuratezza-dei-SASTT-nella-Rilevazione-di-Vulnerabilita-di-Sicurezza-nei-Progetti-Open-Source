@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T16:37:16.075">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/bad$6867e4469525d16319b1bae9c840b933fe4e23c4$37$WindowsInstallerLink.java">
+<violation beginline="57" endline="57" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.io.FileInputStream'
+</violation>
+<violation beginline="63" endline="63" begincolumn="1" endcolumn="49" rule="UnnecessaryImport" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'hudson.util.jna.SHELLEXECUTEINFO.*'
+</violation>
+<violation beginline="70" endline="325" begincolumn="8" endcolumn="1" rule="ClassWithOnlyPrivateConstructorsShouldBeFinal" ruleset="Design" package="hudson.lifecycle" class="WindowsInstallerLink" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#classwithonlyprivateconstructorsshouldbefinal" priority="1">
+A class which only has private constructors should be final
+</violation>
+<violation beginline="81" endline="81" begincolumn="22" endcolumn="42" rule="AvoidUsingVolatile" ruleset="Multithreading" package="hudson.lifecycle" class="WindowsInstallerLink" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="114" endline="114" begincolumn="100" endcolumn="103" rule="FormalParameterNamingConventions" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="doDoInstall" variable="_dir" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#formalparameternamingconventions" priority="1">
+The method parameter name '_dir' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="140" endline="140" begincolumn="17" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="doDoInstall" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="143" endline="143" begincolumn="35" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="hudson.lifecycle" class="WindowsInstallerLink" method="doDoInstall" variable="baos" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ByteArrayOutputStream object are closed after use
+</violation>
+<violation beginline="155" endline="157" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.lifecycle" class="WindowsInstallerLink" method="doDoInstall" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="169" endline="169" begincolumn="13" endcolumn="62" rule="GuardLogStatement" ruleset="Best Practices" package="hudson.lifecycle" class="WindowsInstallerLink" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="171" endline="171" begincolumn="13" endcolumn="39" rule="PreserveStackTrace" ruleset="Best Practices" package="hudson.lifecycle" class="WindowsInstallerLink" method="copy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="191" endline="238" begincolumn="20" endcolumn="13" rule="MissingOverride" ruleset="Best Practices" package="hudson.lifecycle" class="WindowsInstallerLink" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#missingoverride" priority="3">
+The method 'run()' is missing an @Override annotation.
+</violation>
+<violation beginline="197" endline="223" begincolumn="32" endcolumn="25" rule="MissingOverride" ruleset="Best Practices" package="hudson.lifecycle" class="WindowsInstallerLink" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#missingoverride" priority="3">
+The method 'run()' is missing an @Override annotation.
+</violation>
+<violation beginline="220" endline="222" begincolumn="31" endcolumn="29" rule="IdenticalCatchBranches" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="261" endline="261" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="registerIfApplicable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="264" endline="264" begincolumn="13" endcolumn="24" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="registerIfApplicable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="276" endline="276" begincolumn="17" endcolumn="61" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="registerIfApplicable" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="294" endline="296" begincolumn="94" endcolumn="13" rule="EmptyIfStmt" ruleset="Error Prone" package="hudson.lifecycle" class="WindowsInstallerLink" method="runElevated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="311" endline="311" begincolumn="13" endcolumn="85" rule="ControlStatementBraces" ruleset="Code Style" package="hudson.lifecycle" class="WindowsInstallerLink" method="runElevated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="318" endline="320" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="hudson.lifecycle" class="WindowsInstallerLink" method="runElevated" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

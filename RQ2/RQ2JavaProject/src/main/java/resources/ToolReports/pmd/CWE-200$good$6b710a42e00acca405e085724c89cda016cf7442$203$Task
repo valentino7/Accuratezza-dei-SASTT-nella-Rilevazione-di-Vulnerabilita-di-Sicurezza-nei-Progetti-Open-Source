@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:00:19.929">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-200/good$6b710a42e00acca405e085724c89cda016cf7442$203$Task.java">
+<violation beginline="90" endline="111" begincolumn="17" endcolumn="3" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$Counter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'static' on enum 'Counter': nested enums are implicitly static
+</violation>
+<violation beginline="136" endline="136" begincolumn="5" endcolumn="41" rule="UnsynchronizedStaticFormatter" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#unsynchronizedstaticformatter" priority="3">
+Static Formatter objects should be accessed in a synchronized manner
+</violation>
+<violation beginline="137" endline="137" begincolumn="5" endcolumn="33" rule="UnsynchronizedStaticFormatter" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#unsynchronizedstaticformatter" priority="3">
+Static Formatter objects should be accessed in a synchronized manner
+</violation>
+<violation beginline="141" endline="141" begincolumn="22" endcolumn="41" rule="UnsynchronizedStaticFormatter" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task" method="getOutputName" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#unsynchronizedstaticformatter" priority="3">
+Static Formatter objects should be accessed in a synchronized manner
+</violation>
+<violation beginline="171" endline="171" begincolumn="20" endcolumn="45" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="184" endline="184" begincolumn="13" endcolumn="57" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputFormat' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="185" endline="185" begincolumn="13" endcolumn="55" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="603" endline="603" begincolumn="12" endcolumn="51" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" method="initialize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="616" endline="616" begincolumn="5" endcolumn="63" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="initialize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="630" endline="631" begincolumn="7" endcolumn="50" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="normalizeStatus" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="640" endline="640" begincolumn="15" endcolumn="56" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$TaskReporter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.StatusReporter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="740" endline="740" begincolumn="17" endcolumn="27" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" variable="MAX_RETRIES" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The final local variable name 'MAX_RETRIES' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+<violation beginline="784" endline="784" begincolumn="13" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="796" endline="798" begincolumn="13" endcolumn="74" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="803" endline="812" begincolumn="9" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="804" endline="804" begincolumn="11" endcolumn="83" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="808" endline="808" begincolumn="13" endcolumn="51" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="820" endline="820" begincolumn="9" endcolumn="21" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="resetDoneFlag" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="836" endline="836" begincolumn="11" endcolumn="23" rule="UseNotifyAllInsteadOfNotify" ruleset="Multithreading" package="org.apache.hadoop.mapred" class="Task$TaskReporter" method="stopCommunicationThread" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#usenotifyallinsteadofnotify" priority="3">
+Call Thread.notifyAll() rather than Thread.notify()
+</violation>
+<violation beginline="950" endline="950" begincolumn="7" endcolumn="47" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$GcTimeUpdater" method="incrementGcCounter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapred.Counters.Counter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="964" endline="965" begincolumn="13" endcolumn="61" rule="OneDeclarationPerLine" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task$FileSystemStatisticUpdater" variable="VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId, VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#onedeclarationperline" priority="4">
+Use one line for each declaration, it enhances code readability.
+</violation>
+<violation beginline="1069" endline="1070" begincolumn="5" endcolumn="49" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="done" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1083" endline="1084" begincolumn="11" endcolumn="55" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="done" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1085" endline="1085" begincolumn="15" endcolumn="28" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="Task" method="done" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1130" endline="1130" begincolumn="11" endcolumn="51" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="statusUpdate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1138" endline="1139" begincolumn="9" endcolumn="53" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="statusUpdate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1140" endline="1140" begincolumn="13" endcolumn="26" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="Task" method="statusUpdate" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1187" endline="1187" begincolumn="9" endcolumn="47" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="sendDone" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1190" endline="1191" begincolumn="9" endcolumn="52" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="sendDone" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1192" endline="1192" begincolumn="13" endcolumn="26" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="Task" method="sendDone" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1201" endline="1201" begincolumn="23" endcolumn="65" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" method="commit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="1216" endline="1217" begincolumn="9" endcolumn="47" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="commit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1218" endline="1218" begincolumn="13" endcolumn="26" rule="AssignmentInOperand" ruleset="Error Prone" package="org.apache.hadoop.mapred" class="Task" method="commit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1228" endline="1228" begincolumn="7" endcolumn="62" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="commit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1232" endline="1233" begincolumn="7" endcolumn="44" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="commit" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1245" endline="1246" begincolumn="7" endcolumn="51" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="discardOutput" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1279" endline="1279" begincolumn="7" endcolumn="78" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.hadoop.mapred" class="Task" method="runJobCleanupTask" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1310" endline="1311" begincolumn="13" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" method="keepTaskFiles" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1380" endline="1380" begincolumn="12" endcolumn="46" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombineOutputCollector" method="collect" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1480" endline="1480" begincolumn="35" endcolumn="71" rule="UselessParentheses" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$ValuesIterator" method="readNextKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1521" endline="1521" begincolumn="3" endcolumn="76" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer.Context' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1522" endline="1523" begincolumn="23" endcolumn="55" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1525" endline="1525" begincolumn="23" endcolumn="63" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptID' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1527" endline="1527" begincolumn="23" endcolumn="57" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Counter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1528" endline="1528" begincolumn="23" endcolumn="57" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Counter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1529" endline="1529" begincolumn="23" endcolumn="79" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.RecordWriter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1530" endline="1530" begincolumn="23" endcolumn="65" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="1531" endline="1531" begincolumn="23" endcolumn="64" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.StatusReporter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1535" endline="1535" begincolumn="5" endcolumn="79" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.ReduceContext' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1548" endline="1548" begincolumn="5" endcolumn="78" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer.Context' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1553" endline="1553" begincolumn="5" endcolumn="26" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'reducerContext'
+</violation>
+<violation beginline="1587" endline="1587" begincolumn="32" endcolumn="74" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="1596" endline="1596" begincolumn="7" endcolumn="52" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptContext' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1597" endline="1597" begincolumn="13" endcolumn="67" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.task.TaskAttemptContextImpl' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1599" endline="1599" begincolumn="23" endcolumn="67" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1600" endline="1600" begincolumn="26" endcolumn="70" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$CombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1657" endline="1657" begincolumn="35" endcolumn="79" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1659" endline="1659" begincolumn="19" endcolumn="59" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptID' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1663" endline="1663" begincolumn="19" endcolumn="61" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="1668" endline="1668" begincolumn="23" endcolumn="63" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptID' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1669" endline="1669" begincolumn="23" endcolumn="68" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptContext' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1672" endline="1672" begincolumn="23" endcolumn="65" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="NewCombinerRunner" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.OutputCommitter' due to existing import 'org.apache.hadoop.mapreduce.OutputCommitter'
+</violation>
+<violation beginline="1683" endline="1683" begincolumn="21" endcolumn="65" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner$OutputConverter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.RecordWriter' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1690" endline="1691" begincolumn="80" endcolumn="7" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner$OutputConverter" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="1690" endline="1690" begincolumn="25" endcolumn="70" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner$OutputConverter" method="close" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.TaskAttemptContext' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1707" endline="1707" begincolumn="7" endcolumn="50" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="combine" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1708" endline="1708" begincolumn="10" endcolumn="53" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="combine" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+<violation beginline="1710" endline="1710" begincolumn="7" endcolumn="49" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.apache.hadoop.mapred" class="Task$NewCombinerRunner" method="combine" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'org.apache.hadoop.mapreduce.Reducer.Context' due to existing same package import 'org.apache.hadoop.mapred.*'
+</violation>
+</file>
+</pmd>

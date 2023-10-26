@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T15:23:32.553">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-189/good$597edaab8863df03f7bdc4eafb39e754fd3cd322$49$Parameters.java">
+<violation beginline="45" endline="46" begincolumn="28" endcolumn="64" rule="AvoidProtectedFieldInFinalClass" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#avoidprotectedfieldinfinalclass" priority="3">
+Avoid protected fields in a final class.  Change to private or package access.
+</violation>
+<violation beginline="48" endline="48" begincolumn="19" endcolumn="51" rule="LooseCoupling" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'HashMap'; use the interface instead
+</violation>
+<violation beginline="64" endline="66" begincolumn="12" endcolumn="5" rule="UnnecessaryConstructor" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" method="Parameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryconstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+<violation beginline="128" endline="128" begincolumn="20" endcolumn="23" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.tomcat.util.http" class="Parameters" method="getParameterValues" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="130" endline="130" begincolumn="16" endcolumn="56" rule="OptimizableToArrayCall" ruleset="Performance" package="org.apache.tomcat.util.http" class="Parameters" method="getParameterValues" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="142" endline="142" begincolumn="16" endcolumn="26" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="getParameter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="154" endline="154" begincolumn="34" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" method="handleQueryParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="159" endline="159" begincolumn="13" endcolumn="19" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" method="handleQueryParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="177" endline="177" begincolumn="25" endcolumn="31" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" method="addParameter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="224" endline="225" begincolumn="17" endcolumn="48" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="298" endline="301" begincolumn="25" endcolumn="41" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="303" endline="306" begincolumn="25" endcolumn="38" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="325" endline="325" begincolumn="21" endcolumn="71" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="369" endline="370" begincolumn="13" endcolumn="54" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="383" endline="383" begincolumn="68" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.http" class="Parameters" method="processParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:43:12.160">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/bad$cf181edc9a8c239cde704cffc3c503425bdcae2b$137$Stream.java">
+<violation beginline="44" endline="44" begincolumn="26" endcolumn="67" rule="ProperLogger" ruleset="Error Prone" package="org.apache.coyote.http2" class="Stream" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="61" endline="61" begincolumn="22" endcolumn="59" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="62" endline="62" begincolumn="22" endcolumn="52" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="71" endline="71" begincolumn="13" endcolumn="25" rule="AvoidStringBufferField" ruleset="Best Practices" package="org.apache.coyote.http2" class="Stream" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidstringbufferfield" priority="3">
+StringBuffers can grow quite a lot, and so may become a source of memory leak (if the owning class has a long life time).
+</violation>
+<violation beginline="196" endline="226" begincolumn="32" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream" method="reserveWindowSize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'reserveWindowSize': private methods cannot be overridden
+</violation>
+<violation beginline="528" endline="530" begincolumn="19" endcolumn="5" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream" method="isInputFinished" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'isInputFinished': private methods cannot be overridden
+</violation>
+<violation beginline="576" endline="576" begincolumn="15" endcolumn="45" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.coyote.http2" class="Stream" method="push" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="577" endline="577" begincolumn="19" endcolumn="50" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.coyote.http2" class="Stream" method="push" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="665" endline="665" begincolumn="26" endcolumn="42" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="666" endline="666" begincolumn="26" endcolumn="48" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="667" endline="667" begincolumn="26" endcolumn="57" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="707" endline="744" begincolumn="36" endcolumn="9" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" method="flush" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'flush': private methods cannot be overridden
+</violation>
+<violation beginline="747" endline="751" begincolumn="13" endcolumn="13" rule="SimplifyBooleanReturns" ruleset="Design" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" method="isReady" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="769" endline="769" begincolumn="21" endcolumn="44" rule="UselessParentheses" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" method="hasNoBody" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="769" endline="769" begincolumn="22" endcolumn="33" rule="UselessParentheses" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamOutputBuffer" method="hasNoBody" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="799" endline="799" begincolumn="26" endcolumn="45" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="800" endline="800" begincolumn="26" endcolumn="46" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="908" endline="911" begincolumn="23" endcolumn="9" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" method="getInBuffer" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'getInBuffer': private methods cannot be overridden
+</violation>
+<violation beginline="919" endline="932" begincolumn="23" endcolumn="9" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" method="ensureBuffersExist" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'ensureBuffersExist': private methods cannot be overridden
+</violation>
+<violation beginline="935" endline="942" begincolumn="23" endcolumn="9" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" method="receiveReset" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'receiveReset': private methods cannot be overridden
+</violation>
+<violation beginline="944" endline="950" begincolumn="23" endcolumn="9" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.coyote.http2" class="Stream$StreamInputBuffer" method="notifyEof" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'final' on method 'notifyEof': private methods cannot be overridden
+</violation>
+</file>
+</pmd>

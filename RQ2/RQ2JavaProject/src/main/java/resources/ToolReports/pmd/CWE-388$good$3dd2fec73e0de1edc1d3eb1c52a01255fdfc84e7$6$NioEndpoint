@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:57:16.393">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-388/good$3dd2fec73e0de1edc1d3eb1c52a01255fdfc84e7$6$NioEndpoint.java">
+<violation beginline="83" endline="83" begincolumn="26" endcolumn="72" rule="ProperLogger" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="129" endline="129" begincolumn="22" endcolumn="53" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="173" endline="173" begincolumn="13" endcolumn="80" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint" method="setProperty" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="273" endline="273" begincolumn="29" endcolumn="31" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="getLocalPort" variable="ssc" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocketChannel object are closed after use
+</violation>
+<violation beginline="277" endline="277" begincolumn="26" endcolumn="26" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="getLocalPort" variable="s" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocket object are closed after use
+</violation>
+<violation beginline="300" endline="303" begincolumn="14" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="checkParachute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="309" endline="309" begincolumn="41" endcolumn="52" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="reclaimParachute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="310" endline="310" begincolumn="46" endcolumn="97" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="reclaimParachute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="311" endline="311" begincolumn="13" endcolumn="54" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="reclaimParachute" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="318" endline="318" begincolumn="32" endcolumn="49" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="releaseCaches" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="331" endline="333" begincolumn="13" endcolumn="13" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint" method="getKeepAliveCount" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="350" endline="350" begincolumn="35" endcolumn="131" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="bind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="384" endline="384" begincolumn="29" endcolumn="51" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="bind" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="389" endline="389" begincolumn="36" endcolumn="39" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="wrap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="389" endline="389" begincolumn="29" endcolumn="40" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="wrap" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="459" endline="459" begincolumn="39" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="stopInternal" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="543" endline="543" begincolumn="20" endcolumn="23" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="setSocketOptions" variable="sock" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Socket object are closed after use
+</violation>
+<violation beginline="574" endline="583" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="578" endline="580" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="setSocketOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="628" endline="628" begincolumn="31" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="processSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="629" endline="629" begincolumn="18" endcolumn="46" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint" method="processSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="637" endline="637" begincolumn="13" endcolumn="89" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint" method="processSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="639" endline="645" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint" method="processSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="643" endline="643" begincolumn="13" endcolumn="63" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint" method="processSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="689" endline="689" begincolumn="35" endcolumn="40" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this SocketChannel object are closed after use
+</violation>
+<violation beginline="716" endline="718" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="720" endline="720" begincolumn="25" endcolumn="74" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="727" endline="738" begincolumn="22" endcolumn="21" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="732" endline="734" begincolumn="30" endcolumn="29" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="735" endline="737" begincolumn="26" endcolumn="25" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="739" endline="742" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="741" endline="741" begincolumn="21" endcolumn="70" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Acceptor" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="826" endline="826" begincolumn="23" endcolumn="49" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$PollerEvent" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="846" endline="846" begincolumn="26" endcolumn="47" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="851" endline="851" begincolumn="26" endcolumn="42" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="883" endline="883" begincolumn="57" endcolumn="74" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="addEvent" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="900" endline="900" begincolumn="27" endcolumn="71" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="901" endline="901" begincolumn="18" endcolumn="50" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="add" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="927" endline="929" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="events" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="949" endline="949" begincolumn="27" endcolumn="69" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="register" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="950" endline="950" begincolumn="18" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="register" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="957" endline="957" begincolumn="36" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="971" endline="971" begincolumn="31" endcolumn="50" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="972" endline="972" begincolumn="22" endcolumn="67" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="973" endline="973" begincolumn="36" endcolumn="48" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1000" endline="1001" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1005" endline="1008" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1007" endline="1007" begincolumn="43" endcolumn="58" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="cancelledKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1021" endline="1021" begincolumn="39" endcolumn="44" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1038" endline="1039" begincolumn="29" endcolumn="75" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1062" endline="1063" begincolumn="33" endcolumn="79" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1067" endline="1071" begincolumn="23" endcolumn="21" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1073" endline="1073" begincolumn="42" endcolumn="76" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1073" endline="1073" begincolumn="55" endcolumn="74" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1095" endline="1095" begincolumn="73" endcolumn="89" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1101" endline="1108" begincolumn="22" endcolumn="21" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1105" endline="1107" begincolumn="26" endcolumn="25" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="run" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1154" endline="1157" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processKey" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1180" endline="1180" begincolumn="37" endcolumn="39" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" variable="fis" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this FileInputStream object are closed after use
+</violation>
+<violation beginline="1187" endline="1187" begincolumn="43" endcolumn="95" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1187" endline="1187" begincolumn="44" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1216" endline="1217" begincolumn="23" endcolumn="21" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="1247" endline="1247" begincolumn="45" endcolumn="97" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1252" endline="1258" begincolumn="14" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="processSendfile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1280" endline="1280" begincolumn="71" endcolumn="90" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1287" endline="1329" begincolumn="17" endcolumn="17" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="1317" endline="1317" begincolumn="71" endcolumn="108" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1317" endline="1317" begincolumn="112" endcolumn="126" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1332" endline="1332" begincolumn="17" endcolumn="70" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="1341" endline="1341" begincolumn="39" endcolumn="51" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1341" endline="1341" begincolumn="87" endcolumn="92" rule="UselessParentheses" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Poller" method="timeout" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="1365" endline="1365" begincolumn="57" endcolumn="68" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$KeyAttachment" method="resetLatch" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1366" endline="1366" begincolumn="18" endcolumn="77" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$KeyAttachment" method="resetLatch" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1375" endline="1375" begincolumn="18" endcolumn="86" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$KeyAttachment" method="startLatch" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1381" endline="1381" begincolumn="34" endcolumn="89" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$KeyAttachment" method="awaitLatch" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1402" endline="1402" begincolumn="26" endcolumn="58" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$KeyAttachment" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1440" endline="1441" begincolumn="16" endcolumn="37" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Handler" method="process" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'process': the method is declared in an interface type
+</violation>
+<violation beginline="1442" endline="1442" begincolumn="16" endcolumn="62" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Handler" method="release" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'release': the method is declared in an interface type
+</violation>
+<violation beginline="1443" endline="1443" begincolumn="16" endcolumn="50" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Handler" method="release" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'release': the method is declared in an interface type
+</violation>
+<violation beginline="1444" endline="1444" begincolumn="16" endcolumn="56" rule="UnnecessaryModifier" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$Handler" method="getSslImplementation" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarymodifier" priority="3">
+Unnecessary modifier 'public' on method 'getSslImplementation': the method is declared in an interface type
+</violation>
+<violation beginline="1514" endline="1514" begincolumn="47" endcolumn="88" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net" class="NioEndpoint$SocketProcessor" method="doRun" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="1542" endline="1549" begincolumn="19" endcolumn="17" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$SocketProcessor" method="doRun" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1546" endline="1548" begincolumn="23" endcolumn="21" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$SocketProcessor" method="doRun" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1552" endline="1555" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.apache.tomcat.util.net" class="NioEndpoint$SocketProcessor" method="doRun" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1592" endline="1592" begincolumn="25" endcolumn="40" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$SendfileData" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1593" endline="1593" begincolumn="25" endcolumn="45" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$SendfileData" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1594" endline="1594" begincolumn="25" endcolumn="33" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$SendfileData" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1595" endline="1595" begincolumn="25" endcolumn="36" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$SendfileData" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="1597" endline="1597" begincolumn="25" endcolumn="42" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net" class="NioEndpoint$SendfileData" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+</file>
+</pmd>

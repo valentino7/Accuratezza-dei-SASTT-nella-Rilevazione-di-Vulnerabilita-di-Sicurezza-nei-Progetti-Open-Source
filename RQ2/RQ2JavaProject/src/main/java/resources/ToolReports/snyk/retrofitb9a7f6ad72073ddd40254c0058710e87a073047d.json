@@ -1,0 +1,310 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/Ssrf",
+              "name": "Ssrf",
+              "shortDescription": {
+                "text": "Server-Side Request Forgery (SSRF)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\nIn a server-side request forgery attack, a malicious user supplies a URL (an external URL or a network IP address such as 127.0.0.1) to the application's back end. The server then accesses the URL and shares its results, which may include sensitive information such as AWS metadata, internal configuration information, or database contents with the attacker. Because the request comes from the back end, it bypasses access controls, potentially exposing information the user does not have sufficient privileges to receive. The attacker can then exploit this information to gain access, modify the web application, or demand a ransom payment.\n\n### Best practices for prevention\n* Blacklists are problematic and attackers have numerous ways to bypass them; ideally, use a whitelist of all permitted domains and IP addresses.\n* Use authentication even within your own network to prevent exploitation of server-side requests.\n* Implement zero trust and sanitize and validate all URL and header data returning to the server from the user. Strip invalid or suspect characters, then inspect to be certain it contains a valid and expected value.\n* Ideally, avoid sending server requests based on user-provided data altogether.\n* Ensure that you are not sending raw response bodies from the server directly to the client. Only deliver expected responses.\n* Disable suspect and exploitable URL schemas. Common culprits include obscure and little-used schemas such as `file://`, `dict://`, `ftp://`, and `gopher://`.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/httpcache4j/httpcache4j/commit/81f9db7ad6e7e18227b8b5de717c580da15ed7ae?diff=split#diff-99799647d646d0fff0a1b4b465dd5de0L49",
+                    "lines": [
+                      {
+                        "line": "public HTTPResponse resolve(HTTPRequest request) throws IOException {",
+                        "lineNumber": 47,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    req = getAuthenticator().preparePreemptiveAuthentication(req);",
+                        "lineNumber": 50,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 51,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "URL url = request.getRequestURI().toURL();",
+                        "lineNumber": 52,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "URLConnection openConnection = url.openConnection();",
+                        "lineNumber": 53,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "if (openConnection instanceof HttpURLConnection) {",
+                        "lineNumber": 54,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    HttpURLConnection connection = (HttpURLConnection) openConnection;",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/LearnLib/alex/commit/cb22c1446dfa65bb405f50baa79ba77866c4c706?diff=split#diff-1723d8f955b61289dccacfea34e7737dL58",
+                    "lines": [
+                      {
+                        "line": "@GET",
+                        "lineNumber": 55,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Produces(MediaType.TEXT_HTML)",
+                        "lineNumber": 56,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Response doGetProxy(@QueryParam(\"url\") String url, @HeaderParam(\"Cookie\") String cookies) {",
+                        "lineNumber": 57,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    LOGGER.trace(\"IFrameProxyResource.doGetProxy(\" + url + \", \" + cookies + \").\");",
+                        "lineNumber": 58,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    try {",
+                        "lineNumber": 60,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        Connection connection = Jsoup.connect(url);",
+                        "lineNumber": 61,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = parseAndProcessCookies(connection, cookies);",
+                        "lineNumber": 62,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        connection = connection.method(Connection.Method.GET);",
+                        "lineNumber": 63,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/dotnet/aspnetcore/commit/e089cfc11cb86d6da786d82ee92aeef1c903f0f5?diff=split#diff-f69c44e82917810b055809e4c47c7e7dL84",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 94,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest) {",
+                        "lineNumber": 95,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override",
+                        "lineNumber": 99,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "public Single<HttpResponse> send(HttpRequest httpRequest, String bodyContent) {",
+                        "lineNumber": 100,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    Request.Builder requestBuilder = new Request.Builder().url(httpRequest.getUrl());",
+                        "lineNumber": 101,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    switch (httpRequest.getMethod()) {",
+                        "lineNumber": 103,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Support Java 8 class files",
+                  "- app requests work in tests",
+                  "* Add logic to catch unranked hiscores and display them properly."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 233,
+                "cwe": [
+                  "CWE-918"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/Ssrf",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from a command line argument flows into okhttp3.HttpUrl.get, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to perform a request. This may result in a Server-Side Request Forgery vulnerability.",
+            "arguments": [
+              "[a command line argument](0)",
+              "[flows](1)",
+              "[okhttp3.HttpUrl.get](2)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "samples/src/main/java/com/example/retrofit/Crawler.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 112,
+                  "endLine": 112,
+                  "startColumn": 23,
+                  "endColumn": 34
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "534d64b3a95a5bf1a6edecf57451844258644f98fc9c985e74d53e74341160e7",
+            "1": "682e2f2f.1cbd3ff4.a224ef38.58a2ef45.6bacdef5.0d476878.df7e59ba.87dfd8cc.f629b67b.dd05ec30.a224ef38.de031890.c84f1fbe.ce109560.377b98a3.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "samples/src/main/java/com/example/retrofit/Crawler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "endLine": 112,
+                            "startColumn": 35,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "samples/src/main/java/com/example/retrofit/Crawler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "endLine": 112,
+                            "startColumn": 35,
+                            "endColumn": 42
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "samples/src/main/java/com/example/retrofit/Crawler.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 112,
+                            "endLine": 112,
+                            "startColumn": 23,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 753,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 24,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 2,
+            "isSupported": false,
+            "lang": "Roff Manpage"
+          },
+          {
+            "files": 360,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 5,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

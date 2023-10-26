@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T17:59:45.085">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-22/good$8d7d0b7fb5ea4f7447b40131bffc1ec506a6528e$243$FileUtil.java">
+<violation beginline="64" endline="3222" begincolumn="23" endcolumn="1" rule="UseUtilityClass" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#useutilityclass" priority="3">
+All methods are static.  Consider using a utility class instead. Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="101" endline="101" begincolumn="11" endcolumn="14" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="ls" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="248" endline="248" begincolumn="11" endcolumn="14" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="listFileNames" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="269" endline="269" begincolumn="12" endcolumn="18" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="listFileNames" variable="jarFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this JarFile object are closed after use
+</violation>
+<violation beginline="462" endline="462" begincolumn="10" endcolumn="53" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="exist" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="472" endline="472" begincolumn="10" endcolumn="47" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="exist" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="546" endline="548" begincolumn="4" endcolumn="4" rule="ForLoopCanBeForeach" ruleset="Best Practices" package="cn.hutool.core.io" class="FileUtil" method="size" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#forloopcanbeforeach" priority="3">
+This for loop can be replaced by a foreach loop
+</violation>
+<violation beginline="831" endline="831" begincolumn="9" endcolumn="31" rule="AssignmentInOperand" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="createTempFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#assignmentinoperand" priority="3">
+Avoid assignments in operands
+</violation>
+<violation beginline="1143" endline="1146" begincolumn="3" endcolumn="3" rule="SimplifyBooleanReturns" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="isAbsolutePath" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="1157" endline="1157" begincolumn="10" endcolumn="58" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="isDirectory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="1167" endline="1167" begincolumn="10" endcolumn="52" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="isDirectory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="1193" endline="1193" begincolumn="10" endcolumn="53" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="isFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="1203" endline="1203" begincolumn="10" endcolumn="47" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="isFile" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+<violation beginline="1236" endline="1238" begincolumn="4" endcolumn="4" rule="SimplifyBooleanReturns" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="equals" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifybooleanreturns" priority="3">
+Avoid unnecessary if..then..else statements when returning booleans
+</violation>
+<violation beginline="1286" endline="1286" begincolumn="15" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="contentEquals" variable="input1" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="1287" endline="1287" begincolumn="15" endcolumn="20" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="contentEquals" variable="input2" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="1332" endline="1332" begincolumn="10" endcolumn="15" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="contentEqualsIgnoreEOL" variable="input1" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Reader object are closed after use
+</violation>
+<violation beginline="1333" endline="1333" begincolumn="10" endcolumn="15" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="contentEqualsIgnoreEOL" variable="input2" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this Reader object are closed after use
+</violation>
+<violation beginline="1488" endline="1490" begincolumn="37" endcolumn="4" rule="EmptyIfStmt" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="normalize" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptyifstmt" priority="3">
+Avoid empty if statements
+</violation>
+<violation beginline="1722" endline="1722" begincolumn="10" endcolumn="54" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="pathEndsWith" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="2019" endline="2019" begincolumn="15" endcolumn="16" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" method="readString" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="2153" endline="2153" begincolumn="15" endcolumn="16" rule="CloseResource" ruleset="Error Prone" package="cn.hutool.core.io" class="FileUtil" variable="in" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this InputStream object are closed after use
+</violation>
+<violation beginline="3102" endline="3102" begincolumn="10" endcolumn="101" rule="SimplifiedTernary" ruleset="Design" package="cn.hutool.core.io" class="FileUtil" method="containsInvalid" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_design.html#simplifiedternary" priority="3">
+Ternary operators that can be simplified with || or &amp;&amp;
+</violation>
+</file>
+</pmd>

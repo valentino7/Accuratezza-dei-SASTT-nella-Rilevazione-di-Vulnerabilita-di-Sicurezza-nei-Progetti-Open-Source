@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T22:14:44.359">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-74/bad$1b360b8889f0ed51165a8d1ac55dd8e0aa2dfd4$1$BackendManager.java">
+<violation beginline="22" endline="22" begincolumn="1" endcolumn="26" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.util.*'
+</violation>
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="45" rule="UnnecessaryImport" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'org.jolokia.config.ConfigKey.*'
+</violation>
+<violation beginline="81" endline="81" begincolumn="22" endcolumn="45" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.jolokia.backend" class="BackendManager" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="173" endline="173" begincolumn="13" endcolumn="83" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.backend" class="BackendManager" method="handleRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="174" endline="174" begincolumn="13" endcolumn="38" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.backend" class="BackendManager" method="handleRequest" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="192" endline="192" begincolumn="13" endcolumn="26" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" method="convertExceptionToJson" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'expObj'
+</violation>
+<violation beginline="207" endline="207" begincolumn="13" endcolumn="52" rule="GuardLogStatement" ruleset="Best Practices" package="org.jolokia.backend" class="BackendManager" method="destroy" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="437" endline="437" begincolumn="56" endcolumn="74" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" method="getJsonConvertOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'ConfigKey.MAX_DEPTH' due to existing static import 'org.jolokia.config.ConfigKey.*'
+</violation>
+<violation beginline="438" endline="438" begincolumn="65" endcolumn="93" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" method="getJsonConvertOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'ConfigKey.MAX_COLLECTION_SIZE' due to existing static import 'org.jolokia.config.ConfigKey.*'
+</violation>
+<violation beginline="439" endline="439" begincolumn="58" endcolumn="78" rule="UnnecessaryFullyQualifiedName" ruleset="Code Style" package="org.jolokia.backend" class="BackendManager" method="getJsonConvertOptions" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryfullyqualifiedname" priority="4">
+Unnecessary use of fully qualified name 'ConfigKey.MAX_OBJECTS' due to existing static import 'org.jolokia.config.ConfigKey.*'
+</violation>
+</file>
+</pmd>

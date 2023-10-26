@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T18:51:01.342">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-264/good$1368817fe4f4899c06089c940830525bc0327ee$182$UaaTokenServices.java">
+<violation beginline="128" endline="128" begincolumn="19" endcolumn="61" rule="ProperLogger" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="138" endline="138" begincolumn="20" endcolumn="32" rule="UnusedPrivateField" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" variable="tokenEndpoint" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'tokenEndpoint'.
+</violation>
+<violation beginline="281" endline="281" begincolumn="9" endcolumn="27" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="refreshAccessToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'accessToken'
+</violation>
+<violation beginline="309" endline="309" begincolumn="21" endcolumn="94" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="checkForApproval" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="313" endline="315" begincolumn="21" endcolumn="51" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="checkForApproval" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="326" endline="326" begincolumn="13" endcolumn="108" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="checkForApproval" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="359" endline="359" begincolumn="40" endcolumn="59" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="createAccessToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="413" endline="413" begincolumn="38" endcolumn="110" rule="UselessParentheses" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="populateIdToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="426" endline="426" begincolumn="48" endcolumn="118" rule="UselessParentheses" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="populateIdToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="436" endline="436" begincolumn="43" endcolumn="75" rule="ControlStatementBraces" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="populateIdToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="439" endline="439" begincolumn="44" endcolumn="78" rule="ControlStatementBraces" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="populateIdToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="442" endline="442" begincolumn="45" endcolumn="81" rule="ControlStatementBraces" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="populateIdToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="463" endline="463" begincolumn="56" endcolumn="67" rule="UnusedFormalParameter" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="createJWTAccessToken" variable="refreshToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused method parameters such as 'refreshToken'.
+</violation>
+<violation beginline="606" endline="606" begincolumn="9" endcolumn="27" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="createAccessToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'accessToken'
+</violation>
+<violation beginline="648" endline="650" begincolumn="15" endcolumn="13" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="getAdditionalAuthorizationAttributes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="653" endline="653" begincolumn="16" endcolumn="19" rule="ReturnEmptyCollectionRatherThanNull" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="getAdditionalAuthorizationAttributes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#returnemptycollectionratherthannull" priority="1">
+Return an empty collection rather than null.
+</violation>
+<violation beginline="691" endline="691" begincolumn="9" endcolumn="28" rule="UnnecessaryLocalBeforeReturn" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="createRefreshToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessarylocalbeforereturn" priority="3">
+Consider simply returning the value vs storing it in local variable 'refreshToken'
+</violation>
+<violation beginline="820" endline="820" begincolumn="17" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="821" endline="823" begincolumn="15" endcolumn="13" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'NoSuchClientException' branch
+</violation>
+<violation beginline="822" endline="822" begincolumn="17" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="823" endline="825" begincolumn="15" endcolumn="13" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'NoSuchClientException' branch
+</violation>
+<violation beginline="824" endline="824" begincolumn="17" endcolumn="82" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClient" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="906" endline="906" begincolumn="31" endcolumn="41" rule="UseCollectionIsEmpty" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="readAccessToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#usecollectionisempty" priority="3">
+Substitute calls to size() == 0 (or size() != 0, size() &gt; 0, size() &lt; 1) with calls to isEmpty()
+</violation>
+<violation beginline="921" endline="921" begincolumn="17" endcolumn="103" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="readAccessToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="946" endline="946" begincolumn="44" endcolumn="60" rule="LooseCoupling" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClientAuthorities" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="950" endline="950" begincolumn="37" endcolumn="53" rule="LooseCoupling" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateUserScopes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="954" endline="954" begincolumn="38" endcolumn="54" rule="LooseCoupling" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateAuthorities" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="967" endline="967" begincolumn="39" endcolumn="55" rule="LooseCoupling" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="validateClientScopes" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#loosecoupling" priority="3">
+Avoid using implementation types like 'ArrayList'; use the interface instead
+</violation>
+<violation beginline="1010" endline="1013" begincolumn="11" endcolumn="9" rule="AvoidCatchingThrowable" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="getClaimsForToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidcatchingthrowable" priority="3">
+A catch statement should never catch throwable since it includes errors.
+</violation>
+<violation beginline="1012" endline="1012" begincolumn="13" endcolumn="90" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="getClaimsForToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="1034" endline="1035" begincolumn="15" endcolumn="13" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.oauth.token" class="UaaTokenServices" method="getClaimsForToken" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

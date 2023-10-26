@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T20:10:42.465">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-310/bad$30af3f5630542a2340781f66553e734a6fd69701$3$JSSESocketFactory.java">
+<violation beginline="119" endline="121" begincolumn="12" endcolumn="5" rule="UnnecessaryConstructor" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="JSSESocketFactory" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryconstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+<violation beginline="127" endline="127" begincolumn="27" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="createSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="137" endline="137" begincolumn="27" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="createSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="148" endline="148" begincolumn="27" endcolumn="33" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="createSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="167" endline="167" begincolumn="11" endcolumn="74" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="acceptSocket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="174" endline="174" begincolumn="26" endcolumn="51" rule="AvoidUsingVolatile" ruleset="Multithreading" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory$DisableSslRenegotiation" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_multithreading.html#avoidusingvolatile" priority="2">
+Use of modifier volatile is not recommended.
+</violation>
+<violation beginline="182" endline="184" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory$DisableSslRenegotiation" method="handshakeCompleted" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="195" endline="195" begincolumn="13" endcolumn="70" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="handshake" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="196" endline="196" begincolumn="10" endcolumn="110" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="handshake" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="302" endline="302" begincolumn="13" endcolumn="47" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getKeystore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="396" endline="397" begincolumn="13" endcolumn="45" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getStore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="400" endline="401" begincolumn="13" endcolumn="43" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getStore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="407" endline="407" begincolumn="13" endcolumn="39" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getStore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="412" endline="414" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getStore" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="519" endline="519" begincolumn="17" endcolumn="17" rule="AvoidInstanceofChecksInCatchClause" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#avoidinstanceofchecksincatchclause" priority="3">
+An instanceof check is being performed on the caught exception.  Create a separate catch clause for this exception type.
+</violation>
+<violation beginline="520" endline="520" begincolumn="17" endcolumn="37" rule="ControlStatementBraces" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#controlstatementbraces" priority="3">
+This statement should have braces
+</violation>
+<violation beginline="521" endline="521" begincolumn="13" endcolumn="50" rule="PreserveStackTrace" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="551" endline="551" begincolumn="25" endcolumn="43" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getKeyManagers" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="622" endline="622" begincolumn="21" endcolumn="63" rule="GuardLogStatement" ruleset="Best Practices" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getParameters" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="653" endline="655" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getCRLs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="655" endline="657" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getCRLs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'IOException' branch
+</violation>
+<violation beginline="661" endline="663" begincolumn="19" endcolumn="17" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="getCRLs" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="799" endline="799" begincolumn="22" endcolumn="27" rule="CloseResource" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="checkConfig" variable="socket" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+Ensure that resources like this ServerSocket object are closed after use
+</violation>
+<violation beginline="815" endline="826" begincolumn="11" endcolumn="9" rule="EmptyCatchBlock" ruleset="Error Prone" package="org.apache.tomcat.util.net.jsse" class="JSSESocketFactory" method="checkConfig" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#emptycatchblock" priority="3">
+Avoid empty catch blocks
+</violation>
+</file>
+</pmd>

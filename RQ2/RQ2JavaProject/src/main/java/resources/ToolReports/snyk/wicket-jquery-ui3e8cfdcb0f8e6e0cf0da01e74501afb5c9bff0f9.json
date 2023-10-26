@@ -1,0 +1,1152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/SetEscapeModelStrings",
+              "name": "SetEscapeModelStrings",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [],
+                "exampleCommitDescriptions": [],
+                "precision": "very-high",
+                "repoDatasetSize": 0,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-core/src/main/java/com/googlecode/wicket/jquery/core/panel/LoadingPanel.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 55,
+                  "endLine": 55,
+                  "startColumn": 20,
+                  "endColumn": 25
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "1773956db2892c0bffde681a9892d8b9697519fbee5ce9d5274f0d2759561657",
+            "1": "1ff1f1f7.5133f0cd.0c9d82bf.8415ef30.056cf8f5.a0340d99.d85953ad.2cc06456.1ff1f1f7.53741ed6.33fa5dbe.e22980a8.056cf8f5.7fda7c5e.d85953ad.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-core/src/main/java/com/googlecode/wicket/jquery/core/panel/LoadingPanel.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 56,
+                            "endLine": 56,
+                            "startColumn": 3,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DefaultWizardPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 35,
+                  "endLine": 35,
+                  "startColumn": 38,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "8aa6cef8a649109524f017774cfe7ff55c1287f03f2d6d80e73993b2dd11d155",
+            "1": "7f9757e1.31852588.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.dc03b4cf.2b469796.53741ed6.7f331203.8415ef30.ab415621.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DefaultWizardPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 56,
+                            "endLine": 56,
+                            "startColumn": 16,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DefaultWizardPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 38,
+                  "endLine": 38,
+                  "startColumn": 38,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "3091b41151c9fd55f659375b0227680c24972f9712250c6301ff01126cb7f335",
+            "1": "7f9757e1.31852588.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.dc03b4cf.2b469796.53741ed6.7f331203.8415ef30.ab415621.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DefaultWizardPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 59,
+                            "endLine": 59,
+                            "startColumn": 16,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/kendoui/editor/DefaultEditorPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 24,
+                  "endLine": 24,
+                  "startColumn": 29,
+                  "endColumn": 35
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a47f84013664e447b73a8893e93cb4daf832e4b51eee0898ad880959989d6abf",
+            "1": "8fe8053f.aed6fec5.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.2cc06456.19689298.9354c6f9.6f078c0d.c8107cc9.ab415621.a0340d99.bec7bf3c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/kendoui/editor/DefaultEditorPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 12,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DynamicWizardPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "endLine": 46,
+                  "startColumn": 38,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ed7ee2d24659fc19827240fc89e173eb954600659c27e8dba8ea589aab30a236",
+            "1": "7f9757e1.31852588.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.dc03b4cf.2b469796.53741ed6.7f331203.8415ef30.ab415621.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DynamicWizardPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 67,
+                            "endLine": 67,
+                            "startColumn": 16,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-kendo-ui/src/main/java/com/googlecode/wicket/kendo/ui/widget/editor/AbstractEditor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 100,
+                  "endLine": 100,
+                  "startColumn": 3,
+                  "endColumn": 7
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "cad9d44838805232bc0e4803ad33d06047de50bc0871f07e6ee55826d7d5bcdb",
+            "1": "7f9757e1.1cbd3ff4.fc7d5400.e22980a8.c2ba93a9.a0340d99.d8133dba.54d46e25.7f9757e1.1cbd3ff4.5ef54930.e22980a8.c2ba93a9.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-kendo-ui/src/main/java/com/googlecode/wicket/kendo/ui/widget/editor/AbstractEditor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "endLine": 100,
+                            "startColumn": 3,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 40,
+                  "endLine": 40,
+                  "startColumn": 16,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "05a67af26e479d348b9ab1731c0bdccf7687a0afcc6ed0191d3fb32e2ffdc84a",
+            "1": "1ff1f1f7.c23943e9.9d8990cc.6c52ae28.056cf8f5.62fdc743.d85953ad.203bd690.1ff1f1f7.cf0ab0c0.9d8990cc.8415ef30.ab415621.a0340d99.d85953ad.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 40,
+                            "endLine": 40,
+                            "startColumn": 12,
+                            "endColumn": 87
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 57,
+                  "endLine": 57,
+                  "startColumn": 18,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "7ddd1c6c694a73d180fab87ef332a651dbcfb4d8792e13e126bed6e6749350a5",
+            "1": "ba01e774.97acdc08.0c9d82bf.6c52ae28.056cf8f5.1ca917a4.24eaac64.62b4cd98.ba01e774.cf0ab0c0.0c9d82bf.8415ef30.ab415621.a0340d99.24eaac64.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 57,
+                            "endLine": 57,
+                            "startColumn": 14,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 44,
+                  "endLine": 44,
+                  "startColumn": 16,
+                  "endColumn": 21
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "884a30ba976c92f220aa07f764749c51bd63cbcd5c2b23da54bfec204e0bf502",
+            "1": "1ff1f1f7.c23943e9.9d8990cc.6c52ae28.056cf8f5.62fdc743.d85953ad.203bd690.1ff1f1f7.cf0ab0c0.9d8990cc.8415ef30.ab415621.a0340d99.d85953ad.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 44,
+                            "endLine": 44,
+                            "startColumn": 12,
+                            "endColumn": 87
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 70,
+                  "endLine": 70,
+                  "startColumn": 18,
+                  "endColumn": 23
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "5a314822d106968f2dff51a67677a7379624dae1b581432c37ac470d2c51dae9",
+            "1": "ba01e774.97acdc08.0c9d82bf.6c52ae28.056cf8f5.1ca917a4.24eaac64.62b4cd98.ba01e774.cf0ab0c0.0c9d82bf.8415ef30.ab415621.a0340d99.24eaac64.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/SamplePage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "endLine": 70,
+                            "startColumn": 14,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-kendo-ui/src/main/java/com/googlecode/wicket/kendo/ui/widget/editor/Editor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 98,
+                  "endLine": 98,
+                  "startColumn": 3,
+                  "endColumn": 7
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b41aa1e4e03c445fe98f810388e6b05d211bdf3c47a81c958712dae833aa2498",
+            "1": "7f9757e1.1cbd3ff4.fc7d5400.e22980a8.c2ba93a9.a0340d99.d8133dba.54d46e25.7f9757e1.1cbd3ff4.5ef54930.e22980a8.c2ba93a9.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-kendo-ui/src/main/java/com/googlecode/wicket/kendo/ui/widget/editor/Editor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 98,
+                            "endLine": 98,
+                            "startColumn": 3,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-plugins/src/main/java/com/googlecode/wicket/jquery/ui/plugins/wysiwyg/WysiwygEditor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 100,
+                  "endLine": 100,
+                  "startColumn": 3,
+                  "endColumn": 7
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "b6b6181555e50b2d943a734bc5cc4e356e1546750eaa0239d735d636646b7909",
+            "1": "7f9757e1.1cbd3ff4.fc7d5400.e22980a8.c2ba93a9.a0340d99.d8133dba.54d46e25.7f9757e1.1cbd3ff4.34d94eb1.e22980a8.c2ba93a9.a0340d99.ace5a5bf.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-plugins/src/main/java/com/googlecode/wicket/jquery/ui/plugins/wysiwyg/WysiwygEditor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 100,
+                            "endLine": 100,
+                            "startColumn": 3,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-plugins/src/main/java/com/googlecode/wicket/jquery/ui/plugins/wysiwyg/WysiwygEditor.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 157,
+                  "endLine": 157,
+                  "startColumn": 23,
+                  "endColumn": 39
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2357ef524e0258817bab59af6cfb68b974fc7228b1325793b14d7a2df2749f9d",
+            "1": "f92be5a7.4ce64792.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.1e967228.f92be5a7.4ce64792.33fa5dbe.e22980a8.c2ba93a9.7fda7c5e.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-plugins/src/main/java/com/googlecode/wicket/jquery/ui/plugins/wysiwyg/WysiwygEditor.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 158,
+                            "endLine": 158,
+                            "startColumn": 3,
+                            "endColumn": 38
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 364,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/kendoui/editor/DefaultEditorPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 24,
+                  "endLine": 24,
+                  "startColumn": 37,
+                  "endColumn": 51
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "469e0f6f5b76de946232a4c66c9aedac55212a02a74964762399d1f48b231fd0",
+            "1": "8fe8053f.aed6fec5.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.2cc06456.19689298.9354c6f9.6f078c0d.c8107cc9.ab415621.a0340d99.bec7bf3c.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/src/main/java/com/googlecode/wicket/jquery/ui/samples/kendoui/editor/DefaultEditorPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 25,
+                            "endLine": 25,
+                            "startColumn": 12,
+                            "endColumn": 40
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/SetEscapeModelStrings",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Call to setEscapeModelStrings disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "markdown": "Call to {0} disables HTML escaping of content, which can lead to Cross-Site Scripting (XSS) attacks.",
+            "arguments": [
+              "[setEscapeModelStrings](0)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DynamicWizardPage.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 49,
+                  "endLine": 49,
+                  "startColumn": 38,
+                  "endColumn": 57
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "23ab9fd851a481e32363294b835ec72ae08e1410b9b6f2ff1be9b2dd6179b861",
+            "1": "7f9757e1.31852588.77d15f9f.8415ef30.c2ba93a9.a0340d99.d8133dba.dc03b4cf.2b469796.53741ed6.7f331203.8415ef30.ab415621.a0340d99.d8133dba.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "wicket-jquery-ui-samples/target/classes/com/googlecode/wicket/jquery/ui/samples/jqueryui/wizard/DynamicWizardPage.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 70,
+                            "endLine": 70,
+                            "startColumn": 16,
+                            "endColumn": 46
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 314,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 69,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 1116,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 527,
+            "isSupported": true,
+            "lang": "HTML"
+          },
+          {
+            "files": 2009,
+            "isSupported": true,
+            "lang": "JavaScript"
+          }
+        ]
+      }
+    }
+  ]
+}

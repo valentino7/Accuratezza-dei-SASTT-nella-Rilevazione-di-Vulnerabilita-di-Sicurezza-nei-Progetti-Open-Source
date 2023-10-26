@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.7.3" sequence="0" timestamp="1671854880926" analysisTimestamp="1672072565261" release="">
+  <Project projectName="">
+    <Jar>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes/CWE-20/bad_6b8272ce_FileUploadInterceptor.class</Jar>
+    <AuxClasspathEntry>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/classes</AuxClasspathEntry>
+    <SrcDir>/mnt/c/Users/Valentino/Documents/Universita/Tesi/2Bugginess/Dataset/src/CWE-20/bad_6b8272ce_FileUploadInterceptor.java</SrcDir>
+  </Project>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="acceptFile" signature="(Ljava/lang/Object;Lorg/apache/struts2/dispatcher/multipart/UploadedFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/opensymphony/xwork2/interceptor/ValidationAware;)Z" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="340" end="383" startBytecode="0" endBytecode="718" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="350" end="350" startBytecode="57" endBytecode="57" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="344" end="344" startBytecode="20" endBytecode="20" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="acceptFile" signature="(Ljava/lang/Object;Lorg/apache/struts2/dispatcher/multipart/UploadedFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/opensymphony/xwork2/interceptor/ValidationAware;)Z" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="340" end="383" startBytecode="0" endBytecode="718" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="359" end="359" startBytecode="192" endBytecode="192" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="353" end="353" startBytecode="155" endBytecode="155" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="acceptFile" signature="(Ljava/lang/Object;Lorg/apache/struts2/dispatcher/multipart/UploadedFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/opensymphony/xwork2/interceptor/ValidationAware;)Z" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="340" end="383" startBytecode="0" endBytecode="718" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="368" end="368" startBytecode="294" endBytecode="294" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="362" end="362" startBytecode="257" endBytecode="257" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="acceptFile" signature="(Ljava/lang/Object;Lorg/apache/struts2/dispatcher/multipart/UploadedFile;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/opensymphony/xwork2/interceptor/ValidationAware;)Z" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="340" end="383" startBytecode="0" endBytecode="718" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="377" end="377" startBytecode="395" endBytecode="395" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="371" end="371" startBytecode="358" endBytecode="358" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="intercept" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="236" end="324" startBytecode="0" endBytecode="1454" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="243" end="243" startBytecode="76" endBytecode="76" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.debug(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="243" end="243" startBytecode="73" endBytecode="73" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="438" end="438" startBytecode="4" endBytecode="4" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="intercept" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="236" end="324" startBytecode="0" endBytecode="1454" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="313" end="313" startBytecode="669" endBytecode="669" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="313" end="313" startBytecode="666" endBytecode="666" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <BugInstance type="CRLF_INJECTION_LOGS" priority="3" rank="15" abbrev="SECCRLFLOG" category="SECURITY">
+    <Class classname="org.apache.struts2.interceptor.FileUploadInterceptor">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="181" end="464" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Class>
+    <Method classname="org.apache.struts2.interceptor.FileUploadInterceptor" name="intercept" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="236" end="324" startBytecode="0" endBytecode="1454" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    </Method>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="318" end="318" startBytecode="709" endBytecode="709" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+    <String value="org/apache/logging/log4j/Logger.warn(Ljava/lang/String;)V" role="Sink method"/>
+    <String value="0" role="Sink parameter"/>
+    <String value="org/apache/struts2/interceptor/FileUploadInterceptor.getTextMessage(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <String value="com/opensymphony/xwork2/TextProvider.getText(Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;" role="Unknown source"/>
+    <SourceLine classname="org.apache.struts2.interceptor.FileUploadInterceptor" start="318" end="318" startBytecode="706" endBytecode="706" sourcefile="FileUploadInterceptor.java" sourcepath="org/apache/struts2/interceptor/FileUploadInterceptor.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="19">
+    <MissingClass>com.opensymphony.xwork2.ActionContext</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionInvocation</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.ActionProxy</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.LocaleProvider</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.TextProvider</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.TextProviderFactory</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.inject.Container</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.interceptor.AbstractInterceptor</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.interceptor.ValidationAware</MissingClass>
+    <MissingClass>com.opensymphony.xwork2.util.TextParseUtil</MissingClass>
+    <MissingClass>javax.servlet.http.HttpServletRequest</MissingClass>
+    <MissingClass>org.apache.logging.log4j.LogManager</MissingClass>
+    <MissingClass>org.apache.logging.log4j.Logger</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.HttpParameters</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.LocalizedMessage</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.Parameter$File</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.multipart.MultiPartRequestWrapper</MissingClass>
+    <MissingClass>org.apache.struts2.dispatcher.multipart.UploadedFile</MissingClass>
+    <MissingClass>org.apache.struts2.util.ContentTypeMatcher</MissingClass>
+  </Errors>
+  <FindBugsSummary timestamp="Sat, 24 Dec 2022 05:08:00 +0100" total_classes="1" referenced_classes="19" total_bugs="7" total_size="154" num_packages="1" java_version="11.0.17" vm_version="11.0.17+8-post-Ubuntu-1ubuntu222.04" cpu_seconds="19.15" clock_seconds="5.51" peak_mbytes="142.36" alloc_mbytes="768.00" gc_seconds="0.06" priority_3="7">
+    <PackageStats package="org.apache.struts2.interceptor" total_bugs="7" total_types="1" total_size="154" priority_3="7">
+      <ClassStats class="org.apache.struts2.interceptor.FileUploadInterceptor" sourceFile="FileUploadInterceptor.java" interface="false" size="154" bugs="7" priority_3="7"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="803" invocations="523" avgMicrosecondsPerInvocation="1535" maxMicrosecondsPerInvocation="9244" standardDeviationMicrosecondsPerInvocation="631"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="615" invocations="519" avgMicrosecondsPerInvocation="1186" maxMicrosecondsPerInvocation="60019" standardDeviationMicrosecondsPerInvocation="3402"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="185" invocations="18" avgMicrosecondsPerInvocation="10290" maxMicrosecondsPerInvocation="175083" standardDeviationMicrosecondsPerInvocation="39980"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="158" invocations="19" avgMicrosecondsPerInvocation="8325" maxMicrosecondsPerInvocation="35572" standardDeviationMicrosecondsPerInvocation="9364"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="101" invocations="18" avgMicrosecondsPerInvocation="5648" maxMicrosecondsPerInvocation="46099" standardDeviationMicrosecondsPerInvocation="11370"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="101" invocations="192" avgMicrosecondsPerInvocation="528" maxMicrosecondsPerInvocation="4796" standardDeviationMicrosecondsPerInvocation="799"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="94" invocations="18" avgMicrosecondsPerInvocation="5276" maxMicrosecondsPerInvocation="41040" standardDeviationMicrosecondsPerInvocation="10928"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="94" invocations="18" avgMicrosecondsPerInvocation="5275" maxMicrosecondsPerInvocation="45666" standardDeviationMicrosecondsPerInvocation="11692"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="87" invocations="77" avgMicrosecondsPerInvocation="1139" maxMicrosecondsPerInvocation="46255" standardDeviationMicrosecondsPerInvocation="5437"/>
+      <ClassProfile name="com.h3xstream.findsecbugs.taintanalysis.TaintDataflowEngine" totalMilliseconds="84" invocations="18" avgMicrosecondsPerInvocation="4679" maxMicrosecondsPerInvocation="30785" standardDeviationMicrosecondsPerInvocation="8696"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="80" invocations="19" avgMicrosecondsPerInvocation="4252" maxMicrosecondsPerInvocation="13548" standardDeviationMicrosecondsPerInvocation="4339"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="70" invocations="19" avgMicrosecondsPerInvocation="3727" maxMicrosecondsPerInvocation="47094" standardDeviationMicrosecondsPerInvocation="10343"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="59" invocations="464" avgMicrosecondsPerInvocation="129" maxMicrosecondsPerInvocation="2710" standardDeviationMicrosecondsPerInvocation="252"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="57" invocations="19" avgMicrosecondsPerInvocation="3029" maxMicrosecondsPerInvocation="15820" standardDeviationMicrosecondsPerInvocation="3619"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="55" invocations="18" avgMicrosecondsPerInvocation="3096" maxMicrosecondsPerInvocation="23720" standardDeviationMicrosecondsPerInvocation="5597"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="54" invocations="18" avgMicrosecondsPerInvocation="3005" maxMicrosecondsPerInvocation="27196" standardDeviationMicrosecondsPerInvocation="6523"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

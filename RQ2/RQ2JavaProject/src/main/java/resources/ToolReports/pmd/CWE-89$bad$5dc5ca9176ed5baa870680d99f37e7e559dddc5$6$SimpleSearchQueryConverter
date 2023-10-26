@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T23:16:42.778">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-89/bad$5dc5ca9176ed5baa870680d99f37e7e559dddc5$6$SimpleSearchQueryConverter.java">
+<violation beginline="36" endline="36" begincolumn="20" endcolumn="84" rule="ProperLogger" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" variable="VariableDeclaratorId" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#properlogger" priority="3">
+Logger should be defined private static final and have the correct class
+</violation>
+<violation beginline="70" endline="70" begincolumn="24" endcolumn="80" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="generateParameterPrefix" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="90" endline="90" begincolumn="13" endcolumn="56" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="getWhereClause" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="91" endline="91" begincolumn="13" endcolumn="105" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="getWhereClause" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="100" endline="100" begincolumn="13" endcolumn="92" rule="GuardLogStatement" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="scimFilter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+Logger calls should be surrounded by log level guards.
+</violation>
+<violation beginline="108" endline="129" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="createFilter" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#switchstmtsshouldhavedefault" priority="3">
+Switch statements should be exhaustive, add a default case (or missing enum branches)
+</violation>
+<violation beginline="142" endline="149" begincolumn="17" endcolumn="17" rule="ImplicitSwitchFallThrough" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="comparisonClause" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#implicitswitchfallthrough" priority="3">
+A switch statement does not contain a break
+</violation>
+<violation beginline="142" endline="142" begincolumn="25" endcolumn="84" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="comparisonClause" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+</violation>
+<violation beginline="169" endline="170" begincolumn="21" endcolumn="59" rule="PreserveStackTrace" ruleset="Best Practices" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="comparisonClause" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#preservestacktrace" priority="3">
+New exception is thrown in catch block, original stack trace may be lost
+</violation>
+<violation beginline="193" endline="193" begincolumn="24" endcolumn="39" rule="LocalVariableNamingConventions" ruleset="Code Style" package="org.cloudfoundry.identity.uaa.resources.jdbc" class="SimpleSearchQueryConverter" method="getStringOrDate" variable="TIMESTAMP_FORMAT" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#localvariablenamingconventions" priority="1">
+The local variable name 'TIMESTAMP_FORMAT' doesn't match '[a-z][a-zA-Z0-9]*'
+</violation>
+</file>
+</pmd>

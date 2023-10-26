@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.44.0" timestamp="2023-10-12T18:12:17.703">
+<file name="/mnt/c/Users/Valentino/Documents/Universita/Tesi/Tesi/Pacchetto_di_replicabilita/Correttiva/src/CWE-254/good$c4ab1b959280413fb11bf4fd7f6b4c2ba38bd779$4$TrustManagerImpl.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="23" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'java.net.Socket'
+</violation>
+<violation beginline="43" endline="43" begincolumn="1" endcolumn="38" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.net.ssl.HostnameVerifier'
+</violation>
+<violation beginline="44" endline="44" begincolumn="1" endcolumn="40" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.net.ssl.HttpsURLConnection'
+</violation>
+<violation beginline="45" endline="45" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.net.ssl.SSLEngine'
+</violation>
+<violation beginline="46" endline="46" begincolumn="1" endcolumn="35" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.net.ssl.SSLParameters'
+</violation>
+<violation beginline="48" endline="48" begincolumn="1" endcolumn="31" rule="UnnecessaryImport" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#unnecessaryimport" priority="4">
+Unused import 'javax.net.ssl.SSLSocket'
+</violation>
+<violation beginline="192" endline="192" begincolumn="20" endcolumn="71" rule="OptimizableToArrayCall" ruleset="Performance" package="org.conscrypt" class="TrustManagerImpl" method="acceptedIssuers" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_performance.html#optimizabletoarraycall" priority="3">
+This call to Collection.toArray() may be optimizable
+</violation>
+<violation beginline="293" endline="293" begincolumn="17" endcolumn="28" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.conscrypt" class="TrustManagerImpl" method="checkTrusted" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="349" endline="351" begincolumn="11" endcolumn="9" rule="IdenticalCatchBranches" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" method="checkTrusted" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#identicalcatchbranches" priority="3">
+'catch' branch identical to 'InvalidAlgorithmParameterException' branch
+</violation>
+<violation beginline="387" endline="387" begincolumn="29" endcolumn="45" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.conscrypt" class="TrustManagerImpl" method="cleanupCertChainAndFindTrustAnchors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="416" endline="416" begincolumn="17" endcolumn="33" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.conscrypt" class="TrustManagerImpl" method="cleanupCertChainAndFindTrustAnchors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="441" endline="443" begincolumn="39" endcolumn="73" rule="UselessParentheses" ruleset="Code Style" package="org.conscrypt" class="TrustManagerImpl" method="cleanupCertChainAndFindTrustAnchors" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_codestyle.html#uselessparentheses" priority="4">
+Useless parentheses.
+</violation>
+<violation beginline="464" endline="464" begincolumn="47" endcolumn="57" rule="AvoidUsingHardCodedIP" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#avoidusinghardcodedip" priority="3">
+Do not hard code the IP address 
+</violation>
+<violation beginline="484" endline="485" begincolumn="77" endcolumn="9" rule="UncommentedEmptyMethodBody" ruleset="Documentation" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="init" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_documentation.html#uncommentedemptymethodbody" priority="3">
+Document empty method body
+</violation>
+<violation beginline="501" endline="501" begincolumn="17" endcolumn="25" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="519" endline="519" begincolumn="21" endcolumn="58" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="526" endline="526" begincolumn="25" endcolumn="53" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="534" endline="534" begincolumn="21" endcolumn="49" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="538" endline="538" begincolumn="21" endcolumn="44" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+<violation beginline="542" endline="542" begincolumn="21" endcolumn="44" rule="LiteralsFirstInComparisons" ruleset="Best Practices" package="org.conscrypt" class="TrustManagerImpl$ExtendedKeyUsagePKIXCertPathChecker" method="check" externalInfoUrl="https://pmd.github.io/pmd-6.44.0/pmd_rules_java_bestpractices.html#literalsfirstincomparisons" priority="3">
+Position literals first in String comparisons
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,2276 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/InsecureRandomData",
+              "name": "InsecureRandomData",
+              "shortDescription": {
+                "text": "Use of Insufficiently Random Values"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nComputer security relies on random numbers for many things: generating secure, confidential session keys; hashing password data; encryption for transmitting sensitive data, and more. It's easy to understand why. If session keys, for example, were generated sequentially, attackers would be able to guess these easily and then hijack legitimate user sessions. Similarly, if encryption techniques used easy-to-guess numbers, attackers could use brute-force attacks to gain unauthorized access.\n\nIn reality, since computers cannot generate truly random numbers, they use \"pseudorandom\" numbers instead, generated using an algorithm that is \"seeded\" in a variety of ways to produce highly variable values in a random-seeming order, making them very hard-in theory-for attackers to guess. However, if developers inadvertently make use of a weak random algorithm, attackers may be able to discover the algorithm, seed, or pattern, ultimately unlocking access to commands or sensitive data, which can then be held for ransom or sold.\n\n### Best practices for prevention\n* Avoid using weak pseudorandom number generators (PRNGs), such as statistical PRNGs. Instead, choose a cryptographically secure PRNG.\n* Avoid using predictable seed values, such as user ID or server start time. Instead, use a seed that is itself pseudorandom, such as one taken from an external hardware source.\n* Use standard, accepted security algorithms and libraries rather than taking a DIY approach and creating custom code that may contain inherent weaknesses or overlook critical flaws.\n* Use static analysis tools to identify potential instances of this weakness in code and then ensure good test coverage with appropriate white-box testing.\n* Educate developers about the importance of entropy in security systems development, and consider adopting tools that are FIPS 140-2 compliant.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/apache/cordova-amazon-fireos/commit/7634ecb0a053b56b32cf7ebebf3e98ca71a7495e?diff=split#diff-2f48d1bc515df7c3997d7ef18b24100cL112",
+                    "lines": [
+                      {
+                        "line": "/** Called by cordova.js to initialize the bridge. */",
+                        "lineNumber": 110,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "int generateBridgeSecret() {",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    expectedBridgeSecret = (int)(Math.random() * Integer.MAX_VALUE);",
+                        "lineNumber": 112,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    SecureRandom randGen = new SecureRandom();",
+                        "lineNumber": 112,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    expectedBridgeSecret = randGen.nextInt(Integer.MAX_VALUE);",
+                        "lineNumber": 113,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return expectedBridgeSecret;",
+                        "lineNumber": 114,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 115,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apache/cordova-android/commit/b37498d5f61faf37c5cbe7ca58f004ceacdffb0f?diff=split#diff-2f48d1bc515df7c3997d7ef18b24100cL110",
+                    "lines": [
+                      {
+                        "line": "/** Called by cordova.js to initialize the bridge. */",
+                        "lineNumber": 110,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "int generateBridgeSecret() {",
+                        "lineNumber": 111,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    expectedBridgeSecret = (int)(Math.random() * Integer.MAX_VALUE);",
+                        "lineNumber": 110,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    SecureRandom randGen = new SecureRandom();",
+                        "lineNumber": 112,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    expectedBridgeSecret = (int)(randGen.nextInt() * Integer.MAX_VALUE);",
+                        "lineNumber": 113,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    return expectedBridgeSecret;",
+                        "lineNumber": 114,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 115,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/keycloak/keycloak/commit/54b5a6c41e74830268ff85b754396f04e48a69c7?diff=split#diff-fdba5f6970a909e54883c518d8677d74L31",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 28,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public static String generateSecret(int length) {",
+                        "lineNumber": 30,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String chars = \"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVW1234567890\";",
+                        "lineNumber": 31,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    Random r = new Random();",
+                        "lineNumber": 32,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    SecureRandom r = new SecureRandom();",
+                        "lineNumber": 32,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    StringBuilder sb = new StringBuilder();",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    for (int i = 0; i < length; i++) {",
+                        "lineNumber": 34,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        char c = chars.charAt(r.nextInt(chars.length()));",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        sb.append(c);",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 37,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return sb.toString();",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Split repository API for module and DS management.",
+                  "Changed password generation to use SecureRandom bytes."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 35,
+                "cwe": [
+                  "CWE-330"
+                ]
+              }
+            },
+            {
+              "id": "java/XSS",
+              "name": "XSS",
+              "shortDescription": {
+                "text": "Cross-site Scripting (XSS)"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nA cross-site scripting attack occurs when the attacker tricks a legitimate web-based application or site to accept a request as originating from a trusted source.\n\nThis is done by escaping the context of the web application; the web application then delivers that data to its users along with other trusted dynamic content, without validating it. The browser unknowingly executes malicious script on the client side (through client-side languages; usually JavaScript or HTML)  in order to perform actions that are otherwise typically blocked by the browser's Same Origin Policy.\n\nInjecting malicious code is the most prevalent manner by which XSS is exploited; for this reason, escaping characters in order to prevent this manipulation is the top method for securing code against this vulnerability.\n\nEscaping means that the application is coded to mark key characters, and particularly key characters included in user input, to prevent those characters from being interpreted in a dangerous context. For example, in HTML, `<` can be coded as  `&lt`; and `>` can be coded as `&gt`; in order to be interpreted and displayed as themselves in text, while within the code itself, they are used for HTML tags. If malicious content is injected into an application that escapes special characters and that malicious content uses `<` and `>` as HTML tags, those characters are nonetheless not interpreted as HTML tags by the browser if they've been correctly escaped in the application code and in this way the attempted attack is diverted.\n\nThe most prominent use of XSS is to steal cookies (source: OWASP HttpOnly) and hijack user sessions, but XSS exploits have been used to expose sensitive information, enable access to privileged services and functionality and deliver malware.\n\n### Types of attacks\nThere are a few methods by which XSS can be manipulated:\n\n|Type|Origin|Description|\n|--|--|--|\n|**Stored**|Server|The malicious code is inserted in the application (usually as a link) by the attacker. The code is activated every time a user clicks the link.|\n|**Reflected**|Server|The attacker delivers a malicious link externally from the vulnerable web site application to a user. When clicked, malicious code is sent to the vulnerable web site, which reflects the attack back to the user's browser.|\n|**DOM-based**|Client|The attacker forces the user's browser to render a malicious page. The data in the page itself delivers the cross-site scripting data.|\n|**Mutated**| |The attacker injects code that appears safe, but is then rewritten and modified by the browser, while parsing the markup. An example is rebalancing unclosed quotation marks or even adding quotation marks to unquoted parameters.|\n\n### Affected environments\nThe following environments are susceptible to an XSS attack:\n\n* Web servers\n* Application servers\n* Web application environments\n\n### How to prevent\nThis section describes the top best practices designed to specifically protect your code:\n\n* Sanitize data input in an HTTP request before reflecting it back, ensuring all data is validated, filtered or escaped before echoing anything back to the user, such as the values of query parameters during searches.\n* Convert special characters such as `?`, `&`, `/`, `<`, `>` and spaces to their respective HTML or URL encoded equivalents.\n* Give users the option to disable client-side scripts.\n* Redirect invalid requests.\n* Detect simultaneous logins, including those from two separate IP addresses, and invalidate those sessions.\n* Use and enforce a Content Security Policy (source: Wikipedia) to disable any features that might be manipulated for an XSS attack.\n* Read the documentation for any of the libraries referenced in your code to understand which elements allow for embedded HTML.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/lutece-platform/lutece-core/commit/5387450fe0f3cf1b705bda89d553a6f67bc342b6?diff=split#diff-015efa4f075bbbac52efd486f29f3ca5L80",
+                    "lines": [
+                      {
+                        "line": " *             the io exception",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 80,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void processRequest( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "{",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValue = request.getParameter( PARAMETER_DATA );",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strValue ) : \"\";",
+                        "lineNumber": 82,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    String strEscaped = StringEscapeUtils.escapeHtml( strValue );",
+                        "lineNumber": 84,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String strValueReturn = ( strValue != null ) ? EditorBbcodeService.getInstance( ).parse( strEscaped ) : \"\";",
+                        "lineNumber": 85,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    OutputStream out = response.getOutputStream( );",
+                        "lineNumber": 86,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.write( strValueReturn.getBytes( AppPropertiesService.getProperty( PROPERTY_ENCODING ) ) );",
+                        "lineNumber": 87,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.flush( );",
+                        "lineNumber": 88,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    out.close( );",
+                        "lineNumber": 89,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/square/keywhiz/commit/b08aeb5d31e17cd3706f646c595884181813121b?diff=split#diff-37c8fdba6768ae3e9126a316519ae714L35",
+                    "lines": [
+                      {
+                        "line": "}",
+                        "lineNumber": 33,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "@Override protected void doPost(HttpServletRequest req, HttpServletResponse resp)",
+                        "lineNumber": 35,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    throws ServletException, IOException {",
+                        "lineNumber": 36,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String path = req.getPathInfo();",
+                        "lineNumber": 36,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "  String path = StringEscapeUtils.escapeHtml4(req.getPathInfo());",
+                        "lineNumber": 37,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  if(path != null && path.equals(\"/enable\")){",
+                        "lineNumber": 38,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(true);",
+                        "lineNumber": 39,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else if(path != null && path.equals(\"/disable\")) {",
+                        "lineNumber": 40,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    mshc.setHealthy(false);",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  } else {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    resp.sendError(HttpServletResponse.SC_NOT_FOUND,",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        \"Need to pass /status/enable or /status/disable, not /status\" + path);",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  }",
+                        "lineNumber": 45,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/apereo/cas/commit/9d81e9ba85945b0d0caaab58b10bf0c3b2e0af73?diff=split#diff-d950cb17562422f18fa1b11dc72e57deL72",
+                    "lines": [
+                      {
+                        "line": "@Override",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public final boolean preHandle(final HttpServletRequest request, final HttpServletResponse response, final Object o) throws Exception {",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    // we only care about post because that's the only instance where we can get anything useful besides IP address.",
+                        "lineNumber": 73,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (!\"POST\".equals(request.getMethod())) {",
+                        "lineNumber": 74,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return true;",
+                        "lineNumber": 75,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    }",
+                        "lineNumber": 76,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    if (exceedsThreshold(request)) {",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        recordThrottle(request);",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + request.getParameter(usernameParameter)",
+                        "lineNumber": 79,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "        final String username = StringEscapeUtils.escapeHtml4(request.getParameter(usernameParameter));",
+                        "lineNumber": 81,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "        response.sendError(403, \"Access Denied for user [\" + username",
+                        "lineNumber": 82,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                            + \" from IP Address [\" + request.getRemoteAddr() + \"]\");",
+                        "lineNumber": 83,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        return false;",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " * @param request the request",
+                        "lineNumber": 143,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": " */",
+                        "lineNumber": 144,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "protected void recordThrottle(final HttpServletRequest request) {",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.warn(\"Throttling submission from {}.  More than {} failed login attempts within {} seconds.\",",
+                        "lineNumber": 146,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "            new Object[] {request.getRemoteAddr(), failureThreshold, failureRangeInSeconds});",
+                        "lineNumber": 147,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Also started a IT testing harness to test servlets with a live sling instance",
+                  "* using properties file so that spring boot can read it too"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 308,
+                "cwe": [
+                  "CWE-79"
+                ]
+              }
+            },
+            {
+              "id": "java/OR",
+              "name": "OR",
+              "shortDescription": {
+                "text": "Open Redirect"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\nAn open redirect attack takes place when a web application redirects the user to an unauthorized and untrusted site. In general, URL redirection refers to the ability of a website or application to redirect users to another site. This is often a benign and useful feature. For example, if a resource has moved to a new location, URL redirection can transfer the user to that location rather than displaying an error message.\nHowever, this ability can be exploited through social engineering, tricking the user into believing they are accessing one site when, in reality, they are being redirected to a dangerous site, such as a phishing site. Once there, the user may be further tricked into entering credentials or personally identifiable information (PII), believing they are still within the original, trusted domain. Attackers can then use these credentials to gain unauthorized access or leverage the user's PII for sale or ransom.\n\n### Best practices for prevention\n* When developing a site or web app, consider implementing a disclaimer page to remind users that they are leaving a secure site.\n* Adopt a zero-trust approach in which all input is treated with suspicion.\n* Validate all input against deny-lists to ensure it does not contain code to redirect the user. This method is good but inherently incomplete.\n* Be aware of all sources of untrusted input being sent to the server that could be used to redirect the user, such as cookies, URL components, filenames, query results, request headers, and more.\n* In particular, be aware of potential API calls that could send input indirectly to redirect the user.\n* To protect end users, use a firewall to block known malicious sites, train users to recognize basic signs of a phishing attack, and ensure that all network endpoints are patched with the most current updates.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/otto-de/edison-microservice/commit/582f8f65f5d2e68cb7ef9f0b0eba3b5cb5f81a6c?diff=split#diff-ead42f7bee67adeefd20bf881888897aL77",
+                    "lines": [
+                      {
+                        "line": "        value = \"/internal/jobs/{jobType}\",",
+                        "lineNumber": 77,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "        method = POST)",
+                        "lineNumber": 78,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "public void startJob(final @PathVariable String jobType,",
+                        "lineNumber": 79,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                     final HttpServletRequest request,",
+                        "lineNumber": 80,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "                     final HttpServletResponse response) throws IOException {",
+                        "lineNumber": 81,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    final URI jobUri = jobService.startAsyncJob(jobType);",
+                        "lineNumber": 82,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    response.setHeader(\"Location\", jobUri.toString());",
+                        "lineNumber": 79,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    response.setHeader(\"Location\", baseUriOf(request) + jobUri.toString());",
+                        "lineNumber": 83,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    response.setStatus(SC_NO_CONTENT);",
+                        "lineNumber": 84,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 85,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/sakaiproject/sakai/commit/aada0a93ad5b4b1a2d0c34d6578c0ebc5fc405e2?diff=split#diff-4b464d789bfe9e583cdf0c6057df69ddL60",
+                    "lines": [
+                      {
+                        "line": "public void handleAccess(HttpServletRequest req, HttpServletResponse res, EntityReference ref) {    ",
+                        "lineNumber": 58,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "public void handleAccess(EntityView view, HttpServletRequest req, HttpServletResponse res) {",
+                        "lineNumber": 66,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  M_log.debug(\"handleAccess()\");",
+                        "lineNumber": 67,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  Map<String, String> props = entityBroker.getProperties(req.getPathInfo());",
+                        "lineNumber": 68,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String target = props.get(\"url\");",
+                        "lineNumber": 69,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  M_log.debug(\"handleAccess() -> \" + target);",
+                        "lineNumber": 70,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  String user = props.get(\"security.user\");",
+                        "lineNumber": 71,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  String site_function = props.get(\"security.site.function\");",
+                        "lineNumber": 72,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "try {",
+                        "lineNumber": 117,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "  setNoCacheHeaders(res);",
+                        "lineNumber": 118,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "  res.sendRedirect(target);\t\t  ",
+                        "lineNumber": 119,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 120,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "catch (IOException e) {",
+                        "lineNumber": 121,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/ModeShape/modeshape/commit/f6eb1262d007c5c892e99ae96b2acb8c8c30e6c9?diff=split#diff-0a0e48d9f362849b7a26faca19b1b35bL42",
+                    "lines": [
+                      {
+                        "line": "protected void processRequest( HttpServletRequest request,",
+                        "lineNumber": 41,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "                               HttpServletResponse response ) throws ServletException, IOException {",
+                        "lineNumber": 42,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String url = request.getRequestURI();",
+                        "lineNumber": 43,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    String servletPath = request.getServletPath();",
+                        "lineNumber": 44,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    request.getSession(true).setAttribute(\"initial.uri\", url);",
+                        "lineNumber": 46,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    logger.debug(\"Store requested uri \" + url);",
+                        "lineNumber": 47,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    ",
+                        "lineNumber": 48,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    String dest = url.substring(0, url.indexOf(servletPath));",
+                        "lineNumber": 49,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    response.sendRedirect(dest);",
+                        "lineNumber": 50,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "}",
+                        "lineNumber": 51,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Get better control of redirection after logging in.",
+                  "Add Bitbucket Server pull requests ()"
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 85,
+                "cwe": [
+                  "CWE-601"
+                ]
+              }
+            },
+            {
+              "id": "java/InsecureHash",
+              "name": "InsecureHash",
+              "shortDescription": {
+                "text": "Use of Password Hash With Insufficient Computational Effort"
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "help": {
+                "markdown": "\n## Details\n\nSensitive information should never be stored in plain text, since this makes it very easy for unauthorized users, whether malicious insiders or outside attackers, to access. Hashing methods are used to make stored passwords and other sensitive data unreadable to users. For example, when a password is defined for the first time, it is hashed and then stored. The next time that user attempts to log on, the password they enter is hashed following the same procedure and compared with the stored value. In this way, the original password never needs to be stored in the system.\n\nHashing is a one-way scheme, meaning a hashed password cannot be reverse engineered. However, if an outdated or custom programmed hashing scheme is used, it becomes simple for an attacker with powerful modern computing power to gain access to the hashes used. This opens up access to all stored password information, leading to breached security. Therefore, it is essential for developers to understand modern, secure password hashing techniques.\n\n### Best practices for prevention\n* Use strong standard algorithms for hashing rather than simpler but outdated methods or DIY hashing schemes, which may have inherent weaknesses.\n* Use modular design for all code dealing with hashing so it can be swapped out as security standards change over time.\n* Use salting in combination with hashing (While this places more demands on resources, it is an essential step for tighter security.).\n* Implement zero-trust architecture to ensure that access to password data is granted only for legitimate business purposes.\n* Increase developer awareness of current standards in data security and cryptography.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/tita/tita/commit/398f6b776a2aea7f20bf604768b8721beff8d93a?diff=split#diff-dd34c5e6a15ca48bff6f9ca749e68243L164",
+                    "lines": [
+                      {
+                        "line": " */",
+                        "lineNumber": 161,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "private String getHashedPassword(String pwd) throws NoSuchAlgorithmException {",
+                        "lineNumber": 162,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 163,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 103,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "    byte[] encryptMsg = md.digest(pwd.getBytes());",
+                        "lineNumber": 164,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "    return new String(encryptMsg);",
+                        "lineNumber": 165,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "    return bytes2String(encryptMsg);",
+                        "lineNumber": 105,
+                        "lineChange": "added"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/devonfw/my-thai-star/commit/095a3fb6bb860a2411cb51e812121ec2a6b99894?diff=split#diff-4f73d1042058dd462057744068125d4eL242",
+                    "lines": [
+                      {
+                        "line": "    + String.format(\"%02d\", ldt1.getSecond());",
+                        "lineNumber": 240,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"MD5\");",
+                        "lineNumber": 241,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 242,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.update((email + date + time).getBytes());",
+                        "lineNumber": 243,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "byte[] digest = md.digest();",
+                        "lineNumber": 244,
+                        "lineChange": "none"
+                      }
+                    ]
+                  },
+                  {
+                    "commitURL": "https://github.com/SecurityCompass/AndroidLabs/commit/5608f75dd665beac85dbad08f80b91d73b27904a?diff=split#diff-ffc047d4a5f84de13e373f2392bfb11bL148",
+                    "lines": [
+                      {
+                        "line": "byte[] passwordBytes = (password).getBytes(\"UTF-8\");",
+                        "lineNumber": 145,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-1\");",
+                        "lineNumber": 147,
+                        "lineChange": "removed"
+                      },
+                      {
+                        "line": "MessageDigest md = MessageDigest.getInstance(\"SHA-256\");",
+                        "lineNumber": 147,
+                        "lineChange": "added"
+                      },
+                      {
+                        "line": "md.reset();",
+                        "lineNumber": 148,
+                        "lineChange": "none"
+                      },
+                      {
+                        "line": "md.update(salt);",
+                        "lineNumber": 149,
+                        "lineChange": "none"
+                      }
+                    ]
+                  }
+                ],
+                "exampleCommitDescriptions": [
+                  "Added an enum for the supported encryption algorithms",
+                  "Added #hash(byte[], String)",
+                  "Added support for\nsha256 and nonce token."
+                ],
+                "precision": "very-high",
+                "repoDatasetSize": 122,
+                "cwe": [
+                  "CWE-916"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "java/InsecureRandomData",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Insecure random data (nextInt) flows from method generateNonce that should return cryptographically secure random. Use SecureRandom to generate passwords",
+            "markdown": "Insecure random data ({0}) {1} from method {2} that should return cryptographically secure random. Use SecureRandom to generate passwords",
+            "arguments": [
+              "[nextInt](0)",
+              "[flows](1),(2)",
+              "[generateNonce](3)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 122,
+                  "endLine": 122,
+                  "startColumn": 15,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "2413617a49e0ac396b141f3f7df89022a97007b3f01d88aa7f3e6d5b9c1a4af6",
+            "1": "aea563be.7f413d6f.a224ef38.81af705d.f0e1baa5.0d476878.28967057.1d874c72.aea563be.dd05ec30.ff7d7469.de031890.f0e1baa5.ce109560.28967057.da76413e"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "endLine": 123,
+                            "startColumn": 23,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "endLine": 123,
+                            "startColumn": 11,
+                            "endColumn": 39
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 123,
+                            "endLine": 123,
+                            "startColumn": 23,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 122,
+                            "endLine": 122,
+                            "startColumn": 15,
+                            "endColumn": 28
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 804,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into here, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[here](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 217,
+                  "endLine": 217,
+                  "startColumn": 11,
+                  "endColumn": 22
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "ebf4d7f7e4df00efd8036e8081112c50af6616848a5aabf9e9524e6573751ada",
+            "1": "e6fcc0e0.c8c8034f.fc7d5400.e22980a8.ae63d11c.a1460a60.e83646d3.1d874c72.63da3b7b.dac90b4b.3ad607f6.de031890.f0e1baa5.ce109560.27eae640.96f2b075"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 211,
+                            "endLine": 211,
+                            "startColumn": 33,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 211,
+                            "endLine": 211,
+                            "startColumn": 33,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 217,
+                            "endLine": 217,
+                            "startColumn": 23,
+                            "endColumn": 33
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 364,
+                            "endLine": 364,
+                            "startColumn": 31,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 365,
+                            "endLine": 365,
+                            "startColumn": 10,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 365,
+                            "endLine": 365,
+                            "startColumn": 10,
+                            "endColumn": 48
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 217,
+                            "endLine": 217,
+                            "startColumn": 11,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 217,
+                            "endLine": 217,
+                            "startColumn": 11,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 808,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/XSS",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Unsanitized input from the request URL flows into here, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).",
+            "arguments": [
+              "[the request URL](0)",
+              "[flows](1),(2),(3),(4),(5),(6)",
+              "[here](7)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 220,
+                  "endLine": 220,
+                  "startColumn": 11,
+                  "endColumn": 24
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "9b9bb8c495a98304dfd193632a43763004f097603452eb19789e60e8d89ee76b",
+            "1": "8a248097.c8c8034f.fc7d5400.e22980a8.ae63d11c.72e18f78.e83646d3.54d46e25.63da3b7b.dac90b4b.3ad607f6.de031890.f0e1baa5.ce109560.27eae640.96f2b075"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 211,
+                            "endLine": 211,
+                            "startColumn": 33,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 211,
+                            "endLine": 211,
+                            "startColumn": 33,
+                            "endColumn": 64
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "endLine": 220,
+                            "startColumn": 25,
+                            "endColumn": 35
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 375,
+                            "endLine": 375,
+                            "startColumn": 33,
+                            "endColumn": 50
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 376,
+                            "endLine": 376,
+                            "startColumn": 10,
+                            "endColumn": 36
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 376,
+                            "endLine": 376,
+                            "startColumn": 10,
+                            "endColumn": 50
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "endLine": 220,
+                            "startColumn": 11,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 220,
+                            "endLine": 220,
+                            "startColumn": 11,
+                            "endColumn": 24
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 808,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/OR",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into org.springframework.web.servlet.view.RedirectView, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19)",
+              "[org.springframework.web.servlet.view.RedirectView](20)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 238,
+                  "endLine": 238,
+                  "startColumn": 15,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "02c138c020e4a8ab968dec04c976012c213e47d0d4e50df11fdd7123495e7573",
+            "1": "cb8d13ec.80f57bb9.945c8697.de031890.3a01a03a.ce109560.76a0da3b.8f668541.cb8d13ec.80f57bb9.4a780eba.de031890.3a01a03a.ce109560.76a0da3b.8f668541"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 32,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 273,
+                            "endLine": 273,
+                            "startColumn": 39,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 22,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 22,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 5,
+                            "endColumn": 17
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 277,
+                            "endLine": 277,
+                            "startColumn": 10,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "endLine": 193,
+                            "startColumn": 33,
+                            "endColumn": 82
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 199,
+                            "endLine": 199,
+                            "startColumn": 56,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 210,
+                            "endLine": 210,
+                            "startColumn": 65,
+                            "endColumn": 112
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 214,
+                            "endLine": 214,
+                            "startColumn": 10,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 199,
+                            "endLine": 199,
+                            "startColumn": 14,
+                            "endColumn": 91
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 14,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 201,
+                            "endLine": 201,
+                            "startColumn": 42,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 15,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 201,
+                            "endLine": 201,
+                            "startColumn": 42,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 16,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 249,
+                            "endLine": 249,
+                            "startColumn": 66,
+                            "endColumn": 85
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 17,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 251,
+                            "endLine": 251,
+                            "startColumn": 11,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 18,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 126,
+                            "endLine": 126,
+                            "startColumn": 11,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 19,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 238,
+                            "endLine": 238,
+                            "startColumn": 28,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 20,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 238,
+                            "endLine": 238,
+                            "startColumn": 15,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 558,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/OR",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Unsanitized input from an HTTP parameter flows into org.springframework.web.servlet.view.RedirectView, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "markdown": "Unsanitized input from {0} {1} into {2}, where it is used as an URL to redirect the user. This may result in an Open Redirect vulnerability.",
+            "arguments": [
+              "[an HTTP parameter](0)",
+              "[flows](1),(2),(3),(4),(5),(6),(7),(8),(9),(10),(11),(12),(13),(14),(15),(16),(17),(18),(19)",
+              "[org.springframework.web.servlet.view.RedirectView](20)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ProviderSignInController.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 180,
+                  "endLine": 180,
+                  "startColumn": 15,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "a133234acffba6bf144015c22fa2a99c909b93b0f5bd311752f9e7e325d11340",
+            "1": "cb8d13ec.80f57bb9.945c8697.de031890.3a01a03a.ce109560.76a0da3b.8f668541.cb8d13ec.80f57bb9.4a780eba.de031890.3a01a03a.ce109560.76a0da3b.8f668541"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 2,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 40,
+                            "endColumn": 74
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 3,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 272,
+                            "endLine": 272,
+                            "startColumn": 32,
+                            "endColumn": 37
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 4,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 273,
+                            "endLine": 273,
+                            "startColumn": 39,
+                            "endColumn": 44
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 5,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 22,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 6,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 22,
+                            "endColumn": 34
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 7,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 274,
+                            "endLine": 274,
+                            "startColumn": 5,
+                            "endColumn": 17
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 8,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 277,
+                            "endLine": 277,
+                            "startColumn": 10,
+                            "endColumn": 22
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 9,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 193,
+                            "endLine": 193,
+                            "startColumn": 33,
+                            "endColumn": 82
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 10,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 199,
+                            "endLine": 199,
+                            "startColumn": 56,
+                            "endColumn": 73
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 11,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 210,
+                            "endLine": 210,
+                            "startColumn": 65,
+                            "endColumn": 112
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 12,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 214,
+                            "endLine": 214,
+                            "startColumn": 10,
+                            "endColumn": 43
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 13,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 199,
+                            "endLine": 199,
+                            "startColumn": 14,
+                            "endColumn": 91
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 14,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 201,
+                            "endLine": 201,
+                            "startColumn": 42,
+                            "endColumn": 54
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 15,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 201,
+                            "endLine": 201,
+                            "startColumn": 42,
+                            "endColumn": 63
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 16,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 249,
+                            "endLine": 249,
+                            "startColumn": 66,
+                            "endColumn": 85
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 17,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 251,
+                            "endLine": 251,
+                            "startColumn": 11,
+                            "endColumn": 47
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 18,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ConnectSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 126,
+                            "endLine": 126,
+                            "startColumn": 11,
+                            "endColumn": 25
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 19,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ProviderSignInController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 180,
+                            "endLine": 180,
+                            "startColumn": 28,
+                            "endColumn": 56
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 20,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-web/src/main/java/org/springframework/social/connect/web/ProviderSignInController.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 180,
+                            "endLine": 180,
+                            "startColumn": 15,
+                            "endColumn": 27
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 508,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "multipleOccurrence"
+              },
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        },
+        {
+          "ruleId": "java/InsecureHash",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The HmacSHA1 hash (used in javax.crypto.Mac.getInstance) is insecure. Consider changing it to a secure hash algorithm",
+            "markdown": "The {0} hash (used in {1}) is insecure. Consider changing it to a secure hash algorithm",
+            "arguments": [
+              "[HmacSHA1](0)",
+              "[javax.crypto.Mac.getInstance](1)"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 173,
+                  "endLine": 173,
+                  "startColumn": 14,
+                  "endColumn": 29
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "0": "dec78ab896031a1b50f3cdc013f87127ce49a22e0ae807f41626ec3e6800598d",
+            "1": "19689298.a551173e.c68e7067.37d9f17d.762b1caf.f940a352.c94bb35d.54d46e25.054a6249.a551173e.c68e7067.de031890.ff090e73.ce109560.31ef8073.54d46e25"
+          },
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "id": 0,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 322,
+                            "endLine": 322,
+                            "startColumn": 51,
+                            "endColumn": 61
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "id": 1,
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "spring-social-core/src/main/java/org/springframework/social/oauth1/SigningSupport.java",
+                            "uriBaseId": "%SRCROOT%"
+                          },
+                          "region": {
+                            "startLine": 173,
+                            "endLine": 173,
+                            "startColumn": 14,
+                            "endColumn": 29
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "priorityScore": 554,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileSource"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 9,
+            "isSupported": true,
+            "lang": "XML"
+          },
+          {
+            "files": 209,
+            "isSupported": true,
+            "lang": "Java"
+          },
+          {
+            "files": 1,
+            "isSupported": true,
+            "lang": "HTML"
+          }
+        ]
+      }
+    }
+  ]
+}
