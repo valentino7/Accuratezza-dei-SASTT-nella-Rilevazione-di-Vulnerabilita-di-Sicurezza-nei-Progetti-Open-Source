@@ -1,0 +1,54 @@
+digraph "Family Tree" {
+	graph [nodesep=1 rankdir=LR ranksep=4 splines=true]
+	subgraph clusterA {
+		node [shape=plaintext]
+		label=Legenda
+		fontsize=20
+		Research [label=Research color=black fillcolor=white shape=underline style=filled]
+		JTS [label=JTS color=black fillcolor=yellow shape=plain style=filled]
+	}
+	CWE693 [label=CWE693 color=black fillcolor=white shape=underline style=filled]
+	CWE327 [label=CWE327 color=black fillcolor=yellow shape=plain style=filled]
+	CWE311 [label=CWE311 color=black fillcolor=white shape=underline style=filled]
+	CWE326 [label=CWE326 color=black fillcolor=white shape=underline style=filled]
+	CWE330 [label=CWE330 color=black fillcolor=white shape=underline style=filled]
+	CWE328 [label=CWE328 color=black fillcolor=yellow shape=plain style=filled]
+	CWE916 [label=CWE916 color=black fillcolor=white shape=underline style=filled]
+	CWE319 [label=CWE319 color=black fillcolor=yellow shape=plain style=filled]
+	CWE614 [label=CWE614 color=black fillcolor=yellow shape=plain style=filled]
+	CWE312 [label=CWE312 color=black fillcolor=white shape=underline style=filled]
+	CWE338 [label=CWE338 color=black fillcolor=yellow shape=plain style=filled]
+	CWE1204 [label=CWE1204 color=black fillcolor=white shape=underline style=filled]
+	CWE335 [label=CWE335 color=black fillcolor=white shape=underline style=filled]
+	CWE344 [label=CWE344 color=black fillcolor=white shape=underline style=filled]
+	CWE759 [label=CWE759 color=black fillcolor=yellow shape=plain style=filled]
+	CWE760 [label=CWE760 color=black fillcolor=yellow shape=plain style=filled]
+	CWE315 [label=CWE315 color=black fillcolor=yellow shape=plain style=filled]
+	CWE329 [label=CWE329 color=black fillcolor=yellow shape=plain style=filled]
+	CWE336 [label=CWE336 color=black fillcolor=yellow shape=plain style=filled]
+	CWE798 [label=CWE798 color=black fillcolor=white shape=underline style=filled]
+	CWE259 [label=CWE259 color=black fillcolor=yellow shape=plain style=filled]
+	CWE321 [label=CWE321 color=black fillcolor=yellow shape=plain style=filled]
+	CWE693 -> CWE327
+	CWE693 -> CWE311
+	CWE693 -> CWE326
+	CWE693 -> CWE330
+	CWE327 -> CWE328
+	CWE327 -> CWE916
+	CWE311 -> CWE319
+	CWE311 -> CWE614
+	CWE311 -> CWE312
+	CWE326 -> CWE328
+	CWE330 -> CWE338
+	CWE330 -> CWE1204
+	CWE330 -> CWE335
+	CWE330 -> CWE344
+	CWE916 -> CWE759
+	CWE916 -> CWE760
+	CWE312 -> CWE315
+	CWE1204 -> CWE329
+	CWE335 -> CWE336
+	CWE344 -> CWE798
+	CWE798 -> CWE259
+	CWE798 -> CWE321
+}

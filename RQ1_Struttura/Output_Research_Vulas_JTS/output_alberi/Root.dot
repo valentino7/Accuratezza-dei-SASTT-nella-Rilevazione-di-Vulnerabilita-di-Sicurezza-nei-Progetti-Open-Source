@@ -1,0 +1,73 @@
+digraph "Family Tree" {
+	graph [nodesep=1 rankdir=LR ranksep=4 splines=true]
+	subgraph clusterA {
+		node [shape=plaintext]
+		label=Legenda
+		fontsize=20
+		Research [label=Research color=black fillcolor=white shape=underline style=filled]
+		"JTS&OSS" [label="JTS&OSS" color=black fillcolor=yellow shape=plain style=filled]
+	}
+	Root [label=Root color=black fillcolor=white shape=underline style=filled]
+	CWE682 [label=CWE682 color=black fillcolor=white shape=underline style=filled]
+	CWE693 [label=CWE693 color=black fillcolor=white shape=underline style=filled]
+	CWE664 [label=CWE664 color=black fillcolor=white shape=underline style=filled]
+	CWE707 [label=CWE707 color=black fillcolor=white shape=underline style=filled]
+	CWE691 [label=CWE691 color=black fillcolor=white shape=underline style=filled]
+	CWE190 [label=CWE190 color=black fillcolor=yellow shape=plain style=filled]
+	CWE327 [label=CWE327 color=black fillcolor=yellow shape=plain style=filled]
+	CWE311 [label=CWE311 color=black fillcolor=white shape=underline style=filled]
+	CWE400 [label=CWE400 color=black fillcolor=yellow shape=plain style=filled]
+	CWE404 [label=CWE404 color=black fillcolor=yellow shape=plain style=filled]
+	CWE913 [label=CWE913 color=black fillcolor=white shape=underline style=filled]
+	CWE610 [label=CWE610 color=black fillcolor=white shape=underline style=filled]
+	CWE666 [label=CWE666 color=black fillcolor=white shape=underline style=filled]
+	CWE20 [label=CWE20 color=black fillcolor=white shape=underline style=filled]
+	CWE74 [label=CWE74 color=black fillcolor=white shape=underline style=filled]
+	CWE834 [label=CWE834 color=black fillcolor=white shape=underline style=filled]
+	CWE319 [label=CWE319 color=black fillcolor=yellow shape=plain style=filled]
+	CWE470 [label=CWE470 color=black fillcolor=yellow shape=plain style=filled]
+	CWE601 [label=CWE601 color=black fillcolor=yellow shape=plain style=filled]
+	CWE672 [label=CWE672 color=black fillcolor=white shape=underline style=filled]
+	CWE113 [label=CWE113 color=black fillcolor=yellow shape=plain style=filled]
+	CWE78 [label=CWE78 color=black fillcolor=yellow shape=plain style=filled]
+	CWE89 [label=CWE89 color=black fillcolor=yellow shape=plain style=filled]
+	CWE93 [label=CWE93 color=black fillcolor=white shape=underline style=filled]
+	CWE77 [label=CWE77 color=black fillcolor=white shape=underline style=filled]
+	CWE943 [label=CWE943 color=black fillcolor=white shape=underline style=filled]
+	CWE835 [label=CWE835 color=black fillcolor=yellow shape=plain style=filled]
+	CWE613 [label=CWE613 color=black fillcolor=yellow shape=plain style=filled]
+	Root -> CWE682
+	Root -> CWE693
+	Root -> CWE664
+	Root -> CWE707
+	Root -> CWE691
+	CWE682 -> CWE190
+	CWE693 -> CWE327
+	CWE693 -> CWE311
+	CWE664 -> CWE400
+	CWE664 -> CWE404
+	CWE664 -> CWE913
+	CWE664 -> CWE610
+	CWE664 -> CWE666
+	CWE707 -> CWE20
+	CWE707 -> CWE74
+	CWE691 -> CWE834
+	CWE311 -> CWE319
+	CWE913 -> CWE470
+	CWE610 -> CWE470
+	CWE610 -> CWE601
+	CWE666 -> CWE672
+	CWE20 -> CWE113
+	CWE20 -> CWE190
+	CWE20 -> CWE470
+	CWE74 -> CWE78
+	CWE74 -> CWE89
+	CWE74 -> CWE93
+	CWE74 -> CWE77
+	CWE74 -> CWE943
+	CWE834 -> CWE835
+	CWE672 -> CWE613
+	CWE93 -> CWE113
+	CWE77 -> CWE78
+	CWE943 -> CWE89
+}

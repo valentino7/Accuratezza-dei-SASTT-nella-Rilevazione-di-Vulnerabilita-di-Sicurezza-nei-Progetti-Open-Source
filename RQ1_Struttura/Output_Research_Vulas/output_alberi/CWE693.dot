@@ -1,0 +1,27 @@
+digraph "Family Tree" {
+	graph [nodesep=1 rankdir=LR ranksep=4 splines=true]
+	subgraph clusterA {
+		node [shape=plaintext]
+		label=Legenda
+		fontsize=20
+		Research [label=Research color=black fillcolor=white shape=underline style=filled]
+		OSS [label=OSS color=black fillcolor=yellow shape=plain style=filled]
+	}
+	CWE693 [label=CWE693 color=black fillcolor=white shape=underline style=filled]
+	CWE345 [label=CWE345 color=black fillcolor=yellow shape=plain style=filled]
+	CWE327 [label=CWE327 color=black fillcolor=yellow shape=plain style=filled]
+	CWE184 [label=CWE184 color=black fillcolor=yellow shape=plain style=filled]
+	CWE311 [label=CWE311 color=black fillcolor=white shape=underline style=filled]
+	CWE354 [label=CWE354 color=black fillcolor=yellow shape=plain style=filled]
+	CWE347 [label=CWE347 color=black fillcolor=yellow shape=plain style=filled]
+	CWE352 [label=CWE352 color=black fillcolor=yellow shape=plain style=filled]
+	CWE319 [label=CWE319 color=black fillcolor=yellow shape=plain style=filled]
+	CWE693 -> CWE345
+	CWE693 -> CWE327
+	CWE693 -> CWE184
+	CWE693 -> CWE311
+	CWE345 -> CWE354
+	CWE345 -> CWE347
+	CWE345 -> CWE352
+	CWE311 -> CWE319
+}

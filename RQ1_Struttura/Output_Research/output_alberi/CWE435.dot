@@ -1,0 +1,39 @@
+digraph "Family Tree" {
+	graph [nodesep=1 rankdir=LR ranksep=4 splines=true]
+	subgraph clusterA {
+		node [shape=plaintext]
+		label=Legenda
+		fontsize=20
+		Research [label=Research color=black fillcolor=white shape=underline style=filled]
+		OSS [label=OSS color=black fillcolor="#f08989" shape=plain style=filled]
+	}
+	CWE435 [label=CWE435 color=black fillcolor=white shape=underline style=filled]
+	CWE1038 [label=CWE1038 color=black fillcolor=white shape=underline style=filled]
+	CWE188 [label=CWE188 color=black fillcolor=white shape=underline style=filled]
+	CWE436 [label=CWE436 color=black fillcolor=white shape=underline style=filled]
+	CWE439 [label=CWE439 color=black fillcolor=white shape=underline style=filled]
+	CWE1037 [label=CWE1037 color=black fillcolor=white shape=underline style=filled]
+	CWE733 [label=CWE733 color=black fillcolor=white shape=underline style=filled]
+	CWE198 [label=CWE198 color=black fillcolor=white shape=underline style=filled]
+	CWE115 [label=CWE115 color=black fillcolor=white shape=underline style=filled]
+	CWE437 [label=CWE437 color=black fillcolor=white shape=underline style=filled]
+	CWE444 [label=CWE444 color=black fillcolor="#f08989" shape=plain style=filled]
+	CWE626 [label=CWE626 color=black fillcolor=white shape=underline style=filled]
+	CWE650 [label=CWE650 color=black fillcolor=white shape=underline style=filled]
+	CWE86 [label=CWE86 color=black fillcolor=white shape=underline style=filled]
+	CWE14 [label=CWE14 color=black fillcolor=white shape=underline style=filled]
+	CWE435 -> CWE1038
+	CWE435 -> CWE188
+	CWE435 -> CWE436
+	CWE435 -> CWE439
+	CWE1038 -> CWE1037
+	CWE1038 -> CWE733
+	CWE188 -> CWE198
+	CWE436 -> CWE115
+	CWE436 -> CWE437
+	CWE436 -> CWE444
+	CWE436 -> CWE626
+	CWE436 -> CWE650
+	CWE436 -> CWE86
+	CWE733 -> CWE14
+}
